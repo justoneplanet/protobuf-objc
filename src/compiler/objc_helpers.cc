@@ -530,7 +530,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       case FieldDescriptor::TYPE_DOUBLE  : return "PBArrayValueTypeDouble";
       case FieldDescriptor::TYPE_BOOL    : return "PBArrayValueTypeBool"  ;
 
-//      case FieldDescriptor::TYPE_MESSAGE : return "PBArrayValueTypeObject";
+      case FieldDescriptor::TYPE_STRING  :
+      case FieldDescriptor::TYPE_BYTES   :
+      case FieldDescriptor::TYPE_ENUM    :
+      case FieldDescriptor::TYPE_GROUP   :
+      case FieldDescriptor::TYPE_MESSAGE :
+      default                            : ;
     }
     GOOGLE_LOG(FATAL) << "Can't get here.";
     return NULL;
