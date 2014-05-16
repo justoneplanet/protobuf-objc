@@ -106,11 +106,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "@synthesize $name$;\n");
   }
 
-
-  void EnumFieldGenerator::GenerateDeallocSource(io::Printer* printer) const {
-  }
-
-
   void EnumFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
     printer->Print(variables_, "self.$name$ = $default$;\n");
   }
@@ -260,23 +255,30 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedEnumFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
+		//check if object array vs primitive array
+	//	if(isObjectArray(descriptor_)){
+	//		printer->Print(variables_, "@property (readonly, strong) NSArray * $name$;\n");
+	//	}else{
+			printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
+	//	}
+    
   }
 
 
   void RepeatedEnumFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "@property (retain) PBAppendableArray * $list_name$;\n");
+		//check if object array vs primitive array
+	//	if(isObjectArray(descriptor_)){
+//			printer->Print(variables_,
+	//	      "@property (strong) NSMutableArray * $list_name$;\n");
+	//	}else{
+			printer->Print(variables_,
+		      "@property (strong) PBAppendableArray * $list_name$;\n");
+	//	}
   }
 
   void RepeatedEnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_, "@synthesize $list_name$;\n");
     printer->Print(variables_, "@dynamic $name$;\n");
-  }
-
-  void RepeatedEnumFieldGenerator::GenerateDeallocSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "self.$list_name$ = nil;\n");
   }
 
 
@@ -363,7 +365,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
       "  if (result.$list_name$ == nil) {\n"
-      "    result.$list_name$ = [[other.$list_name$ copyWithZone:[other.$list_name$ zone]] autorelease];\n"
+      "    result.$list_name$ = [other.$list_name$ copy];\n"
       "  } else {\n"
       "    [result.$list_name$ appendArray:other.$list_name$];\n"
       "  }\n"
