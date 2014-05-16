@@ -470,7 +470,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedEnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
-    printer->Print(variables_, "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&");
+    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || [self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
 
 
