@@ -741,7 +741,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ProtocolBuffers-Prefix.pch";
+				GCC_PREFIX_HEADER = ProtocolBuffers_Prefix.pch;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				PRODUCT_NAME = UnitTests;
 				WRAPPER_EXTENSION = octest;
@@ -754,7 +754,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ProtocolBuffers-Prefix.pch";
+				GCC_PREFIX_HEADER = ProtocolBuffers_Prefix.pch;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				PRODUCT_NAME = UnitTests;
 				WRAPPER_EXTENSION = octest;
