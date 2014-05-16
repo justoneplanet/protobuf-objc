@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F99F30719269AF2008ADABD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B03FF612517CA00087887C /* SenTestingKit.framework */; };
 		8B0444601469EFD500BB156C /* UnittestEmpty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444571469EFD500BB156C /* UnittestEmpty.pb.m */; };
 		8B0444611469EFD500BB156C /* UnittestEnormousDescriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444591469EFD500BB156C /* UnittestEnormousDescriptor.pb.m */; };
 		8B0444621469EFD500BB156C /* UnittestImportLite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B04445B1469EFD500BB156C /* UnittestImportLite.pb.m */; };
@@ -78,7 +79,6 @@
 		C5B03FD712517AD90087887C /* UtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9B12517A1A0087887C /* UtilitiesTests.m */; };
 		C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9D12517A1A0087887C /* WireFormatTests.m */; };
 		C5B03FF512517C6A0087887C /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
-		C5B03FF712517CA00087887C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B03FF612517CA00087887C /* SenTestingKit.framework */; };
 		C5B0406312517D0A0087887C /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8312517A1A0087887C /* Main.m */; };
 		C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */; };
 		C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
@@ -208,7 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B03FF512517C6A0087887C /* libProtocolBuffers.a in Frameworks */,
-				C5B03FF712517CA00087887C /* SenTestingKit.framework in Frameworks */,
+				4F99F30719269AF2008ADABD /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +740,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ProtocolBuffers_Prefix.pch;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
@@ -753,6 +757,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ProtocolBuffers_Prefix.pch;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
