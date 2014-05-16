@@ -8,6 +8,15 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 
 [g-protobuf]: http://code.google.com/p/protobuf/
 
+## Project Overview
+
+This project contains two components:
+
+- Protocol Buffer compiler plugin (protoc-gen-objc), that will allow (protoc) to generate the specialized Objective-C classes necessary to both read and write instances of the messages.
+- Protocol Buffer static library, written in Objective-C that you link into any project that you want protobuf support for.
+
+The (protoc-gen-objc) compiler plugin supports almost all the features of the protobuf 2 language.  Once installed, (protoc) will generate Objective-C classes when the "--objc_out" parameter is used to process a .proto file. These classes, along with the supplied static library, will then allow your code to read and write protobuf instances simply and in a typesafe manner.
+
 ## Installation
 
 1. Download source or clone repository to local machine
@@ -19,6 +28,7 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 
 If this fails make sure you have autoconf/automake installed and that protoc-gen-objc is in your $PATH.
 
+After building
 
 # Credits
 
