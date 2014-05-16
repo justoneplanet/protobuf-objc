@@ -22,6 +22,10 @@ The (protoc-gen-objc) compiler plugin supports almost all the features of the pr
 
 - Produces modern, ARC enabled, Objective-C code
 - Uses NSArrays for arrays of object types (PBArray for value types)
+- `imports` and `global_scope` insertion points for plugins [@gregschlom][gregschlom]
+
+
+[gregschlom]: https://github.com/booyah/protobuf-objc/pull/23
 
 
 ## Creating the Protocol Buffer Compiler Plugin
