@@ -74,6 +74,9 @@ Some instructions and screenshots illustrating this process may be found in this
 
 ## Credits
 
+Protocol Buffers, Objective C
+- Ed Preston (https://github.com/epreston/protobuf-objc)
+
 Protocol Buffers, Objective C iOS5, Regwez Inc.
 - Ragy Eleish <ragy@regwez.com> (https://github.com/regwez/protobuf-objc-iOS5)
 
