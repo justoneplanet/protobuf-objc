@@ -21,6 +21,7 @@ The (protoc-gen-objc) compiler plugin supports almost all the features of the pr
 ## Features of this Fork
 
 - Produces modern, ARC enabled, Objective-C code
+- Supports the latest version of google protocol buffers and most language features
 - Uses NSArrays for arrays of object types (PBArray for value types)
 - `imports` and `global_scope` insertion points for plugins [@gregschlom][gregschlom]
 
