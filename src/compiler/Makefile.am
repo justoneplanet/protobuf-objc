@@ -15,4 +15,4 @@ protoc_gen_objc_SOURCES = 	\
 	objc_helpers.cc			\
 	objc_field.cc			\
 	objc_message.cc			\
-	google/protobuf/objectivec-descriptor.pb.cc
+	objectivec-descriptor.pb.cc

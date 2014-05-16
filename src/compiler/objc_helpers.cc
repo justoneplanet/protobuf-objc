@@ -24,7 +24,7 @@
 #include <google/protobuf/descriptor.pb.h>
 #include <google/protobuf/stubs/strutil.h>
 
-#include "google/protobuf/objectivec-descriptor.pb.h"
+#include "objectivec-descriptor.pb.h"
 
 namespace google { namespace protobuf { namespace compiler { namespace objectivec {
   namespace {
