@@ -46,7 +46,7 @@ Ensure the following have been built and installed the current release versions 
 2. `cd` into root directory of the project
 3. Run `$ ./autogen.sh`
 4. Run `$ ./configure`
-5. Run `$ make` and `$ make install`
+5. Run `$ make` and `$ sudo make install`
 
 
 ### Installation:
