@@ -1,14 +1,17 @@
-Booyah Inc.
--------------------------------------------------------------------------------
-Jon Parise <jon@booyah.com>
+Credits and project liniage.
 
+Protocol Buffers, Objective C
+  Ed Preston (https://github.com/epreston/protobuf-objc)
+
+Protocol Buffers, Objective C iOS5, Regwez Inc.
+  Ragy Eleish ragy@regwez.com (https://github.com/regwez/protobuf-objc-iOS5)
+
+Protocol Buffers for Objective C, Booyah Inc.
+  Jon Parise jon@booyah.com (https://github.com/booyah/protobuf-objc)
 
 Google Protocol Buffers, Objective C
--------------------------------------------------------------------------------
-Cyrus Najmabadi  (http://code.google.com/p/metasyntactic/wiki/ProtocolBuffers)
-Sergey Martynov  (http://github.com/martynovs/protobuf-objc)
-
+  Cyrus Najmabadi (http://code.google.com/p/metasyntactic/wiki/ProtocolBuffers)
+  Sergey Martynov (http://github.com/martynovs/protobuf-objc)
 
 Google Protocol Buffers
--------------------------------------------------------------------------------
-Kenton Varda, Sanjay Ghemawat, Jeff Dean, and others
+  Kenton Varda, Sanjay Ghemawat, Jeff Dean, and others
