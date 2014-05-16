@@ -81,8 +81,3 @@ Google Protocol Buffers, Objective C
 
 Google Protocol Buffers
 - Kenton Varda, Sanjay Ghemawat, Jeff Dean, and others
-
-
-Google Protocol Buffers
--------------------------------------------------------------------------------
-- Kenton Varda, Sanjay Ghemawat, Jeff Dean, and others
