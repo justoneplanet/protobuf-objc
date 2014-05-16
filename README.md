@@ -79,9 +79,13 @@ Protocol Buffers, Objective C
 
 Protocol Buffers, Objective C iOS5, Regwez Inc.
 - Ragy Eleish <ragy@regwez.com> (https://github.com/regwez/protobuf-objc-iOS5)
+- guseri (https://github.com/guseri/protobuf-objc-iOS5)
 
 Protocol Buffers for Objective C, Booyah Inc.
 - Jon Parise <jon@booyah.com> (https://github.com/booyah/protobuf-objc)
+- Gregory Schlomoff (https://github.com/gregschlom/protobuf-objc)
+- honus (https://github.com/honus/protobuf-objc)
+- Andrew Murray (https://github.com/andrewlmurray/protobuf-objc)
 
 Google Protocol Buffers, Objective C
 - Cyrus Najmabadi  (http://code.google.com/p/metasyntactic/wiki/ProtocolBuffers)
