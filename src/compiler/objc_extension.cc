@@ -146,15 +146,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         break;
     }
 
-	if(descriptor_->is_repeated()){
-		if(isObjectArray(descriptor_)){
-			vars["default"] = string("[[NSArray alloc] init]");
-		}else{
-			vars["default"] = string("[PBArray arrayWithValueType:") + GetArrayValueType(descriptor_) + "]";
-		}
-	}else{
-		vars["default"] =  BoxValue(descriptor_, DefaultValue(descriptor_));
-	}
+    if (descriptor_->is_repeated()) {
+      if (isObjectArray(descriptor_)) {
+        vars["default"] = string("[[NSArray alloc] init]");
+      }else{
+        vars["default"] = string("[PBArray arrayWithValueType:") + GetArrayValueType(descriptor_) + "]";
+      }
+    } else {
+      vars["default"] =  string("@(") + DefaultValue(descriptor_) + ")";
+    }
     
     printer->Print(vars,
       "$containing_type$_$name$ =\n");

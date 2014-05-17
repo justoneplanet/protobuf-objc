@@ -40,7 +40,36 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
   }
 
-
+  namespace {
+    string DotsToUnderscores(const string& name) {
+      return StringReplace(name, ".", "_", true);
+    }
+    
+    const char* const kKeywordList[] = {
+      "TYPE_BOOL"
+    };
+    
+    
+    hash_set<string> MakeKeywordsMap() {
+      hash_set<string> result;
+      for (unsigned int i = 0; i < GOOGLE_ARRAYSIZE(kKeywordList); i++) {
+        result.insert(kKeywordList[i]);
+      }
+      return result;
+    }
+    
+    hash_set<string> kKeywords = MakeKeywordsMap();
+  }
+  
+  
+  string SafeName(const string& name) {
+    string result = name;
+    if (kKeywords.count(result) > 0) {
+      result.append("_");
+    }
+    return result;
+  }
+  
     string UnderscoresToCapitalizedCamelCase(const string& input) {
       vector<string> values;
       string current;
@@ -218,15 +247,16 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   string FileClassPrefix(const FileDescriptor* file) {
-    if (IsBootstrapFile(file)) {
-      return "PB";
-    } else if (file->options().HasExtension(objectivec_file_options)) {
-      ObjectiveCFileOptions options = file->options().GetExtension(objectivec_file_options);
-
-      return options.class_prefix();
-    } else {
-      return "";
+    // Use the package name as the class prefix
+    string result = "";
+    vector<string> package_parts_;
+    SplitStringUsing(file->package(), ".", &package_parts_);
+    
+    for (int i = 0; i < package_parts_.size(); i++) {
+      result += package_parts_[i];
     }
+    
+    return result;
   }
 
 
@@ -389,56 +419,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     return !ReturnsPrimitiveType(field);
   }
 
-
-  namespace {
-    string DotsToUnderscores(const string& name) {
-      return StringReplace(name, ".", "_", true);
-    }
-
-    const char* const kKeywordList[] = {
-      "TYPE_BOOL"
-    };
-
-
-    hash_set<string> MakeKeywordsMap() {
-      hash_set<string> result;
-      for (unsigned int i = 0; i < GOOGLE_ARRAYSIZE(kKeywordList); i++) {
-        result.insert(kKeywordList[i]);
-      }
-      return result;
-    }
-
-    hash_set<string> kKeywords = MakeKeywordsMap();
-  }
-
-
-  string SafeName(const string& name) {
-    string result = name;
-    if (kKeywords.count(result) > 0) {
-      result.append("_");
-    }
-    return result;
-  }
-
-  string BoxValue(const FieldDescriptor* field, const string& value) {
-    switch (GetObjectiveCType(field)) {
-      case OBJECTIVECTYPE_INT:
-        return "[NSNumber numberWithInt:" + value + "]";
-      case OBJECTIVECTYPE_LONG:
-        return "[NSNumber numberWithLongLong:" + value + "]";
-      case OBJECTIVECTYPE_FLOAT:
-        return "[NSNumber numberWithFloat:" + value + "]";
-      case OBJECTIVECTYPE_DOUBLE:
-        return "[NSNumber numberWithDouble:" + value + "]";
-      case OBJECTIVECTYPE_BOOLEAN:
-        return "[NSNumber numberWithBool:" + value + "]";
-      case OBJECTIVECTYPE_ENUM:
-        return "[NSNumber numberWithInt:" + value + "]";
-    default:
-        return value;
-    }
-  }
-
   bool AllAscii(const string& text) {
     for (unsigned int i = 0; i < text.size(); i++) {
       if ((text[i] & 0x80) != 0) {
@@ -530,7 +510,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       case FieldDescriptor::TYPE_DOUBLE  : return "PBArrayValueTypeDouble";
       case FieldDescriptor::TYPE_BOOL    : return "PBArrayValueTypeBool"  ;
 
-//      case FieldDescriptor::TYPE_MESSAGE : return "PBArrayValueTypeObject";
+      case FieldDescriptor::TYPE_STRING  :
+      case FieldDescriptor::TYPE_BYTES   :
+      case FieldDescriptor::TYPE_ENUM    :
+      case FieldDescriptor::TYPE_GROUP   :
+      case FieldDescriptor::TYPE_MESSAGE :
+      default                            : ;
     }
     GOOGLE_LOG(FATAL) << "Can't get here.";
     return NULL;
@@ -559,7 +544,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 	      
 	    }
 	    GOOGLE_LOG(FATAL) << "Can't get here.";
-	    return NULL;
+	    return false;
   }
 
 

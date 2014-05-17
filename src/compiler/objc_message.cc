@@ -384,7 +384,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "+ ($classname$_Builder*) builder {\n"
       "  return [[$classname$_Builder alloc] init];\n"
       "}\n"
-      "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype {\n"
+      "+ ($classname$_Builder*) builderWithPrototype:($classname$*)prototype {\n"
       "  return [[$classname$ builder] mergeFrom:prototype];\n"
       "}\n"
       "- ($classname$_Builder*) builder {\n"
@@ -426,18 +426,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;\n");
+      "- (void) writeToCodedOutputStream:(PBCodedOutputStream*)output;\n");
   }
 
   void MessageGenerator::GenerateParseFromMethodsHeader(io::Printer* printer) {
     printer->Print(
       "\n"
-      "+ ($classname$*) parseFromData:(NSData*) data;\n"
-      "+ ($classname$*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*) input;\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*) input;\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
+      "+ ($classname$*) parseFromData:(NSData*)data;\n"
+      "+ ($classname$*) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input;\n"
+      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input;\n"
+      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n",
       "classname", ClassName(descriptor_));
   }
 
@@ -506,7 +506,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "\n"
-      "- ($classname$_Builder*) mergeFrom:($classname$*) other;\n",
+      "- ($classname$_Builder*) mergeFrom:($classname$*)other;\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
@@ -522,8 +522,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     scoped_array<const FieldDescriptor*> sorted_fields(SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;\n"
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
+      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*)input;\n"
+      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
       "classname", ClassName(descriptor_));
   }
 
@@ -545,7 +545,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {\n");
+      "- (void) writeToCodedOutputStream:(PBCodedOutputStream*)output {\n");
     printer->Indent();
 
     // Merge the fields and the extension ranges, both sorted by field number.
@@ -617,9 +617,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {\n");
+      "- (void) writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {\n");
     printer->Indent();
-	printer->Print("NSUInteger listCount = 0;\n");
+    printer->Print("NSUInteger listCount = 0;\n");
 
     // Merge the fields and the extension ranges, both sorted by field number.
     for (int i = 0, j = 0;
@@ -714,7 +714,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Indent();
 
     printer->Print("NSUInteger hashCode = 7;\n");
-	printer->Print("NSUInteger listCount = 0;\n");
+    printer->Print("NSUInteger listCount = 0;\n");
 
     // Merge the fields and the extension ranges, both sorted by field number.
     for (int i = 0, j = 0;
@@ -742,22 +742,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::GenerateParseFromMethodsSource(io::Printer* printer) {
     printer->Print(
-      "+ ($classname$*) parseFromData:(NSData*) data {\n"
+      "+ ($classname$*) parseFromData:(NSData*)data {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromData:data] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {\n"
+      "+ ($classname$*) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromData:data extensionRegistry:extensionRegistry] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*) input {\n"
+      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromInputStream:input] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {\n"
+      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*) input {\n"
+      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromCodedInputStream:input] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {\n"
+      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];\n"
       "}\n",
       "classname", ClassName(descriptor_));
