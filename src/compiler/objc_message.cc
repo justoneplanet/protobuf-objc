@@ -617,7 +617,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {\n");
+      "- (void) writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {\n");
     printer->Indent();
 	printer->Print("NSUInteger listCount = 0;\n");
 
