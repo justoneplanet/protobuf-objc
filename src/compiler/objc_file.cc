@@ -99,7 +99,7 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
 
     printer->Print(
       "+ (PBExtensionRegistry*) extensionRegistry;\n"
-      "+ (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry;\n");
+      "+ (void) registerAllExtensions:(PBMutableExtensionRegistry*)registry;\n");
 
     for (int i = 0; i < file_->extension_count(); i++) {
       ExtensionGenerator(classname_, file_->extension(i)).GenerateMembersHeader(printer);
@@ -208,7 +208,7 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
     // -----------------------------------------------------------------
 
     printer->Print(
-      "+ (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {\n");
+      "+ (void) registerAllExtensions:(PBMutableExtensionRegistry*)registry {\n");
     printer->Indent();
 
     for (int i = 0; i < file_->extension_count(); i++) {

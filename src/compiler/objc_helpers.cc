@@ -563,7 +563,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 	      
 	    }
 	    GOOGLE_LOG(FATAL) << "Can't get here.";
-	    return NULL;
+	    return false;
   }
 
 

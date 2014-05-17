@@ -155,8 +155,8 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@ %p>{valueType = %d, count = %d, capacity = %d, data = %p}",
-			[self class], self, _valueType, _count, _capacity, _data];
+	return [NSString stringWithFormat:@"<%@ %p>{valueType = %d, count = %lu, capacity = %lu, data = %p}",
+			[self class], self, _valueType, (unsigned long)_count, (unsigned long)_capacity, _data];
 }
 
 - (NSUInteger)count
@@ -330,7 +330,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	const NSUInteger requiredSlots = _count + additionalSlots;
 
-    bool wasAllocated=YES;
+//    bool wasAllocated=YES;
 	if (requiredSlots > _capacity)
 	{
 		// If we haven't allocated any capacity yet, simply reserve
@@ -338,7 +338,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 		if (_capacity == 0)
 		{
 			_capacity = requiredSlots;
-            wasAllocated=NO;
+//            wasAllocated=NO;
 		}
 		else
 		{

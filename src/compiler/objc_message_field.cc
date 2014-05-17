@@ -101,7 +101,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- (BOOL) has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "- (void) setHas$capitalized_name$:(BOOL)value_ {\n"
       "  has$capitalized_name$_ = !!value_;\n"
       "}\n"
       "@synthesize $name$;\n");
@@ -116,9 +116,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (BOOL) has$capitalized_name$;\n"
       "- ($storage_type$) $name$;\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value;\n"
-      "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*) builderForValue;\n"
-      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$) value;\n"
+      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$)value;\n"
+      "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*)builderForValue;\n"
+      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$)value;\n"
       "- ($classname$_Builder*) clear$capitalized_name$;\n");
   }
 
@@ -130,7 +130,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($storage_type$) $name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value {\n"
+      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$)value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
@@ -138,7 +138,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*) builderForValue {\n"
       "  return [self set$capitalized_name$:[builderForValue build]];\n"
       "}\n"
-      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$) value {\n"
+      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$)value {\n"
       "  if (result.has$capitalized_name$ &&\n"
       "      result.$name$ != [$type$ defaultInstance]) {\n"
       "    result.$name$ =\n"
@@ -275,14 +275,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
-	//check if object array vs primitive array
-	if(isObjectArray(descriptor_)){
-		printer->Print(variables_,
-	      "NSMutableArray * $list_name$;\n");
-	}else{
-		printer->Print(variables_,
-	      "PBAppendableArray * $list_name$;\n");
-	}
+    // check if object array vs primitive array
+    if (isObjectArray(descriptor_)) {
+      printer->Print(variables_,
+                     "NSMutableArray *$list_name$;\n");
+    }else{
+      printer->Print(variables_,
+                     "// RepeatedMessageFieldGenerator::GenerateFieldHeader\n"
+                     "PBAppendableArray *$list_name$;\n");
+    }
   }
 
 
@@ -291,23 +292,23 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-		//check if object array vs primitive array
-		if(isObjectArray(descriptor_)){
-			printer->Print(variables_, "@property (readonly, strong) NSArray * $name$;\n");
+		// check if object array vs primitive array
+		if (isObjectArray(descriptor_)) {
+			printer->Print(variables_, "@property (readonly, strong) NSArray *$name$;\n");
 		}else{
-			printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
+			printer->Print(variables_, "@property (readonly, strong) PBArray *$name$;\n");
 		}
   }
 
 
   void RepeatedMessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-		//check if object array vs primitive array
-		if(isObjectArray(descriptor_)){
-    		printer->Print(variables_,
-      			"@property (strong) NSMutableArray * $list_name$;\n");
+		// check if object array vs primitive array
+		if (isObjectArray(descriptor_)) {
+      printer->Print(variables_,
+        "@property (strong) NSMutableArray *$list_name$;\n");
 		}else{
 			printer->Print(variables_,
-		      "@property (strong) PBAppendableArray * $list_name$;\n");
+        "@property (strong) PBAppendableArray *$list_name$;\n");
 		}
   }
 
@@ -327,8 +328,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void RepeatedMessageFieldGenerator::GenerateMembersSource(io::Printer* printer) const {
-		//check if object array vs primitive array
-		if(isObjectArray(descriptor_)){
+		// check if object array vs primitive array
+		if (isObjectArray(descriptor_)) {
     		printer->Print(variables_,
 		      "- (NSArray *)$name$ {\n"
 		      "  return $list_name$;\n"
@@ -341,15 +342,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
-		//check if object array vs primitive array
-		if(isObjectArray(descriptor_)){
+		// check if object array vs primitive array
+		if (isObjectArray(descriptor_)) {
    		 printer->Print(variables_,
 		      "- (NSMutableArray *)$name$;\n"
 		      "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
 		      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
 		      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
 		      "- ($classname$_Builder *)clear$capitalized_name$;\n");
-		}else{
+		} else {
 		  printer->Print(variables_,
 		      "- (PBAppendableArray *)$name$;\n"
 		      "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
