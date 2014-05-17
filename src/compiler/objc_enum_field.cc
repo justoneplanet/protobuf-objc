@@ -202,7 +202,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void EnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (self.has$capitalized_name$) {\n"
-      "  [output appendFormat:@\"%@%@: %ld\\n\", indent, @\"$name$\", self.$name$];\n"
+      "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(self.$name$)];\n"
       "}\n");
   }
 
@@ -479,7 +479,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedEnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
-    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || [self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
+    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || "
+                               "[self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
 
 

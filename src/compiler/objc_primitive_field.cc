@@ -388,14 +388,17 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void PrimitiveFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "if (self.has$capitalized_name$) {\n"
-      "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", ");
-    printer->Print(variables_,
-      BoxValue(descriptor_, "self.$name$").c_str());//RAGY
-    printer->Print(variables_,
-      "];\n"
-      "}\n");
+    if (ReturnsPrimitiveType(descriptor_)) {
+      printer->Print(variables_,
+                     "if (self.has$capitalized_name$) {\n"
+                     "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(self.$name$)];\n"
+                     "}\n");
+    } else {
+      printer->Print(variables_,
+                     "if (self.has$capitalized_name$) {\n"
+                     "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", self.$name$];\n"
+                     "}\n");
+    }
   }
 
   void PrimitiveFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
@@ -410,13 +413,17 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void PrimitiveFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "if (self.has$capitalized_name$) {\n");
-    printer->Print("  hashCode = hashCode * 31 + [");
-    printer->Print(variables_, BoxValue(descriptor_, "self.$name$").c_str());
-    printer->Print(
-      " hash];\n"
-      "}\n");
+    if (ReturnsPrimitiveType(descriptor_)) {
+      printer->Print(variables_,
+                     "if (self.has$capitalized_name$) {\n"
+                     "  hashCode = hashCode * 31 + [@(self.$name$) hash];\n"
+                     "}\n");
+    } else {
+      printer->Print(variables_,
+                     "if (self.has$capitalized_name$) {\n"
+                     "  hashCode = hashCode * 31 + [self.$name$ hash];\n"
+                     "}\n");
+    }
   }
 
   RepeatedPrimitiveFieldGenerator::RepeatedPrimitiveFieldGenerator(const FieldDescriptor* descriptor)
@@ -538,7 +545,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 	      "  return $list_name$;\n"
 	      "}\n"
 	      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
-	      "  return [$list_name$ objectAtIndex:index];\n"
+	      "  return $list_name$[index];\n"
 	      "}\n");
     } else {
       printer->Print(variables_,

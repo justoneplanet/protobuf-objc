@@ -335,7 +335,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 		      "  return $list_name$;\n"
 		      "}\n"
 		      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
-		      "  return [$list_name$ objectAtIndex:index];\n"
+		      "  return $list_name$[index];\n"
 		      "}\n");
 		}
   }
@@ -477,19 +477,20 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void RepeatedMessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
-    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || [self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
+    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || "
+                               "[self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
 
   void RepeatedMessageFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
-	//check if object array vs primitive array
-	if(isObjectArray(descriptor_)){
-    	printer->Print(variables_,
-	      "for ($type$* element in self.$list_name$) {\n"
-	      "  hashCode = hashCode * 31 + [element hash];\n"
-	      "}\n");
-	}else{
-    	GOOGLE_LOG(FATAL) << "Can't get here: GenerateHashCodeSource";
-	}
+    //check if object array vs primitive array
+    if (isObjectArray(descriptor_)) {
+        printer->Print(variables_,
+          "for ($type$* element in self.$list_name$) {\n"
+          "  hashCode = hashCode * 31 + [element hash];\n"
+          "}\n");
+    } else {
+        GOOGLE_LOG(FATAL) << "Can't get here: GenerateHashCodeSource";
+    }
   }
 
   string RepeatedMessageFieldGenerator::GetBoxedType() const {
