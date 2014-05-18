@@ -66,7 +66,8 @@ string FilenameToCamelCase(const string& filename);
   // Get code that evaluates to the field's default value.
   string DefaultValue(const FieldDescriptor* field);
   
-  
+  // Convert a file name into a valid identifier.
+  string FilenameIdentifier(const string& filename);
   
   // Escape C++ trigraphs by escaping question marks to \?
   string EscapeTrigraphs(const string& to_escape);

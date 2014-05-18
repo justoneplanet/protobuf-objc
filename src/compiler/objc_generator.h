@@ -15,8 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_GENERATOR_H
-#define OBJC_GENERATOR_H
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_GENERATOR_H
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_GENERATOR_H
 
 #include <string>
 #include <google/protobuf/compiler/code_generator.h>
@@ -26,22 +26,23 @@ namespace protobuf {
 namespace compiler {
 namespace objectivec {
 
-class ObjectiveCGenerator : public CodeGenerator {
+class LIBPROTOC_EXPORT ObjectiveCGenerator : public CodeGenerator {
  public:
   ObjectiveCGenerator();
   ~ObjectiveCGenerator();
 
   bool Generate(const FileDescriptor* file,
                 const string& parameter,
-                OutputDirectory* output_directory,
+                GeneratorContext* generator_context,
                 string* error) const;
 
  private:
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(ObjectiveCGenerator);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_GENERATOR_H
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_GENERATOR_H

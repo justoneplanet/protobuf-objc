@@ -17,62 +17,69 @@
 
 #include "objc_generator.h"
 
+#include <vector>
+
 #include <google/protobuf/io/printer.h>
 #include <google/protobuf/io/zero_copy_stream.h>
 #include <google/protobuf/descriptor.pb.h>
-#include <google/protobuf/stubs/strutil.h>
 
 #include "objc_file.h"
 #include "objc_helpers.h"
 
-namespace google { namespace protobuf { namespace compiler { namespace objectivec {
-  ObjectiveCGenerator::ObjectiveCGenerator() {
-  }
-
-
-  ObjectiveCGenerator::~ObjectiveCGenerator() {
-  }
-
+namespace google {
+namespace protobuf {
+namespace compiler {
+namespace objectivec {
+  
+  ObjectiveCGenerator::ObjectiveCGenerator() {}
+  ObjectiveCGenerator::~ObjectiveCGenerator() {}
 
   bool ObjectiveCGenerator::Generate(const FileDescriptor* file,
-    const string& parameter,
-    OutputDirectory* output_directory,
-    string* error) const {
-      vector<pair<string, string> > options;
-      ParseGeneratorParameter(parameter, &options);
-
-      string output_list_file;
-
-      for (int i = 0; i < options.size(); i++) {
-        if (options[i].first == "output_list_file") {
-          output_list_file = options[i].second;
-        } else {
-          *error = "Unknown generator option: " + options[i].first;
-          return false;
-        }
+                                     const string& parameter,
+                                     GeneratorContext* generator_context,
+                                     string* error) const {
+    vector<pair<string, string> > options;
+    ParseGeneratorParameter(parameter, &options);
+    
+    // -----------------------------------------------------------------
+    // parse generator options
+    
+    Options file_options;
+    
+    for (int i = 0; i < options.size(); i++) {
+      if (options[i].first == "output_list_file") {
+        file_options.output_list_file = options[i].second;
+      } else {
+        *error = "Unknown generator option: " + options[i].first;
+        return false;
       }
+    }
+    
+    // -----------------------------------------------------------------
 
-      FileGenerator file_generator(file);
-
-      string filepath = FilePath(file);
-
-      // Generate header.
-      {
-        scoped_ptr<io::ZeroCopyOutputStream> output(
-          output_directory->Open(filepath + ".pb.h"));
-        io::Printer printer(output.get(), '$');
-        file_generator.GenerateHeader(&printer);
-      }
-
-      // Generate m file.
-      {
-        scoped_ptr<io::ZeroCopyOutputStream> output(
-          output_directory->Open(filepath + ".pb.m"));
-        io::Printer printer(output.get(), '$');
-        file_generator.GenerateSource(&printer);
-      }
-
-      return true;
+    
+    string basename = StripProto(file->name());
+    basename.append(".pb");
+    
+    FileGenerator file_generator(file, file_options);
+    
+    // Generate header.
+    {
+      scoped_ptr<io::ZeroCopyOutputStream> output(
+        generator_context->Open(basename + ".h"));
+      io::Printer printer(output.get(), '$');
+      file_generator.GenerateHeader(&printer);
+    }
+    
+    // Generate m file.
+    {
+      scoped_ptr<io::ZeroCopyOutputStream> output(
+        generator_context->Open(basename + ".m"));
+      io::Printer printer(output.get(), '$');
+      file_generator.GenerateSource(&printer);
+    }
+    
+    return true;
   }
 
 }  // namespace objectivec

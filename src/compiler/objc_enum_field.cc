@@ -104,10 +104,10 @@ namespace objectivec {
 
   void EnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "- (void)setHas$capitalized_name$:(BOOL) value_ {\n"
       "  has$capitalized_name$_ = !!value_;\n"
       "}\n"
       "@synthesize $name$;\n");
@@ -120,8 +120,8 @@ namespace objectivec {
 
   void EnumFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$;\n"
-      "- ($type$) $name$;\n"\
+      "- (BOOL)has$capitalized_name$;\n"
+      "- ($type$)$name$;\n"\
       "- ($classname$_Builder*) set$capitalized_name$:($type$) value;\n"
       "- ($classname$_Builder*) clear$capitalized_name$;\n");
   }
@@ -129,18 +129,18 @@ namespace objectivec {
 
   void EnumFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return result.has$capitalized_name$;\n"
       "}\n"
-      "- ($type$) $name$ {\n"
+      "- ($type$)$name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($type$)value {\n"
+      "- ($classname$_Builder*)set$capitalized_name$:($type$)value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- ($classname$_Builder*)clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = $default$;\n"
       "  return self;\n"

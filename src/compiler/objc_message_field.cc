@@ -85,12 +85,12 @@ namespace objectivec {
 
 
   void MessageFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "- (BOOL) has$capitalized_name$;\n");
+    printer->Print(variables_, "- (BOOL)has$capitalized_name$;\n");
   }
 
 
   void MessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "@property (readonly, strong)$storage_attribute$ $storage_type$ $name$;\n");
+    printer->Print(variables_, "@property (readonly, strong) $storage_attribute$ $storage_type$ $name$;\n");
   }
 
 
@@ -104,10 +104,10 @@ namespace objectivec {
 
   void MessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL)value_ {\n"
+      "- (void)setHas$capitalized_name$:(BOOL)value_ {\n"
       "  has$capitalized_name$_ = !!value_;\n"
       "}\n"
       "@synthesize $name$;\n");
@@ -119,31 +119,31 @@ namespace objectivec {
 
   void MessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$;\n"
-      "- ($storage_type$) $name$;\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$)value;\n"
-      "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*)builderForValue;\n"
-      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$)value;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$;\n");
+      "- (BOOL)has$capitalized_name$;\n"
+      "- ($storage_type$)$name$;\n"
+      "- ($classname$_Builder*)set$capitalized_name$:($storage_type$)value;\n"
+      "- ($classname$_Builder*)set$capitalized_name$Builder:($type$_Builder*)builderForValue;\n"
+      "- ($classname$_Builder*)merge$capitalized_name$:($storage_type$)value;\n"
+      "- ($classname$_Builder*)clear$capitalized_name$;\n");
   }
 
   void MessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return result.has$capitalized_name$;\n"
       "}\n"
-      "- ($storage_type$) $name$ {\n"
+      "- ($storage_type$)$name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$)value {\n"
+      "- ($classname$_Builder*)set$capitalized_name$:($storage_type$)value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*) builderForValue {\n"
+      "- ($classname$_Builder*)set$capitalized_name$Builder:($type$_Builder*) builderForValue {\n"
       "  return [self set$capitalized_name$:[builderForValue build]];\n"
       "}\n"
-      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$)value {\n"
+      "- ($classname$_Builder*)merge$capitalized_name$:($storage_type$)value {\n"
       "  if (result.has$capitalized_name$ &&\n"
       "      result.$name$ != [$type$ defaultInstance]) {\n"
       "    result.$name$ =\n"
@@ -154,7 +154,7 @@ namespace objectivec {
       "  result.has$capitalized_name$ = YES;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- ($classname$_Builder*)clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = [$type$ defaultInstance];\n"
       "  return self;\n"
@@ -276,7 +276,6 @@ namespace objectivec {
                      "NSMutableArray *$list_name$;\n");
     }else{
       printer->Print(variables_,
-                     "// RepeatedMessageFieldGenerator::GenerateFieldHeader\n"
                      "PBAppendableArray *$list_name$;\n");
     }
   }

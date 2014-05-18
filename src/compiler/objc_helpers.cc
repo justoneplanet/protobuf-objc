@@ -107,7 +107,7 @@ namespace {
   }
   
   string UnderscoresToCamelCase(const FieldDescriptor* field, bool cap_next_letter) {
-    return UnderscoresToCamelCase(FieldName(field), false);
+    return UnderscoresToCamelCase(FieldName(field), cap_next_letter);
   }
 
   string UnderscoresToCamelCase(const MethodDescriptor* method) {
@@ -413,6 +413,23 @@ namespace {
 
     GOOGLE_LOG(FATAL) << "Can't get here.";
     return "";
+  }
+  
+  // Convert a file name into a valid identifier.
+  string FilenameIdentifier(const string& filename) {
+    string result;
+    for (int i = 0; i < filename.size(); i++) {
+      if (ascii_isalnum(filename[i])) {
+        result.push_back(filename[i]);
+      } else {
+        // Not alphanumeric.  To avoid any possibility of name conflicts we
+        // use the hex code for the character.
+        result.push_back('_');
+        char buffer[kFastToBufferSize];
+        result.append(FastHexToBuffer(static_cast<uint8>(filename[i]), buffer));
+      }
+    }
+    return result;
   }
 
   const char* GetArrayValueType(const FieldDescriptor* field) {
