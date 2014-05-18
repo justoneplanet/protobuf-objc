@@ -147,13 +147,19 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
     if (descriptor_->is_repeated()) {
+      // Two types of repeated entries
       if (isObjectArray(descriptor_)) {
         vars["default"] = string("[[NSArray alloc] init]");
       }else{
         vars["default"] = string("[PBArray arrayWithValueType:") + GetArrayValueType(descriptor_) + "]";
       }
     } else {
-      vars["default"] =  string("@(") + DefaultValue(descriptor_) + ")";
+      // Box primitive types
+      if (IsPrimitiveType(java_type)) {
+        vars["default"] = string("@(") + DefaultValue(descriptor_) + ")";
+      } else {
+        vars["default"] = DefaultValue(descriptor_);
+      }
     }
     
     printer->Print(vars,
