@@ -38,7 +38,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void ExtensionGenerator::GenerateMembersHeader(io::Printer* printer) {
     map<string, string> vars;
-    vars["name"] = UnderscoresToCamelCase(descriptor_);
+    vars["name"] = UnderscoresToCamelCase(descriptor_, false);
 
     printer->Print(vars,
       "+ (id<PBExtensionField>) $name$;\n");
@@ -47,7 +47,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void ExtensionGenerator::GenerateFieldsSource(io::Printer* printer) {
     map<string, string> vars;
-    vars["name"] = UnderscoresToCamelCase(descriptor_);
+    vars["name"] = UnderscoresToCamelCase(descriptor_, false);
     vars["containing_type"] = classname_;
 
     printer->Print(vars,
@@ -57,7 +57,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void ExtensionGenerator::GenerateMembersSource(io::Printer* printer) {
     map<string, string> vars;
-    vars["name"] = UnderscoresToCamelCase(descriptor_);
+    vars["name"] = UnderscoresToCamelCase(descriptor_, false);
     vars["containing_type"] = classname_;
 
     printer->Print(vars,
@@ -68,7 +68,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void ExtensionGenerator::GenerateInitializationSource(io::Printer* printer) {
     map<string, string> vars;
-    vars["name"] = UnderscoresToCamelCase(descriptor_);
+    vars["name"] = UnderscoresToCamelCase(descriptor_, false);
     vars["containing_type"] = classname_;
     vars["extended_type"] = ClassName(descriptor_->containing_type());
     vars["number"] = SimpleItoa(descriptor_->number());
@@ -181,7 +181,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "[registry addExtension:$scope$_$name$];\n",
       "scope", classname_,
-      "name", UnderscoresToCamelCase(descriptor_));
+      "name", UnderscoresToCamelCase(descriptor_, false));
   }
 }  // namespace objectivec
 }  // namespace compiler

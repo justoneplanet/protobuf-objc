@@ -1009,7 +1009,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
           "if (!self.has$capitalized_name$) {\n"
           "  return NO;\n"
           "}\n",
-          "capitalized_name", UnderscoresToCapitalizedCamelCase(field));
+          "capitalized_name", UnderscoresToCamelCase(field, true));
       }
     }
 
@@ -1021,8 +1021,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
           map<string,string> vars;
           vars["type"] = ClassName(field->message_type());
-          vars["name"] = UnderscoresToCamelCase(field);
-          vars["capitalized_name"] = UnderscoresToCapitalizedCamelCase(field);
+          vars["name"] = UnderscoresToCamelCase(field, false);
+          vars["capitalized_name"] = UnderscoresToCamelCase(field, true);
 
           switch (field->label()) {
             case FieldDescriptor::LABEL_REQUIRED:

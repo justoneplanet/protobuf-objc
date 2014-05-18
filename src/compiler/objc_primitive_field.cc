@@ -176,11 +176,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     void SetPrimitiveVariables(const FieldDescriptor* descriptor,
       map<string, string>* variables) {
-        std::string name = UnderscoresToCamelCase(descriptor);
+        std::string name = UnderscoresToCamelCase(descriptor, false);
         (*variables)["classname"] = ClassName(descriptor->containing_type());
         (*variables)["name"] = name;
-        (*variables)["capitalized_name"] = UnderscoresToCapitalizedCamelCase(descriptor);
-        (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "Array";
+        (*variables)["capitalized_name"] = UnderscoresToCamelCase(descriptor, true);
+        (*variables)["list_name"] = name + "Array";
         (*variables)["number"] = SimpleItoa(descriptor->number());
         (*variables)["type"] = PrimitiveTypeName(descriptor);
 

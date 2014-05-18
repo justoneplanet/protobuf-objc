@@ -26,40 +26,70 @@
 
 #include "objectivec-descriptor.pb.h"
 
-namespace google { namespace protobuf { namespace compiler { namespace objectivec {
-  namespace {
-    const string& FieldName(const FieldDescriptor* field) {
-      // Groups are hacky:  The name of the field is just the lower-cased name
-      // of the group type.  In ObjectiveC, though, we would like to retain the original
-      // capitalization of the type name.
-      if (field->type() == FieldDescriptor::TYPE_GROUP) {
-        return field->message_type()->name();
-      } else {
-        return field->name();
-      }
-    }
+namespace google {
+namespace protobuf {
+namespace compiler {
+namespace objectivec {
+  
+namespace {
+  
+  string DotsToUnderscores(const string& name) {
+    return StringReplace(name, ".", "_", true);
   }
+    
+  const char* const kKeywordList[] = {
+    "TYPE_BOOL"
+  };
 
-  namespace {
-    string DotsToUnderscores(const string& name) {
-      return StringReplace(name, ".", "_", true);
+  hash_set<string> MakeKeywordsMap() {
+    hash_set<string> result;
+    for (unsigned int i = 0; i < GOOGLE_ARRAYSIZE(kKeywordList); i++) {
+      result.insert(kKeywordList[i]);
     }
-    
-    const char* const kKeywordList[] = {
-      "TYPE_BOOL"
-    };
-    
-    
-    hash_set<string> MakeKeywordsMap() {
-      hash_set<string> result;
-      for (unsigned int i = 0; i < GOOGLE_ARRAYSIZE(kKeywordList); i++) {
-        result.insert(kKeywordList[i]);
-      }
-      return result;
-    }
-    
-    hash_set<string> kKeywords = MakeKeywordsMap();
+    return result;
   }
+  
+  hash_set<string> kKeywords = MakeKeywordsMap();
+
+  string UnderscoresToCamelCase(const string& input, bool cap_next_letter) {
+    string result;
+    // Note:  I distrust ctype.h due to locales.
+    for (int i = 0; i < input.size(); i++) {
+      if ('a' <= input[i] && input[i] <= 'z') {
+        if (cap_next_letter) {
+          result += input[i] + ('A' - 'a');
+        } else {
+          result += input[i];
+        }
+        cap_next_letter = false;
+      } else if ('A' <= input[i] && input[i] <= 'Z') {
+        // Capital letters are left as-is.
+        result += input[i];
+        cap_next_letter = false;
+      } else if ('0' <= input[i] && input[i] <= '9') {
+        result += input[i];
+        cap_next_letter = true;
+      } else {
+        cap_next_letter = true;
+      }
+    }
+    return result;
+  }
+  
+  
+  const string& FieldName(const FieldDescriptor* field) {
+    // Groups are hacky:  The name of the field is just the lower-cased name
+    // of the group type.  In ObjectiveC, though, we would like to retain the original
+    // capitalization of the type name.
+    if (field->type() == FieldDescriptor::TYPE_GROUP) {
+      return field->message_type()->name();
+    } else {
+      return field->name();
+    }
+  }
+  
+} // namespace
+
   
   
   string SafeName(const string& name) {
@@ -69,128 +99,19 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
     return result;
   }
-  
-    string UnderscoresToCapitalizedCamelCase(const string& input) {
-      vector<string> values;
-      string current;
 
-      bool last_char_was_number = false;
-      bool last_char_was_lower = false;
-      bool last_char_was_upper = false;
-      for (unsigned int i = 0; i < input.size(); i++) {
-        char c = input[i];
-        if (c >= '0' && c <= '9') {
-          if (!last_char_was_number) {
-            values.push_back(current);
-            current = "";
-          }
-          current += c;
-          last_char_was_number = last_char_was_lower = last_char_was_upper = false;
-          last_char_was_number = true;
-        } else if (c >= 'a' && c <= 'z') {
-          // lowercase letter can follow a lowercase or uppercase letter
-          if (!last_char_was_lower && !last_char_was_upper) {
-            values.push_back(current);
-            current = "";
-          }
-          current += c;
-          last_char_was_number = last_char_was_lower = last_char_was_upper = false;
-          last_char_was_lower = true;
-        } else if (c >= 'A' && c <= 'Z') {
-          if (!last_char_was_upper) {
-            values.push_back(current);
-            current = "";
-          }
-          current += c;
-          last_char_was_number = last_char_was_lower = last_char_was_upper = false;
-          last_char_was_upper = true;
-        } else {
-          last_char_was_number = last_char_was_lower = last_char_was_upper = false;
-        }
-      }
-      values.push_back(current);
-
-      for (vector<string>::iterator i = values.begin(); i != values.end(); ++i) {
-        string value = *i;
-        for (unsigned int j = 0; j < value.length(); j++) {
-          if (j == 0) {
-            value[j] = toupper(value[j]);
-          } else {
-            value[j] = tolower(value[j]);
-          }
-        }
-        *i = value;
-      }
-      string result;
-      for (vector<string>::iterator i = values.begin(); i != values.end(); ++i) {
-        result += *i;
-      }
-      return result;
-    }
-
-
-    string UnderscoresToCamelCase(const string& input) {
-      string result = UnderscoresToCapitalizedCamelCase(input);
-      if (result.length() == 0) {
-        return result;
-      }
-
-      result[0] = tolower(result[0]);
-      return result;
-    }
-
-
-  string UnderscoresToCamelCase(const FieldDescriptor* field) {
-    return UnderscoresToCamelCase(FieldName(field));
-  }
-
-
-  string UnderscoresToCapitalizedCamelCase(const FieldDescriptor* field) {
-    return UnderscoresToCapitalizedCamelCase(FieldName(field));
-  }
-
-
-  string UnderscoresToCamelCase(const MethodDescriptor* method) {
-    return UnderscoresToCamelCase(method->name());
-  }
 
 
   string FilenameToCamelCase(const string& filename) {
-    string result;
-    bool need_uppercase = true;
+    return UnderscoresToCamelCase(filename, true);
+  }
+  
+  string UnderscoresToCamelCase(const FieldDescriptor* field, bool cap_next_letter) {
+    return UnderscoresToCamelCase(FieldName(field), false);
+  }
 
-    result.reserve(filename.length());
-
-    for (string::const_iterator it(filename.begin()), itEnd(filename.end()); it != itEnd; ++it) {
-      const char c = *it;
-
-      // Ignore undesirable characters.  The good character must be
-      // uppercased, though.
-      if (!isalnum(c) && c != '_') {
-        need_uppercase = true;
-        continue;
-      }
-
-      // If an uppercased character has been requested, transform the current
-      // character, append it to the result, reset the flag, and move on.
-      // This is safe to do even if the character is already uppercased.
-      if (need_uppercase && isalpha(c)) {
-        result += toupper(c);
-        need_uppercase = false;
-        continue;
-      }
-
-      // Simply append this character.
-      result += c;
-
-      // If this character was a digit, we want the next character to be an
-      // uppercased letter.
-      if (isdigit(c)) {
-        need_uppercase = true;
-      }
-    }
-
-    return result;
+  string UnderscoresToCamelCase(const MethodDescriptor* method) {
+    return UnderscoresToCamelCase(method->name(), false);
   }
 
 
@@ -264,7 +185,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     // Ensure the FileClassName is camelcased irrespective of whether the
     // camelcase_output_filename option is set.
     return FileClassPrefix(file) +
-        UnderscoresToCapitalizedCamelCase(FileName(file)) + "Root";
+        UnderscoresToCamelCase(FileName(file), true) + "Root";
   }
 
 
@@ -323,7 +244,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   string EnumValueName(const EnumValueDescriptor* descriptor) {
     return
       ClassName(descriptor->type()) +
-      UnderscoresToCapitalizedCamelCase(SafeName(descriptor->name()));
+      UnderscoresToCamelCase(SafeName(descriptor->name()), true);
   }
 
 

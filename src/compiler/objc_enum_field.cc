@@ -27,27 +27,34 @@
 
 #include "objc_helpers.h"
 
-namespace google { namespace protobuf { namespace compiler { namespace objectivec {
+namespace google {
+namespace protobuf {
+namespace compiler {
+namespace objectivec {
 
   namespace {
+    
     void SetEnumVariables(const FieldDescriptor* descriptor,
-      map<string, string>* variables) {
-        const EnumValueDescriptor* default_value;
-        default_value = descriptor->default_value_enum();
+                          map<string, string>* variables) {
+      
+      const EnumValueDescriptor* default_value;
+      default_value = descriptor->default_value_enum();
 
-        string type = ClassName(descriptor->enum_type());
+      string type = ClassName(descriptor->enum_type());
+      string name = UnderscoresToCamelCase(descriptor, false);
 
-        (*variables)["classname"]             = ClassName(descriptor->containing_type());
-        (*variables)["name"]                  = UnderscoresToCamelCase(descriptor);
-        (*variables)["capitalized_name"]      = UnderscoresToCapitalizedCamelCase(descriptor);
-        (*variables)["list_name"]             = UnderscoresToCamelCase(descriptor) + "Array";
-        (*variables)["number"] = SimpleItoa(descriptor->number());
-        (*variables)["type"] = type;
-        (*variables)["default"] = EnumValueName(default_value);
-        (*variables)["tag"] = SimpleItoa(internal::WireFormat::MakeTag(descriptor));
-        (*variables)["tag_size"] = SimpleItoa(
-          internal::WireFormat::TagSize(descriptor->number(), descriptor->type()));
+      (*variables)["classname"]         = ClassName(descriptor->containing_type());
+      (*variables)["name"]              = name;
+      (*variables)["capitalized_name"]  = UnderscoresToCamelCase(descriptor, true);
+      (*variables)["list_name"]         = name + "Array";
+      (*variables)["number"]            = SimpleItoa(descriptor->number());
+      (*variables)["type"]              = type;
+      (*variables)["default"]           = EnumValueName(default_value);
+      (*variables)["tag"]      = SimpleItoa(internal::WireFormat::MakeTag(descriptor));
+      (*variables)["tag_size"] = SimpleItoa(internal::WireFormat::TagSize(descriptor->number(),
+                                                                          descriptor->type()));
     }
+    
   }  // namespace
 
   EnumFieldGenerator::EnumFieldGenerator(const FieldDescriptor* descriptor)
@@ -501,6 +508,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
                      "}\n");
     }
   }
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

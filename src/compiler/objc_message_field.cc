@@ -26,38 +26,46 @@
 
 #include "objc_helpers.h"
 
-namespace google { namespace protobuf { namespace compiler { namespace objectivec {
+namespace google {
+namespace protobuf {
+namespace compiler {
+namespace objectivec {
 
   namespace {
+    
     void SetMessageVariables(const FieldDescriptor* descriptor,
-      map<string, string>* variables) {
-        std::string name = UnderscoresToCamelCase(descriptor);
-        (*variables)["classname"] = ClassName(descriptor->containing_type());
-        (*variables)["name"] = name;
-        (*variables)["capitalized_name"] = UnderscoresToCapitalizedCamelCase(descriptor);
-        (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "Array";
-        (*variables)["number"] = SimpleItoa(descriptor->number());
-        (*variables)["type"] = ClassName(descriptor->message_type());
-        if (IsPrimitiveType(GetObjectiveCType(descriptor))) {
-          (*variables)["storage_type"] = ClassName(descriptor->message_type());
-          (*variables)["storage_attribute"] = "";
+                             map<string, string>* variables) {
+      
+      std::string name          = UnderscoresToCamelCase(descriptor, false);
+      
+      (*variables)["classname"] = ClassName(descriptor->containing_type());
+      (*variables)["name"]      = name;
+      (*variables)["capitalized_name"] = UnderscoresToCamelCase(descriptor, true);
+      (*variables)["list_name"] = name + "Array";
+      (*variables)["number"]    = SimpleItoa(descriptor->number());
+      (*variables)["type"]      = ClassName(descriptor->message_type());
+      
+      if (IsPrimitiveType(GetObjectiveCType(descriptor))) {
+        (*variables)["storage_type"] = ClassName(descriptor->message_type());
+        (*variables)["storage_attribute"] = "";
+      } else {
+        (*variables)["storage_type"] = string(ClassName(descriptor->message_type())) + "*";
+        if (IsRetainedName(name)) {
+          (*variables)["storage_attribute"] = " NS_RETURNS_NOT_RETAINED";
         } else {
-          (*variables)["storage_type"] = string(ClassName(descriptor->message_type())) + "*";
-          if (IsRetainedName(name)) {
-            (*variables)["storage_attribute"] = " NS_RETURNS_NOT_RETAINED";
-          } else {
-            (*variables)["storage_attribute"] = "";
-          }
+          (*variables)["storage_attribute"] = "";
         }
-        (*variables)["group_or_message"] =
-          (descriptor->type() == FieldDescriptor::TYPE_GROUP) ?
-          "Group" : "Message";
+      }
+      (*variables)["group_or_message"] =
+      (descriptor->type() == FieldDescriptor::TYPE_GROUP) ? "Group" : "Message";
     }
+    
   }  // namespace
 
 
   MessageFieldGenerator::MessageFieldGenerator(const FieldDescriptor* descriptor)
-    : descriptor_(descriptor) {
+    : descriptor_(descriptor)
+  {
       SetMessageVariables(descriptor, &variables_);
   }
 
@@ -91,10 +99,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "@property (strong)$storage_attribute$ $storage_type$ $name$;\n");
   }
 
-
   void MessageFieldGenerator::GenerateMembersHeader(io::Printer* printer) const {
   }
-
 
   void MessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -110,7 +116,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
     printer->Print(variables_, "self.$name$ = [$type$ defaultInstance];\n");
   }
-
 
   void MessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
@@ -160,7 +165,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageFieldGenerator::GenerateMergingCodeHeader(io::Printer* printer) const {
   }
 
-
   void MessageFieldGenerator::GenerateMergingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (other.has$capitalized_name$) {\n"
@@ -168,18 +172,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "}\n");
   }
 
-
   void MessageFieldGenerator::GenerateBuildingCodeHeader(io::Printer* printer) const {
   }
-
 
   void MessageFieldGenerator::GenerateBuildingCodeSource(io::Printer* printer) const {
   }
 
-
   void MessageFieldGenerator::GenerateParsingCodeHeader(io::Printer* printer) const {
   }
-
 
   void MessageFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -200,10 +200,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "[self set$capitalized_name$:[subBuilder buildPartial]];\n");
   }
 
-
   void MessageFieldGenerator::GenerateSerializationCodeHeader(io::Printer* printer) const {
   }
-
 
   void MessageFieldGenerator::GenerateSerializationCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -212,10 +210,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "}\n");
   }
 
-
   void MessageFieldGenerator::GenerateSerializedSizeCodeHeader(io::Printer* printer) const {
   }
-
 
   void MessageFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -223,7 +219,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  size_ += compute$group_or_message$Size($number$, self.$name$);\n"
       "}\n");
   }
-
 
   void MessageFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
