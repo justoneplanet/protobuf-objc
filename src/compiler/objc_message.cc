@@ -319,16 +319,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageGenerator::GenerateSource(io::Printer* printer) {
+    const string class_name = ClassName(descriptor_);
+    
     printer->Print(
-      "@interface $classname$ ()\n",
-      "classname", ClassName(descriptor_));
+      "@interface $class_name$ ()\n",
+      "class_name", class_name);
     for (int i = 0; i < descriptor_->field_count(); i++) {
       field_generators_.get(descriptor_->field(i)).GenerateExtensionSource(printer);
     }
     printer->Print("@end\n\n");
 
-    printer->Print("@implementation $classname$\n\n",
-      "classname", ClassName(descriptor_));
+    printer->Print("@implementation $class_name$\n\n",
+      "class_name", class_name);
 
     for (int i = 0; i < descriptor_->field_count(); i++) {
       field_generators_.get(descriptor_->field(i)).GenerateSynthesizeSource(printer);
@@ -354,11 +356,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
     printer->Print(
-      "static $classname$* default$classname$Instance = nil;\n"
+      "static $class_name$* default$class_name$Instance = nil;\n"
       "+ (void) initialize {\n"
-      "  if (self == [$classname$ class]) {\n"
-      "    default$classname$Instance = [[$classname$ alloc] init];\n",
-      "classname", ClassName(descriptor_));
+      "  if (self == [$class_name$ class]) {\n"
+      "    default$class_name$Instance = [[$class_name$ alloc] init];\n",
+      "class_name", class_name);
 
     printer->Print(
       "  }\n"
@@ -369,7 +371,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($classname$*) defaultInstance {\n"
       "  return default$classname$Instance;\n"
       "}\n",
-      "classname", ClassName(descriptor_));
+      "classname", class_name);
 
     for (int i = 0; i < descriptor_->field_count(); i++) {
       field_generators_.get(descriptor_->field(i)).GenerateMembersSource(printer);
@@ -1009,7 +1011,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
           "if (!self.has$capitalized_name$) {\n"
           "  return NO;\n"
           "}\n",
-          "capitalized_name", UnderscoresToCapitalizedCamelCase(field));
+          "capitalized_name", UnderscoresToCamelCase(field, true));
       }
     }
 
@@ -1021,8 +1023,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
           map<string,string> vars;
           vars["type"] = ClassName(field->message_type());
-          vars["name"] = UnderscoresToCamelCase(field);
-          vars["capitalized_name"] = UnderscoresToCapitalizedCamelCase(field);
+          vars["name"] = UnderscoresToCamelCase(field, false);
+          vars["capitalized_name"] = UnderscoresToCamelCase(field, true);
 
           switch (field->label()) {
             case FieldDescriptor::LABEL_REQUIRED:

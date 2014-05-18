@@ -28,24 +28,31 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-// Author: kenton@google.com (Kenton Varda)
-//
-// This is like unittest_import.proto but with optimize_for = LITE_RUNTIME.
+// Author: rennie@google.com (Jeffrey Rennie)
+// Port: epreston@prestonsoft.com (Ed Preston)
 
-package protobuf_unittest_import;
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_OPTIONS_H__
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_OPTIONS_H__
 
-option optimize_for = LITE_RUNTIME;
+#include <string>
 
-option java_package = "com.google.protobuf";
+#include <google/protobuf/stubs/common.h>
+namespace google {
+namespace protobuf {
+namespace compiler {
+namespace objectivec {
 
-import public "google/protobuf/unittest_import_public_lite.proto";
+// Generator options:
+struct Options {
+  Options() {}
+  
+  string output_list_file;
+};
 
-message ImportMessageLite {
-  optional int32 d = 1;
-}
+}  // namespace objectivec
+}  // namespace compiler
+}  // namespace protobuf
 
-enum ImportEnumLite {
-  IMPORT_LITE_FOO = 7;
-  IMPORT_LITE_BAR = 8;
-  IMPORT_LITE_BAZ = 9;
-}
+
+}  // namespace google
+#endif  // PROTOBUF_COMPILER_PLUGIN_OBJC_OPTIONS_H__

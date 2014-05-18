@@ -15,13 +15,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_FILE_H__
-#define OBJC_FILE_H__
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_FILE_H__
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_FILE_H__
 
 #include <string>
 #include <set>
 #include <vector>
 #include <google/protobuf/stubs/common.h>
+
+#include "objc_options.h"
 
 namespace google {
 namespace protobuf {
@@ -37,24 +39,35 @@ namespace objectivec {
 
 class FileGenerator {
  public:
-  explicit FileGenerator(const FileDescriptor* file);
+  explicit FileGenerator(const FileDescriptor* file,
+                         const Options& options);
   ~FileGenerator();
 
   void GenerateSource(io::Printer* printer);
   void GenerateHeader(io::Printer* printer);
+  
+  
   void DetermineDependencies(set<string>* dependencies);
 
   const string& classname()    { return classname_;    }
 
  private:
-  const FileDescriptor* file_;
   string classname_;
+  
+  const FileDescriptor* file_;
+
+  
+  // E.g. if the package is foo.bar, package_parts_ is {"foo", "bar"}.
+  vector<string> package_parts_;
+  
+  const Options options_;
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(FileGenerator);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_FILE_H__
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_FILE_H__

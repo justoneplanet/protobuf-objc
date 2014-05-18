@@ -27,27 +27,34 @@
 
 #include "objc_helpers.h"
 
-namespace google { namespace protobuf { namespace compiler { namespace objectivec {
+namespace google {
+namespace protobuf {
+namespace compiler {
+namespace objectivec {
 
   namespace {
+    
     void SetEnumVariables(const FieldDescriptor* descriptor,
-      map<string, string>* variables) {
-        const EnumValueDescriptor* default_value;
-        default_value = descriptor->default_value_enum();
+                          map<string, string>* variables) {
+      
+      const EnumValueDescriptor* default_value;
+      default_value = descriptor->default_value_enum();
 
-        string type = ClassName(descriptor->enum_type());
+      string type = ClassName(descriptor->enum_type());
+      string name = UnderscoresToCamelCase(descriptor, false);
 
-        (*variables)["classname"]             = ClassName(descriptor->containing_type());
-        (*variables)["name"]                  = UnderscoresToCamelCase(descriptor);
-        (*variables)["capitalized_name"]      = UnderscoresToCapitalizedCamelCase(descriptor);
-        (*variables)["list_name"]             = UnderscoresToCamelCase(descriptor) + "Array";
-        (*variables)["number"] = SimpleItoa(descriptor->number());
-        (*variables)["type"] = type;
-        (*variables)["default"] = EnumValueName(default_value);
-        (*variables)["tag"] = SimpleItoa(internal::WireFormat::MakeTag(descriptor));
-        (*variables)["tag_size"] = SimpleItoa(
-          internal::WireFormat::TagSize(descriptor->number(), descriptor->type()));
+      (*variables)["classname"]         = ClassName(descriptor->containing_type());
+      (*variables)["name"]              = name;
+      (*variables)["capitalized_name"]  = UnderscoresToCamelCase(descriptor, true);
+      (*variables)["list_name"]         = name + "Array";
+      (*variables)["number"]            = SimpleItoa(descriptor->number());
+      (*variables)["type"]              = type;
+      (*variables)["default"]           = EnumValueName(default_value);
+      (*variables)["tag"]      = SimpleItoa(internal::WireFormat::MakeTag(descriptor));
+      (*variables)["tag_size"] = SimpleItoa(internal::WireFormat::TagSize(descriptor->number(),
+                                                                          descriptor->type()));
     }
+    
   }  // namespace
 
   EnumFieldGenerator::EnumFieldGenerator(const FieldDescriptor* descriptor)
@@ -97,10 +104,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void EnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "- (void)setHas$capitalized_name$:(BOOL) value_ {\n"
       "  has$capitalized_name$_ = !!value_;\n"
       "}\n"
       "@synthesize $name$;\n");
@@ -113,8 +120,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void EnumFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$;\n"
-      "- ($type$) $name$;\n"\
+      "- (BOOL)has$capitalized_name$;\n"
+      "- ($type$)$name$;\n"\
       "- ($classname$_Builder*) set$capitalized_name$:($type$) value;\n"
       "- ($classname$_Builder*) clear$capitalized_name$;\n");
   }
@@ -122,18 +129,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void EnumFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return result.has$capitalized_name$;\n"
       "}\n"
-      "- ($type$) $name$ {\n"
+      "- ($type$)$name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($type$)value {\n"
+      "- ($classname$_Builder*)set$capitalized_name$:($type$)value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- ($classname$_Builder*)clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = $default$;\n"
       "  return self;\n"
@@ -501,6 +508,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
                      "}\n");
     }
   }
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf
