@@ -69,6 +69,7 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
     }
 
     printer->Print(
+      "\n"
       "#ifndef __has_feature\n"
       "  #define __has_feature(x) 0 // Compatibility with non-clang compilers.\n"
       "#endif // __has_feature\n\n");
