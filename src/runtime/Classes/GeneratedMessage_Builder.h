@@ -17,10 +17,20 @@
 
 #import "AbstractMessage_Builder.h"
 
+@class PBCodedInputStream;
+@class PBExtensionRegistry;
 @class PBUnknownFieldSet_Builder;
 
-@interface PBGeneratedMessage_Builder : PBAbstractMessage_Builder {
-}
+@interface PBGeneratedMessage_Builder : PBAbstractMessage_Builder
+
+- (instancetype)clear;
+
+- (instancetype)clone;
+
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input;
+
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
 
 /* @protected */
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input

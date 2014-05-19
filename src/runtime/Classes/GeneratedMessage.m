@@ -26,16 +26,61 @@
 
 @implementation PBGeneratedMessage
 
-@synthesize unknownFields;
-
 
 - (id) init {
   if ((self = [super init])) {
-    self.unknownFields = [PBUnknownFieldSet defaultInstance];
+    _unknownFields = [PBUnknownFieldSet defaultInstance];
     memoizedSerializedSize = -1;
   }
 
   return self;
+}
+
++ (instancetype)defaultInstance {
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
+- (instancetype)defaultInstance {
+    // defined here for autocomplete / type checking rather than id<PBMessage>
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
++ (id<PBMessage_Builder>) builder {
+    // required so the parseFromData methods can be moved down into the library
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
++ (instancetype) parseFromData:(NSData*)data {
+    return [[[self builder] mergeFromData:data] build];
+}
+
++ (instancetype) parseFromData:(NSData*)data
+             extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
+    return [[[self builder] mergeFromData:data
+                        extensionRegistry:extensionRegistry] build];
+}
+
++ (instancetype) parseFromInputStream:(NSInputStream*)input {
+    return [[[self builder] mergeFromInputStream:input] build];
+}
+
++ (instancetype) parseFromInputStream:(NSInputStream*)input
+                    extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
+    return [[[self builder] mergeFromInputStream:input
+                               extensionRegistry:extensionRegistry] build];
+}
+
++ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input {
+    return [[[self builder] mergeFromCodedInputStream:input] build];
+}
+
++ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input
+                         extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
+    return [[[self builder] mergeFromCodedInputStream:input
+                                    extensionRegistry:extensionRegistry] build];
 }
 
 @end

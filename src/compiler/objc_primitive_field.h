@@ -103,6 +103,7 @@ class RepeatedPrimitiveFieldGenerator : public FieldGenerator {
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(RepeatedPrimitiveFieldGenerator);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

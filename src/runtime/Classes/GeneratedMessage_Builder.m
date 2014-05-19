@@ -31,6 +31,23 @@
 
 @implementation PBGeneratedMessage_Builder
 
+- (instancetype)clear {
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
+- (instancetype)clone {
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
 /**
  * Get the message being built.  We don't just pass this to the
  * constructor because it becomes null when build() is called.
