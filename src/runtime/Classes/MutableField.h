@@ -21,15 +21,15 @@
 
 @interface PBMutableField : PBField
 
-+ (PBMutableField *)field;
++ (instancetype)field;
 
-- (PBMutableField *)mergeFromField:(PBField *)other;
+- (instancetype)mergeFromField:(PBField *)otherField;
 
-- (PBMutableField *)clear;
-- (PBMutableField *)addVarint:(int64_t)value;
-- (PBMutableField *)addFixed32:(int32_t)value;
-- (PBMutableField *)addFixed64:(int64_t)value;
-- (PBMutableField *)addLengthDelimited:(NSData *)value;
-- (PBMutableField *)addGroup:(PBUnknownFieldSet *)value;
+- (instancetype)clear;
+- (instancetype)addVarint:(int64_t)value;
+- (instancetype)addFixed32:(int32_t)value;
+- (instancetype)addFixed64:(int64_t)value;
+- (instancetype)addLengthDelimited:(NSData *)value;
+- (instancetype)addGroup:(PBUnknownFieldSet *)value;
 
 @end

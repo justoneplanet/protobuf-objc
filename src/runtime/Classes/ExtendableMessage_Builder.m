@@ -68,7 +68,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
+- (instancetype) setExtension:(id<PBExtensionField>) extension
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
@@ -85,7 +85,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) addExtension:(id<PBExtensionField>) extension
+- (instancetype) addExtension:(id<PBExtensionField>) extension
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
@@ -109,7 +109,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
+- (instancetype) setExtension:(id<PBExtensionField>) extension
                                         index:(int32_t) index
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
@@ -132,7 +132,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) clearExtension:(id<PBExtensionField>) extension {
+- (instancetype) clearExtension:(id<PBExtensionField>) extension {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
   [message.extensionMap removeObjectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];

@@ -34,8 +34,7 @@ static PBExtensionRegistry* emptyRegistry = nil;
   }
 }
 
-
-- (id) initWithClassMap:(NSDictionary*) map_{
+- (instancetype) initWithClassMap:(NSDictionary*) map_{
   if ((self = [super init])) {
     self.classMap = map_;
   }
@@ -43,19 +42,16 @@ static PBExtensionRegistry* emptyRegistry = nil;
   return self;
 }
 
-
-- (id) keyForClass:(Class) clazz {
-  return NSStringFromClass(clazz);
+- (id)keyForClass:(Class)aClass {
+  return NSStringFromClass(aClass);
 }
 
-
-+ (PBExtensionRegistry*) emptyRegistry {
++ (instancetype) emptyRegistry {
   return emptyRegistry;
 }
 
-
-- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(NSInteger) fieldNumber {
-  NSDictionary* extensionMap = [classMap objectForKey:[self keyForClass:clazz]];
+- (id<PBExtensionField>) getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber {
+  NSDictionary* extensionMap = [classMap objectForKey:[self keyForClass:aClass]];
   return [extensionMap objectForKey:[NSNumber numberWithInteger:fieldNumber]];
 }
 

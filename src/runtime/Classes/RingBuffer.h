@@ -7,7 +7,7 @@
 }
 @property (nonatomic, readonly) NSUInteger freeSpace;
 
-- (id)initWithData:(NSMutableData*)data;
+- (instancetype)initWithData:(NSMutableData*)data;
 
 // Returns false if there is not enough free space in buffer
 - (BOOL)appendByte:(uint8_t)byte;

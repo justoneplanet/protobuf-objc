@@ -168,6 +168,16 @@ namespace {
 
 
   string FileClassPrefix(const FileDescriptor* file) {
+    if (IsBootstrapFile(file)) {
+      return "PB";
+    } else if (file->options().HasExtension(objectivec_file_options)) {
+      ObjectiveCFileOptions options = file->options().GetExtension(objectivec_file_options);
+      
+      return options.class_prefix();
+    } else {
+      return "";
+    }
+    /*
     // Use the package name as the class prefix
     string result = "";
     vector<string> package_parts_;
@@ -178,6 +188,7 @@ namespace {
     }
     
     return result;
+     */
   }
 
 

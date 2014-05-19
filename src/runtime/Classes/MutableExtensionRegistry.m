@@ -28,7 +28,7 @@
 @synthesize mutableClassMap;
 
 
-- (id) initWithClassMap:(NSMutableDictionary*) mutableClassMap_ {
+- (instancetype) initWithClassMap:(NSMutableDictionary*) mutableClassMap_ {
   if ((self = [super initWithClassMap:mutableClassMap_])) {
     self.mutableClassMap = mutableClassMap_;
   }
@@ -37,7 +37,7 @@
 }
 
 
-+ (PBMutableExtensionRegistry*) registry {
++ (instancetype) registry {
   return [[PBMutableExtensionRegistry alloc] initWithClassMap:[NSMutableDictionary dictionary]] ;
 }
 

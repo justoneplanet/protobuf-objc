@@ -48,6 +48,7 @@ class ExtensionGenerator {
   const FieldDescriptor* descriptor_;
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(ExtensionGenerator);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

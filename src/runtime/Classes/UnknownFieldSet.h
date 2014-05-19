@@ -26,10 +26,10 @@
 
 @property (readonly, strong) NSDictionary* fields;
 
-+ (PBUnknownFieldSet*) defaultInstance;
++ (instancetype) defaultInstance;
 
-+ (PBUnknownFieldSet*) setWithFields:(NSMutableDictionary*) fields;
-+ (PBUnknownFieldSet*) parseFromData:(NSData*) data;
++ (instancetype) setWithFields:(NSMutableDictionary*) fields;
++ (instancetype) parseFromData:(NSData*) data;
 
 + (PBUnknownFieldSet_Builder*) builder;
 + (PBUnknownFieldSet_Builder*) builderWithUnknownFields:(PBUnknownFieldSet*) other;

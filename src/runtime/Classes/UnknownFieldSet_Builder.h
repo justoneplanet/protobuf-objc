@@ -32,22 +32,23 @@
   PBMutableField* lastField;
 }
 
-+ (PBUnknownFieldSet_Builder*) createBuilder:(PBUnknownFieldSet*) unknownFields;
++ (instancetype)createBuilder:(PBUnknownFieldSet*)unknownFields;
 
-- (PBUnknownFieldSet*) build;
-- (PBUnknownFieldSet_Builder*) mergeUnknownFields:(PBUnknownFieldSet*) other;
+- (PBUnknownFieldSet*)build;
 
-- (PBUnknownFieldSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
-- (PBUnknownFieldSet_Builder*) mergeFromData:(NSData*) data;
-- (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input;
+- (instancetype)mergeUnknownFields:(PBUnknownFieldSet*)other;
 
-- (PBUnknownFieldSet_Builder*) mergeVarintField:(int32_t) number value:(int32_t) value;
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input;
+- (instancetype)mergeFromData:(NSData*)data;
+- (instancetype)mergeFromInputStream:(NSInputStream*)input;
 
-- (BOOL) mergeFieldFrom:(int32_t) tag input:(PBCodedInputStream*) input;
+- (instancetype)mergeVarintField:(int32_t)number value:(int32_t)value;
 
-- (PBUnknownFieldSet_Builder*) addField:(PBField*) field forNumber:(int32_t) number;
+- (BOOL)mergeFieldFrom:(int32_t)tag input:(PBCodedInputStream*)input;
 
-- (PBUnknownFieldSet_Builder*) clear;
-- (PBUnknownFieldSet_Builder*) mergeField:(PBField*) field forNumber:(int32_t) number;
+- (instancetype)addField:(PBField*)field forNumber:(int32_t)number;
+
+- (instancetype)clear;
+- (instancetype)mergeField:(PBField*)field forNumber:(int32_t)number;
 
 @end
