@@ -434,13 +434,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageGenerator::GenerateParseFromMethodsHeader(io::Printer* printer) {
     printer->Print(
       "\n"
-      "+ ($classname$*) parseFromData:(NSData*)data;\n"
-      "+ ($classname$*) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input;\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input;\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n",
-      "classname", ClassName(descriptor_));
+      "+ (instancetype) parseFromData:(NSData*)data;\n"
+      "+ (instancetype) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      "+ (instancetype) parseFromInputStream:(NSInputStream*)input;\n"
+      "+ (instancetype) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      "+ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input;\n"
+      "+ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      );
   }
 
 
@@ -744,22 +744,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::GenerateParseFromMethodsSource(io::Printer* printer) {
     printer->Print(
-      "+ ($classname$*) parseFromData:(NSData*)data {\n"
+      "+ (instancetype) parseFromData:(NSData*)data {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromData:data] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
+      "+ (instancetype) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromData:data extensionRegistry:extensionRegistry] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input {\n"
+      "+ (instancetype) parseFromInputStream:(NSInputStream*)input {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromInputStream:input] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
+      "+ (instancetype) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input {\n"
+      "+ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromCodedInputStream:input] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
+      "+ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];\n"
       "}\n",
       "classname", ClassName(descriptor_));
