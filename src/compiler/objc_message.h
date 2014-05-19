@@ -98,6 +98,7 @@ class MessageGenerator {
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(MessageGenerator);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

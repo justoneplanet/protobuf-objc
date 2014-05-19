@@ -107,6 +107,7 @@ class RepeatedMessageFieldGenerator : public FieldGenerator {
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(RepeatedMessageFieldGenerator);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

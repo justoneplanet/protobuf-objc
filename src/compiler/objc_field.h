@@ -86,6 +86,7 @@ class FieldGeneratorMap {
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(FieldGeneratorMap);
 };
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf
