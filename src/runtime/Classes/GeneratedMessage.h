@@ -17,6 +17,12 @@
 
 #import "AbstractMessage.h"
 
+
+@class PBExtensionRegistry;
+@class PBCodedInputStream;
+
+@protocol PBMessage_Builder;
+
 /**
  * All generated protocol message classes extend this class.  This class
  * implements most of the Message and Builder interfaces using Java reflection.
@@ -25,12 +31,31 @@
  *
  * @author Cyrus Najmabadi
  */
+
 @interface PBGeneratedMessage : PBAbstractMessage {
-@private
-  PBUnknownFieldSet* unknownFields;
 
 @protected
   int32_t memoizedSerializedSize;
 }
+
++ (instancetype)defaultInstance;
+- (instancetype)defaultInstance;    // defined here for autocomplete / type checking
+
++ (id<PBMessage_Builder>)builder;
+
++ (instancetype)parseFromData:(NSData*)data;
+
++ (instancetype)parseFromData:(NSData*)data
+            extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
+
++ (instancetype)parseFromInputStream:(NSInputStream*)input;
+
++ (instancetype)parseFromInputStream:(NSInputStream*)input
+                   extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
+
++ (instancetype)parseFromCodedInputStream:(PBCodedInputStream*)input;
+
++ (instancetype)parseFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
 
 @end
