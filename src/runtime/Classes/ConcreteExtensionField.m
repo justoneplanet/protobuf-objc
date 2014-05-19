@@ -51,14 +51,15 @@ int32_t typeSize(PBExtensionType type);
 @synthesize isMessageSetWireFormat;
 
 
-- (id)     initWithType:(PBExtensionType) type_
-          extendedClass:(Class) extendedClass_
-            fieldNumber:(int32_t) fieldNumber_
-           defaultValue:(id) defaultValue_
-    messageOrGroupClass:(Class) messageOrGroupClass_
-             isRepeated:(BOOL) isRepeated_
-               isPacked:(BOOL) isPacked_
-    isMessageSetWireFormat:(BOOL) isMessageSetWireFormat_ {
+- (instancetype)initWithType:(PBExtensionType) type_
+               extendedClass:(Class) extendedClass_
+                 fieldNumber:(int32_t) fieldNumber_
+                defaultValue:(id) defaultValue_
+         messageOrGroupClass:(Class) messageOrGroupClass_
+                  isRepeated:(BOOL) isRepeated_
+                    isPacked:(BOOL) isPacked_
+      isMessageSetWireFormat:(BOOL) isMessageSetWireFormat_
+{
   if ((self = [super init])) {
     self.type = type_;
     self.extendedClass = extendedClass_;
@@ -74,15 +75,16 @@ int32_t typeSize(PBExtensionType type);
 }
 
 
-+ (PBConcreteExtensionField*) extensionWithType:(PBExtensionType) type
-                                extendedClass:(Class) extendedClass
-                                  fieldNumber:(int32_t) fieldNumber
-                                 defaultValue:(id) defaultValue
-                    messageOrGroupClass:(Class) messageOrGroupClass
-                                   isRepeated:(BOOL) isRepeated
-                                     isPacked:(BOOL) isPacked
-                       isMessageSetWireFormat:(BOOL) isMessageSetWireFormat {
-  return [[PBConcreteExtensionField alloc] initWithType:type
++ (instancetype)extensionWithType:(PBExtensionType)type
+                    extendedClass:(Class) extendedClass
+                      fieldNumber:(int32_t) fieldNumber
+                     defaultValue:(id) defaultValue
+              messageOrGroupClass:(Class) messageOrGroupClass
+                       isRepeated:(BOOL) isRepeated
+                         isPacked:(BOOL) isPacked
+           isMessageSetWireFormat:(BOOL) isMessageSetWireFormat
+{
+  return [[PBConcreteExtensionField alloc]initWithType:type
                                          extendedClass:extendedClass
                                            fieldNumber:fieldNumber
                                           defaultValue:defaultValue
@@ -159,8 +161,7 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
-- (void)           writeSingleValue:(id) value
-    includingTagToCodedOutputStream:(PBCodedOutputStream*) output {
+- (void)writeSingleValue:(id)value includingTagToCodedOutputStream:(PBCodedOutputStream*)output {
   switch (type) {
     case PBExtensionTypeBool:
       [output writeBool:fieldNumber value:[value boolValue]];
@@ -226,8 +227,7 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
-- (void)           writeSingleValue:(id) value
-    noTagToCodedOutputStream:(PBCodedOutputStream*) output {
+- (void)writeSingleValue:(id)value noTagToCodedOutputStream:(PBCodedOutputStream*)output {
   switch (type) {
     case PBExtensionTypeBool:
       [output writeBoolNoTag:[value boolValue]];

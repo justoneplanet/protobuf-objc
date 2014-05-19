@@ -27,7 +27,7 @@
 const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
-- (id)initWithOutputStream:(NSOutputStream*)_output data:(NSMutableData*)data {
+- (instancetype)initWithOutputStream:(NSOutputStream*)_output data:(NSMutableData*)data {
 	if ( (self = [super init]) ) {
 		output = _output ;
 		buffer = [[RingBuffer alloc] initWithData:data];
@@ -37,18 +37,18 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 
-+ (PBCodedOutputStream*)streamWithOutputStream:(NSOutputStream*)output bufferSize:(int32_t)bufferSize {
++ (instancetype)streamWithOutputStream:(NSOutputStream*)output bufferSize:(int32_t)bufferSize {
 	NSMutableData *data = [NSMutableData dataWithLength:bufferSize];
 	return [[PBCodedOutputStream alloc] initWithOutputStream:output data:data] ;
 }
 
 
-+ (PBCodedOutputStream*)streamWithOutputStream:(NSOutputStream*)output {
++ (instancetype)streamWithOutputStream:(NSOutputStream*)output {
 	return [PBCodedOutputStream streamWithOutputStream:output bufferSize:DEFAULT_BUFFER_SIZE];
 }
 
 
-+ (PBCodedOutputStream*)streamWithData:(NSMutableData*)data {
++ (instancetype)streamWithData:(NSMutableData*)data {
 	return [[PBCodedOutputStream alloc] initWithOutputStream:nil data:data] ;
 }
 

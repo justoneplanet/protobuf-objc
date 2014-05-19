@@ -76,11 +76,11 @@
   NSDictionary* classMap;
 }
 
-+ (PBExtensionRegistry*) emptyRegistry;
-- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(NSInteger) fieldNumber;
++ (instancetype)emptyRegistry;
+- (id<PBExtensionField>)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber;
 
 /* @protected */
-- (id) initWithClassMap:(NSDictionary*) classMap;
-- (id) keyForClass:(Class) clazz;
+- (instancetype)initWithClassMap:(NSDictionary*)classMap;
+- (id) keyForClass:(Class)aClass;
 
 @end

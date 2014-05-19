@@ -22,11 +22,11 @@
 
 @implementation PBMutableField
 
-+ (PBMutableField *)field {
++ (instancetype)field {
 	return [[PBMutableField alloc] init] ;
 }
 
-- (PBMutableField *)clear {
+- (instancetype)clear {
 	_varintArray = nil;
 	_fixed32Array = nil;
 	_fixed64Array = nil;
@@ -36,51 +36,51 @@
 	return self;
 }
 
-- (PBMutableField *)mergeFromField:(PBField *)other {
-	if (other.varintArray.count > 0) {
+- (instancetype)mergeFromField:(PBField *)otherField {
+	if (otherField.varintArray.count > 0) {
 		if (_varintArray == nil) {
-			_varintArray = [other->_varintArray copy];
+			_varintArray = [otherField->_varintArray copy];
 		} else {
-			[_varintArray appendArray:other->_varintArray];
+			[_varintArray appendArray:otherField->_varintArray];
 		}
 	}
 
-	if (other.fixed32Array.count > 0) {
+	if (otherField.fixed32Array.count > 0) {
 		if (_fixed32Array == nil) {
-			_fixed32Array = [other->_fixed32Array copy];
+			_fixed32Array = [otherField->_fixed32Array copy];
 		} else {
-			[_fixed32Array appendArray:other->_fixed32Array];
+			[_fixed32Array appendArray:otherField->_fixed32Array];
 		}
 	}
 
-	if (other.fixed64Array.count > 0) {
+	if (otherField.fixed64Array.count > 0) {
 		if (_fixed64Array == nil) {
-			_fixed64Array = [other->_fixed64Array copy];
+			_fixed64Array = [otherField->_fixed64Array copy];
 		} else {
-			[_fixed64Array appendArray:other->_fixed64Array];
+			[_fixed64Array appendArray:otherField->_fixed64Array];
 		}
 	}
 
-	if (other.lengthDelimitedArray.count > 0) {
+	if (otherField.lengthDelimitedArray.count > 0) {
 		if (_lengthDelimitedArray == nil) {
-			_lengthDelimitedArray = [other->_lengthDelimitedArray copy];
+			_lengthDelimitedArray = [otherField->_lengthDelimitedArray copy];
 		} else {
-            [_lengthDelimitedArray addObjectsFromArray:other->_lengthDelimitedArray];
+            [_lengthDelimitedArray addObjectsFromArray:otherField->_lengthDelimitedArray];
 		}
 	}
 
-	if (other.groupArray.count > 0) {
+	if (otherField.groupArray.count > 0) {
 		if (_groupArray == nil) {
-			_groupArray = [other->_groupArray copy];
+			_groupArray = [otherField->_groupArray copy];
 		} else {
-            [_groupArray addObjectsFromArray:other->_groupArray];
+            [_groupArray addObjectsFromArray:otherField->_groupArray];
 		}
 	}
 
 	return self;
 }
 
-- (PBMutableField *)addVarint:(int64_t)value {
+- (instancetype)addVarint:(int64_t)value {
 	if (_varintArray == nil) {
 		_varintArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt64];
 	}
@@ -89,7 +89,7 @@
 	return self;
 }
 
-- (PBMutableField *)addFixed32:(int32_t)value {
+- (instancetype)addFixed32:(int32_t)value {
 	if (_fixed32Array == nil) {
 		_fixed32Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	}
@@ -98,7 +98,7 @@
 	return self;
 }
 
-- (PBMutableField *)addFixed64:(int64_t)value {
+- (instancetype)addFixed64:(int64_t)value {
 	if (_fixed64Array == nil) {
 		_fixed64Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt64];
 	}
@@ -107,7 +107,7 @@
 	return self;
 }
 
-- (PBMutableField *)addLengthDelimited:(NSData *)value {
+- (instancetype)addLengthDelimited:(NSData *)value {
 	if (_lengthDelimitedArray == nil) {
 		_lengthDelimitedArray = [[NSMutableArray alloc] init];
 	}
@@ -116,7 +116,7 @@
 	return self;
 }
 
-- (PBMutableField *)addGroup:(PBUnknownFieldSet *)value {
+- (instancetype)addGroup:(PBUnknownFieldSet *)value {
 	if (_groupArray == nil) {
 		_groupArray = [[NSMutableArray alloc] init];
 	}

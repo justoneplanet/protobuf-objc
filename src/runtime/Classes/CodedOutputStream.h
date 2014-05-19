@@ -39,9 +39,9 @@
     RingBuffer *buffer;
 }
 
-+ (PBCodedOutputStream*) streamWithData:(NSMutableData*) data;
-+ (PBCodedOutputStream*) streamWithOutputStream:(NSOutputStream*) output;
-+ (PBCodedOutputStream*) streamWithOutputStream:(NSOutputStream*) output bufferSize:(int32_t) bufferSize;
++ (instancetype) streamWithData:(NSMutableData*) data;
++ (instancetype) streamWithOutputStream:(NSOutputStream*) output;
++ (instancetype) streamWithOutputStream:(NSOutputStream*) output bufferSize:(int32_t) bufferSize;
 
 /**
  * Flushes the stream and forces any buffered bytes to be written.  This

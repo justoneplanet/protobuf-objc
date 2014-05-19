@@ -41,12 +41,12 @@ static PBUnknownFieldSet* defaultInstance = nil;
 @synthesize fields;
 
 
-+ (PBUnknownFieldSet*) defaultInstance {
++ (instancetype)defaultInstance {
   return defaultInstance;
 }
 
 
-- (id) initWithFields:(NSMutableDictionary*) fields_ {
+- (instancetype)initWithFields:(NSMutableDictionary*)fields_ {
   if ((self = [super init])) {
     self.fields = fields_;
   }
@@ -55,7 +55,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
-+ (PBUnknownFieldSet*) setWithFields:(NSMutableDictionary*) fields {
++ (instancetype)setWithFields:(NSMutableDictionary*) fields {
   return [[PBUnknownFieldSet alloc] initWithFields:fields];
 }
 
@@ -97,17 +97,17 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
-+ (PBUnknownFieldSet*) parseFromCodedInputStream:(PBCodedInputStream*) input {
++ (instancetype)parseFromCodedInputStream:(PBCodedInputStream*) input {
   return [[[PBUnknownFieldSet builder] mergeFromCodedInputStream:input] build];
 }
 
 
-+ (PBUnknownFieldSet*) parseFromData:(NSData*) data {
++ (instancetype)parseFromData:(NSData*) data {
   return [[[PBUnknownFieldSet builder] mergeFromData:data] build];
 }
 
 
-+ (PBUnknownFieldSet*) parseFromInputStream:(NSInputStream*) input {
++ (instancetype)parseFromInputStream:(NSInputStream*) input {
   return [[[PBUnknownFieldSet builder] mergeFromInputStream:input] build];
 }
 

@@ -112,7 +112,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 @synthesize valueType = _valueType;
 @dynamic data;
 
-- (id)initWithCount:(NSUInteger)count valueType:(PBArrayValueType)valueType
+- (instancetype)initWithCount:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
 	if ((self = [super init]))
 	{
@@ -248,7 +248,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 @implementation PBArray (PBArrayExtended)
 
-- (id)arrayByAppendingArray:(PBArray *)array
+- (instancetype)arrayByAppendingArray:(PBArray *)array
 {
 	PBArrayValueTypeAssert(array.valueType);
 
@@ -270,27 +270,27 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 @implementation PBArray (PBArrayCreation)
 
-+ (id)arrayWithValueType:(PBArrayValueType)valueType
++ (instancetype)arrayWithValueType:(PBArrayValueType)valueType
 {
 	return [[self alloc] initWithValueType:valueType];
 }
 
-+ (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
++ (instancetype)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
 	return [[self alloc] initWithValues:values count:count valueType:valueType];
 }
 
-+ (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
++ (instancetype)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
 	return [[self alloc] initWithArray:array valueType:valueType];
 }
 
-- (id)initWithValueType:(PBArrayValueType)valueType
+- (instancetype)initWithValueType:(PBArrayValueType)valueType
 {
 	return [self initWithCount:0 valueType:valueType];
 }
 
-- (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
+- (instancetype)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
 	if ((self = [self initWithCount:count valueType:valueType]))
 	{
@@ -300,7 +300,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return self;
 }
 
-- (id)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
+- (instancetype)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
 	if ((self = [self initWithCount:[array count] valueType:valueType]))
 	{

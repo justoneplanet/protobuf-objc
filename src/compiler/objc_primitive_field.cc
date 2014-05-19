@@ -250,10 +250,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void PrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
       printer->Print(variables_,
-        "@property (readonly, strong)$storage_attribute$ $storage_type$ $name$;\n");
+        "@property (readonly, strong) $storage_attribute$ $storage_type$ $name$;\n");
     } else if (GetObjectiveCType(descriptor_) == OBJECTIVECTYPE_BOOLEAN) {
       printer->Print(variables_,
-        "- (BOOL) $name$;\n");
+        "- (BOOL)$name$;\n");
     } else {
       printer->Print(variables_,
         "@property (readonly) $storage_type$ $name$;\n");
@@ -274,19 +274,19 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "- (void)setHas$capitalized_name$:(BOOL)value_ {\n"
       "  has$capitalized_name$_ = !!value_;\n"
       "}\n");
 
     if (GetObjectiveCType(descriptor_) == OBJECTIVECTYPE_BOOLEAN) {
       printer->Print(variables_,
-        "- (BOOL) $name$ {\n"
+        "- (BOOL)$name$ {\n"
         "  return !!$name$_;\n"
         "}\n"
-        "- (void) set$capitalized_name$:(BOOL) value_ {\n"
+        "- (void)set$capitalized_name$:(BOOL)value_ {\n"
         "  $name$_ = !!value_;\n"
         "}\n");
     } else {
@@ -310,10 +310,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$;\n"
-      "- ($storage_type$) $name$$storage_attribute$;\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$;\n");
+      "- (BOOL)has$capitalized_name$;\n"
+      "- ($storage_type$)$name$$storage_attribute$;\n"
+      "- (instancetype)set$capitalized_name$:($storage_type$) value;\n"
+      "- (instancetype)clear$capitalized_name$;\n");
   }
 
 
@@ -339,18 +339,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (BOOL) has$capitalized_name$ {\n"
+      "- (BOOL)has$capitalized_name$ {\n"
       "  return result.has$capitalized_name$;\n"
       "}\n"
       "- ($storage_type$) $name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value {\n"
+      "- (instancetype)set$capitalized_name$:($storage_type$) value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- (instancetype)clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = $default$;\n"
       "  return self;\n"

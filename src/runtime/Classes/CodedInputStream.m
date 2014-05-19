@@ -49,7 +49,7 @@ const int32_t BUFFER_SIZE = 4096;
 }
 
 
-- (id) initWithData:(NSData*) data {
+- (instancetype) initWithData:(NSData*) data {
   if ((self = [super init])) {
     self.buffer = [NSMutableData dataWithData:data];
     bufferSize = buffer.length;
@@ -61,7 +61,7 @@ const int32_t BUFFER_SIZE = 4096;
 }
 
 
-- (id) initWithInputStream:(NSInputStream*) input_ {
+- (instancetype) initWithInputStream:(NSInputStream*) input_ {
   if ((self = [super init])) {
     self.buffer = [NSMutableData dataWithLength:BUFFER_SIZE];
     bufferSize = 0;
@@ -74,12 +74,12 @@ const int32_t BUFFER_SIZE = 4096;
 }
 
 
-+ (PBCodedInputStream*) streamWithData:(NSData*) data {
++ (instancetype) streamWithData:(NSData*) data {
   return [[PBCodedInputStream alloc] initWithData:data];
 }
 
 
-+ (PBCodedInputStream*) streamWithInputStream:(NSInputStream*) input {
++ (instancetype) streamWithInputStream:(NSInputStream*) input {
   return [[PBCodedInputStream alloc] initWithInputStream:input];
 }
 

@@ -22,8 +22,8 @@
   NSMutableDictionary* mutableClassMap;
 }
 
-+ (PBMutableExtensionRegistry*) registry;
++ (instancetype)registry;
 
-- (void) addExtension:(id<PBExtensionField>) extension;
+- (void)addExtension:(id<PBExtensionField>)extension;
 
 @end

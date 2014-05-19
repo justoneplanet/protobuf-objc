@@ -58,8 +58,8 @@
   int32_t sizeLimit;
 }
 
-+ (PBCodedInputStream*) streamWithData:(NSData*) data;
-+ (PBCodedInputStream*) streamWithInputStream:(NSInputStream*) input;
++ (instancetype) streamWithData:(NSData*) data;
++ (instancetype) streamWithInputStream:(NSInputStream*) input;
 
 /**
  * Attempt to read a field tag, returning zero if we have reached EOF.

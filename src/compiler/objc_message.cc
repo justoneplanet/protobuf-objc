@@ -284,8 +284,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "\n"
-      "+ ($classname$*) defaultInstance;\n"
-      "- ($classname$*) defaultInstance;\n",
+      "+ (instancetype)defaultInstance;\n"
+      "- (instancetype)defaultInstance;\n",
       "classname", ClassName(descriptor_));
     printer->Print(
       "\n",
@@ -300,10 +300,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     GenerateMessageSerializationMethodsHeader(printer);
 
     printer->Print(
-      "- ($classname$_Builder*) builder;\n"
-      "+ ($classname$_Builder*) builder;\n"
-      "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype;\n"
-      "- ($classname$_Builder*) toBuilder;\n",
+      "- ($classname$_Builder*)builder;\n"
+      "+ ($classname$_Builder*)builder;\n"
+      "+ ($classname$_Builder*)builderWithPrototype:($classname$*) prototype;\n"
+      "- ($classname$_Builder*)toBuilder;\n",
       "classname", ClassName(descriptor_));
 
     GenerateParseFromMethodsHeader(printer);
@@ -357,7 +357,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "static $class_name$* default$class_name$Instance = nil;\n"
-      "+ (void) initialize {\n"
+      "+ (void)initialize {\n"
       "  if (self == [$class_name$ class]) {\n"
       "    default$class_name$Instance = [[$class_name$ alloc] init];\n",
       "class_name", class_name);
@@ -365,10 +365,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "  }\n"
       "}\n"
-      "+ ($classname$*) defaultInstance {\n"
+      "+ (instancetype)defaultInstance {\n"
       "  return default$classname$Instance;\n"
       "}\n"
-      "- ($classname$*) defaultInstance {\n"
+      "- (instancetype)defaultInstance {\n"
       "  return default$classname$Instance;\n"
       "}\n",
       "classname", class_name);
@@ -428,19 +428,19 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeToCodedOutputStream:(PBCodedOutputStream*)output;\n");
+      "- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output;\n");
   }
 
   void MessageGenerator::GenerateParseFromMethodsHeader(io::Printer* printer) {
     printer->Print(
       "\n"
-      "+ ($classname$*) parseFromData:(NSData*)data;\n"
-      "+ ($classname$*) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input;\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input;\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n",
-      "classname", ClassName(descriptor_));
+      "+ (instancetype)parseFromData:(NSData*)data;\n"
+      "+ (instancetype)parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      "+ (instancetype)parseFromInputStream:(NSInputStream*)input;\n"
+      "+ (instancetype)parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      "+ (instancetype)parseFromCodedInputStream:(PBCodedInputStream*)input;\n"
+      "+ (instancetype)parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry;\n"
+      );
   }
 
 
@@ -485,18 +485,21 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageGenerator::GenerateCommonBuilderMethodsHeader(io::Printer* printer) {
+    
+    // defaultInstance does not return a "builder" type
     printer->Print(
       "\n"
       "- ($classname$*) defaultInstance;\n"
       "\n"
-      "- ($classname$_Builder*) clear;\n"
-      "- ($classname$_Builder*) clone;\n",
+      "- (instancetype) clear;\n"
+      "- (instancetype) clone;\n",
       "classname", ClassName(descriptor_));
 
+    // build and buildPartial do not return a "builder" type
     printer->Print(
       "\n"
-      "- ($classname$*) build;\n"
-      "- ($classname$*) buildPartial;\n",
+      "- ($classname$*)build;\n"
+      "- ($classname$*)buildPartial;\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
@@ -508,7 +511,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "\n"
-      "- ($classname$_Builder*) mergeFrom:($classname$*)other;\n",
+      "- (instancetype)mergeFrom:($classname$*)other;\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
@@ -524,15 +527,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     scoped_array<const FieldDescriptor*> sorted_fields(SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*)input;\n"
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
+      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input;\n"
+      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
       "classname", ClassName(descriptor_));
   }
 
 
   void MessageGenerator::GenerateIsInitializedHeader(io::Printer* printer) {
     printer->Print(
-      "- (BOOL) isInitialized;\n");
+      "- (BOOL)isInitialized;\n");
   }
 
 
@@ -547,7 +550,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeToCodedOutputStream:(PBCodedOutputStream*)output {\n");
+      "- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {\n");
     printer->Indent();
 
     // Merge the fields and the extension ranges, both sorted by field number.
@@ -619,7 +622,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void) writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {\n");
+      "- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {\n");
     printer->Indent();
     printer->Print("NSUInteger listCount = 0;\n");
 
@@ -657,7 +660,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (BOOL) isEqual:(id)other {\n");
+      "- (BOOL)isEqual:(id)other {\n");
     printer->Indent();
 
     printer->Print(
@@ -712,7 +715,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (NSUInteger) hash {\n");
+      "- (NSUInteger)hash {\n");
     printer->Indent();
 
     printer->Print("NSUInteger hashCode = 7;\n");
@@ -744,22 +747,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::GenerateParseFromMethodsSource(io::Printer* printer) {
     printer->Print(
-      "+ ($classname$*) parseFromData:(NSData*)data {\n"
+      "+ (instancetype) parseFromData:(NSData*)data {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromData:data] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
+      "+ (instancetype) parseFromData:(NSData*)data extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromData:data extensionRegistry:extensionRegistry] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input {\n"
+      "+ (instancetype) parseFromInputStream:(NSInputStream*)input {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromInputStream:input] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
+      "+ (instancetype) parseFromInputStream:(NSInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input {\n"
+      "+ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromCodedInputStream:input] build];\n"
       "}\n"
-      "+ ($classname$*) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
+      "+ (instancetype) parseFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n"
       "  return ($classname$*)[[[$classname$ builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];\n"
       "}\n",
       "classname", ClassName(descriptor_));
@@ -861,22 +864,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageGenerator::GenerateCommonBuilderMethodsSource(io::Printer* printer) {
     if (descriptor_->extension_range_count() > 0) {
       printer->Print(
-      "- (PBExtendableMessage*) internalGetResult {\n"
+      "- (PBExtendableMessage*)internalGetResult {\n"
       "  return result;\n"
       "}\n");
     } else {
       printer->Print(
-      "- (PBGeneratedMessage*) internalGetResult {\n"
+      "- (PBGeneratedMessage*)internalGetResult {\n"
       "  return result;\n"
       "}\n");
     }
 
     printer->Print(
-      "- ($classname$_Builder*) clear {\n"
+      "- (instancetype)clear {\n"
       "  self.result = [[$classname$ alloc] init];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clone {\n"
+      "- (instancetype)clone {\n"
       "  return [$classname$ builderWithPrototype:result];\n"
       "}\n"
       "- ($classname$*) defaultInstance {\n"
@@ -906,7 +909,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "classname", ClassName(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFrom:($classname$*) other {\n"
+      "- (instancetype)mergeFrom:($classname$*)other {\n"
       // Optimization:  If other is the default instance, we know none of its
       //   fields are set so we can skip the merge.
       "  if (other == [$classname$ defaultInstance]) {\n"
@@ -938,10 +941,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {\n"
+      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {\n"
       "  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];\n"
       "}\n"
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {\n",
+      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
@@ -997,7 +1000,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::GenerateIsInitializedSource(io::Printer* printer) {
     printer->Print(
-      "- (BOOL) isInitialized {\n");
+      "- (BOOL)isInitialized {\n");
     printer->Indent();
 
     // Check that all required fields in this message are set.
