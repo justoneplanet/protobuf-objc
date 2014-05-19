@@ -244,7 +244,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void PrimitiveFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "- (BOOL) has$capitalized_name$;\n");
+    printer->Print(variables_, "- (BOOL)has$capitalized_name$;\n");
   }
 
   void PrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
@@ -500,18 +500,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       printer->Print(variables_,
         "- (NSArray *)$name$;\n"
         "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
-        "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
-        "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+        "- (instancetype)add$capitalized_name$:($storage_type$)value;\n"
+        "- (instancetype)set$capitalized_name$Array:(NSArray *)array;\n"
        // "- ($classname$_Builder *)set$capitalized_name$Values:(const NSArray *)values count:(NSUInteger)count;\n"
-        "- ($classname$_Builder *)clear$capitalized_name$;\n");
+        "- (instancetype)clear$capitalized_name$;\n");
     } else {
       printer->Print(variables_,
         "- (PBAppendableArray *)$name$;\n"
         "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
-        "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
-        "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
-        "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count;\n"
-        "- ($classname$_Builder *)clear$capitalized_name$;\n");
+        "- (instancetype)add$capitalized_name$:($storage_type$)value;\n"
+        "- (instancetype)set$capitalized_name$Array:(NSArray *)array;\n"
+        "- (instancetype)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count;\n"
+        "- (instancetype)clear$capitalized_name$;\n");
     }
   }
 
@@ -568,18 +568,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 	      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
 	      "  return [result $name$AtIndex:index];\n"
 	      "}\n"
-	      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value {\n"
+	      "- (instancetype)add$capitalized_name$:($storage_type$)value {\n"
 	      "  if (result.$list_name$ == nil) {\n"
 	      "    result.$list_name$ = [[NSMutableArray alloc]init];\n"
 	      "  }\n"
 	      "  [result.$list_name$ addObject:value];\n"
 	      "  return self;\n"
 	      "}\n"
-	      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+	      "- (instancetype)set$capitalized_name$Array:(NSArray *)array {\n"
 	      "  result.$list_name$ = [[NSMutableArray alloc] initWithArray:array];\n"
 	      "  return self;\n"
 	      "}\n"
-	      "- ($classname$_Builder *)clear$capitalized_name$ {\n"
+	      "- (instancetype)clear$capitalized_name$ {\n"
 	      "  result.$list_name$ = nil;\n"
 	      "  return self;\n"
 	      "}\n");
@@ -591,22 +591,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 	      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
 	      "  return [result $name$AtIndex:index];\n"
 	      "}\n"
-	      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value {\n"
+	      "- (instancetype)add$capitalized_name$:($storage_type$)value {\n"
 	      "  if (result.$list_name$ == nil) {\n"
 	      "    result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
 	      "  }\n"
 	      "  [result.$list_name$ add$array_value_type_name_cap$:value];\n"
 	      "  return self;\n"
 	      "}\n"
-	      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+	      "- (instancetype)set$capitalized_name$Array:(NSArray *)array {\n"
 	      "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:$array_value_type$];\n"
 	      "  return self;\n"
 	      "}\n"
-	      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count {\n"
+	      "- (instancetype)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count {\n"
 	      "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:$array_value_type$];\n"
 	      "  return self;\n"
 	      "}\n"
-	      "- ($classname$_Builder *)clear$capitalized_name$ {\n"
+	      "- (instancetype)clear$capitalized_name$ {\n"
 	      "  result.$list_name$ = nil;\n"
 	      "  return self;\n"
 	      "}\n");
