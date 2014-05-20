@@ -370,7 +370,7 @@ namespace objectivec {
     
     // Build the default initializer
     printer->Print(
-      "- (id)init {\n"
+      "- (instancetype)init {\n"
       "  self = [super init];\n"
       "  if (self == nil) {\n"
       "    return nil;\n"
@@ -836,7 +836,7 @@ namespace objectivec {
 
     // Define initializer
     printer->Print(
-       "- (id)init {\n"
+       "- (instancetype)init {\n"
        "  self = [super init];\n"
        "  if (self == nil) {\n"
        "    return nil;\n"
