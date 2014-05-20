@@ -27,7 +27,7 @@
 @implementation PBGeneratedMessage
 
 
-- (id) init {
+- (instancetype) init {
   if ((self = [super init])) {
     _unknownFields = [PBUnknownFieldSet defaultInstance];
     memoizedSerializedSize = -1;
@@ -42,7 +42,7 @@
 
 - (instancetype)defaultInstance {
     // defined here for autocomplete / type checking rather than id<PBMessage>
-    @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+    return [[self class] defaultInstance];
 }
 
 + (id<PBMessage_Builder>) builder {

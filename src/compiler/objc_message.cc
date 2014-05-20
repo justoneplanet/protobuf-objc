@@ -401,13 +401,7 @@ namespace objectivec {
       "    _sharedObject = [[self alloc] init];\n"
       "  });\n"
       "  return _sharedObject;\n"
-      "}\n");
-    
-    printer->Print(
-      "- (instancetype)defaultInstance {\n"
-      "  return [$classname$ defaultInstance];\n"
-      "}\n\n",
-      "classname", class_name);
+      "}\n\n");
     
     // Define implementation of properties accessor methods
     for (int i = 0; i < descriptor_->field_count(); i++) {
