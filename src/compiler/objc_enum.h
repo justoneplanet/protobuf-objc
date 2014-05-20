@@ -15,8 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_ENUM_H
-#define OBJC_ENUM_H
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_ENUM_H
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_ENUM_H
 
 #include <string>
 #include <set>
@@ -60,4 +60,4 @@ class EnumGenerator {
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_ENUM_H
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_ENUM_H

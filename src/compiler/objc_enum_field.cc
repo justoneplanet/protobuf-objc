@@ -62,95 +62,89 @@ namespace objectivec {
       SetEnumVariables(descriptor, &variables_);
   }
 
-
-  EnumFieldGenerator::~EnumFieldGenerator() {
-  }
-
+  EnumFieldGenerator::~EnumFieldGenerator() { }
 
   void EnumFieldGenerator::GenerateHasFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "BOOL has$capitalized_name$_:1;\n");
+    printer->Print(variables_, "BOOL _has$capitalized_name$:1;\n");
   }
 
+  void EnumFieldGenerator::GenerateHasFieldSource(io::Printer* printer) const {
+    printer->Print(variables_, "BOOL _has$capitalized_name$:1;\n");
+  }
 
   void EnumFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "$type$ $name$;\n");
+    printer->Print(variables_, "$type$ _$name$;\n");
   }
 
+  void EnumFieldGenerator::GenerateFieldSource(io::Printer* printer) const {
+    // the property declaration implies a backing variable of _$name$
+    // printer->Print(variables_, "$type$ _$name$;\n");
+  }
 
   void EnumFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "- (BOOL) has$capitalized_name$;\n");
+    printer->Print(variables_, "- (BOOL)has$capitalized_name$;\n");
   }
-
 
   void EnumFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     printer->Print(variables_,
       "@property (readonly) $type$ $name$;\n");
   }
 
-
   void EnumFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     printer->Print(variables_,
       "@property $type$ $name$;\n");
   }
 
-
   void EnumFieldGenerator::GenerateMembersHeader(io::Printer* printer) const {
   }
-
 
   void EnumFieldGenerator::GenerateMembersSource(io::Printer* printer) const {
   }
 
-
   void EnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (BOOL)has$capitalized_name$ {\n"
-      "  return !!has$capitalized_name$_;\n"
+      "  return !!_has$capitalized_name$;\n"
       "}\n"
-      "- (void)setHas$capitalized_name$:(BOOL) value_ {\n"
-      "  has$capitalized_name$_ = !!value_;\n"
-      "}\n"
-      "@synthesize $name$;\n");
+      "- (void)setHas$capitalized_name$:(BOOL)value {\n"
+      "  _has$capitalized_name$ = !!value;\n"
+      "}\n");
   }
 
   void EnumFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
-    printer->Print(variables_, "self.$name$ = $default$;\n");
+    printer->Print(variables_, "_$name$ = $default$;\n");
   }
-
 
   void EnumFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
       "- (BOOL)has$capitalized_name$;\n"
       "- ($type$)$name$;\n"\
-      "- ($classname$_Builder*) set$capitalized_name$:($type$) value;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$;\n");
+      "- (instancetype)set$capitalized_name$:($type$)value;\n"
+      "- (instancetype)clear$capitalized_name$;\n");
   }
-
 
   void EnumFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (BOOL)has$capitalized_name$ {\n"
-      "  return result.has$capitalized_name$;\n"
+      "  return _result.has$capitalized_name$;\n"
       "}\n"
       "- ($type$)$name$ {\n"
-      "  return result.$name$;\n"
+      "  return _result.$name$;\n"
       "}\n"
       "- ($classname$_Builder*)set$capitalized_name$:($type$)value {\n"
-      "  result.has$capitalized_name$ = YES;\n"
-      "  result.$name$ = value;\n"
+      "  _result.has$capitalized_name$ = YES;\n"
+      "  _result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
       "- ($classname$_Builder*)clear$capitalized_name$ {\n"
-      "  result.has$capitalized_name$ = NO;\n"
-      "  result.$name$ = $default$;\n"
+      "  _result.has$capitalized_name$ = NO;\n"
+      "  _result.$name$ = $default$;\n"
       "  return self;\n"
       "}\n");
   }
 
-
   void EnumFieldGenerator::GenerateMergingCodeHeader(io::Printer* printer) const {
   }
-
 
   void EnumFieldGenerator::GenerateMergingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -162,14 +156,11 @@ namespace objectivec {
   void EnumFieldGenerator::GenerateBuildingCodeHeader(io::Printer* printer) const {
   }
 
-
   void EnumFieldGenerator::GenerateBuildingCodeSource(io::Printer* printer) const {
   }
 
-
   void EnumFieldGenerator::GenerateParsingCodeHeader(io::Printer* printer) const {
   }
-
 
   void EnumFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -181,10 +172,8 @@ namespace objectivec {
       "}\n");
   }
 
-
   void EnumFieldGenerator::GenerateSerializationCodeHeader(io::Printer* printer) const {
   }
-
 
   void EnumFieldGenerator::GenerateSerializationCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -193,10 +182,8 @@ namespace objectivec {
       "}\n");
   }
 
-
   void EnumFieldGenerator::GenerateSerializedSizeCodeHeader(io::Printer* printer) const {
   }
-
 
   void EnumFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -205,7 +192,6 @@ namespace objectivec {
       "}\n");
   }
 
-
   void EnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (self.has$capitalized_name$) {\n"
@@ -213,13 +199,11 @@ namespace objectivec {
       "}\n");
   }
 
-
   void EnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
       "(!self.has$capitalized_name$ || self.$name$ == otherMessage.$name$) &&");
   }
-
 
   void EnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -228,68 +212,60 @@ namespace objectivec {
       "}\n");
   }
 
-
   string EnumFieldGenerator::GetBoxedType() const {
     return ClassName(descriptor_->enum_type());
   }
-
 
   RepeatedEnumFieldGenerator::RepeatedEnumFieldGenerator(const FieldDescriptor* descriptor)
     : descriptor_(descriptor) {
       SetEnumVariables(descriptor, &variables_);
   }
 
-
   RepeatedEnumFieldGenerator::~RepeatedEnumFieldGenerator() {
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateHasFieldHeader(io::Printer* printer) const {
   }
-
-
-  void RepeatedEnumFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
-    if (descriptor_->options().packed()) {
-      printer->Print(variables_,
-        "int32_t $name$MemoizedSerializedSize;\n");
-    }
+  
+  void RepeatedEnumFieldGenerator::GenerateHasFieldSource(io::Printer* printer) const {
   }
 
+  void RepeatedEnumFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
+    printer->Print(variables_, "PBAppendableArray * _$list_name$;\n");
+    if (descriptor_->options().packed()) {
+      printer->Print(variables_,
+        "int32_t _$name$MemoizedSerializedSize;\n");
+    }
+  }
+  
+  void RepeatedEnumFieldGenerator::GenerateFieldSource(io::Printer* printer) const {
+    printer->Print(variables_, "PBAppendableArray * _$list_name$;\n");
+    if (descriptor_->options().packed()) {
+      printer->Print(variables_,
+                     "int32_t _$name$MemoizedSerializedSize;\n");
+    }
+  }
 
   void RepeatedEnumFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
   }
 
-
   void RepeatedEnumFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-		//check if object array vs primitive array
-	//	if(isObjectArray(descriptor_)){
-	//		printer->Print(variables_, "@property (readonly, strong) NSArray * $name$;\n");
-	//	}else{
-			printer->Print(variables_, "@property (readonly, strong) PBArray *$name$;\n");
-	//	}
-    
+		// arrays of enums are always of primative type
+    printer->Print(variables_, "@property (readonly, strong) PBArray *$name$;\n");
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-    // check if object array vs primitive array
-//    if(isObjectArray(descriptor_)){
-//      printer->Print(variables_, "@property (strong) NSMutableArray * $list_name$;\n");
-//    }else{
-			printer->Print(variables_, "@property (strong) PBAppendableArray *$list_name$;\n");
-//    }
+    // arrays of enums are always of primative type
+    printer->Print(variables_, "@property (strong) PBAppendableArray *$list_name$;\n");
   }
 
   void RepeatedEnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
-    printer->Print(variables_, "@synthesize $list_name$;\n");
+    // repeated message fields accessors are dynmaic, backed with private member var
     printer->Print(variables_, "@dynamic $name$;\n");
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
@@ -300,68 +276,62 @@ namespace objectivec {
     printer->Print(variables_,
       "- (PBAppendableArray *)$name$;\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index;\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($type$)value;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count;\n"
-      "- ($classname$_Builder *)clear$capitalized_name$;\n");
+      "- (instancetype)add$capitalized_name$:($type$)value;\n"
+      "- (instancetype)set$capitalized_name$Array:(NSArray *)array;\n"
+      "- (instancetype)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count;\n"
+      "- (instancetype)clear$capitalized_name$;\n");
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateMergingCodeHeader(io::Printer* printer) const {
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateBuildingCodeHeader(io::Printer* printer) const {
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateParsingCodeHeader(io::Printer* printer) const {
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateSerializationCodeHeader(io::Printer* printer) const {
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateSerializedSizeCodeHeader(io::Printer* printer) const {
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (PBArray *)$name$ {\n"
-      "  return $list_name$;\n"
+      "  return _$list_name$;\n"
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  return [$list_name$ int32AtIndex:index];\n"
+      "  return [_$list_name$ int32AtIndex:index];\n"
       "}\n");
   }
 
   void RepeatedEnumFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (PBAppendableArray *)$name$ {\n"
-      "  return result.$list_name$;\n"
+      "  return _result.$list_name$;\n"
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  return [result $name$AtIndex:index];\n"
+      "  return [_result $name$AtIndex:index];\n"
       "}\n"
       "- ($classname$_Builder *)add$capitalized_name$:($type$)value {\n"
-      "  if (result.$list_name$ == nil) {\n"
-      "    result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];\n"
+      "  if (_result.$list_name$ == nil) {\n"
+      "    _result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];\n"
       "  }\n"
-      "  [result.$list_name$ addInt32:value];\n"
+      "  [_result.$list_name$ addInt32:value];\n"
       "  return self;\n"
       "}\n"
       "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
-      "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];\n"
+      "  _result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];\n"
       "  return self;\n"
       "}\n"
       "- ($classname$_Builder *)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count {\n"
-      "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];\n"
+      "  _result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];\n"
       "  return self;\n"
       "}\n"
       "- ($classname$_Builder *)clear$capitalized_name$ {\n"
-      "  result.$list_name$ = nil;\n"
+      "  _result.$list_name$ = nil;\n"
       "  return self;\n"
       "}\n");
   }
@@ -369,10 +339,10 @@ namespace objectivec {
   void RepeatedEnumFieldGenerator::GenerateMergingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
-      "  if (result.$list_name$ == nil) {\n"
-      "    result.$list_name$ = [other.$list_name$ copy];\n"
+      "  if (_result.$list_name$ == nil) {\n"
+      "    _result.$list_name$ = [other.$list_name$ copy];\n"
       "  } else {\n"
-      "    [result.$list_name$ appendArray:other.$list_name$];\n"
+      "    [_result.$list_name$ appendArray:other.$list_name$];\n"
       "  }\n"
       "}\n");
   }
@@ -415,7 +385,7 @@ namespace objectivec {
       printer->Print(variables_,
         "if (self.$list_name$.count > 0) {\n"
         "  [output writeRawVarint32:$tag$];\n"
-        "  [output writeRawVarint32:$name$MemoizedSerializedSize];\n"
+        "  [output writeRawVarint32:_$name$MemoizedSerializedSize];\n"
         "}\n"
         "for (NSUInteger i = 0; i < $list_name$Count; ++i) {\n"
         "  [output writeEnumNoTag:$list_name$Values[i]];\n"
@@ -427,7 +397,6 @@ namespace objectivec {
         "}\n");
     }
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -458,13 +427,12 @@ namespace objectivec {
 
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "$name$MemoizedSerializedSize = dataSize;\n");
+        "_$name$MemoizedSerializedSize = dataSize;\n");
     }
 
     printer->Outdent();
     printer->Print("}\n");
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     if (ReturnsPrimitiveType(descriptor_)) {
@@ -484,28 +452,27 @@ namespace objectivec {
     }
   }
 
-
   void RepeatedEnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
-    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || "
-                               "[self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
+    printer->Print(variables_,
+      "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || "
+      "[self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
-
 
   void RepeatedEnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     if (ReturnsPrimitiveType(descriptor_)) {
       printer->Print(variables_,
-                     "{"
-                     "  const NSUInteger count_ = self.$list_name$.count;\n"
-                     "  const $type$ *values_ = (const $type$ *)self.$list_name$.data;\n"
-                     "  for (NSUInteger i = 0; i < count_; ++i) {\n"
-                     "    hashCode = hashCode * 31 + values_[i];\n"
-                     "  }"
-                     "}\n");
+       "{"
+       "  const NSUInteger count_ = self.$list_name$.count;\n"
+       "  const $type$ *values_ = (const $type$ *)self.$list_name$.data;\n"
+       "  for (NSUInteger i = 0; i < count_; ++i) {\n"
+       "    hashCode = hashCode * 31 + values_[i];\n"
+       "  }"
+       "}\n");
     } else {
       printer->Print(variables_,
-                     "for (NSNumber* element in self.$list_name$) {\n"
-                     "  hashCode = hashCode * 31 + element.intValue;\n"
-                     "}\n");
+       "for (NSNumber* element in _$list_name$) {\n"
+       "  hashCode = hashCode * 31 + element.intValue;\n"
+       "}\n");
     }
   }
   

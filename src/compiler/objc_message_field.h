@@ -15,8 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_MESSAGE_FIELD_H
-#define OBJC_MESSAGE_FIELD_H
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_MESSAGE_FIELD_H
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_MESSAGE_FIELD_H
 
 #include <map>
 #include <string>
@@ -45,6 +45,8 @@ class MessageFieldGenerator : public FieldGenerator {
   void GenerateSerializationCodeHeader(io::Printer* printer) const;
   void GenerateSerializedSizeCodeHeader(io::Printer* printer) const;
 
+  void GenerateHasFieldSource(io::Printer* printer) const;
+  void GenerateFieldSource(io::Printer* printer) const;
   void GenerateExtensionSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
   void GenerateInitializationSource(io::Printer* printer) const;
@@ -85,6 +87,8 @@ class RepeatedMessageFieldGenerator : public FieldGenerator {
   void GenerateSerializationCodeHeader(io::Printer* printer) const;
   void GenerateSerializedSizeCodeHeader(io::Printer* printer) const;
 
+  void GenerateHasFieldSource(io::Printer* printer) const;
+  void GenerateFieldSource(io::Printer* printer) const;
   void GenerateExtensionSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
   void GenerateInitializationSource(io::Printer* printer) const;
@@ -113,4 +117,4 @@ class RepeatedMessageFieldGenerator : public FieldGenerator {
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_MESSAGE_FIELD_H
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_MESSAGE_FIELD_H

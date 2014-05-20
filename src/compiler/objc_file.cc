@@ -40,8 +40,8 @@ namespace objectivec {
                                const Options& options)
     : file_(file),
     classname_(FileClassName(file)),
-    options_(options) {
-      
+    options_(options)
+  {
       SplitStringUsing(file_->package(), ".", &package_parts_);
   }
 
@@ -62,6 +62,13 @@ namespace objectivec {
       "filename", file_->name(),
       "output_file_name", output_file_name);
     
+    
+    // this.. is.. sparta..
+    printer->Print(
+      "#import <Foundation/Foundation.h>\n"
+      "\n");
+    
+    // Protocol buffer support library main header
     printer->Print(
       "#import <ProtocolBuffers/ProtocolBuffers.h>\n"
       "\n");
@@ -167,6 +174,7 @@ namespace objectivec {
   void FileGenerator::GenerateSource(io::Printer* printer) {
     string output_file_name = FileName(file_);
     
+    // Generate cocao style header
     printer->Print(
       "//\n"
       "// $output_file_name$.pb.m\n"
@@ -177,16 +185,18 @@ namespace objectivec {
       "\n",
       "filename", file_->name(),
       "output_file_name", output_file_name);
-
+    
     printer->Print(
       "#import \"$output_file_name$.pb.h\"\n",
       "output_file_name", output_file_name);
+    printer->Print("\n");
 
     printer->Print(
       "// @@protoc_insertion_point(imports)\n\n");
 
+    // Define the file class implementation
     printer->Print(
-      "@implementation $classname$\n",
+      "@implementation $classname$\n\n",
       "classname", classname_);
 
     // Define extensions.
@@ -237,12 +247,12 @@ namespace objectivec {
 
     printer->Print(
       "  }\n"
-      "}\n");
+      "}\n\n");
 
     // -----------------------------------------------------------------
 
     printer->Print(
-      "+ (void) registerAllExtensions:(PBMutableExtensionRegistry*)registry {\n");
+      "+ (void)registerAllExtensions:(PBMutableExtensionRegistry*)registry {\n");
     printer->Indent();
 
     for (int i = 0; i < file_->extension_count(); i++) {
@@ -257,20 +267,23 @@ namespace objectivec {
 
     printer->Outdent();
     printer->Print(
-      "}\n");
+      "}\n\n");
 
     // -----------------------------------------------------------------
 
     for (int i = 0; i < file_->extension_count(); i++) {
       ExtensionGenerator(classname_, file_->extension(i)).GenerateMembersSource(printer);
     }
+    printer->Print("\n");
 
+    // End file class implementation
     printer->Print(
       "@end\n\n");
 
     for (int i = 0; i < file_->enum_type_count(); i++) {
       EnumGenerator(file_->enum_type(i)).GenerateSource(printer);
     }
+    
     for (int i = 0; i < file_->message_type_count(); i++) {
       MessageGenerator(file_->message_type(i)).GenerateSource(printer);
     }
@@ -279,6 +292,7 @@ namespace objectivec {
       "\n"
       "// @@protoc_insertion_point(global_scope)\n");
   }
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

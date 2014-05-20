@@ -133,7 +133,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone
+- (instancetype)copyWithZone:(NSZone *)zone
 {
 	PBArray *copy = [[[self class] alloc] initWithCount:_count valueType:_valueType];
 	if (copy)
@@ -144,13 +144,10 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return copy;
 }
 
-- (void)dealloc
-{
-	if (_data)
-	{
+- (void)dealloc {
+    if (_data) {
 		free(_data);
 	}
-
 }
 
 - (NSString *)description
@@ -159,13 +156,11 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 			[self class], self, @(_valueType), @(_count), @(_capacity), _data];
 }
 
-- (NSUInteger)count
-{
+- (NSUInteger)count {
 	return _count;
 }
 
-- (const void *)data
-{
+- (const void *)data {
 	return _data;
 }
 

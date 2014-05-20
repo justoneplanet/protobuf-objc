@@ -92,6 +92,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  }\n"
       "}\n");
   }
+  
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

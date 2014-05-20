@@ -137,7 +137,6 @@ namespace {
     return file->name() == "google/protobuf/descriptor.proto";
   }
 
-
   string FileName(const FileDescriptor* file) {
     string basename;
 
@@ -148,24 +147,22 @@ namespace {
       basename += file->name().substr(last_slash + 1);
     }
 
-    return FilenameToCamelCase(StripProto(basename));
+    return StripProto(basename);
   }
-
 
   string FilePath(const FileDescriptor* file) {
     string path = FileName(file);
-
-	if (file->options().HasExtension(objectivec_file_options)) {
+    
+    if (file->options().HasExtension(objectivec_file_options)) {
       ObjectiveCFileOptions options = file->options().GetExtension(objectivec_file_options);
-
+      
       if (options.package() != "") {
         path = options.package() + "/" + path;
       }
     }
-
-	return path;
+    
+    return path;
   }
-
 
   string FileClassPrefix(const FileDescriptor* file) {
     if (IsBootstrapFile(file)) {
@@ -195,10 +192,8 @@ namespace {
   string FileClassName(const FileDescriptor* file) {
     // Ensure the FileClassName is camelcased irrespective of whether the
     // camelcase_output_filename option is set.
-    return FileClassPrefix(file) +
-        UnderscoresToCamelCase(FileName(file), true) + "Root";
+    return FileClassPrefix(file) + FilenameToCamelCase(FileName(file)) + "Root";
   }
-
 
   string ToObjectiveCName(const string& full_name, const FileDescriptor* file) {
     string result;
@@ -206,7 +201,6 @@ namespace {
     result += full_name;
     return result;
   }
-
 
   string ClassNameWorker(const Descriptor* descriptor) {
     string name;
@@ -217,7 +211,6 @@ namespace {
     return name + descriptor->name();
   }
 
-
   string ClassNameWorker(const EnumDescriptor* descriptor) {
     string name;
     if (descriptor->containing_type() != NULL) {
@@ -227,14 +220,12 @@ namespace {
     return name + descriptor->name();
   }
 
-
   string ClassName(const Descriptor* descriptor) {
     string name;
     name += FileClassPrefix(descriptor->file());
     name += ClassNameWorker(descriptor);
     return name;
   }
-
 
   string ClassName(const EnumDescriptor* descriptor) {
     string name;
@@ -243,14 +234,12 @@ namespace {
     return name;
   }
 
-
   string ClassName(const ServiceDescriptor* descriptor) {
     string name;
     name += FileClassPrefix(descriptor->file());
     name += descriptor->name();
     return name;
   }
-
 
   string EnumValueName(const EnumValueDescriptor* descriptor) {
     return
@@ -302,7 +291,6 @@ namespace {
     return OBJECTIVECTYPE_INT;
   }
 
-
   const char* BoxedPrimitiveTypeName(ObjectiveCType type) {
     switch (type) {
     case OBJECTIVECTYPE_INT    : return "NSNumber";
@@ -320,7 +308,6 @@ namespace {
     return NULL;
   }
 
-
   bool IsPrimitiveType(ObjectiveCType type) {
     switch (type) {
     case OBJECTIVECTYPE_INT    :
@@ -336,16 +323,13 @@ namespace {
     }
   }
 
-
   bool IsReferenceType(ObjectiveCType type) {
     return !IsPrimitiveType(type);
   }
 
-
   bool ReturnsPrimitiveType(const FieldDescriptor* field) {
     return IsPrimitiveType(GetObjectiveCType(field->type()));
   }
-
 
   bool ReturnsReferenceType(const FieldDescriptor* field) {
     return !ReturnsPrimitiveType(field);
@@ -495,7 +479,6 @@ namespace {
 	    GOOGLE_LOG(FATAL) << "Can't get here.";
 	    return false;
   }
-
 
   // Escape C++ trigraphs by escaping question marks to \?
   string EscapeTrigraphs(const string& to_escape) {
