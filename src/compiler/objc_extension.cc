@@ -31,19 +31,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     descriptor_(descriptor) {
   }
 
-
-  ExtensionGenerator::~ExtensionGenerator() {
-  }
-
+  ExtensionGenerator::~ExtensionGenerator() { }
 
   void ExtensionGenerator::GenerateMembersHeader(io::Printer* printer) {
     map<string, string> vars;
     vars["name"] = UnderscoresToCamelCase(descriptor_, false);
 
     printer->Print(vars,
-      "+ (id<PBExtensionField>) $name$;\n");
+      "+ (id<PBExtensionField>)$name$;\n");
   }
-
 
   void ExtensionGenerator::GenerateFieldsSource(io::Printer* printer) {
     map<string, string> vars;
@@ -54,14 +50,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "static id<PBExtensionField> $containing_type$_$name$ = nil;\n");
   }
 
-
   void ExtensionGenerator::GenerateMembersSource(io::Printer* printer) {
     map<string, string> vars;
     vars["name"] = UnderscoresToCamelCase(descriptor_, false);
     vars["containing_type"] = classname_;
 
     printer->Print(vars,
-      "+ (id<PBExtensionField>) $name$ {\n"
+      "+ (id<PBExtensionField>)$name$ {\n"
       "  return $containing_type$_$name$;\n"
       "}\n");
   }
@@ -78,14 +73,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     vars["is_packed"] = isPacked ? "YES" : "NO";
     vars["is_wire_format"] = descriptor_->containing_type()->options().message_set_wire_format() ? "YES" : "NO";
 
-    ObjectiveCType java_type = GetObjectiveCType(descriptor_);
+    ObjectiveCType objc_type = GetObjectiveCType(descriptor_);
     string singular_type;
-    switch (java_type) {
+    switch (objc_type) {
     case OBJECTIVECTYPE_MESSAGE:
       vars["type"] = ClassName(descriptor_->message_type());
       break;
     default:
-      vars["type"] = BoxedPrimitiveTypeName(java_type);
+      vars["type"] = BoxedPrimitiveTypeName(objc_type);
       break;
     }
 
@@ -155,7 +150,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       }
     } else {
       // Box primitive types
-      if (IsPrimitiveType(java_type)) {
+      if (IsPrimitiveType(objc_type)) {
         vars["default"] = string("@(") + DefaultValue(descriptor_) + ")";
       } else {
         vars["default"] = DefaultValue(descriptor_);

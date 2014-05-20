@@ -15,8 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_FIELD_H
-#define OBJC_FIELD_H
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_FIELD_H
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_FIELD_H
 
 #include <string>
 #include <google/protobuf/stubs/common.h>
@@ -50,6 +50,8 @@ class FieldGenerator {
   virtual void GenerateSerializationCodeHeader(io::Printer* printer) const = 0;
   virtual void GenerateSerializedSizeCodeHeader(io::Printer* printer) const = 0;
 
+  virtual void GenerateHasFieldSource(io::Printer* printer) const = 0;
+  virtual void GenerateFieldSource(io::Printer* printer) const = 0;
   virtual void GenerateExtensionSource(io::Printer* printer) const = 0;
   virtual void GenerateSynthesizeSource(io::Printer* printer) const = 0;
   virtual void GenerateInitializationSource(io::Printer* printer) const = 0;
@@ -92,4 +94,4 @@ class FieldGeneratorMap {
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_FIELD_H
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_FIELD_H

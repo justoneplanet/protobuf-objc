@@ -15,8 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_HELPERS_H
-#define OBJC_HELPERS_H
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_HELPERS_H
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_HELPERS_H
 
 #include <string>
 #include <google/protobuf/descriptor.h>
@@ -164,4 +164,4 @@ bool isObjectArray(const FieldDescriptor* field);
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_HELPERS_H
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_HELPERS_H

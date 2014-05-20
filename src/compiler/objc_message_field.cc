@@ -73,26 +73,31 @@ namespace objectivec {
   MessageFieldGenerator::~MessageFieldGenerator() {
   }
 
-
   void MessageFieldGenerator::GenerateHasFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "BOOL has$capitalized_name$_:1;\n");
+    printer->Print(variables_, "BOOL _has$capitalized_name$:1;\n");
+  }
+  
+  void MessageFieldGenerator::GenerateHasFieldSource(io::Printer* printer) const {
+    printer->Print(variables_, "BOOL _has$capitalized_name$:1;\n");
   }
 
 
   void MessageFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "$storage_type$ $name$$storage_attribute$;\n");
+    printer->Print(variables_, "$storage_type$ _$name$$storage_attribute$;\n");
   }
-
+  
+  void MessageFieldGenerator::GenerateFieldSource(io::Printer* printer) const {
+    // the property declaration implies a backing variable of _$name$
+    // printer->Print(variables_, "$storage_type$ _$name$$storage_attribute$;\n");
+  }
 
   void MessageFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
     printer->Print(variables_, "- (BOOL)has$capitalized_name$;\n");
   }
 
-
   void MessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     printer->Print(variables_, "@property (readonly, strong) $storage_attribute$ $storage_type$ $name$;\n");
   }
-
 
   void MessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     printer->Print(variables_,
@@ -105,16 +110,15 @@ namespace objectivec {
   void MessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (BOOL)has$capitalized_name$ {\n"
-      "  return !!has$capitalized_name$_;\n"
+      "  return !!_has$capitalized_name$;\n"
       "}\n"
-      "- (void)setHas$capitalized_name$:(BOOL)value_ {\n"
-      "  has$capitalized_name$_ = !!value_;\n"
-      "}\n"
-      "@synthesize $name$;\n");
+      "- (void)setHas$capitalized_name$:(BOOL)value {\n"
+      "  _has$capitalized_name$ = !!value;\n"
+      "}\n\n");
   }
 
   void MessageFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
-    printer->Print(variables_, "self.$name$ = [$type$ defaultInstance];\n");
+    printer->Print(variables_, "_$name$ = [$type$ defaultInstance];\n");
   }
 
   void MessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
@@ -130,33 +134,33 @@ namespace objectivec {
   void MessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (BOOL)has$capitalized_name$ {\n"
-      "  return result.has$capitalized_name$;\n"
+      "  return _result.has$capitalized_name$;\n"
       "}\n"
       "- ($storage_type$)$name$ {\n"
-      "  return result.$name$;\n"
+      "  return _result.$name$;\n"
       "}\n"
       "- (instancetype)set$capitalized_name$:($storage_type$)value {\n"
-      "  result.has$capitalized_name$ = YES;\n"
-      "  result.$name$ = value;\n"
+      "  _result.has$capitalized_name$ = YES;\n"
+      "  _result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- (instancetype)set$capitalized_name$Builder:($type$_Builder*) builderForValue {\n"
+      "- (instancetype)set$capitalized_name$Builder:($type$_Builder*)builderForValue {\n"
       "  return [self set$capitalized_name$:[builderForValue build]];\n"
       "}\n"
       "- (instancetype)merge$capitalized_name$:($storage_type$)value {\n"
-      "  if (result.has$capitalized_name$ &&\n"
-      "      result.$name$ != [$type$ defaultInstance]) {\n"
-      "    result.$name$ =\n"
-      "      [[[$type$ builderWithPrototype:result.$name$] mergeFrom:value] buildPartial];\n"
+      "  if (_result.has$capitalized_name$ &&\n"
+      "      _result.$name$ != [$type$ defaultInstance]) {\n"
+      "    _result.$name$ =\n"
+      "      [[[$type$ builderWithPrototype:_result.$name$] mergeFrom:value] buildPartial];\n"
       "  } else {\n"
-      "    result.$name$ = value;\n"
+      "    _result.$name$ = value;\n"
       "  }\n"
-      "  result.has$capitalized_name$ = YES;\n"
+      "  _result.has$capitalized_name$ = YES;\n"
       "  return self;\n"
       "}\n"
       "- (instancetype)clear$capitalized_name$ {\n"
-      "  result.has$capitalized_name$ = NO;\n"
-      "  result.$name$ = [$type$ defaultInstance];\n"
+      "  _result.has$capitalized_name$ = NO;\n"
+      "  _result.$name$ = [$type$ defaultInstance];\n"
       "  return self;\n"
       "}\n");
   }
@@ -267,19 +271,32 @@ namespace objectivec {
 
   void RepeatedMessageFieldGenerator::GenerateHasFieldHeader(io::Printer* printer) const {
   }
+  
+  void RepeatedMessageFieldGenerator::GenerateHasFieldSource(io::Printer* printer) const {
+  }
 
 
   void RepeatedMessageFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
     // check if object array vs primitive array
     if (isObjectArray(descriptor_)) {
       printer->Print(variables_,
-                     "NSMutableArray *$list_name$;\n");
+                     "NSMutableArray *_$list_name$;\n");
     }else{
       printer->Print(variables_,
-                     "PBAppendableArray *$list_name$;\n");
+                     "PBAppendableArray *_$list_name$;\n");
     }
   }
-
+  
+  void RepeatedMessageFieldGenerator::GenerateFieldSource(io::Printer* printer) const {
+    // check if object array vs primitive array
+    if (isObjectArray(descriptor_)) {
+      printer->Print(variables_,
+                     "NSMutableArray *_$list_name$;\n");
+    }else{
+      printer->Print(variables_,
+                     "PBAppendableArray *_$list_name$;\n");
+    }
+  }
 
   void RepeatedMessageFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
   }
@@ -308,7 +325,7 @@ namespace objectivec {
 
 
   void RepeatedMessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
-    printer->Print(variables_, "@synthesize $list_name$;\n");
+    // repeated message fields accessors are dynmaic, backed with private member var
     printer->Print(variables_, "@dynamic $name$;\n");
   }
 
@@ -326,10 +343,10 @@ namespace objectivec {
 		if (isObjectArray(descriptor_)) {
     		printer->Print(variables_,
 		      "- (NSArray *)$name$ {\n"
-		      "  return $list_name$;\n"
+		      "  return _$list_name$;\n"
 		      "}\n"
 		      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
-		      "  return $list_name$[index];\n"
+		      "  return _$list_name$[index];\n"
 		      "}\n");
 		}
   }
@@ -359,24 +376,24 @@ namespace objectivec {
   void RepeatedMessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
       "- (NSMutableArray *)$name$ {\n"
-      "  return result.$list_name$;\n"
+      "  return _result.$list_name$;\n"
       "}\n"
       "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  return [result $name$AtIndex:index];\n"
+      "  return [_result $name$AtIndex:index];\n"
       "}\n"
       "- (instancetype)add$capitalized_name$:($storage_type$)value {\n"
-      "  if (result.$list_name$ == nil) {\n"
-      "    result.$list_name$ = [[NSMutableArray alloc]init];\n"
+      "  if (_result.$list_name$ == nil) {\n"
+      "    _result.$list_name$ = [[NSMutableArray alloc]init];\n"
       "  }\n"
-      "  [result.$list_name$ addObject:value];\n"
+      "  [_result.$list_name$ addObject:value];\n"
       "  return self;\n"
       "}\n"
       "- (instancetype)set$capitalized_name$Array:(NSArray *)array {\n"
-      "  result.$list_name$ = [[NSMutableArray alloc]initWithArray:array];\n"
+      "  _result.$list_name$ = [[NSMutableArray alloc]initWithArray:array];\n"
       "  return self;\n"
       "}\n"
       "- (instancetype)clear$capitalized_name$ {\n"
-      "  result.$list_name$ = nil;\n"
+      "  _result.$list_name$ = nil;\n"
       "  return self;\n"
       "}\n");
   }
@@ -407,19 +424,19 @@ namespace objectivec {
 	if(isObjectArray(descriptor_)){
 		printer->Print(variables_,
 	      "if (other.$list_name$.count > 0) {\n"
-	      "  if (result.$list_name$ == nil) {\n"
-	      "    result.$list_name$ = [[NSMutableArray alloc] initWithArray:other.$list_name$];\n"
+	      "  if (_result.$list_name$ == nil) {\n"
+	      "    _result.$list_name$ = [[NSMutableArray alloc] initWithArray:other.$list_name$];\n"
 	      "  } else {\n"
-	      "    [result.$list_name$ addObjectsFromArray:other.$list_name$];\n"
+	      "    [_result.$list_name$ addObjectsFromArray:other.$list_name$];\n"
 	      "  }\n"
       	  "}\n");
 	}else{
 		printer->Print(variables_,
 	      "if (other.$list_name$.count > 0) {\n"
-	      "  if (result.$list_name$ == nil) {\n"
-	      "    result.$list_name$ = [other.$list_name$ copy];\n"
+	      "  if (_result.$list_name$ == nil) {\n"
+	      "    _result.$list_name$ = [other.$list_name$ copy];\n"
 	      "  } else {\n"
-	      "    [result.$list_name$ appendArray:other.$list_name$];\n"
+	      "    [_result.$list_name$ appendArray:other.$list_name$];\n"
 	      "  }\n"
       	  "}\n");
     	

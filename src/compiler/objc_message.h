@@ -15,8 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBJC_MESSAGE_H
-#define OBJC_MESSAGE_H
+#ifndef PROTOBUF_COMPILER_PLUGIN_OBJC_MESSAGE_H
+#define PROTOBUF_COMPILER_PLUGIN_OBJC_MESSAGE_H
 
 #include <string>
 #include <set>
@@ -104,4 +104,4 @@ class MessageGenerator {
 }  // namespace protobuf
 }  // namespace google
 
-#endif // OBJC_MESSAGE_H
+#endif // PROTOBUF_COMPILER_PLUGIN_OBJC_MESSAGE_H
