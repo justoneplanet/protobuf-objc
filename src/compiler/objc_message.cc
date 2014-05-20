@@ -838,12 +838,11 @@ namespace objectivec {
     
     // Initialize private message "_result"
     printer->Print(
-        "_result = [[$classname$ alloc] init];\n"
-        "\n"
-        "return self;\n"
+        "  _result = [[$classname$ alloc] init];\n"
+        "  return self;\n"
         "}\n\n",
         "classname", ClassName(descriptor_));
-
+    
     GenerateCommonBuilderMethodsSource(printer);
     GenerateBuilderParsingMethodsSource(printer);
 
@@ -890,6 +889,7 @@ namespace objectivec {
       "}\n"
       "- ($classname$*) buildPartial {\n",
       "classname", ClassName(descriptor_));
+    
     printer->Indent();
 
     for (int i = 0; i < descriptor_->field_count(); i++) {
@@ -897,6 +897,7 @@ namespace objectivec {
     }
 
     printer->Outdent();
+    
     printer->Print(
       "  $classname$* partial = _result;\n"
       "  _result = nil;\n"
