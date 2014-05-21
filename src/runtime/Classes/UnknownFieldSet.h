@@ -1,50 +1,41 @@
-// Protocol Buffers for Objective C
 //
-// Copyright 2010 Booyah Inc.
-// Copyright 2008 Cyrus Najmabadi
+//  UnknownFieldSet.h
+//  Protocol Buffers for Objective C
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+//  Copyright 2014 Ed Preston
+//  Copyright 2010 Booyah Inc.
+//  Copyright 2008 Cyrus Najmabadi
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+
 
 @class PBCodedOutputStream;
 @class PBField;
 @class PBUnknownFieldSet_Builder;
 
-@interface PBUnknownFieldSet : NSObject {
-@private
-  NSDictionary* fields;
-}
+
+@interface PBUnknownFieldSet : NSObject
 
 @property (readonly, strong) NSDictionary* fields;
 
-+ (instancetype) defaultInstance;
++ (instancetype)defaultInstance;
 
-+ (instancetype) setWithFields:(NSMutableDictionary*) fields;
-+ (instancetype) parseFromData:(NSData*) data;
++ (instancetype)setWithFields:(NSMutableDictionary*)fields;
++ (instancetype)parseFromData:(NSData*)data;
 
-+ (PBUnknownFieldSet_Builder*) builder;
-+ (PBUnknownFieldSet_Builder*) builderWithUnknownFields:(PBUnknownFieldSet*) other;
++ (PBUnknownFieldSet_Builder*)builder;
++ (PBUnknownFieldSet_Builder*)builderWithUnknownFields:(PBUnknownFieldSet*)other;
 
-- (void) writeAsMessageSetTo:(PBCodedOutputStream*) output;
-- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
-- (NSData*) data;
+- (void)writeAsMessageSetTo:(PBCodedOutputStream*)output;
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output;
+- (NSData*)data;
 
-- (int32_t) serializedSize;
-- (int32_t) serializedSizeAsMessageSet;
+- (int32_t)serializedSize;
+- (int32_t)serializedSizeAsMessageSet;
 
-- (BOOL) hasField:(int32_t) number;
-- (PBField*) getField:(int32_t) number;
+- (BOOL)hasField:(int32_t)number;
+- (PBField*)getField:(int32_t)number;
 
-- (void) writeDescriptionTo:(NSMutableString*) output
-                 withIndent:(NSString*) indent;
+- (void)writeDescriptionTo:(NSMutableString*)output
+                withIndent:(NSString*)indent;
 
 @end
