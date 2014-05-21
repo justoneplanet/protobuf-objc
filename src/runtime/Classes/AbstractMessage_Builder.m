@@ -18,11 +18,11 @@
 
 @implementation PBAbstractMessage_Builder
 
-- (id<PBMessage_Builder>) clone {
+- (id<PBMessage_Builder>)clone {
     return nil;
 }
 
-- (id<PBMessage_Builder>) clear {
+- (id<PBMessage_Builder>)clear {
     return nil;
 }
 
