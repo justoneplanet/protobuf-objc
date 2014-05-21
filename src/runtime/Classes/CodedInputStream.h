@@ -1,19 +1,11 @@
-// Protocol Buffers for Objective C
 //
-// Copyright 2010 Booyah Inc.
-// Copyright 2008 Cyrus Najmabadi
+//  CodedInputStream.h
+//  Protocol Buffers for Objective C
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+//  Copyright 2014 Ed Preston
+//  Copyright 2010 Booyah Inc.
+//  Copyright 2008 Cyrus Najmabadi
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 @class PBExtensionRegistry;
 @class PBUnknownFieldSet_Builder;
@@ -31,57 +23,32 @@
  *
  * @author Cyrus Najmabadi
  */
-@interface PBCodedInputStream : NSObject {
-@private
-  NSMutableData* buffer;
-  int32_t bufferSize;
-  int32_t bufferSizeAfterLimit;
-  int32_t bufferPos;
-  NSInputStream* input;
-  int32_t lastTag;
+@interface PBCodedInputStream : NSObject
 
-  /**
-   * The total number of bytes read before the current buffer.  The total
-   * bytes read up to the current position can be computed as
-   * {@code totalBytesRetired + bufferPos}.
-   */
-  int32_t totalBytesRetired;
-
-  /** The absolute position of the end of the current message. */
-  int32_t currentLimit;
-
-  /** See setRecursionLimit() */
-  int32_t recursionDepth;
-  int32_t recursionLimit;
-
-  /** See setSizeLimit() */
-  int32_t sizeLimit;
-}
-
-+ (instancetype) streamWithData:(NSData*) data;
-+ (instancetype) streamWithInputStream:(NSInputStream*) input;
++ (instancetype)streamWithData:(NSData*)data;
++ (instancetype)streamWithInputStream:(NSInputStream*)input;
 
 /**
  * Attempt to read a field tag, returning zero if we have reached EOF.
  * Protocol message parsers use this to read tags, since a protocol message
  * may legally end wherever a tag occurs, and zero is not a valid tag number.
  */
-- (int32_t) readTag;
-- (BOOL) refillBuffer:(BOOL) mustSucceed;
+- (int32_t)readTag;
+- (BOOL)refillBuffer:(BOOL)mustSucceed;
 
-- (Float64) readDouble;
-- (Float32) readFloat;
-- (int64_t) readUInt64;
-- (int32_t) readUInt32;
-- (int64_t) readInt64;
-- (int32_t) readInt32;
-- (int64_t) readFixed64;
-- (int32_t) readFixed32;
-- (int32_t) readEnum;
-- (int32_t) readSFixed32;
-- (int64_t) readSFixed64;
-- (int32_t) readSInt32;
-- (int64_t) readSInt64;
+- (Float64)readDouble;
+- (Float32)readFloat;
+- (int64_t)readUInt64;
+- (int32_t)readUInt32;
+- (int64_t)readInt64;
+- (int32_t)readInt32;
+- (int64_t)readFixed64;
+- (int32_t)readFixed32;
+- (int32_t)readEnum;
+- (int32_t)readSFixed32;
+- (int64_t)readSFixed64;
+- (int32_t)readSInt32;
+- (int64_t)readSInt64;
 
 /**
  * Read one byte from the input.
@@ -89,16 +56,16 @@
  * @throws InvalidProtocolBuffer The end of the stream or the current
  *                                        limit was reached.
  */
-- (int8_t) readRawByte;
+- (int8_t)readRawByte;
 
 /**
  * Read a raw Varint from the stream.  If larger than 32 bits, discard the
  * upper bits.
  */
-- (int32_t) readRawVarint32;
-- (int64_t) readRawVarint64;
-- (int32_t) readRawLittleEndian32;
-- (int64_t) readRawLittleEndian64;
+- (int32_t)readRawVarint32;
+- (int64_t)readRawVarint64;
+- (int32_t)readRawLittleEndian32;
+- (int64_t)readRawLittleEndian64;
 
 /**
  * Read a fixed size of bytes from the input.
@@ -106,7 +73,7 @@
  * @throws InvalidProtocolBuffer The end of the stream or the current
  *                                        limit was reached.
  */
-- (NSData*) readRawData:(int32_t) size;
+- (NSData*)readRawData:(int32_t)size;
 
 /**
  * Reads and discards a single field, given its tag value.
@@ -114,7 +81,7 @@
  * @return {@code false} if the tag is an endgroup tag, in which case
  *         nothing is skipped.  Otherwise, returns {@code true}.
  */
-- (BOOL) skipField:(int32_t) tag;
+- (BOOL)skipField:(int32_t)tag;
 
 
 /**
@@ -123,35 +90,39 @@
  * @throws InvalidProtocolBuffer The end of the stream or the current
  *                                        limit was reached.
  */
-- (void) skipRawData:(int32_t) size;
+- (void)skipRawData:(int32_t)size;
 
 /**
  * Reads and discards an entire message.  This will read either until EOF
  * or until an endgroup tag, whichever comes first.
  */
-- (void) skipMessage;
+- (void)skipMessage;
 
-- (BOOL) isAtEnd;
-- (int32_t) pushLimit:(int32_t) byteLimit;
-- (void) recomputeBufferSizeAfterLimit;
-- (void) popLimit:(int32_t) oldLimit;
-- (int32_t) bytesUntilLimit;
+- (BOOL)isAtEnd;
+- (int32_t)pushLimit:(int32_t)byteLimit;
+- (void)recomputeBufferSizeAfterLimit;
+- (void)popLimit:(int32_t)oldLimit;
+- (int32_t)bytesUntilLimit;
 
 
 /** Read an embedded message field value from the stream. */
-- (void) readMessage:(id<PBMessage_Builder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (void) readMessage:(id<PBMessage_Builder>)builder
+   extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
 
-- (BOOL) readBool;
-- (NSString*) readString;
-- (NSData*) readData;
+- (BOOL)readBool;
+- (NSString*)readString;
+- (NSData*)readData;
 
-- (void) readGroup:(int32_t) fieldNumber builder:(id<PBMessage_Builder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (void)readGroup:(int32_t)fieldNumber
+          builder:(id<PBMessage_Builder>)builder
+extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
 
 /**
  * Reads a {@code group} field value from the stream and merges it into the
  * given {@link UnknownFieldSet}.
  */
-- (void) readUnknownGroup:(int32_t) fieldNumber builder:(PBUnknownFieldSet_Builder*) builder;
+- (void)readUnknownGroup:(int32_t)fieldNumber
+                 builder:(PBUnknownFieldSet_Builder*)builder;
 
 /**
  * Verifies that the last call to readTag() returned the given tag value.
@@ -161,6 +132,6 @@
  * @throws InvalidProtocolBuffer {@code value} does not match the
  *                                        last tag.
  */
-- (void) checkLastTagWas:(int32_t) value;
+- (void)checkLastTagWas:(int32_t)value;
 
 @end
