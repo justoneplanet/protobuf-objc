@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0CDB3C192C7667002681D4 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
 		4F7F06C2192924B900534BBC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7F06C01929249500534BBC /* XCTest.framework */; };
 		8B0444601469EFD500BB156C /* UnittestEmpty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444571469EFD500BB156C /* UnittestEmpty.pb.m */; };
 		8B0444611469EFD500BB156C /* UnittestEnormousDescriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444591469EFD500BB156C /* UnittestEnormousDescriptor.pb.m */; };
@@ -80,8 +81,6 @@
 		C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9D12517A1A0087887C /* WireFormatTests.m */; };
 		C5B03FF512517C6A0087887C /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
 		C5B0406312517D0A0087887C /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8312517A1A0087887C /* Main.m */; };
-		C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */; };
-		C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
 		C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */; };
 		C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F36E031275FA5A00013BB4 /* PBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -294,10 +293,10 @@
 			children = (
 				C586262512668BCF00204EE1 /* ConcreteExtensionField.h */,
 				C586262612668BCF00204EE1 /* ConcreteExtensionField.m */,
-				C586262712668BCF00204EE1 /* ExtendableMessage_Builder.h */,
-				C586262812668BCF00204EE1 /* ExtendableMessage_Builder.m */,
 				C586262912668BCF00204EE1 /* ExtendableMessage.h */,
 				C586262A12668BCF00204EE1 /* ExtendableMessage.m */,
+				C586262712668BCF00204EE1 /* ExtendableMessage_Builder.h */,
+				C586262812668BCF00204EE1 /* ExtendableMessage_Builder.m */,
 				C586262B12668BCF00204EE1 /* ExtensionField.h */,
 				C586262C12668BCF00204EE1 /* ExtensionRegistry.h */,
 				C586262D12668BCF00204EE1 /* ExtensionRegistry.m */,
@@ -314,10 +313,10 @@
 				C586263C12668C0D00204EE1 /* Field.m */,
 				C586263F12668C1800204EE1 /* MutableField.h */,
 				C586264012668C1800204EE1 /* MutableField.m */,
-				C586264312668C2000204EE1 /* UnknownFieldSet_Builder.h */,
-				C586264412668C2000204EE1 /* UnknownFieldSet_Builder.m */,
 				C586264512668C2000204EE1 /* UnknownFieldSet.h */,
 				C586264612668C2000204EE1 /* UnknownFieldSet.m */,
+				C586264312668C2000204EE1 /* UnknownFieldSet_Builder.h */,
+				C586264412668C2000204EE1 /* UnknownFieldSet_Builder.m */,
 			);
 			name = Fields;
 			sourceTree = "<group>";
@@ -486,7 +485,6 @@
 				C586266E12668C5F00204EE1 /* Message.h in Headers */,
 				C586267112668C6C00204EE1 /* RingBuffer.h in Headers */,
 				C586267512668C7400204EE1 /* Utilities.h in Headers */,
-				C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */,
 				C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B03FC712517AAE0087887C /* SmallBlockInputStream.m in Sources */,
+				4F0CDB3C192C7667002681D4 /* Descriptor.pb.m in Sources */,
 				C5B03FC912517AD90087887C /* CodedInputStreamTests.m in Sources */,
 				C5B03FCA12517AD90087887C /* CodedOuputStreamTests.m in Sources */,
 				C5B03FCB12517AD90087887C /* CoreTests.m in Sources */,
@@ -641,7 +640,6 @@
 				C586266A12668C5800204EE1 /* GeneratedMessage.m in Sources */,
 				C586267212668C6C00204EE1 /* RingBuffer.m in Sources */,
 				C586267612668C7400204EE1 /* Utilities.m in Sources */,
-				C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */,
 				C55591B1127A04EF002343CA /* PBArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

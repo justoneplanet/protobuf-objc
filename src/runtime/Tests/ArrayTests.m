@@ -102,7 +102,7 @@
 
 - (void)testNumberExpectedException
 {
-	NSArray *objects = [[NSArray alloc] initWithObjects:@"Test", nil];
+	NSArray *objects = @[@"Test"];
 	XCTAssertThrowsSpecificNamed([[PBArray alloc] initWithArray:objects valueType:PBArrayValueTypeInt32],
 								NSException, PBArrayNumberExpectedException);
 }

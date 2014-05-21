@@ -20,6 +20,7 @@
 #import "TestUtilities.h"
 #import "Unittest.pb.h"
 
+
 @implementation CodedOutputStreamTests
 
 - (NSData*) bytes_with_sentinel:(int32_t) unused, ... {

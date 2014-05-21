@@ -1,36 +1,51 @@
+//
+//  RingBuffer.m
+//  Protocol Buffers for Objective C
+//
+//
+
 #import "RingBuffer.h"
 
-@implementation RingBuffer
+
+@implementation RingBuffer{
+	NSMutableData *_buffer;
+	NSInteger _position;
+	NSInteger _tail;
+}
 
 - (instancetype)initWithData:(NSMutableData*)data {
-  if ((self = [super init])) {
-    buffer = data;
-  }
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+    
+    _buffer = data;
+    
 	return self;
 }
 
 
 - (NSUInteger)freeSpace {
-	return (position < tail ? tail - position : (buffer.length - position) + tail) - (tail ? 1 : 0);
+	return (_position < _tail ? _tail - _position : (_buffer.length - _position) + _tail) - (_tail ? 1 : 0);
 }
 
 
 - (BOOL)appendByte:(uint8_t)byte {
 	if (self.freeSpace < 1) return NO;
-	((uint8_t*)buffer.mutableBytes)[position++] = byte;
+	((uint8_t*)_buffer.mutableBytes)[_position++] = byte;
 	return YES;
 }
 
 
-- (NSInteger)appendData:(const NSData*)value offset:(NSInteger)offset length:(NSInteger)length {
+- (NSInteger)appendData:(const NSData*)value offset:(int32_t)offset length:(int32_t)length {
 	NSInteger totalWritten = 0;
 	const uint8_t *input = value.bytes;
-	uint8_t *data = buffer.mutableBytes;
+	uint8_t *data = _buffer.mutableBytes;
 	
-	if (position >= tail) {
-		totalWritten = MIN(buffer.length - position, length);
-		memcpy(data + position, input + offset, totalWritten);
-		position += totalWritten;
+	if (_position >= _tail) {
+		totalWritten = MIN(_buffer.length - _position, length);
+		memcpy(data + _position, input + offset, totalWritten);
+		_position += totalWritten;
 		if (totalWritten == length) return length;
 		length -= totalWritten;
 		offset += totalWritten;
@@ -39,14 +54,14 @@
 	NSUInteger freeSpace = self.freeSpace;
 	if (!freeSpace) return totalWritten;
 	
-	if (position == buffer.length) {
-		position = 0;
+	if (_position == _buffer.length) {
+		_position = 0;
 	}
 	
 	// position < tail
-	int32_t written = MIN(freeSpace, length);
-	memcpy(data + position, input + offset, written);
-	position += written;
+	NSInteger written = MIN(freeSpace, length);
+	memcpy(data + _position, input + offset, written);
+	_position += written;
 	totalWritten += written;
 	
 	return totalWritten;
@@ -55,38 +70,39 @@
 
 - (NSInteger)flushToOutputStream:(NSOutputStream*)stream {
 	NSInteger totalWritten = 0;
-	const uint8_t *data = buffer.bytes;
+	const uint8_t *data = _buffer.bytes;
 	
-	if (tail > position) {
-		int32_t written = [stream write:data + tail maxLength:buffer.length - tail];
+	if (_tail > _position) {
+		NSInteger written = [stream write:data + _tail maxLength:_buffer.length - _tail];
         if (written <= 0) return totalWritten;
         totalWritten += written;
-		tail += written;
-		if (tail == buffer.length) {
-			tail = 0;
+		_tail += written;
+		if (_tail == _buffer.length) {
+			_tail = 0;
 		}
 	}
 
-	if (tail < position) {
-		int32_t written = [stream write:data + tail maxLength:position - tail];
+	if (_tail < _position) {
+		NSInteger written = [stream write:data + _tail maxLength:_position - _tail];
 		if (written <= 0) return totalWritten;
 		totalWritten += written;
-		tail += written;
+		_tail += written;
 	}
 
-    if (tail == position) {
-        tail = position = 0;
+    if (_tail == _position) {
+        _tail = _position = 0;
     }
 
-    if (position == buffer.length && tail > 0) {
-        position = 0;
+    if (_position == _buffer.length && _tail > 0) {
+        _position = 0;
     }
 
-    if (tail == buffer.length) {
-        tail = 0;
+    if (_tail == _buffer.length) {
+        _tail = 0;
     }
 	
 	return totalWritten;
 }
+
 
 @end
