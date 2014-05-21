@@ -60,7 +60,7 @@
   PBField* fixed32Field = [[PBMutableField field] addFixed32:1];
 
   for (NSNumber* key in unknownFields.fields) {
-    PBField* field = [unknownFields.fields objectForKey:key];
+    PBField* field = (unknownFields.fields)[key];
     if (field.varintArray.count == 0) {
       // Original field is not a varint, so use a varint.
       [bizarroFields addField:varintField forNumber:key.intValue];

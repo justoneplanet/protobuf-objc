@@ -42,19 +42,17 @@
   TestAllTypes_Builder* builder = [TestAllTypes builder];
 
   NSArray* array =
-  [NSArray arrayWithObjects:
-   [NSNumber numberWithInt:1],
-   [NSNumber numberWithInt:2],
-   [NSNumber numberWithInt:3],
-   [NSNumber numberWithInt:4], nil];
+  @[@1,
+   @2,
+   @3,
+   @4];
 
   [builder setRepeatedInt32Array:array];
   [builder setRepeatedForeignEnumArray:
-   [NSArray arrayWithObject:
-    [NSNumber numberWithInt:ForeignEnumForeignBaz]]];
+   @[@(ForeignEnumForeignBaz)]];
 
   ForeignMessage* foreignMessage = [[[ForeignMessage builder] setC:12] build];
-  [builder setRepeatedForeignMessageArray:[NSArray arrayWithObject:foreignMessage]];
+  [builder setRepeatedForeignMessageArray:@[foreignMessage]];
 
   TestAllTypes* message = [builder build];
   XCTAssertTrue(1 == message.repeatedForeignMessage.count, @"");
@@ -66,7 +64,7 @@
   // clearExtension() is not actually used in TestUtil, so try it manually.
   PBExtendableMessage_Builder* builder1 =
   [[TestAllExtensions builder]
-   setExtension:[UnittestRoot optionalInt32Extension] value:[NSNumber numberWithInt:1]];
+   setExtension:[UnittestRoot optionalInt32Extension] value:@1];
 
   XCTAssertTrue([builder1 hasExtension:[UnittestRoot optionalInt32Extension]], @"");
   [builder1 clearExtension:[UnittestRoot optionalInt32Extension]];
@@ -74,7 +72,7 @@
 
   PBExtendableMessage_Builder* builder2 =
   [[TestAllExtensions builder]
-   addExtension:[UnittestRoot repeatedInt32Extension] value:[NSNumber numberWithInt:1]];
+   addExtension:[UnittestRoot repeatedInt32Extension] value:@1];
 
   XCTAssertTrue(1 == [[builder2 getExtension:[UnittestRoot repeatedInt32Extension]] count], @"");
   [builder2 clearExtension:[UnittestRoot repeatedInt32Extension]];
