@@ -1,70 +1,60 @@
-// Protocol Buffers for Objective C
 //
-// Copyright 2010 Booyah Inc.
-// Copyright 2008 Cyrus Najmabadi
+//  Message_Builder.h
+//  Protocol Buffers for Objective C
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+//  Copyright 2014 Ed Preston
+//  Copyright 2010 Booyah Inc.
+//  Copyright 2008 Cyrus Najmabadi
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 #import "Message.h"
 
 @class PBCodedInputStream;
 @class PBExtensionRegistry;
 
+
 /**
  * Abstract interface implemented by Protocol Message builders.
  */
 @protocol PBMessage_Builder<NSObject>
 /** Resets all fields to their default values. */
-- (id<PBMessage_Builder>) clear;
+- (id<PBMessage_Builder>)clear;
 
 /**
  * Construct the final message.  Once this is called, the Builder is no
  * longer valid, and calling any other method may throw a
  * NullPointerException.  If you need to continue working with the builder
  * after calling {@code build()}, {@code clone()} it first.
- * @throws UninitializedMessageException The message is missing one or more
- *         required fields (i.e. {@link #isInitialized()} returns false).
- *         Use {@link #buildPartial()} to bypass this check.
  */
-- (id<PBMessage>) build;
+- (id<PBMessage>)build;
 
 /**
  * Like {@link #build()}, but does not throw an exception if the message
  * is missing required fields.  Instead, a partial message is returned.
  */
-- (id<PBMessage>) buildPartial;
-- (id<PBMessage_Builder>) clone;
+- (id<PBMessage>)buildPartial;
+- (id<PBMessage_Builder>)clone;
 
 /**
  * Returns true if all required fields in the message and all embedded
  * messages are set, false otherwise.
  */
-- (BOOL) isInitialized;
+- (BOOL)isInitialized;
 
 /**
  * Get the message's type's default instance.
  * See {@link Message#getDefaultInstanceForType()}.
  */
-- (id<PBMessage>) defaultInstance;
+- (id<PBMessage>)defaultInstance;
 
-- (PBUnknownFieldSet*) unknownFields;
-- (id<PBMessage_Builder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields;
+- (PBUnknownFieldSet*)unknownFields;
+- (id<PBMessage_Builder>)setUnknownFields:(PBUnknownFieldSet*)unknownFields;
 
 /**
  * Merge some unknown fields into the {@link UnknownFieldSet} for this
  * message.
  */
-- (id<PBMessage_Builder>) mergeUnknownFields:(PBUnknownFieldSet*) unknownFields;
+- (id<PBMessage_Builder>)mergeUnknownFields:(PBUnknownFieldSet*)unknownFields;
 
 /**
  * Parses a message of this type from the input and merges it with this
@@ -92,7 +82,7 @@
  * verify that the last tag seen was the appropriate end-group tag,
  * or zero for EOF.
  */
-- (id<PBMessage_Builder>) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (id<PBMessage_Builder>)mergeFromCodedInputStream:(PBCodedInputStream*)input;
 
 /**
  * Like {@link Builder#mergeFrom(CodedInputStream)}, but also
@@ -100,21 +90,23 @@
  * must be registered in {@code extensionRegistry}.  Extensions not in
  * the registry will be treated as unknown fields.
  */
-- (id<PBMessage_Builder>) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (id<PBMessage_Builder>)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                                  extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
 
 /**
  * Parse {@code data} as a message of this type and merge it with the
  * message being built.  This is just a small wrapper around
  * {@link #mergeFrom(CodedInputStream)}.
  */
-- (id<PBMessage_Builder>) mergeFromData:(NSData*) data;
+- (id<PBMessage_Builder>)mergeFromData:(NSData*)data;
 
 /**
  * Parse {@code data} as a message of this type and merge it with the
  * message being built.  This is just a small wrapper around
  * {@link #mergeFrom(CodedInputStream,ExtensionRegistry)}.
  */
-- (id<PBMessage_Builder>) mergeFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (id<PBMessage_Builder>)mergeFromData:(NSData*)data
+                     extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
 
 /**
  * Parse a message of this type from {@code input} and merge it with the
@@ -125,12 +117,14 @@
  * wrapper stream that limits reading.  Despite usually reading the entire
  * input, this does not close the stream.
  */
-- (id<PBMessage_Builder>) mergeFromInputStream:(NSInputStream*) input;
+- (id<PBMessage_Builder>)mergeFromInputStream:(NSInputStream*)input;
 
 /**
  * Parse a message of this type from {@code input} and merge it with the
  * message being built.  This is just a small wrapper around
  * {@link #mergeFrom(CodedInputStream,ExtensionRegistry)}.
  */
-- (id<PBMessage_Builder>) mergeFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (id<PBMessage_Builder>)mergeFromInputStream:(NSInputStream*)input
+                            extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
+
 @end

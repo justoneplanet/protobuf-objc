@@ -7,9 +7,8 @@
 //  Copyright 2008 Cyrus Najmabadi
 //
 
-#import <Foundation/Foundation.h>
+#import "ExtensionField.h"
 
-@protocol PBExtensionField;
 
 typedef NS_ENUM(NSUInteger, PBExtensionType) {
     PBExtensionTypeBool,
@@ -31,6 +30,7 @@ typedef NS_ENUM(NSUInteger, PBExtensionType) {
     PBExtensionTypeGroup,
     PBExtensionTypeEnum,
 };
+
 
 @interface PBConcreteExtensionField : NSObject<PBExtensionField>
 

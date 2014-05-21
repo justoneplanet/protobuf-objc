@@ -103,7 +103,7 @@
     NSParameterAssert(field);
     
     if (number == 0) {
-        @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"" userInfo:nil];
+        return nil;
     }
     if ([self hasField:number]) {
         [[self getFieldBuilder:number] mergeFromField:field];
@@ -155,7 +155,7 @@
             [[self getFieldBuilder:number] addFixed32:[input readFixed32]];
             return YES;
         default:
-            @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"" userInfo:nil];
+            return YES;
     }
 }
 

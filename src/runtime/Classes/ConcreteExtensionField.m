@@ -102,7 +102,6 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
     return self;
 }
 
-
 + (instancetype)extensionWithType:(PBExtensionType)type
                     extendedClass:(Class)extendedClass
                       fieldNumber:(int32_t)fieldNumber

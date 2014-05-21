@@ -59,26 +59,32 @@ const int32_t BUFFER_SIZE = 4096;
     _sizeLimit = DEFAULT_SIZE_LIMIT;
 }
 
-- (instancetype)initWithData:(NSData*) data {
-    if ((self = [super init])) {
-        _buffer = [NSMutableData dataWithData:data];
-        uint32_t bufferLength = 0; bufferLength += _buffer.length;
-        _bufferSize = bufferLength;
-        _input = nil;
-        [self commonInit];
+- (instancetype)initWithData:(NSData*)data {
+    self = [super init];
+    if (self == nil) {
+        return nil;
     }
+    _buffer = [NSMutableData dataWithData:data];
+    uint32_t bufferLength = 0; bufferLength += _buffer.length;
+    _bufferSize = bufferLength;
+    _input = nil;
+    
+    [self commonInit];
     
     return self;
 }
 
-- (instancetype)initWithInputStream:(NSInputStream*) input_ {
-    if ((self = [super init])) {
-        _buffer = [NSMutableData dataWithLength:BUFFER_SIZE];
-        _bufferSize = 0;
-        _input = input_;
-        [_input open];
-        [self commonInit];
+- (instancetype)initWithInputStream:(NSInputStream*)input {
+    self = [super init];
+    if (self == nil) {
+        return nil;
     }
+    _buffer = [NSMutableData dataWithLength:BUFFER_SIZE];
+    _bufferSize = 0;
+    _input = input;
+    [_input open];
+    
+    [self commonInit];
     
     return self;
 }
@@ -90,7 +96,6 @@ const int32_t BUFFER_SIZE = 4096;
 + (instancetype)streamWithInputStream:(NSInputStream*)input {
     return [[PBCodedInputStream alloc] initWithInputStream:input];
 }
-
 
 /**
  * Attempt to read a field tag, returning zero if we have reached EOF.
@@ -158,7 +163,6 @@ const int32_t BUFFER_SIZE = 4096;
     return NO;
 }
 
-
 /**
  * Reads and discards an entire message.  This will read either until EOF
  * or until an endgroup tag, whichever comes first.
@@ -172,54 +176,45 @@ const int32_t BUFFER_SIZE = 4096;
     }
 }
 
-
 /** Read a {@code double} field value from the stream. */
 - (Float64)readDouble {
     return convertInt64ToFloat64([self readRawLittleEndian64]);
 }
-
 
 /** Read a {@code float} field value from the stream. */
 - (Float32)readFloat {
     return convertInt32ToFloat32([self readRawLittleEndian32]);
 }
 
-
 /** Read a {@code uint64} field value from the stream. */
-- (int64_t)readUInt64 {
+- (uint64_t)readUInt64 {
     return [self readRawVarint64];
 }
-
 
 /** Read an {@code int64} field value from the stream. */
 - (int64_t)readInt64 {
     return [self readRawVarint64];
 }
 
-
 /** Read an {@code int32} field value from the stream. */
 - (int32_t)readInt32 {
     return [self readRawVarint32];
 }
-
 
 /** Read a {@code fixed64} field value from the stream. */
 - (int64_t)readFixed64 {
     return [self readRawLittleEndian64];
 }
 
-
 /** Read a {@code fixed32} field value from the stream. */
 - (int32_t)readFixed32 {
     return [self readRawLittleEndian32];
 }
 
-
 /** Read a {@code bool} field value from the stream. */
 - (BOOL)readBool {
     return [self readRawVarint32] != 0;
 }
-
 
 /** Read a {@code string} field value from the stream. */
 - (NSString*)readString {
@@ -289,7 +284,6 @@ const int32_t BUFFER_SIZE = 4096;
     [self popLimit:oldLimit];
 }
 
-
 /** Read a {@code bytes} field value from the stream. */
 - (NSData*)readData {
     int32_t size = [self readRawVarint32];
@@ -305,12 +299,10 @@ const int32_t BUFFER_SIZE = 4096;
     }
 }
 
-
 /** Read a {@code uint32} field value from the stream. */
-- (int32_t)readUInt32 {
+- (uint32_t)readUInt32 {
     return [self readRawVarint32];
 }
-
 
 /**
  * Read an enum field value from the stream.  Caller is responsible
@@ -320,24 +312,20 @@ const int32_t BUFFER_SIZE = 4096;
     return [self readRawVarint32];
 }
 
-
 /** Read an {@code sfixed32} field value from the stream. */
 - (int32_t)readSFixed32 {
     return [self readRawLittleEndian32];
 }
-
 
 /** Read an {@code sfixed64} field value from the stream. */
 - (int64_t)readSFixed64 {
     return [self readRawLittleEndian64];
 }
 
-
 /** Read an {@code sint32} field value from the stream. */
 - (int32_t)readSInt32 {
     return decodeZigZag32([self readRawVarint32]);
 }
-
 
 /** Read an {@code sint64} field value from the stream. */
 - (int64_t)readSInt64 {
@@ -385,7 +373,6 @@ const int32_t BUFFER_SIZE = 4096;
     return result;
 }
 
-
 /** Read a raw Varint from the stream. */
 - (int64_t)readRawVarint64 {
     int32_t shift = 0;
@@ -404,7 +391,6 @@ const int32_t BUFFER_SIZE = 4096;
     return result;
 }
 
-
 /** Read a 32-bit little-endian integer from the stream. */
 - (int32_t)readRawLittleEndian32 {
     int8_t b1 = [self readRawByte];
@@ -417,7 +403,6 @@ const int32_t BUFFER_SIZE = 4096;
     (((int32_t)b3 & 0xff) << 16) |
     (((int32_t)b4 & 0xff) << 24);
 }
-
 
 /** Read a 64-bit little-endian integer from the stream. */
 - (int64_t)readRawLittleEndian64 {
@@ -440,7 +425,6 @@ const int32_t BUFFER_SIZE = 4096;
     (((int64_t)b8 & 0xff) << 56);
 }
 
-
 /**
  * Set the maximum message recursion depth.  In order to prevent malicious
  * messages from causing stack overflows, {@code PBCodedInputStream} limits
@@ -455,7 +439,6 @@ const int32_t BUFFER_SIZE = 4096;
     _recursionLimit = limit;
     return oldLimit;
 }
-
 
 /**
  * Set the maximum message size.  In order to prevent malicious
@@ -476,14 +459,12 @@ const int32_t BUFFER_SIZE = 4096;
     return oldLimit;
 }
 
-
 /**
  * Resets the current size counter to zero (see {@link #setSizeLimit(int)}).
  */
 - (void)resetSizeCounter {
     _totalBytesRetired = 0;
 }
-
 
 /**
  * Sets {@code currentLimit} to (current position) + {@code byteLimit}.  This
@@ -550,7 +531,6 @@ const int32_t BUFFER_SIZE = 4096;
     return _bufferPos == _bufferSize && ![self refillBuffer:NO];
 }
 
-
 /**
  * Called with {@code this.buffer} is empty to read more bytes from the
  * input.  If {@code mustSucceed} is YES, refillBuffer() gurantees that
@@ -604,7 +584,6 @@ const int32_t BUFFER_SIZE = 4096;
     return NO;
 }
 
-
 /**
  * Read one byte from the input.
  */
@@ -615,7 +594,6 @@ const int32_t BUFFER_SIZE = 4096;
     int8_t* bytes = (int8_t*)_buffer.bytes;
     return bytes[_bufferPos++];
 }
-
 
 /**
  * Read a fixed size of bytes from the input.
@@ -725,7 +703,6 @@ const int32_t BUFFER_SIZE = 4096;
         return bytes;
     }
 }
-
 
 /**
  * Reads and discards {@code size} bytes.

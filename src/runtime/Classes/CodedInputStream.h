@@ -38,8 +38,8 @@
 
 - (Float64)readDouble;
 - (Float32)readFloat;
-- (int64_t)readUInt64;
-- (int32_t)readUInt32;
+- (uint64_t)readUInt64;
+- (uint32_t)readUInt32;
 - (int64_t)readInt64;
 - (int32_t)readInt32;
 - (int64_t)readFixed64;
@@ -52,9 +52,6 @@
 
 /**
  * Read one byte from the input.
- *
- * @throws InvalidProtocolBuffer The end of the stream or the current
- *                                        limit was reached.
  */
 - (int8_t)readRawByte;
 
@@ -69,9 +66,6 @@
 
 /**
  * Read a fixed size of bytes from the input.
- *
- * @throws InvalidProtocolBuffer The end of the stream or the current
- *                                        limit was reached.
  */
 - (NSData*)readRawData:(int32_t)size;
 
@@ -86,9 +80,6 @@
 
 /**
  * Reads and discards {@code size} bytes.
- *
- * @throws InvalidProtocolBuffer The end of the stream or the current
- *                                        limit was reached.
  */
 - (void)skipRawData:(int32_t)size;
 
@@ -128,9 +119,6 @@ extensionRegistry:(PBExtensionRegistry*)extensionRegistry;
  * Verifies that the last call to readTag() returned the given tag value.
  * This is used to verify that a nested group ended with the correct
  * end tag.
- *
- * @throws InvalidProtocolBuffer {@code value} does not match the
- *                                        last tag.
  */
 - (void)checkLastTagWas:(int32_t)value;
 

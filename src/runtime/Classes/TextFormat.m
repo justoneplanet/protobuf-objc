@@ -71,6 +71,7 @@ int32_t digitValue(unichar c) {
                 isSigned:(BOOL)isSigned
                   isLong:(BOOL)isLong {
     
+    NSParameterAssert(text);
     NSParameterAssert(text.length > 0);
     
     if (isblank([text characterAtIndex:0])) {
@@ -127,6 +128,8 @@ int32_t digitValue(unichar c) {
  * respectively.
  */
 + (int32_t)parseInt32:(NSString*)text {
+    NSParameterAssert(text);
+    
     return (int32_t)[self parseInteger:text isSigned:YES isLong:NO];
 }
 
@@ -136,6 +139,8 @@ int32_t digitValue(unichar c) {
  * respectively.  The result is coerced to a (signed) {@code int} when returned.
  */
 + (int32_t)parseUInt32:(NSString*)text {
+    NSParameterAssert(text);
+    
     return (int32_t)[self parseInteger:text isSigned:NO isLong:NO];
 }
 
@@ -145,6 +150,8 @@ int32_t digitValue(unichar c) {
  * respectively.
  */
 + (int64_t)parseInt64:(NSString*)text {
+    NSParameterAssert(text);
+    
     return [self parseInteger:text isSigned:YES isLong:YES];
 }
 
@@ -155,6 +162,8 @@ int32_t digitValue(unichar c) {
  * returned.
  */
 + (int64_t)parseUInt64:(NSString*)text {
+    NSParameterAssert(text);
+    
     return [self parseInteger:text isSigned:NO isLong:YES];
 }
 
@@ -164,6 +173,9 @@ int32_t digitValue(unichar c) {
  * "\x") are also recognized.
  */
 + (NSData*)unescapeBytes:(NSString*)input {
+    
+    NSParameterAssert(input);
+    
     NSMutableData* result = [NSMutableData dataWithLength:input.length];
     
     int32_t pos = 0;
