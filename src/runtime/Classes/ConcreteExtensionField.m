@@ -402,22 +402,22 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
     NSParameterAssert(extensionRegistry);
     
     switch (_type) {
-        case PBExtensionTypeBool:     return [NSNumber numberWithBool:[input readBool]];
-        case PBExtensionTypeFixed32:  return [NSNumber numberWithInt:[input readFixed32]];
-        case PBExtensionTypeSFixed32: return [NSNumber numberWithInt:[input readSFixed32]];
-        case PBExtensionTypeFloat:    return [NSNumber numberWithFloat:[input readFloat]];
-        case PBExtensionTypeFixed64:  return [NSNumber numberWithLongLong:[input readFixed64]];
-        case PBExtensionTypeSFixed64: return [NSNumber numberWithLongLong:[input readSFixed64]];
-        case PBExtensionTypeDouble:   return [NSNumber numberWithDouble:[input readDouble]];
-        case PBExtensionTypeInt32:    return [NSNumber numberWithInt:[input readInt32]];
-        case PBExtensionTypeInt64:    return [NSNumber numberWithLongLong:[input readInt64]];
-        case PBExtensionTypeSInt32:   return [NSNumber numberWithInt:[input readSInt32]];
-        case PBExtensionTypeSInt64:   return [NSNumber numberWithLongLong:[input readSInt64]];
+        case PBExtensionTypeBool:     return @([input readBool]);
+        case PBExtensionTypeFixed32:  return @([input readFixed32]);
+        case PBExtensionTypeSFixed32: return @([input readSFixed32]);
+        case PBExtensionTypeFloat:    return @([input readFloat]);
+        case PBExtensionTypeFixed64:  return @([input readFixed64]);
+        case PBExtensionTypeSFixed64: return @([input readSFixed64]);
+        case PBExtensionTypeDouble:   return @([input readDouble]);
+        case PBExtensionTypeInt32:    return @([input readInt32]);
+        case PBExtensionTypeInt64:    return @([input readInt64]);
+        case PBExtensionTypeSInt32:   return @([input readSInt32]);
+        case PBExtensionTypeSInt64:   return @([input readSInt64]);
         case PBExtensionTypeUInt32:   return [NSNumber numberWithInt:[input readUInt32]];
         case PBExtensionTypeUInt64:   return [NSNumber numberWithLongLong:[input readUInt64]];
         case PBExtensionTypeBytes:    return [input readData];
         case PBExtensionTypeString:   return [input readString];
-        case PBExtensionTypeEnum:     return [NSNumber numberWithInt:[input readEnum]];
+        case PBExtensionTypeEnum:     return @([input readEnum]);
         case PBExtensionTypeGroup:
         {
             id<PBMessage_Builder> builder = [_messageOrGroupClass builder];

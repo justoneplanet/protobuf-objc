@@ -40,14 +40,13 @@
     Class extendedClass = [extension extendedClass];
     id key = [self keyForClass:extendedClass];
     
-    NSMutableDictionary* extensionMap = [_classMap objectForKey:key];
+    NSMutableDictionary* extensionMap = _classMap[key];
     if (extensionMap == nil) {
         extensionMap = [NSMutableDictionary dictionary];
-        [_mutableClassMap setObject:extensionMap forKey:key];
+        _mutableClassMap[key] = extensionMap;
     }
     
-    [extensionMap setObject:extension
-                     forKey:[NSNumber numberWithInteger:[extension fieldNumber]]];
+    extensionMap[@([extension fieldNumber])] = extension;
 }
 
 

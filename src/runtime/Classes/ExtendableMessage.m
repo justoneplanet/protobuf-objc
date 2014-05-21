@@ -73,7 +73,7 @@
     NSParameterAssert(extension);
     
     [self ensureExtensionIsRegistered:extension];
-    id value = [_extensionMap objectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+    id value = _extensionMap[@([extension fieldNumber])];
     if (value != nil) {
         return value;
     }
@@ -92,15 +92,14 @@
     if (_extensionRegistry == nil) {
         self.extensionRegistry = [NSMutableDictionary dictionary];
     }
-    [_extensionRegistry setObject:extension
-                           forKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+    _extensionRegistry[@([extension fieldNumber])] = extension;
 }
 
 - (BOOL)hasExtension:(id<PBExtensionField>)extension {
     NSParameterAssert(extension);
     
     BOOL exists = NO;
-    id object = [_extensionMap objectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+    id object = _extensionMap[@([extension fieldNumber])];
     if (object != nil) {
         exists = YES;
     }
@@ -118,8 +117,8 @@
     for (NSNumber* number in sortedKeys) {
         int32_t fieldNumber = [number intValue];
         if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
-            id<PBExtensionField> extension = [_extensionRegistry objectForKey:number];
-            id value = [_extensionMap objectForKey:number];
+            id<PBExtensionField> extension = _extensionRegistry[number];
+            id value = _extensionMap[number];
             [extension writeValue:value includingTagToCodedOutputStream:output];
         }
     }
@@ -136,8 +135,8 @@
     for (NSNumber* number in sortedKeys) {
         int32_t fieldNumber = [number intValue];
         if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
-            id<PBExtensionField> extension = [_extensionRegistry objectForKey:number];
-            id value = [_extensionMap objectForKey:number];
+            id<PBExtensionField> extension = _extensionRegistry[number];
+            id value = _extensionMap[number];
             [extension writeDescriptionOf:value to:output withIndent:indent];
         }
     }
@@ -153,8 +152,8 @@
     for (NSNumber* number in sortedKeys) {
         int32_t fieldNumber = [number intValue];
         if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
-            id value = [_extensionMap objectForKey:number];
-            id otherValue = [otherMessage.extensionMap objectForKey:number];
+            id value = _extensionMap[number];
+            id otherValue = (otherMessage.extensionMap)[number];
             if (![value isEqual:otherValue]) {
                 return NO;
             }
@@ -171,7 +170,7 @@
     for (NSNumber* number in sortedKeys) {
         int32_t fieldNumber = [number intValue];
         if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
-            id value = [_extensionMap objectForKey:number];
+            id value = _extensionMap[number];
             hashCode = hashCode * 31 + [value hash];
         }
     }
@@ -181,8 +180,8 @@
 - (int32_t)extensionsSerializedSize {
     int32_t size = 0;
     for (NSNumber* number in _extensionMap) {
-        id<PBExtensionField> extension = [_extensionRegistry objectForKey:number];
-        id value = [_extensionMap objectForKey:number];
+        id<PBExtensionField> extension = _extensionRegistry[number];
+        id value = _extensionMap[number];
         size += [extension computeSerializedSizeIncludingTag:value];
     }
     

@@ -44,11 +44,11 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 - (BOOL)hasField:(int32_t)number {
-    return [_fields objectForKey:[NSNumber numberWithInt:number]] != nil;
+    return _fields[@(number)] != nil;
 }
 
 - (PBField*)getField:(int32_t)number {
-    PBField* result = [_fields objectForKey:[NSNumber numberWithInt:number]];
+    PBField* result = _fields[@(number)];
     return (result == nil) ? [PBField defaultInstance] : result;
 }
 
@@ -57,7 +57,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
     
     NSArray* sortedKeys = [_fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
     for (NSNumber* number in sortedKeys) {
-        PBField* value = [_fields objectForKey:number];
+        PBField* value = _fields[number];
         [value writeTo:number.intValue output:output];
     }
 }
@@ -77,7 +77,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
     
     NSArray* sortedKeys = [_fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
     for (NSNumber* number in sortedKeys) {
-        PBField* value = [_fields objectForKey:number];
+        PBField* value = _fields[number];
         [value writeDescriptionFor:number.intValue to:output withIndent:indent];
     }
 }
@@ -110,7 +110,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 - (int32_t)serializedSize {
     int32_t result = 0;
     for (NSNumber* number in _fields) {
-        result += [[_fields objectForKey:number] getSerializedSize:number.intValue];
+        result += [_fields[number] getSerializedSize:number.intValue];
     }
     return result;
 }
@@ -122,7 +122,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 - (void)writeAsMessageSetTo:(PBCodedOutputStream*)output {
     NSParameterAssert(output);
     for (NSNumber* number in _fields) {
-        [[_fields objectForKey:number] writeAsMessageSetExtensionTo:number.intValue output:output];
+        [_fields[number] writeAsMessageSetExtensionTo:number.intValue output:output];
     }
 }
 
@@ -133,7 +133,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 - (int32_t)serializedSizeAsMessageSet {
     int32_t result = 0;
     for (NSNumber* number in _fields) {
-        result += [[_fields objectForKey:number] getSerializedSizeAsMessageSetExtension:number.intValue];
+        result += [_fields[number] getSerializedSizeAsMessageSetExtension:number.intValue];
     }
     return result;
 }

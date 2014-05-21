@@ -71,7 +71,7 @@
 static PBExtensionRegistry* emptyRegistry = nil;
 + (void)initialize {
     if (self == [PBExtensionRegistry class]) {
-        emptyRegistry = [[PBExtensionRegistry alloc] initWithClassMap:[NSDictionary dictionary]];
+        emptyRegistry = [[PBExtensionRegistry alloc] initWithClassMap:@{}];
     }
 }
 
@@ -92,8 +92,8 @@ static PBExtensionRegistry* emptyRegistry = nil;
 }
 
 - (id<PBExtensionField>)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber {
-    NSDictionary* extensionMap = [_classMap objectForKey:[self keyForClass:aClass]];
-    return [extensionMap objectForKey:[NSNumber numberWithInteger:fieldNumber]];
+    NSDictionary* extensionMap = _classMap[[self keyForClass:aClass]];
+    return extensionMap[@(fieldNumber)];
 }
 
 @end

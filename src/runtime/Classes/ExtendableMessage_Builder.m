@@ -122,7 +122,7 @@
     if (message.extensionMap == nil) {
         message.extensionMap = [NSMutableDictionary dictionary];
     }
-    [message.extensionMap setObject:value forKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+    (message.extensionMap)[@([extension fieldNumber])] = value;
     return self;
 }
 
@@ -143,11 +143,11 @@
     if (message.extensionMap == nil) {
         message.extensionMap = [NSMutableDictionary dictionary];
     }
-    NSNumber* fieldNumber = [NSNumber numberWithInt:[extension fieldNumber]];
-    NSMutableArray* list = [message.extensionMap objectForKey:fieldNumber];
+    NSNumber* fieldNumber = @([extension fieldNumber]);
+    NSMutableArray* list = (message.extensionMap)[fieldNumber];
     if (list == nil) {
         list = [NSMutableArray array];
-        [message.extensionMap setObject:list forKey:fieldNumber];
+        (message.extensionMap)[fieldNumber] = list;
     }
     
     [list addObject:value];
@@ -173,10 +173,10 @@
         message.extensionMap = [NSMutableDictionary dictionary];
     }
     
-    NSNumber* fieldNumber = [NSNumber numberWithInt:[extension fieldNumber]];
-    NSMutableArray* list = [message.extensionMap objectForKey:fieldNumber];
+    NSNumber* fieldNumber = @([extension fieldNumber]);
+    NSMutableArray* list = (message.extensionMap)[fieldNumber];
     
-    [list replaceObjectAtIndex:index withObject:value];
+    list[index] = value;
     
     return self;
 }
@@ -187,7 +187,7 @@
     
     PBExtendableMessage* message = [self internalGetResult];
     [message ensureExtensionIsRegistered:extension];
-    [message.extensionMap removeObjectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+    [message.extensionMap removeObjectForKey:@([extension fieldNumber])];
     
     return self;
 }
@@ -207,19 +207,19 @@
         
         NSDictionary* registry = other.extensionRegistry;
         for (NSNumber* fieldNumber in other.extensionMap) {
-            id<PBExtensionField> thisField = [registry objectForKey:fieldNumber];
-            id value = [other.extensionMap objectForKey:fieldNumber];
+            id<PBExtensionField> thisField = registry[fieldNumber];
+            id value = (other.extensionMap)[fieldNumber];
             
             if ([thisField isRepeated]) {
-                NSMutableArray* list = [thisMessage.extensionMap objectForKey:fieldNumber];
+                NSMutableArray* list = (thisMessage.extensionMap)[fieldNumber];
                 if (list == nil) {
                     list = [NSMutableArray array];
-                    [thisMessage.extensionMap setObject:list forKey:fieldNumber];
+                    (thisMessage.extensionMap)[fieldNumber] = list;
                 }
                 
                 [list addObjectsFromArray:value];
             } else {
-                [thisMessage.extensionMap setObject:value forKey:fieldNumber];
+                (thisMessage.extensionMap)[fieldNumber] = value;
             }
         }
     }
