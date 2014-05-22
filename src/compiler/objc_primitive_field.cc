@@ -738,7 +738,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       }
     } else {
       printer->Print(variables_,
-        "dataSize = $fixed_size$ * count_;\n");
+        "dataSize += $fixed_size$ * count_;\n");
     }
 
     printer->Print("size_ += dataSize;\n");
