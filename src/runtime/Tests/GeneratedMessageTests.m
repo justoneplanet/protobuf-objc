@@ -18,7 +18,7 @@
 #import "GeneratedMessageTests.h"
 
 #import "TestUtilities.h"
-#import "Unittest.pb.h"
+#import "unittest.pb.h"
 
 @implementation GeneratedMessageTests
 
@@ -49,7 +49,7 @@
 
   [builder setRepeatedInt32Array:array];
   [builder setRepeatedForeignEnumArray:
-   @[@(ForeignEnumForeignBaz)]];
+   @[@(ForeignEnumFOREIGNBAZ)]];
 
   ForeignMessage* foreignMessage = [[[ForeignMessage builder] setC:12] build];
   [builder setRepeatedForeignMessageArray:@[foreignMessage]];

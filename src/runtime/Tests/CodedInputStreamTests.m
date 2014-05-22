@@ -19,7 +19,7 @@
 
 #import "SmallBlockInputStream.h"
 #import "TestUtilities.h"
-#import "Unittest.pb.h"
+#import "unittest.pb.h"
 
 @implementation CodedInputStreamTests
 

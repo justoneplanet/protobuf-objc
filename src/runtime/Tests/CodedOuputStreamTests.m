@@ -18,7 +18,7 @@
 #import "CodedOuputStreamTests.h"
 
 #import "TestUtilities.h"
-#import "Unittest.pb.h"
+#import "unittest.pb.h"
 
 
 @implementation CodedOutputStreamTests

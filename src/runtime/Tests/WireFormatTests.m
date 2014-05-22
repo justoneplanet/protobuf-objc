@@ -18,8 +18,8 @@
 #import "WireFormatTests.h"
 
 #import "TestUtilities.h"
-#import "Unittest.pb.h"
-#import "UnittestMset.pb.h"
+#import "unittest.pb.h"
+#import "unittest_mset.pb.h"
 
 @implementation WireFormatTests
 
@@ -93,7 +93,12 @@
 
 
 - (void) testExtensionsSerializedSize {
-  XCTAssertTrue([TestUtilities allSet].serializedSize == [TestUtilities allExtensionsSet].serializedSize, @"");
+    NSInteger allSetSize = [TestUtilities allSet].serializedSize;
+    NSInteger allExtensionsSetSize = [TestUtilities allExtensionsSet].serializedSize;
+    XCTAssertTrue(allSetSize == allExtensionsSetSize,
+                  @"Sizes dont match: %ld vs %ld",
+                  (long)allSetSize,
+                  (long)allExtensionsSetSize);
 }
 
 
