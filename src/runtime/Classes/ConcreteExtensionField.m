@@ -173,7 +173,7 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
                     unknownFields:(PBUnknownFieldSet_Builder*)unknownFields
                 extensionRegistry:(PBExtensionRegistry*)extensionRegistry
                           builder:(PBExtendableMessage_Builder*)builder
-                              tag:(int32_t) tag {
+                              tag:(int32_t)tag {
     
     NSParameterAssert(input);
     NSParameterAssert(unknownFields);
