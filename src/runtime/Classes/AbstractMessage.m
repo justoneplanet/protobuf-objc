@@ -41,6 +41,7 @@
 }
 
 - (int32_t)serializedSize {
+    NSAssert(NO, @"serializedSize not implemented in subclass.");
     return -1;
 }
 

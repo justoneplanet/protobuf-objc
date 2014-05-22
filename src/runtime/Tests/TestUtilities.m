@@ -17,7 +17,7 @@
 
 #import "TestUtilities.h"
 #import "ProtocolBuffers.h"
-#import "Unittest.pb.h"
+#import "unittest.pb.h"
 
 @implementation TestUtilities
 
@@ -74,7 +74,7 @@
     [message setExtension:[UnittestRoot repeatedStringExtension] index:1 value:@"515"];
     [message setExtension:[UnittestRoot repeatedBytesExtension] index:1 value:[TestUtilities getData:@"516"]];
     
-    [message setExtension:[UnittestRoot repeatedGroupExtension] index:1 value:
+    [message setExtension:[UnittestRoot RepeatedGroupExtension] index:1 value:
      [[[RepeatedGroup_extension builder] setA:517] build]];
     [message setExtension:[UnittestRoot repeatedNestedMessageExtension] index:1 value:
      [[[TestAllTypes_NestedMessage builder] setBb:518] build]];
@@ -84,11 +84,11 @@
      [[[ImportMessage builder] setD:520] build]];
     
     [message setExtension:[UnittestRoot repeatedNestedEnumExtension] index:1 value:
-     @(TestAllTypes_NestedEnumFoo)];
+     @(TestAllTypes_NestedEnumFOO)];
     [message setExtension:[UnittestRoot repeatedForeignEnumExtension] index:1 value:
-     @(ForeignEnumForeignFoo)];
+     @(ForeignEnumFOREIGNFOO)];
     [message setExtension:[UnittestRoot repeatedImportEnumExtension] index:1 value:
-     @(ImportEnumImportFoo)];
+     @(ImportEnumIMPORTFOO)];
     
     [message setExtension:[UnittestRoot repeatedStringPieceExtension] index:1 value:@"524"];
     [message setExtension:[UnittestRoot repeatedCordExtension] index:1 value:@"525"];
@@ -117,12 +117,12 @@
     XCTAssertTrue([message hasExtension:[UnittestRoot optionalStringExtension]], @"");
     XCTAssertTrue([message hasExtension:[UnittestRoot optionalBytesExtension]], @"");
     
-    XCTAssertTrue([message hasExtension:[UnittestRoot optionalGroupExtension]], @"");
+    XCTAssertTrue([message hasExtension:[UnittestRoot OptionalGroupExtension]], @"");
     XCTAssertTrue([message hasExtension:[UnittestRoot optionalNestedMessageExtension]], @"");
     XCTAssertTrue([message hasExtension:[UnittestRoot optionalForeignMessageExtension]], @"");
     XCTAssertTrue([message hasExtension:[UnittestRoot optionalImportMessageExtension]], @"");
     
-    XCTAssertTrue([[message getExtension:[UnittestRoot optionalGroupExtension]] hasA], @"");
+    XCTAssertTrue([[message getExtension:[UnittestRoot OptionalGroupExtension]] hasA], @"");
     XCTAssertTrue([[message getExtension:[UnittestRoot optionalNestedMessageExtension]] hasBb], @"");
     XCTAssertTrue([[message getExtension:[UnittestRoot optionalForeignMessageExtension]] hasC], @"");
     XCTAssertTrue([[message getExtension:[UnittestRoot optionalImportMessageExtension]] hasD], @"");
@@ -150,14 +150,14 @@
     XCTAssertEqualObjects(@"115", [message getExtension:[UnittestRoot optionalStringExtension]], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"116"], [message getExtension:[UnittestRoot optionalBytesExtension]], @"");
     
-    XCTAssertTrue(117 == [(OptionalGroup_extension *)[message getExtension:[UnittestRoot optionalGroupExtension]] a], @"");
+    XCTAssertTrue(117 == [(OptionalGroup_extension *)[message getExtension:[UnittestRoot OptionalGroupExtension]] a], @"");
     XCTAssertTrue(118 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot optionalNestedMessageExtension]] bb], @"");
     XCTAssertTrue(119 == [[message getExtension:[UnittestRoot optionalForeignMessageExtension]] c], @"");
     XCTAssertTrue(120 == [[message getExtension:[UnittestRoot optionalImportMessageExtension]] d], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBaz == [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBaz == [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] intValue], @"");
-    XCTAssertTrue(ImportEnumImportBaz == [[message getExtension:[UnittestRoot optionalImportEnumExtension]] intValue], @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAZ == [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] intValue], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAZ == [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] intValue], @"");
+    XCTAssertTrue(ImportEnumIMPORTBAZ == [[message getExtension:[UnittestRoot optionalImportEnumExtension]] intValue], @"");
     
     XCTAssertEqualObjects(@"124", [message getExtension:[UnittestRoot optionalStringPieceExtension]], @"");
     XCTAssertEqualObjects(@"125", [message getExtension:[UnittestRoot optionalCordExtension]], @"");
@@ -180,7 +180,7 @@
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedStringExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedBytesExtension]] count], @"");
     
-    XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedGroupExtension]] count], @"");
+    XCTAssertTrue(2 == [[message getExtension:[UnittestRoot RepeatedGroupExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]] count], @"");
@@ -207,14 +207,14 @@
     XCTAssertEqualObjects(@"215", [message getExtension:[UnittestRoot repeatedStringExtension]][0], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"216"], [message getExtension:[UnittestRoot repeatedBytesExtension]][0], @"");
     
-    XCTAssertTrue(217 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot repeatedGroupExtension]][0] a], @"");
+    XCTAssertTrue(217 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot RepeatedGroupExtension]][0] a], @"");
     XCTAssertTrue(218 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot repeatedNestedMessageExtension]][0] bb], @"");
     XCTAssertTrue(219 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]][0] c], @"");
     XCTAssertTrue(220 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]][0] d], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBar == [[message getExtension:[UnittestRoot repeatedNestedEnumExtension]][0] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBar == [[message getExtension:[UnittestRoot repeatedForeignEnumExtension]][0] intValue], @"");
-    XCTAssertTrue(ImportEnumImportBar == [[message getExtension:[UnittestRoot repeatedImportEnumExtension]][0] intValue], @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAR == [[message getExtension:[UnittestRoot repeatedNestedEnumExtension]][0] intValue], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAR == [[message getExtension:[UnittestRoot repeatedForeignEnumExtension]][0] intValue], @"");
+    XCTAssertTrue(ImportEnumIMPORTBAR == [[message getExtension:[UnittestRoot repeatedImportEnumExtension]][0] intValue], @"");
     
     XCTAssertEqualObjects(@"224", [message getExtension:[UnittestRoot repeatedStringPieceExtension]][0], @"");
     XCTAssertEqualObjects(@"225", [message getExtension:[UnittestRoot repeatedCordExtension]][0], @"");
@@ -235,14 +235,14 @@
     XCTAssertEqualObjects(@"315", [message getExtension:[UnittestRoot repeatedStringExtension]][1], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"316"], [message getExtension:[UnittestRoot repeatedBytesExtension]][1], @"");
     
-    XCTAssertTrue(317 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot repeatedGroupExtension]][1] a], @"");
+    XCTAssertTrue(317 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot RepeatedGroupExtension]][1] a], @"");
     XCTAssertTrue(318 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot repeatedNestedMessageExtension]][1] bb], @"");
     XCTAssertTrue(319 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]][1] c], @"");
     XCTAssertTrue(320 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]][1] d], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBaz == [[message getExtension:[UnittestRoot repeatedNestedEnumExtension]][1] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBaz == [[message getExtension:[UnittestRoot repeatedForeignEnumExtension]][1] intValue], @"");
-    XCTAssertTrue(ImportEnumImportBaz == [[message getExtension:[UnittestRoot repeatedImportEnumExtension]][1] intValue], @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAZ == [[message getExtension:[UnittestRoot repeatedNestedEnumExtension]][1] intValue], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAZ == [[message getExtension:[UnittestRoot repeatedForeignEnumExtension]][1] intValue], @"");
+    XCTAssertTrue(ImportEnumIMPORTBAZ == [[message getExtension:[UnittestRoot repeatedImportEnumExtension]][1] intValue], @"");
     
     XCTAssertEqualObjects(@"324", [message getExtension:[UnittestRoot repeatedStringPieceExtension]][1], @"");
     XCTAssertEqualObjects(@"325", [message getExtension:[UnittestRoot repeatedCordExtension]][1], @"");
@@ -288,9 +288,9 @@
     XCTAssertEqualObjects(@"415", [message getExtension:[UnittestRoot defaultStringExtension]], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"416"], [message getExtension:[UnittestRoot defaultBytesExtension]], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumFoo == [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignFoo == [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] intValue], @"");
-    XCTAssertTrue(ImportEnumImportFoo == [[message getExtension:[UnittestRoot defaultImportEnumExtension]] intValue], @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumFOO == [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] intValue], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNFOO == [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] intValue], @"");
+    XCTAssertTrue(ImportEnumIMPORTFOO == [[message getExtension:[UnittestRoot defaultImportEnumExtension]] intValue], @"");
     
     XCTAssertEqualObjects(@"424", [message getExtension:[UnittestRoot defaultStringPieceExtension]], @"");
     XCTAssertEqualObjects(@"425", [message getExtension:[UnittestRoot defaultCordExtension]], @"");
@@ -321,7 +321,7 @@
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedStringExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedBytesExtension]] count], @"");
     
-    XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedGroupExtension]] count], @"");
+    XCTAssertTrue(2 == [[message getExtension:[UnittestRoot RepeatedGroupExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] count], @"");
     XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]] count], @"");
@@ -348,16 +348,16 @@
     XCTAssertEqualObjects(@"215", [message getExtension:[UnittestRoot repeatedStringExtension]][0], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"216"], [message getExtension:[UnittestRoot repeatedBytesExtension]][0], @"");
     
-    XCTAssertTrue(217 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot repeatedGroupExtension]][0] a], @"");
+    XCTAssertTrue(217 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot RepeatedGroupExtension]][0] a], @"");
     XCTAssertTrue(218 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot repeatedNestedMessageExtension]][0] bb], @"");
     XCTAssertTrue(219 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]][0] c], @"");
     XCTAssertTrue(220 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]][0] d], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBar ==
+    XCTAssertTrue(TestAllTypes_NestedEnumBAR ==
                   [[message getExtension:[UnittestRoot repeatedNestedEnumExtension]][0] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBar ==
+    XCTAssertTrue(ForeignEnumFOREIGNBAR ==
                   [[message getExtension:[UnittestRoot repeatedForeignEnumExtension]][0] intValue], @"");
-    XCTAssertTrue(ImportEnumImportBar ==
+    XCTAssertTrue(ImportEnumIMPORTBAR ==
                   [[message getExtension:[UnittestRoot repeatedImportEnumExtension]][0] intValue], @"");
     
     XCTAssertEqualObjects(@"224", [message getExtension:[UnittestRoot repeatedStringPieceExtension]][0], @"");
@@ -380,16 +380,16 @@
     XCTAssertEqualObjects(@"515", [message getExtension:[UnittestRoot repeatedStringExtension]][1], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"516"], [message getExtension:[UnittestRoot repeatedBytesExtension]][1], @"");
     
-    XCTAssertTrue(517 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot repeatedGroupExtension]][1] a], @"");
+    XCTAssertTrue(517 == [(RepeatedGroup_extension *)[message getExtension:[UnittestRoot RepeatedGroupExtension]][1] a], @"");
     XCTAssertTrue(518 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot repeatedNestedMessageExtension]][1] bb], @"");
     XCTAssertTrue(519 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]][1] c], @"");
     XCTAssertTrue(520 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]][1] d], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumFoo ==
+    XCTAssertTrue(TestAllTypes_NestedEnumFOO ==
                   [[message getExtension:[UnittestRoot repeatedNestedEnumExtension]][1] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignFoo ==
+    XCTAssertTrue(ForeignEnumFOREIGNFOO ==
                   [[message getExtension:[UnittestRoot repeatedForeignEnumExtension]][1] intValue], @"");
-    XCTAssertTrue(ImportEnumImportFoo ==
+    XCTAssertTrue(ImportEnumIMPORTFOO ==
                   [[message getExtension:[UnittestRoot repeatedImportEnumExtension]][1] intValue], @"");
     
     XCTAssertEqualObjects(@"524", [message getExtension:[UnittestRoot repeatedStringPieceExtension]][1], @"");
@@ -425,13 +425,13 @@
     XCTAssertTrue(message.hasOptionalBool, @"");
     XCTAssertTrue(message.hasOptionalString, @"");
     XCTAssertTrue(message.hasOptionalBytes, @"");
-    
+
     XCTAssertTrue(message.hasOptionalGroup, @"");
     XCTAssertTrue(message.hasOptionalNestedMessage, @"");
     XCTAssertTrue(message.hasOptionalForeignMessage, @"");
     XCTAssertTrue(message.hasOptionalImportMessage, @"");
     
-    XCTAssertTrue(message.optionalGroup.hasA, @"");
+    XCTAssertTrue(message.OptionalGroup.hasA, @"");
     XCTAssertTrue(message.optionalNestedMessage.hasBb, @"");
     XCTAssertTrue(message.optionalForeignMessage.hasC, @"");
     XCTAssertTrue(message.optionalImportMessage.hasD, @"");
@@ -459,14 +459,14 @@
     XCTAssertEqualObjects(@"115", message.optionalString, @"");
     XCTAssertEqualObjects([TestUtilities getData:@"116"], message.optionalBytes, @"");
     
-    XCTAssertTrue(117 == message.optionalGroup.a, @"");
+    XCTAssertTrue(117 == message.OptionalGroup.a, @"");
     XCTAssertTrue(118 == message.optionalNestedMessage.bb, @"");
     XCTAssertTrue(119 == message.optionalForeignMessage.c, @"");
     XCTAssertTrue(120 == message.optionalImportMessage.d, @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBaz == message.optionalNestedEnum, @"");
-    XCTAssertTrue(ForeignEnumForeignBaz == message.optionalForeignEnum, @"");
-    XCTAssertTrue(ImportEnumImportBaz == message.optionalImportEnum, @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAZ == message.optionalNestedEnum, @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAZ == message.optionalForeignEnum, @"");
+    XCTAssertTrue(ImportEnumIMPORTBAZ == message.optionalImportEnum, @"");
     
     XCTAssertEqualObjects(@"124", message.optionalStringPiece, @"");
     XCTAssertEqualObjects(@"125", message.optionalCord, @"");
@@ -489,7 +489,7 @@
     XCTAssertTrue(2 == message.repeatedString.count, @"");
     XCTAssertTrue(2 == message.repeatedBytes.count, @"");
     
-    XCTAssertTrue(2 == message.repeatedGroup.count, @"");
+    XCTAssertTrue(2 == message.RepeatedGroup.count, @"");
     XCTAssertTrue(2 == message.repeatedNestedMessage.count, @"");
     XCTAssertTrue(2 == message.repeatedForeignMessage.count, @"");
     XCTAssertTrue(2 == message.repeatedImportMessage.count, @"");
@@ -516,14 +516,14 @@
     XCTAssertEqualObjects(@"215", [message repeatedStringAtIndex:0], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"216"], [message repeatedBytesAtIndex:0], @"");
     
-    XCTAssertTrue(217 == [message repeatedGroupAtIndex:0].a, @"");
+    XCTAssertTrue(217 == [message RepeatedGroupAtIndex:0].a, @"");
     XCTAssertTrue(218 == [message repeatedNestedMessageAtIndex:0].bb, @"");
     XCTAssertTrue(219 == [message repeatedForeignMessageAtIndex:0].c, @"");
     XCTAssertTrue(220 == [message repeatedImportMessageAtIndex:0].d, @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBar == [message repeatedNestedEnumAtIndex:0], @"");
-    XCTAssertTrue(ForeignEnumForeignBar == [message repeatedForeignEnumAtIndex:0], @"");
-    XCTAssertTrue(ImportEnumImportBar == [message repeatedImportEnumAtIndex:0], @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAR == [message repeatedNestedEnumAtIndex:0], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAR == [message repeatedForeignEnumAtIndex:0], @"");
+    XCTAssertTrue(ImportEnumIMPORTBAR == [message repeatedImportEnumAtIndex:0], @"");
     
     XCTAssertEqualObjects(@"224", [message repeatedStringPieceAtIndex:0], @"");
     XCTAssertEqualObjects(@"225", [message repeatedCordAtIndex:0], @"");
@@ -544,14 +544,14 @@
     XCTAssertEqualObjects(@"315", [message repeatedStringAtIndex:1], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"316"], [message repeatedBytesAtIndex:1], @"");
     
-    XCTAssertTrue(317 == [message repeatedGroupAtIndex:1].a, @"");
+    XCTAssertTrue(317 == [message RepeatedGroupAtIndex:1].a, @"");
     XCTAssertTrue(318 == [message repeatedNestedMessageAtIndex:1].bb, @"");
     XCTAssertTrue(319 == [message repeatedForeignMessageAtIndex:1].c, @"");
     XCTAssertTrue(320 == [message repeatedImportMessageAtIndex:1].d, @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBaz == [message repeatedNestedEnumAtIndex:1], @"");
-    XCTAssertTrue(ForeignEnumForeignBaz == [message repeatedForeignEnumAtIndex:1], @"");
-    XCTAssertTrue(ImportEnumImportBaz == [message repeatedImportEnumAtIndex:1], @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAZ == [message repeatedNestedEnumAtIndex:0], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAZ == [message repeatedForeignEnumAtIndex:0], @"");
+    XCTAssertTrue(ImportEnumIMPORTBAZ == [message repeatedImportEnumAtIndex:0], @"");
     
     XCTAssertEqualObjects(@"324", [message repeatedStringPieceAtIndex:1], @"");
     XCTAssertEqualObjects(@"325", [message repeatedCordAtIndex:1], @"");
@@ -597,9 +597,9 @@
     XCTAssertEqualObjects(@"415", message.defaultString, @"");
     XCTAssertEqualObjects([TestUtilities getData:@"416"], message.defaultBytes, @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumFoo == message.defaultNestedEnum, @"");
-    XCTAssertTrue(ForeignEnumForeignFoo == message.defaultForeignEnum, @"");
-    XCTAssertTrue(ImportEnumImportFoo == message.defaultImportEnum, @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumFOO == message.defaultNestedEnum, @"");
+    XCTAssertTrue(ForeignEnumFOREIGNFOO == message.defaultForeignEnum, @"");
+    XCTAssertTrue(ImportEnumIMPORTFOO == message.defaultImportEnum, @"");
     
     XCTAssertEqualObjects(@"424", message.defaultStringPiece, @"");
     XCTAssertEqualObjects(@"425", message.defaultCord, @"");
@@ -632,9 +632,9 @@
     [message setOptionalForeignMessage:[[[ForeignMessage builder] setC:119] build]];
     [message setOptionalImportMessage:[[[ImportMessage builder] setD:120] build]];
     
-    [message setOptionalNestedEnum:TestAllTypes_NestedEnumBaz];
-    [message setOptionalForeignEnum:ForeignEnumForeignBaz];
-    [message setOptionalImportEnum:ImportEnumImportBaz];
+    [message setOptionalNestedEnum:TestAllTypes_NestedEnumBAZ];
+    [message setOptionalForeignEnum:ForeignEnumFOREIGNBAZ];
+    [message setOptionalImportEnum:ImportEnumIMPORTBAZ];
     
     [message setOptionalStringPiece:@"124"];
     [message setOptionalCord:@"125"];
@@ -662,9 +662,9 @@
     [message addRepeatedForeignMessage:[[[ForeignMessage builder] setC:219] build]];
     [message addRepeatedImportMessage:[[[ImportMessage builder] setD:220] build]];
     
-    [message addRepeatedNestedEnum:TestAllTypes_NestedEnumBar];
-    [message addRepeatedForeignEnum:ForeignEnumForeignBar];
-    [message addRepeatedImportEnum:ImportEnumImportBar];
+    [message addRepeatedNestedEnum:TestAllTypes_NestedEnumBAR];
+    [message addRepeatedForeignEnum:ForeignEnumFOREIGNBAR];
+    [message addRepeatedImportEnum:ImportEnumIMPORTBAR];
     
     [message addRepeatedStringPiece:@"224"];
     [message addRepeatedCord:@"225"];
@@ -691,9 +691,9 @@
     [message addRepeatedForeignMessage:[[[ForeignMessage builder] setC:319] build]];
     [message addRepeatedImportMessage:[[[ImportMessage builder] setD:320] build]];
     
-    [message addRepeatedNestedEnum:TestAllTypes_NestedEnumBaz];
-    [message addRepeatedForeignEnum:ForeignEnumForeignBaz];
-    [message addRepeatedImportEnum:ImportEnumImportBaz];
+    [message addRepeatedNestedEnum:TestAllTypes_NestedEnumBAZ];
+    [message addRepeatedForeignEnum:ForeignEnumFOREIGNBAZ];
+    [message addRepeatedImportEnum:ImportEnumIMPORTBAZ];
     
     [message addRepeatedStringPiece:@"324"];
     [message addRepeatedCord:@"325"];
@@ -716,9 +716,9 @@
     [message setDefaultString  :@"415"];
     [message setDefaultBytes   :[self getData:@"416"]];
     
-    [message setDefaultNestedEnum :TestAllTypes_NestedEnumFoo];
-    [message setDefaultForeignEnum:ForeignEnumForeignFoo];
-    [message setDefaultImportEnum :ImportEnumImportFoo];
+    [message setDefaultNestedEnum :TestAllTypes_NestedEnumFOO];
+    [message setDefaultForeignEnum:ForeignEnumFOREIGNFOO];
+    [message setDefaultImportEnum :ImportEnumIMPORTFOO];
     
     [message setDefaultStringPiece:@"424"];
     [message setDefaultCord:@"425"];
@@ -745,7 +745,7 @@
     [message setExtension:[UnittestRoot optionalStringExtension]  value:@"115"];
     [message setExtension:[UnittestRoot optionalBytesExtension]   value:[self getData:@"116"]];
     
-    [message setExtension:[UnittestRoot optionalGroupExtension]
+    [message setExtension:[UnittestRoot OptionalGroupExtension]
                     value:[[[OptionalGroup_extension builder] setA:117] build]];
     [message setExtension:[UnittestRoot optionalNestedMessageExtension]
                     value:[[[TestAllTypes_NestedMessage builder] setBb:118] build]];
@@ -755,11 +755,11 @@
                     value:[[[ImportMessage builder] setD:120] build]];
     
     [message setExtension:[UnittestRoot optionalNestedEnumExtension]
-                    value:@(TestAllTypes_NestedEnumBaz)];
+                    value:@(TestAllTypes_NestedEnumBAZ)];
     [message setExtension:[UnittestRoot optionalForeignEnumExtension]
-                    value:@(ForeignEnumForeignBaz)];
+                    value:@(ForeignEnumFOREIGNBAZ)];
     [message setExtension:[UnittestRoot optionalImportEnumExtension]
-                    value:@(ImportEnumImportBaz)];
+                    value:@(ImportEnumIMPORTBAZ)];
     
     [message setExtension:[UnittestRoot optionalStringPieceExtension]  value:@"124"];
     [message setExtension:[UnittestRoot optionalCordExtension] value:@"125"];
@@ -782,7 +782,7 @@
     [message addExtension:[UnittestRoot repeatedStringExtension]  value:@"215"];
     [message addExtension:[UnittestRoot repeatedBytesExtension]   value:[self getData:@"216"]];
     
-    [message addExtension:[UnittestRoot repeatedGroupExtension]
+    [message addExtension:[UnittestRoot RepeatedGroupExtension]
                     value:[[[RepeatedGroup_extension builder] setA:217] build]];
     [message addExtension:[UnittestRoot repeatedNestedMessageExtension]
                     value:[[[TestAllTypes_NestedMessage builder] setBb:218] build]];
@@ -792,11 +792,11 @@
                     value:[[[ImportMessage builder] setD:220] build]];
     
     [message addExtension:[UnittestRoot repeatedNestedEnumExtension]
-                    value:@(TestAllTypes_NestedEnumBar)];
+                    value:@(TestAllTypes_NestedEnumBAR)];
     [message addExtension:[UnittestRoot repeatedForeignEnumExtension]
-                    value:@(ForeignEnumForeignBar)];
+                    value:@(ForeignEnumFOREIGNBAR)];
     [message addExtension:[UnittestRoot repeatedImportEnumExtension]
-                    value:@(ImportEnumImportBar)];
+                    value:@(ImportEnumIMPORTBAR)];
     
     [message addExtension:[UnittestRoot repeatedStringPieceExtension] value:@"224"];
     [message addExtension:[UnittestRoot repeatedCordExtension] value:@"225"];
@@ -818,7 +818,7 @@
     [message addExtension:[UnittestRoot repeatedStringExtension] value:@"315"];
     [message addExtension:[UnittestRoot repeatedBytesExtension] value:[self getData:@"316"]];
     
-    [message addExtension:[UnittestRoot repeatedGroupExtension]
+    [message addExtension:[UnittestRoot RepeatedGroupExtension]
                     value:[[[RepeatedGroup_extension builder] setA:317] build]];
     [message addExtension:[UnittestRoot repeatedNestedMessageExtension]
                     value:[[[TestAllTypes_NestedMessage builder] setBb:318] build]];
@@ -828,11 +828,11 @@
                     value:[[[ImportMessage builder] setD:320] build]];
     
     [message addExtension:[UnittestRoot repeatedNestedEnumExtension]
-                    value:@(TestAllTypes_NestedEnumBaz)];
+                    value:@(TestAllTypes_NestedEnumBAZ)];
     [message addExtension:[UnittestRoot repeatedForeignEnumExtension]
-                    value:@(ForeignEnumForeignBaz)];
+                    value:@(ForeignEnumFOREIGNBAZ)];
     [message addExtension:[UnittestRoot repeatedImportEnumExtension]
-                    value:@(ImportEnumImportBaz)];
+                    value:@(ImportEnumIMPORTBAZ)];
     
     [message addExtension:[UnittestRoot repeatedStringPieceExtension] value:@"324"];
     [message addExtension:[UnittestRoot repeatedCordExtension] value:@"325"];
@@ -856,11 +856,11 @@
     [message setExtension:[UnittestRoot defaultBytesExtension] value:[self getData:@"416"]];
     
     [message setExtension:[UnittestRoot defaultNestedEnumExtension]
-                    value:@(TestAllTypes_NestedEnumFoo)];
+                    value:@(TestAllTypes_NestedEnumFOO)];
     [message setExtension:[UnittestRoot defaultForeignEnumExtension]
-                    value:@(ForeignEnumForeignFoo)];
+                    value:@(ForeignEnumFOREIGNFOO)];
     [message setExtension:[UnittestRoot defaultImportEnumExtension]
-                    value:@(ImportEnumImportFoo)];
+                    value:@(ImportEnumIMPORTFOO)];
     
     [message setExtension:[UnittestRoot defaultStringPieceExtension] value:@"424"];
     [message setExtension:[UnittestRoot defaultCordExtension] value:@"425"];
@@ -1041,20 +1041,20 @@
     XCTAssertEqualObjects([NSData data], message.optionalBytes, @"");
     
     // Embedded messages should also be clear.
-    XCTAssertFalse(message.optionalGroup.hasA, @"");
+    XCTAssertFalse(message.OptionalGroup.hasA, @"");
     XCTAssertFalse(message.optionalNestedMessage.hasBb, @"");
     XCTAssertFalse(message.optionalForeignMessage.hasC, @"");
     XCTAssertFalse(message.optionalImportMessage.hasD, @"");
     
-    XCTAssertTrue(0 == message.optionalGroup.a, @"");
+    XCTAssertTrue(0 == message.OptionalGroup.a, @"");
     XCTAssertTrue(0 == message.optionalNestedMessage.bb, @"");
     XCTAssertTrue(0 == message.optionalForeignMessage.c, @"");
     XCTAssertTrue(0 == message.optionalImportMessage.d, @"");
     
     // Enums without defaults are set to the first value in the enum.
-    XCTAssertTrue(TestAllTypes_NestedEnumFoo == message.optionalNestedEnum, @"");
-    XCTAssertTrue(ForeignEnumForeignFoo == message.optionalForeignEnum, @"");
-    XCTAssertTrue(ImportEnumImportFoo == message.optionalImportEnum, @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumFOO == message.optionalNestedEnum, @"");
+    XCTAssertTrue(ForeignEnumFOREIGNFOO == message.optionalForeignEnum, @"");
+    XCTAssertTrue(ImportEnumIMPORTFOO == message.optionalImportEnum, @"");
     
     XCTAssertEqualObjects(@"", message.optionalStringPiece, @"");
     XCTAssertEqualObjects(@"", message.optionalCord, @"");
@@ -1076,7 +1076,7 @@
     XCTAssertTrue(0 == message.repeatedString.count, @"");
     XCTAssertTrue(0 == message.repeatedBytes.count, @"");
     
-    XCTAssertTrue(0 == message.repeatedGroup.count, @"");
+    XCTAssertTrue(0 == message.RepeatedGroup.count, @"");
     XCTAssertTrue(0 == message.repeatedNestedMessage.count, @"");
     XCTAssertTrue(0 == message.repeatedForeignMessage.count, @"");
     XCTAssertTrue(0 == message.repeatedImportMessage.count, @"");
@@ -1128,9 +1128,9 @@
     XCTAssertEqualObjects(@"hello", message.defaultString, @"");
     XCTAssertEqualObjects([TestUtilities getData:@"world"], message.defaultBytes, @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBar == message.defaultNestedEnum, @"");
-    XCTAssertTrue(ForeignEnumForeignBar == message.defaultForeignEnum, @"");
-    XCTAssertTrue(ImportEnumImportBar == message.defaultImportEnum, @"");
+    XCTAssertTrue(TestAllTypes_NestedEnumBAR == message.defaultNestedEnum, @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAR == message.defaultForeignEnum, @"");
+    XCTAssertTrue(ImportEnumIMPORTBAR == message.defaultImportEnum, @"");
     
     XCTAssertEqualObjects(@"abc", message.defaultStringPiece, @"");
     XCTAssertEqualObjects(@"123", message.defaultCord, @"");
@@ -1160,7 +1160,7 @@
     XCTAssertFalse([message hasExtension:[UnittestRoot optionalStringExtension]], @"");
     XCTAssertFalse([message hasExtension:[UnittestRoot optionalBytesExtension]], @"");
     
-    XCTAssertFalse([message hasExtension:[UnittestRoot optionalGroupExtension]], @"");
+    XCTAssertFalse([message hasExtension:[UnittestRoot OptionalGroupExtension]], @"");
     XCTAssertFalse([message hasExtension:[UnittestRoot optionalNestedMessageExtension]], @"");
     XCTAssertFalse([message hasExtension:[UnittestRoot optionalForeignMessageExtension]], @"");
     XCTAssertFalse([message hasExtension:[UnittestRoot optionalImportMessageExtension]], @"");
@@ -1191,22 +1191,22 @@
     
     // Embedded messages should also be clear.
     
-    XCTAssertFalse([[message getExtension:[UnittestRoot optionalGroupExtension]] hasA], @"");
+    XCTAssertFalse([[message getExtension:[UnittestRoot OptionalGroupExtension]] hasA], @"");
     XCTAssertFalse([[message getExtension:[UnittestRoot optionalNestedMessageExtension]] hasBb], @"");
     XCTAssertFalse([[message getExtension:[UnittestRoot optionalForeignMessageExtension]] hasC], @"");
     XCTAssertFalse([[message getExtension:[UnittestRoot optionalImportMessageExtension]] hasD], @"");
     
-    XCTAssertTrue(0 == [(OptionalGroup_extension *)[message getExtension:[UnittestRoot optionalGroupExtension]] a], @"");
+    XCTAssertTrue(0 == [(OptionalGroup_extension *)[message getExtension:[UnittestRoot OptionalGroupExtension]] a], @"");
     XCTAssertTrue(0 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot optionalNestedMessageExtension]] bb], @"");
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot optionalForeignMessageExtension]] c], @"");
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot optionalImportMessageExtension]] d], @"");
     
     // Enums without defaults are set to the first value in the enum.
-    XCTAssertTrue(TestAllTypes_NestedEnumFoo ==
+    XCTAssertTrue(TestAllTypes_NestedEnumFOO ==
                   [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignFoo ==
+    XCTAssertTrue(ForeignEnumFOREIGNFOO ==
                   [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] intValue], @"");
-    XCTAssertTrue(ImportEnumImportFoo ==
+    XCTAssertTrue(ImportEnumIMPORTFOO ==
                   [[message getExtension:[UnittestRoot optionalImportEnumExtension]] intValue], @"");
     
     XCTAssertEqualObjects(@"", [message getExtension:[UnittestRoot optionalStringPieceExtension]], @"");
@@ -1229,7 +1229,7 @@
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot repeatedStringExtension]] count], @"");
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot repeatedBytesExtension]] count], @"");
     
-    XCTAssertTrue(0 == [[message getExtension:[UnittestRoot repeatedGroupExtension]] count], @"");
+    XCTAssertTrue(0 == [[message getExtension:[UnittestRoot RepeatedGroupExtension]] count], @"");
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] count], @"");
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] count], @"");
     XCTAssertTrue(0 == [[message getExtension:[UnittestRoot repeatedImportMessageExtension]] count], @"");
@@ -1281,11 +1281,11 @@
     XCTAssertEqualObjects(@"hello", [message getExtension:[UnittestRoot defaultStringExtension]], @"");
     XCTAssertEqualObjects([TestUtilities getData:@"world"], [message getExtension:[UnittestRoot defaultBytesExtension]], @"");
     
-    XCTAssertTrue(TestAllTypes_NestedEnumBar ==
+    XCTAssertTrue(TestAllTypes_NestedEnumBAR ==
                   [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] intValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBar ==
+    XCTAssertTrue(ForeignEnumFOREIGNBAR ==
                   [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] intValue], @"");
-    XCTAssertTrue(ImportEnumImportBar ==
+    XCTAssertTrue(ImportEnumIMPORTBAR ==
                   [[message getExtension:[UnittestRoot defaultImportEnumExtension]] intValue], @"");
     
     XCTAssertEqualObjects(@"abc", [message getExtension:[UnittestRoot defaultStringPieceExtension]], @"");
@@ -1311,7 +1311,7 @@
     [message addPackedFloat   :611];
     [message addPackedDouble  :612];
     [message addPackedBool    :YES];
-    [message addPackedEnum    :ForeignEnumForeignBar];
+    [message addPackedEnum    :ForeignEnumFOREIGNBAR];
     // Add a second one of each field.
     [message addPackedInt32   :701];
     [message addPackedInt64   :702];
@@ -1326,7 +1326,7 @@
     [message addPackedFloat   :711];
     [message addPackedDouble  :712];
     [message addPackedBool    :NO];
-    [message addPackedEnum    :ForeignEnumForeignBaz];
+    [message addPackedEnum    :ForeignEnumFOREIGNBAZ];
 }
 
 
@@ -1358,7 +1358,7 @@
     XCTAssertTrue(611   ==  [message packedFloatAtIndex:0], @"");
     XCTAssertTrue(612   ==  [message packedDoubleAtIndex:0], @"");
     XCTAssertTrue(YES  ==  [message packedBoolAtIndex:0], @"");
-    XCTAssertTrue(ForeignEnumForeignBar ==  [message packedEnumAtIndex:0], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAR ==  [message packedEnumAtIndex:0], @"");
     XCTAssertTrue(701   ==  [message packedInt32AtIndex:1], @"");
     XCTAssertTrue(702   ==  [message packedInt64AtIndex:1], @"");
     XCTAssertTrue(703   ==  [message packedUint32AtIndex:1], @"");
@@ -1372,7 +1372,7 @@
     XCTAssertTrue(711   ==  [message packedFloatAtIndex:1], @"");
     XCTAssertTrue(712   ==  [message packedDoubleAtIndex:1], @"");
     XCTAssertTrue(NO ==  [message packedBoolAtIndex:1], @"");
-    XCTAssertTrue(ForeignEnumForeignBaz ==  [message packedEnumAtIndex:1], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAZ ==  [message packedEnumAtIndex:0], @"");
 }
 
 
@@ -1396,7 +1396,7 @@
     [message addExtension:[UnittestRoot packedFloatExtension   ] value:@611.0F];
     [message addExtension:[UnittestRoot packedDoubleExtension  ] value:@612.0];
     [message addExtension:[UnittestRoot packedBoolExtension    ] value:@YES];
-    [message addExtension:[UnittestRoot packedEnumExtension] value:@(ForeignEnumForeignBar)];
+    [message addExtension:[UnittestRoot packedEnumExtension] value:@(ForeignEnumFOREIGNBAR)];
     // Add a second one of each field.
     [message addExtension:[UnittestRoot packedInt32Extension   ] value:@701];
     [message addExtension:[UnittestRoot packedInt64Extension   ] value:@702LL];
@@ -1411,7 +1411,7 @@
     [message addExtension:[UnittestRoot packedFloatExtension   ] value:@711.0F];
     [message addExtension:[UnittestRoot packedDoubleExtension  ] value:@712.0];
     [message addExtension:[UnittestRoot packedBoolExtension    ] value:@NO];
-    [message addExtension:[UnittestRoot packedEnumExtension] value:@(ForeignEnumForeignBaz)];
+    [message addExtension:[UnittestRoot packedEnumExtension] value:@(ForeignEnumFOREIGNBAZ)];
 }
 
 
@@ -1443,7 +1443,7 @@
     XCTAssertTrue(611.0F  ==  [[message getExtension:[UnittestRoot packedFloatExtension   ]][0] floatValue], @"");
     XCTAssertTrue(612.0  ==  [[message getExtension:[UnittestRoot packedDoubleExtension  ]][0] doubleValue], @"");
     XCTAssertTrue(YES  ==  [[message getExtension:[UnittestRoot packedBoolExtension    ]][0] boolValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBar == [[message getExtension:[UnittestRoot packedEnumExtension]][0] intValue], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAR == [[message getExtension:[UnittestRoot packedEnumExtension]][0] intValue], @"");
     XCTAssertTrue(701   ==  [[message getExtension:[UnittestRoot packedInt32Extension   ]][1] intValue], @"");
     XCTAssertTrue(702L  ==  [[message getExtension:[UnittestRoot packedInt64Extension   ]][1] longLongValue], @"");
     XCTAssertTrue(703   ==  [[message getExtension:[UnittestRoot packedUint32Extension  ]][1] intValue], @"");
@@ -1457,7 +1457,7 @@
     XCTAssertTrue(711.0F  ==  [[message getExtension:[UnittestRoot packedFloatExtension   ]][1] floatValue], @"");
     XCTAssertTrue(712.0  ==  [[message getExtension:[UnittestRoot packedDoubleExtension  ]][1] doubleValue], @"");
     XCTAssertTrue(NO ==  [[message getExtension:[UnittestRoot packedBoolExtension    ]][1] boolValue], @"");
-    XCTAssertTrue(ForeignEnumForeignBaz == [[message getExtension:[UnittestRoot packedEnumExtension]][1] intValue], @"");
+    XCTAssertTrue(ForeignEnumFOREIGNBAZ == [[message getExtension:[UnittestRoot packedEnumExtension]][1] intValue], @"");
 }
 
 

@@ -17,7 +17,7 @@
 
 #import "MessageTests.h"
 
-#import "Unittest.pb.h"
+#import "unittest.pb.h"
 
 @implementation MessageTests
 

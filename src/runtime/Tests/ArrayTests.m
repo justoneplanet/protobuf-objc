@@ -59,9 +59,9 @@
 	const int32_t kValues[3] = { 1, 2, 3 };
 	PBArray *original = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *copy = [original copy];
-	STAssertEquals(original.valueType, copy.valueType, nil);
-	STAssertEquals(original.count, copy.count, nil);
-	STAssertEquals([original int32AtIndex:1], [copy int32AtIndex:1], nil);
+	XCTAssertEqual(original.valueType, copy.valueType, nil);
+	XCTAssertEqual(original.count, copy.count, nil);
+	XCTAssertEqual([original int32AtIndex:1], [copy int32AtIndex:1], nil);
 }
 */
 
@@ -114,8 +114,8 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array addInt32:1];
 	[array addInt32:4];
-	STAssertEquals(array.count, (NSUInteger)2, nil);
-	STAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, nil);
+	XCTAssertEqual(array.count, (NSUInteger)2, nil);
+	XCTAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, nil);
 }
 
 
@@ -126,8 +126,8 @@
 	PBArray *source = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendArray:source];
-	STAssertEquals(array.count, source.count, nil);
-	STAssertEquals([array int32AtIndex:1], 2, nil);
+	XCTAssertEqual(array.count, source.count, nil);
+	XCTAssertEqual([array int32AtIndex:1], 2, nil);
 }
 */
 - (void)testAppendValues
