@@ -23,7 +23,7 @@
   #ifdef __x86_64__	
     XCTAssertEqual(8, (int)sizeof(long));
   #else
-    STAssertEquals(4, (int)sizeof(long), nil);
+    XCTAssertEqual(4, (int)sizeof(long), nil);
   #endif
   XCTAssertEqual(8, (int)sizeof(long long));
   XCTAssertEqual(4, (int)sizeof(int32_t));
