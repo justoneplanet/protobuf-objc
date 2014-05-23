@@ -1259,9 +1259,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 @property (strong) NSMutableArray *repeatedNestedMessageArray;
 @property (strong) NSMutableArray *repeatedForeignMessageArray;
 @property (strong) NSMutableArray *repeatedImportMessageArray;
-@property (strong) PBAppendableArray *repeatedNestedEnumArray;
-@property (strong) PBAppendableArray *repeatedForeignEnumArray;
-@property (strong) PBAppendableArray *repeatedImportEnumArray;
+@property (strong) NSMutableArray *repeatedNestedEnumArray;
+@property (strong) NSMutableArray *repeatedForeignEnumArray;
+@property (strong) NSMutableArray *repeatedImportEnumArray;
 @property (strong) NSMutableArray * repeatedStringPieceArray;
 @property (strong) NSMutableArray * repeatedCordArray;
 @property int32_t defaultInt32;
@@ -1349,9 +1349,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   NSMutableArray *_repeatedImportMessageArray;
   NSMutableArray *_repeatedBytesArray;
   PBAppendableArray *_repeatedUint32Array;
-  PBAppendableArray * _repeatedImportEnumArray;
-  PBAppendableArray * _repeatedForeignEnumArray;
-  PBAppendableArray * _repeatedNestedEnumArray;
+  NSMutableArray * _repeatedImportEnumArray;
+  NSMutableArray * _repeatedForeignEnumArray;
+  NSMutableArray * _repeatedNestedEnumArray;
   PBAppendableArray *_repeatedSfixed32Array;
   PBAppendableArray *_repeatedSfixed64Array;
   PBAppendableArray *_repeatedSint32Array;
@@ -1826,24 +1826,21 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 - (ImportMessageLite*)repeatedImportMessageAtIndex:(NSUInteger)index {
   return _repeatedImportMessageArray[index];
 }
-- (PBArray *)repeatedNestedEnum {
+- (NSArray *)repeatedNestedEnum {
   return _repeatedNestedEnumArray;
 }
 - (TestAllTypesLite_NestedEnum)repeatedNestedEnumAtIndex:(NSUInteger)index {
-  return [_repeatedNestedEnumArray int32AtIndex:index];
-}
-- (PBArray *)repeatedForeignEnum {
+  NSNumber *value = _repeatedNestedEnumArray[index];  return value.intValue;}
+- (NSArray *)repeatedForeignEnum {
   return _repeatedForeignEnumArray;
 }
 - (ForeignEnumLite)repeatedForeignEnumAtIndex:(NSUInteger)index {
-  return [_repeatedForeignEnumArray int32AtIndex:index];
-}
-- (PBArray *)repeatedImportEnum {
+  NSNumber *value = _repeatedForeignEnumArray[index];  return value.intValue;}
+- (NSArray *)repeatedImportEnum {
   return _repeatedImportEnumArray;
 }
 - (ImportEnumLite)repeatedImportEnumAtIndex:(NSUInteger)index {
-  return [_repeatedImportEnumArray int32AtIndex:index];
-}
+  NSNumber *value = _repeatedImportEnumArray[index];  return value.intValue;}
 - (NSArray *)repeatedStringPiece {
   return _repeatedStringPieceArray;
 }
@@ -2043,21 +2040,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   for (ImportMessageLite *element in self.repeatedImportMessageArray) {
     [output writeMessage:50 value:element];
   }
-  const NSUInteger repeatedNestedEnumArrayCount = self.repeatedNestedEnumArray.count;
-  const TestAllTypesLite_NestedEnum *repeatedNestedEnumArrayValues = (const TestAllTypesLite_NestedEnum *)self.repeatedNestedEnumArray.data;
-  for (NSUInteger i = 0; i < repeatedNestedEnumArrayCount; ++i) {
-    [output writeEnum:51 value:repeatedNestedEnumArrayValues[i]];
-  }
-  const NSUInteger repeatedForeignEnumArrayCount = self.repeatedForeignEnumArray.count;
-  const ForeignEnumLite *repeatedForeignEnumArrayValues = (const ForeignEnumLite *)self.repeatedForeignEnumArray.data;
-  for (NSUInteger i = 0; i < repeatedForeignEnumArrayCount; ++i) {
-    [output writeEnum:52 value:repeatedForeignEnumArrayValues[i]];
-  }
-  const NSUInteger repeatedImportEnumArrayCount = self.repeatedImportEnumArray.count;
-  const ImportEnumLite *repeatedImportEnumArrayValues = (const ImportEnumLite *)self.repeatedImportEnumArray.data;
-  for (NSUInteger i = 0; i < repeatedImportEnumArrayCount; ++i) {
-    [output writeEnum:53 value:repeatedImportEnumArrayValues[i]];
-  }
+  for (NSNumber *element in self.repeatedNestedEnumArray) {  [output writeEnum:51 value:element.intValue];}
+  for (NSNumber *element in self.repeatedForeignEnumArray) {  [output writeEnum:52 value:element.intValue];}
+  for (NSNumber *element in self.repeatedImportEnumArray) {  [output writeEnum:53 value:element.intValue];}
   for (NSString * value in self.repeatedStringPieceArray) {
     [output writeString:54 value:value];
   }
@@ -2344,35 +2329,14 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   for (ImportMessageLite *element in self.repeatedImportMessageArray) {
     size_ += computeMessageSize(50, element);
   }
-  {
-    int32_t dataSize = 0;
-    const NSUInteger count_ = self.repeatedNestedEnumArray.count;
-    const TestAllTypesLite_NestedEnum *values = (const TestAllTypesLite_NestedEnum *)self.repeatedNestedEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      dataSize += computeEnumSizeNoTag(values[i]);
-    }
-    size_ += dataSize;
-    size_ += 2 * count_;
+  for (NSNumber *element in self.repeatedNestedEnumArray) {
+    size_ += computeEnumSize(51, element.intValue);
   }
-  {
-    int32_t dataSize = 0;
-    const NSUInteger count_ = self.repeatedForeignEnumArray.count;
-    const ForeignEnumLite *values = (const ForeignEnumLite *)self.repeatedForeignEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      dataSize += computeEnumSizeNoTag(values[i]);
-    }
-    size_ += dataSize;
-    size_ += 2 * count_;
+  for (NSNumber *element in self.repeatedForeignEnumArray) {
+    size_ += computeEnumSize(52, element.intValue);
   }
-  {
-    int32_t dataSize = 0;
-    const NSUInteger count_ = self.repeatedImportEnumArray.count;
-    const ImportEnumLite *values = (const ImportEnumLite *)self.repeatedImportEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      dataSize += computeEnumSizeNoTag(values[i]);
-    }
-    size_ += dataSize;
-    size_ += 2 * count_;
+  for (NSNumber *element in self.repeatedImportEnumArray) {
+    size_ += computeEnumSize(53, element.intValue);
   }
   {
     int32_t dataSize = 0;
@@ -2639,21 +2603,15 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }
-  {  const NSUInteger count_ = self.repeatedNestedEnumArray.count;
-    const TestAllTypesLite_NestedEnum *values_ = (const TestAllTypesLite_NestedEnum *)self.repeatedNestedEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      [output appendFormat:@"%@%@: %@\n", indent, @"repeatedNestedEnum", @(values_[i])];
-    }}
-  {  const NSUInteger count_ = self.repeatedForeignEnumArray.count;
-    const ForeignEnumLite *values_ = (const ForeignEnumLite *)self.repeatedForeignEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      [output appendFormat:@"%@%@: %@\n", indent, @"repeatedForeignEnum", @(values_[i])];
-    }}
-  {  const NSUInteger count_ = self.repeatedImportEnumArray.count;
-    const ImportEnumLite *values_ = (const ImportEnumLite *)self.repeatedImportEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      [output appendFormat:@"%@%@: %@\n", indent, @"repeatedImportEnum", @(values_[i])];
-    }}
+  for (NSNumber* element in self.repeatedNestedEnumArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedNestedEnum", element];
+  }
+  for (NSNumber* element in self.repeatedForeignEnumArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedForeignEnum", element];
+  }
+  for (NSNumber* element in self.repeatedImportEnumArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedImportEnum", element];
+  }
   for (NSString * element in self.repeatedStringPieceArray) {
     [output appendFormat:@"%@%@: %@\n", indent, @"repeatedStringPiece", element];
   }
@@ -2992,21 +2950,15 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   for (ImportMessageLite* element in self.repeatedImportMessageArray) {
     hashCode = hashCode * 31 + [element hash];
   }
-  {  const NSUInteger count_ = self.repeatedNestedEnumArray.count;
-    const TestAllTypesLite_NestedEnum *values_ = (const TestAllTypesLite_NestedEnum *)self.repeatedNestedEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      hashCode = hashCode * 31 + values_[i];
-    }}
-  {  const NSUInteger count_ = self.repeatedForeignEnumArray.count;
-    const ForeignEnumLite *values_ = (const ForeignEnumLite *)self.repeatedForeignEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      hashCode = hashCode * 31 + values_[i];
-    }}
-  {  const NSUInteger count_ = self.repeatedImportEnumArray.count;
-    const ImportEnumLite *values_ = (const ImportEnumLite *)self.repeatedImportEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      hashCode = hashCode * 31 + values_[i];
-    }}
+  for (NSNumber* element in self.repeatedNestedEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  for (NSNumber* element in self.repeatedForeignEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  for (NSNumber* element in self.repeatedImportEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
   for (NSString * element in self.repeatedStringPieceArray) {
     hashCode = hashCode * 31 + [element hash];
   }
@@ -3329,23 +3281,23 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   }
   if (other.repeatedNestedEnumArray.count > 0) {
     if (_result.repeatedNestedEnumArray == nil) {
-      _result.repeatedNestedEnumArray = [other.repeatedNestedEnumArray copy];
+      _result.repeatedNestedEnumArray = [[NSMutableArray alloc] initWithArray:other.repeatedNestedEnumArray];
     } else {
-      [_result.repeatedNestedEnumArray appendArray:other.repeatedNestedEnumArray];
+      [_result.repeatedNestedEnumArray addObjectsFromArray:other.repeatedNestedEnumArray];
     }
   }
   if (other.repeatedForeignEnumArray.count > 0) {
     if (_result.repeatedForeignEnumArray == nil) {
-      _result.repeatedForeignEnumArray = [other.repeatedForeignEnumArray copy];
+      _result.repeatedForeignEnumArray = [[NSMutableArray alloc] initWithArray:other.repeatedForeignEnumArray];
     } else {
-      [_result.repeatedForeignEnumArray appendArray:other.repeatedForeignEnumArray];
+      [_result.repeatedForeignEnumArray addObjectsFromArray:other.repeatedForeignEnumArray];
     }
   }
   if (other.repeatedImportEnumArray.count > 0) {
     if (_result.repeatedImportEnumArray == nil) {
-      _result.repeatedImportEnumArray = [other.repeatedImportEnumArray copy];
+      _result.repeatedImportEnumArray = [[NSMutableArray alloc] initWithArray:other.repeatedImportEnumArray];
     } else {
-      [_result.repeatedImportEnumArray appendArray:other.repeatedImportEnumArray];
+      [_result.repeatedImportEnumArray addObjectsFromArray:other.repeatedImportEnumArray];
     }
   }
   if (other.repeatedStringPieceArray.count > 0) {
@@ -4682,7 +4634,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   _result.repeatedImportMessageArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedNestedEnum {
+- (NSMutableArray *)repeatedNestedEnum {
   return _result.repeatedNestedEnumArray;
 }
 - (TestAllTypesLite_NestedEnum)repeatedNestedEnumAtIndex:(NSUInteger)index {
@@ -4690,24 +4642,20 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 }
 - (TestAllTypesLite_Builder *)addRepeatedNestedEnum:(TestAllTypesLite_NestedEnum)value {
   if (_result.repeatedNestedEnumArray == nil) {
-    _result.repeatedNestedEnumArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+    _result.repeatedNestedEnumArray = [NSMutableArray array];
   }
-  [_result.repeatedNestedEnumArray addInt32:value];
+  [_result.repeatedNestedEnumArray addObject:@(value)];
   return self;
 }
 - (TestAllTypesLite_Builder *)setRepeatedNestedEnumArray:(NSArray *)array {
-  _result.repeatedNestedEnumArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
-  return self;
-}
-- (TestAllTypesLite_Builder *)setRepeatedNestedEnumValues:(const TestAllTypesLite_NestedEnum *)values count:(NSUInteger)count {
-  _result.repeatedNestedEnumArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  _result.repeatedNestedEnumArray = [NSMutableArray arrayWithArray:array];
   return self;
 }
 - (TestAllTypesLite_Builder *)clearRepeatedNestedEnum {
   _result.repeatedNestedEnumArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedForeignEnum {
+- (NSMutableArray *)repeatedForeignEnum {
   return _result.repeatedForeignEnumArray;
 }
 - (ForeignEnumLite)repeatedForeignEnumAtIndex:(NSUInteger)index {
@@ -4715,24 +4663,20 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 }
 - (TestAllTypesLite_Builder *)addRepeatedForeignEnum:(ForeignEnumLite)value {
   if (_result.repeatedForeignEnumArray == nil) {
-    _result.repeatedForeignEnumArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+    _result.repeatedForeignEnumArray = [NSMutableArray array];
   }
-  [_result.repeatedForeignEnumArray addInt32:value];
+  [_result.repeatedForeignEnumArray addObject:@(value)];
   return self;
 }
 - (TestAllTypesLite_Builder *)setRepeatedForeignEnumArray:(NSArray *)array {
-  _result.repeatedForeignEnumArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
-  return self;
-}
-- (TestAllTypesLite_Builder *)setRepeatedForeignEnumValues:(const ForeignEnumLite *)values count:(NSUInteger)count {
-  _result.repeatedForeignEnumArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  _result.repeatedForeignEnumArray = [NSMutableArray arrayWithArray:array];
   return self;
 }
 - (TestAllTypesLite_Builder *)clearRepeatedForeignEnum {
   _result.repeatedForeignEnumArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedImportEnum {
+- (NSMutableArray *)repeatedImportEnum {
   return _result.repeatedImportEnumArray;
 }
 - (ImportEnumLite)repeatedImportEnumAtIndex:(NSUInteger)index {
@@ -4740,17 +4684,13 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 }
 - (TestAllTypesLite_Builder *)addRepeatedImportEnum:(ImportEnumLite)value {
   if (_result.repeatedImportEnumArray == nil) {
-    _result.repeatedImportEnumArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+    _result.repeatedImportEnumArray = [NSMutableArray array];
   }
-  [_result.repeatedImportEnumArray addInt32:value];
+  [_result.repeatedImportEnumArray addObject:@(value)];
   return self;
 }
 - (TestAllTypesLite_Builder *)setRepeatedImportEnumArray:(NSArray *)array {
-  _result.repeatedImportEnumArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
-  return self;
-}
-- (TestAllTypesLite_Builder *)setRepeatedImportEnumValues:(const ImportEnumLite *)values count:(NSUInteger)count {
-  _result.repeatedImportEnumArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  _result.repeatedImportEnumArray = [NSMutableArray arrayWithArray:array];
   return self;
 }
 - (TestAllTypesLite_Builder *)clearRepeatedImportEnum {
@@ -5960,7 +5900,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 @property (strong) PBAppendableArray * packedFloatArray;
 @property (strong) PBAppendableArray * packedDoubleArray;
 @property (strong) PBAppendableArray * packedBoolArray;
-@property (strong) PBAppendableArray *packedEnumArray;
+@property (strong) NSMutableArray *packedEnumArray;
 
 @end
 
@@ -5983,7 +5923,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   int32_t _packedFixed32MemoizedSerializedSize;
   PBAppendableArray *_packedUint32Array;
   int32_t _packedUint32MemoizedSerializedSize;
-  PBAppendableArray * _packedEnumArray;
+  NSMutableArray * _packedEnumArray;
   int32_t _packedEnumMemoizedSerializedSize;
   PBAppendableArray *_packedSfixed32Array;
   int32_t _packedSfixed32MemoizedSerializedSize;
@@ -6105,12 +6045,11 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 - (BOOL)packedBoolAtIndex:(NSUInteger)index {
   return [_packedBoolArray boolAtIndex:index];
 }
-- (PBArray *)packedEnum {
+- (NSArray *)packedEnum {
   return _packedEnumArray;
 }
 - (ForeignEnumLite)packedEnumAtIndex:(NSUInteger)index {
-  return [_packedEnumArray int32AtIndex:index];
-}
+  NSNumber *value = _packedEnumArray[index];  return value.intValue;}
 
 - (BOOL)isInitialized {
   return YES;
@@ -6234,14 +6173,11 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
       [output writeBoolNoTag:values[i]];
     }
   }
-  const NSUInteger packedEnumArrayCount = self.packedEnumArray.count;
-  const ForeignEnumLite *packedEnumArrayValues = (const ForeignEnumLite *)self.packedEnumArray.data;
   if (self.packedEnumArray.count > 0) {
     [output writeRawVarint32:826];
     [output writeRawVarint32:_packedEnumMemoizedSerializedSize];
   }
-  for (NSUInteger i = 0; i < packedEnumArrayCount; ++i) {
-    [output writeEnumNoTag:packedEnumArrayValues[i]];
+  for (NSNumber *element in self.packedEnumArray) {  [output writeEnumNoTag:element.intValue];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -6413,19 +6349,14 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
     }
     _packedBoolMemoizedSerializedSize = dataSize;
   }
-  {
-    int32_t dataSize = 0;
-    const NSUInteger count_ = self.packedEnumArray.count;
-    const ForeignEnumLite *values = (const ForeignEnumLite *)self.packedEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      dataSize += computeEnumSizeNoTag(values[i]);
-    }
-    size_ += dataSize;
-    if (count_ > 0) {
-      size_ += 2;
-      size_ += computeRawVarint32Size(dataSize);
-    }
-    _packedEnumMemoizedSerializedSize = dataSize;
+  _packedEnumMemoizedSerializedSize = size_;
+  for (NSNumber *element in self.packedEnumArray) {
+    size_ += computeEnumSizeNoTag(element.intValue);
+  }
+  _packedEnumMemoizedSerializedSize = size_ - _packedEnumMemoizedSerializedSize;
+  if (self.packedEnumArray.count > 0) {
+    size_ += 2;  // tag size
+    size_ += computeRawVarint32Size(_packedEnumMemoizedSerializedSize);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -6500,11 +6431,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   for(int i=0; i < listCount; i++){
     [output appendFormat:@"%@%@: %@\n", indent, @"packedBool", @([self.packedBoolArray boolAtIndex:i])];
   }
-  {  const NSUInteger count_ = self.packedEnumArray.count;
-    const ForeignEnumLite *values_ = (const ForeignEnumLite *)self.packedEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      [output appendFormat:@"%@%@: %@\n", indent, @"packedEnum", @(values_[i])];
-    }}
+  for (NSNumber* element in self.packedEnumArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedEnum", element];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 
@@ -6589,11 +6518,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   for(int i=0; i < listCount; i++){
     hashCode = hashCode * 31 + [self.packedBoolArray boolAtIndex:i];
   }
-  {  const NSUInteger count_ = self.packedEnumArray.count;
-    const ForeignEnumLite *values_ = (const ForeignEnumLite *)self.packedEnumArray.data;
-    for (NSUInteger i = 0; i < count_; ++i) {
-      hashCode = hashCode * 31 + values_[i];
-    }}
+  for (NSNumber* element in self.packedEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -6736,9 +6663,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   }
   if (other.packedEnumArray.count > 0) {
     if (_result.packedEnumArray == nil) {
-      _result.packedEnumArray = [other.packedEnumArray copy];
+      _result.packedEnumArray = [[NSMutableArray alloc] initWithArray:other.packedEnumArray];
     } else {
-      [_result.packedEnumArray appendArray:other.packedEnumArray];
+      [_result.packedEnumArray addObjectsFromArray:other.packedEnumArray];
     }
   }
   [self mergeUnknownFields:other.unknownFields];
@@ -7260,7 +7187,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   _result.packedBoolArray = nil;
   return self;
 }
-- (PBAppendableArray *)packedEnum {
+- (NSMutableArray *)packedEnum {
   return _result.packedEnumArray;
 }
 - (ForeignEnumLite)packedEnumAtIndex:(NSUInteger)index {
@@ -7268,17 +7195,13 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 }
 - (TestPackedTypesLite_Builder *)addPackedEnum:(ForeignEnumLite)value {
   if (_result.packedEnumArray == nil) {
-    _result.packedEnumArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+    _result.packedEnumArray = [NSMutableArray array];
   }
-  [_result.packedEnumArray addInt32:value];
+  [_result.packedEnumArray addObject:@(value)];
   return self;
 }
 - (TestPackedTypesLite_Builder *)setPackedEnumArray:(NSArray *)array {
-  _result.packedEnumArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
-  return self;
-}
-- (TestPackedTypesLite_Builder *)setPackedEnumValues:(const ForeignEnumLite *)values count:(NSUInteger)count {
-  _result.packedEnumArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  _result.packedEnumArray = [NSMutableArray arrayWithArray:array];
   return self;
 }
 - (TestPackedTypesLite_Builder *)clearPackedEnum {

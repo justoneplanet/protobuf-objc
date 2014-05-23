@@ -51,7 +51,7 @@
   #endif
 #endif
 
-typedef NS_ENUM(int32_t, ForeignEnumLite) {
+typedef NS_ENUM(NSInteger, ForeignEnumLite) {
   ForeignEnumLiteFOREIGNLITEFOO = 4,
   ForeignEnumLiteFOREIGNLITEBAR = 5,
   ForeignEnumLiteFOREIGNLITEBAZ = 6,
@@ -59,7 +59,7 @@ typedef NS_ENUM(int32_t, ForeignEnumLite) {
 
 BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value);
 
-typedef NS_ENUM(int32_t, TestAllTypesLite_NestedEnum) {
+typedef NS_ENUM(NSInteger, TestAllTypesLite_NestedEnum) {
   TestAllTypesLite_NestedEnumFOO = 1,
   TestAllTypesLite_NestedEnumBAR = 2,
   TestAllTypesLite_NestedEnumBAZ = 3,
@@ -204,9 +204,9 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 @property (readonly, strong) NSArray *repeatedNestedMessage;
 @property (readonly, strong) NSArray *repeatedForeignMessage;
 @property (readonly, strong) NSArray *repeatedImportMessage;
-@property (readonly, strong) PBArray *repeatedNestedEnum;
-@property (readonly, strong) PBArray *repeatedForeignEnum;
-@property (readonly, strong) PBArray *repeatedImportEnum;
+@property (readonly, strong) NSArray *repeatedNestedEnum;
+@property (readonly, strong) NSArray *repeatedForeignEnum;
+@property (readonly, strong) NSArray *repeatedImportEnum;
 @property (readonly, strong) NSArray * repeatedStringPiece;
 @property (readonly, strong) NSArray * repeatedCord;
 @property (readonly) int32_t defaultInt32;
@@ -572,25 +572,22 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (instancetype)setRepeatedImportMessageArray:(NSArray *)array;
 - (instancetype)clearRepeatedImportMessage;
 
-- (PBAppendableArray *)repeatedNestedEnum;
+- (NSMutableArray *)repeatedNestedEnum;
 - (TestAllTypesLite_NestedEnum)repeatedNestedEnumAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedNestedEnum:(TestAllTypesLite_NestedEnum)value;
 - (instancetype)setRepeatedNestedEnumArray:(NSArray *)array;
-- (instancetype)setRepeatedNestedEnumValues:(const TestAllTypesLite_NestedEnum *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedNestedEnum;
 
-- (PBAppendableArray *)repeatedForeignEnum;
+- (NSMutableArray *)repeatedForeignEnum;
 - (ForeignEnumLite)repeatedForeignEnumAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedForeignEnum:(ForeignEnumLite)value;
 - (instancetype)setRepeatedForeignEnumArray:(NSArray *)array;
-- (instancetype)setRepeatedForeignEnumValues:(const ForeignEnumLite *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedForeignEnum;
 
-- (PBAppendableArray *)repeatedImportEnum;
+- (NSMutableArray *)repeatedImportEnum;
 - (ImportEnumLite)repeatedImportEnumAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedImportEnum:(ImportEnumLite)value;
 - (instancetype)setRepeatedImportEnumArray:(NSArray *)array;
-- (instancetype)setRepeatedImportEnumValues:(const ImportEnumLite *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedImportEnum;
 
 - (NSArray *)repeatedStringPiece;
@@ -861,7 +858,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 @property (readonly, strong) PBArray * packedFloat;
 @property (readonly, strong) PBArray * packedDouble;
 @property (readonly, strong) PBArray * packedBool;
-@property (readonly, strong) PBArray *packedEnum;
+@property (readonly, strong) NSArray *packedEnum;
 
 
 - (int32_t)packedInt32AtIndex:(NSUInteger)index;
@@ -987,11 +984,10 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (instancetype)setPackedBoolValues:(const BOOL *)values count:(NSUInteger)count;
 - (instancetype)clearPackedBool;
 
-- (PBAppendableArray *)packedEnum;
+- (NSMutableArray *)packedEnum;
 - (ForeignEnumLite)packedEnumAtIndex:(NSUInteger)index;
 - (instancetype)addPackedEnum:(ForeignEnumLite)value;
 - (instancetype)setPackedEnumArray:(NSArray *)array;
-- (instancetype)setPackedEnumValues:(const ForeignEnumLite *)values count:(NSUInteger)count;
 - (instancetype)clearPackedEnum;
 
 @end

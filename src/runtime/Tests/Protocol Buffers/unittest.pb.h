@@ -109,7 +109,7 @@
   #endif
 #endif
 
-typedef NS_ENUM(int32_t, ForeignEnum) {
+typedef NS_ENUM(NSInteger, ForeignEnum) {
   ForeignEnumFOREIGNFOO = 4,
   ForeignEnumFOREIGNBAR = 5,
   ForeignEnumFOREIGNBAZ = 6,
@@ -117,7 +117,7 @@ typedef NS_ENUM(int32_t, ForeignEnum) {
 
 BOOL ForeignEnumIsValidValue(ForeignEnum value);
 
-typedef NS_ENUM(int32_t, TestEnumWithDupValue) {
+typedef NS_ENUM(NSInteger, TestEnumWithDupValue) {
   TestEnumWithDupValueFOO1 = 1,
   TestEnumWithDupValueBAR1 = 2,
   TestEnumWithDupValueBAZ = 3,
@@ -125,7 +125,7 @@ typedef NS_ENUM(int32_t, TestEnumWithDupValue) {
 
 BOOL TestEnumWithDupValueIsValidValue(TestEnumWithDupValue value);
 
-typedef NS_ENUM(int32_t, TestSparseEnum) {
+typedef NS_ENUM(NSInteger, TestSparseEnum) {
   TestSparseEnumSPARSEA = 123,
   TestSparseEnumSPARSEB = 62374,
   TestSparseEnumSPARSEC = 12589234,
@@ -137,7 +137,7 @@ typedef NS_ENUM(int32_t, TestSparseEnum) {
 
 BOOL TestSparseEnumIsValidValue(TestSparseEnum value);
 
-typedef NS_ENUM(int32_t, TestAllTypes_NestedEnum) {
+typedef NS_ENUM(NSInteger, TestAllTypes_NestedEnum) {
   TestAllTypes_NestedEnumFOO = 1,
   TestAllTypes_NestedEnumBAR = 2,
   TestAllTypes_NestedEnumBAZ = 3,
@@ -145,7 +145,7 @@ typedef NS_ENUM(int32_t, TestAllTypes_NestedEnum) {
 
 BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value);
 
-typedef NS_ENUM(int32_t, TestDynamicExtensions_DynamicEnumType) {
+typedef NS_ENUM(NSInteger, TestDynamicExtensions_DynamicEnumType) {
   TestDynamicExtensions_DynamicEnumTypeDYNAMICFOO = 2200,
   TestDynamicExtensions_DynamicEnumTypeDYNAMICBAR = 2201,
   TestDynamicExtensions_DynamicEnumTypeDYNAMICBAZ = 2202,
@@ -292,9 +292,9 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly, strong) NSArray *repeatedNestedMessage;
 @property (readonly, strong) NSArray *repeatedForeignMessage;
 @property (readonly, strong) NSArray *repeatedImportMessage;
-@property (readonly, strong) PBArray *repeatedNestedEnum;
-@property (readonly, strong) PBArray *repeatedForeignEnum;
-@property (readonly, strong) PBArray *repeatedImportEnum;
+@property (readonly, strong) NSArray *repeatedNestedEnum;
+@property (readonly, strong) NSArray *repeatedForeignEnum;
+@property (readonly, strong) NSArray *repeatedImportEnum;
 @property (readonly, strong) NSArray * repeatedStringPiece;
 @property (readonly, strong) NSArray * repeatedCord;
 @property (readonly) int32_t defaultInt32;
@@ -660,25 +660,22 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (instancetype)setRepeatedImportMessageArray:(NSArray *)array;
 - (instancetype)clearRepeatedImportMessage;
 
-- (PBAppendableArray *)repeatedNestedEnum;
+- (NSMutableArray *)repeatedNestedEnum;
 - (TestAllTypes_NestedEnum)repeatedNestedEnumAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedNestedEnum:(TestAllTypes_NestedEnum)value;
 - (instancetype)setRepeatedNestedEnumArray:(NSArray *)array;
-- (instancetype)setRepeatedNestedEnumValues:(const TestAllTypes_NestedEnum *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedNestedEnum;
 
-- (PBAppendableArray *)repeatedForeignEnum;
+- (NSMutableArray *)repeatedForeignEnum;
 - (ForeignEnum)repeatedForeignEnumAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedForeignEnum:(ForeignEnum)value;
 - (instancetype)setRepeatedForeignEnumArray:(NSArray *)array;
-- (instancetype)setRepeatedForeignEnumValues:(const ForeignEnum *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedForeignEnum;
 
-- (PBAppendableArray *)repeatedImportEnum;
+- (NSMutableArray *)repeatedImportEnum;
 - (ImportEnum)repeatedImportEnumAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedImportEnum:(ImportEnum)value;
 - (instancetype)setRepeatedImportEnumArray:(NSArray *)array;
-- (instancetype)setRepeatedImportEnumValues:(const ImportEnum *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedImportEnum;
 
 - (NSArray *)repeatedStringPiece;
@@ -1894,7 +1891,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly, strong) NSString * CordField;
 @property (readonly, strong) PBArray * RepeatedPrimitiveField;
 @property (readonly, strong) NSArray * RepeatedStringField;
-@property (readonly, strong) PBArray *RepeatedEnumField;
+@property (readonly, strong) NSArray *RepeatedEnumField;
 @property (readonly, strong) NSArray *RepeatedMessageField;
 @property (readonly, strong) NSArray * RepeatedStringPieceField;
 @property (readonly, strong) NSArray * RepeatedCordField;
@@ -1975,11 +1972,10 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (instancetype)setRepeatedStringFieldArray:(NSArray *)array;
 - (instancetype)clearRepeatedStringField;
 
-- (PBAppendableArray *)RepeatedEnumField;
+- (NSMutableArray *)RepeatedEnumField;
 - (ForeignEnum)RepeatedEnumFieldAtIndex:(NSUInteger)index;
 - (instancetype)addRepeatedEnumField:(ForeignEnum)value;
 - (instancetype)setRepeatedEnumFieldArray:(NSArray *)array;
-- (instancetype)setRepeatedEnumFieldValues:(const ForeignEnum *)values count:(NSUInteger)count;
 - (instancetype)clearRepeatedEnumField;
 
 - (NSMutableArray *)RepeatedMessageField;
@@ -2337,7 +2333,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly, strong) PBArray * packedFloat;
 @property (readonly, strong) PBArray * packedDouble;
 @property (readonly, strong) PBArray * packedBool;
-@property (readonly, strong) PBArray *packedEnum;
+@property (readonly, strong) NSArray *packedEnum;
 
 
 - (int32_t)packedInt32AtIndex:(NSUInteger)index;
@@ -2463,11 +2459,10 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (instancetype)setPackedBoolValues:(const BOOL *)values count:(NSUInteger)count;
 - (instancetype)clearPackedBool;
 
-- (PBAppendableArray *)packedEnum;
+- (NSMutableArray *)packedEnum;
 - (ForeignEnum)packedEnumAtIndex:(NSUInteger)index;
 - (instancetype)addPackedEnum:(ForeignEnum)value;
 - (instancetype)setPackedEnumArray:(NSArray *)array;
-- (instancetype)setPackedEnumValues:(const ForeignEnum *)values count:(NSUInteger)count;
 - (instancetype)clearPackedEnum;
 
 @end
@@ -2490,7 +2485,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly, strong) PBArray * unpackedFloat;
 @property (readonly, strong) PBArray * unpackedDouble;
 @property (readonly, strong) PBArray * unpackedBool;
-@property (readonly, strong) PBArray *unpackedEnum;
+@property (readonly, strong) NSArray *unpackedEnum;
 
 
 - (int32_t)unpackedInt32AtIndex:(NSUInteger)index;
@@ -2616,11 +2611,10 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (instancetype)setUnpackedBoolValues:(const BOOL *)values count:(NSUInteger)count;
 - (instancetype)clearUnpackedBool;
 
-- (PBAppendableArray *)unpackedEnum;
+- (NSMutableArray *)unpackedEnum;
 - (ForeignEnum)unpackedEnumAtIndex:(NSUInteger)index;
 - (instancetype)addUnpackedEnum:(ForeignEnum)value;
 - (instancetype)setUnpackedEnumArray:(NSArray *)array;
-- (instancetype)setUnpackedEnumValues:(const ForeignEnum *)values count:(NSUInteger)count;
 - (instancetype)clearUnpackedEnum;
 
 @end
