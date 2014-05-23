@@ -1,6 +1,6 @@
 # Protocol Buffers, Objective C
 
-An implementation of Protocol Buffers in Objective C.
+"Data Model" generator with full support for google protocol buffers in Objective C.
 
 Protocol Buffers are a way of encoding structured data in an efficient yet extensible format.
 This project is based on an implementation of Protocol Buffers from Google.  See the
@@ -8,21 +8,22 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 
 [g-protobuf]: http://code.google.com/p/protobuf/
 
+
 ## Project Overview
 
 This project contains two components:
 
-- Protocol Buffer compiler plugin (protoc-gen-objc), that will allow (protoc) to generate the specialized Objective-C classes necessary to both read and write instances of the messages.
-- Protocol Buffer static library, written in Objective-C that you link into any project that you want protobuf support for.
+- Protocol Buffer compiler plugin (protoc-gen-objc), that will allow (protoc) to generate Objective-C data model classes from ".proto" definitions and, optionally, the specialized code necessary to both read and write instances of the equivalent protocol buffer messages.
+- Runtime static library, written in Objective-C that you link into your project to enable protobuf support for the generated data model.
 
-The (protoc-gen-objc) compiler plugin supports almost all the features of the protobuf 2 language.  Once installed, (protoc) will be able to generate Objective-C classes when the `--objc_out` parameter is used to process a .proto file. These classes, along with the supplied static library, will then allow your code to read and write protobuf instances simply and in a typesafe manner.
+The (protoc-gen-objc) compiler plugin supports almost all the features of the protobuf 2 language.  Once installed, (protoc) will be able to generate Objective-C classes when the `--objc_out` parameter is used to process a .proto file. These classes, along with the supplied static library, will then allow your code to read and write protobuf instances simply and in a cocoa manner.
 
 
 ## Features of this Fork
 
 - Produces modern, ARC enabled, Objective-C code
 - Supports the latest version of google protocol buffers and most language features
-- Uses NSArrays for arrays of object types (PBArray for value types)
+- Uses the latest compiler infrastructure supplied by the google protocol buffers project
 - `imports` and `global_scope` insertion points for plugins [@gregschlom][gregschlom]
 
 
@@ -62,12 +63,13 @@ The protocol buffer compiler (protoc) produces Objective-C output when invoked w
 - Generated files will be in the location specified. The proto path (specified with the `--proto_path=` command-line parameter) is replaced with the output path (specified with the `--objc_out=` flag).
 
 
-## Integrating the Protocol Buffer Static Library
+## Integrating the Runtime Static Library
 
 Once you have generated the .pb.h and .pb.m files from the .proto files, you can then add them to your project. However, in order to build properly there is a one time, per project, configuration process to integrate the runtime source files.
 
 - Open your existing project and a reference to the "ProtocolBuffers" project found in /src/runtime.
 - Add "ProtocolBuffers" as a Direct Dependency of your build target.
+- Often, it is nessisary to manually add the static library the runtime project creates to the list of libraries linked to your project
 
 Some instructions and screenshots illustrating this process may be found in this project's wiki.
 
@@ -76,6 +78,7 @@ Some instructions and screenshots illustrating this process may be found in this
 
 Protocol Buffers, Objective C
 - Ed Preston (https://github.com/epreston/protobuf-objc)
+- Mattt Thompson (http://nshipster.com)
 
 Protocol Buffers, Objective C iOS5, Regwez Inc.
 - Ragy Eleish <ragy@regwez.com> (https://github.com/regwez/protobuf-objc-iOS5)
