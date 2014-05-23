@@ -26,7 +26,7 @@
   #endif
 #endif
 
-typedef NS_ENUM(int32_t, TestEnum) {
+typedef NS_ENUM(NSInteger, TestEnum) {
   TestEnumFOO = 1,
 };
 

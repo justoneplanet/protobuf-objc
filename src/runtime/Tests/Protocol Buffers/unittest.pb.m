@@ -35,6 +35,8 @@ static id<PBExtensionField> UnittestRoot_optionalForeignEnumExtension = nil;
 static id<PBExtensionField> UnittestRoot_optionalImportEnumExtension = nil;
 static id<PBExtensionField> UnittestRoot_optionalStringPieceExtension = nil;
 static id<PBExtensionField> UnittestRoot_optionalCordExtension = nil;
+static id<PBExtensionField> UnittestRoot_optionalPublicImportMessageExtension = nil;
+static id<PBExtensionField> UnittestRoot_optionalLazyMessageExtension = nil;
 static id<PBExtensionField> UnittestRoot_repeatedInt32Extension = nil;
 static id<PBExtensionField> UnittestRoot_repeatedInt64Extension = nil;
 static id<PBExtensionField> UnittestRoot_repeatedUint32Extension = nil;
@@ -59,6 +61,7 @@ static id<PBExtensionField> UnittestRoot_repeatedForeignEnumExtension = nil;
 static id<PBExtensionField> UnittestRoot_repeatedImportEnumExtension = nil;
 static id<PBExtensionField> UnittestRoot_repeatedStringPieceExtension = nil;
 static id<PBExtensionField> UnittestRoot_repeatedCordExtension = nil;
+static id<PBExtensionField> UnittestRoot_repeatedLazyMessageExtension = nil;
 static id<PBExtensionField> UnittestRoot_defaultInt32Extension = nil;
 static id<PBExtensionField> UnittestRoot_defaultInt64Extension = nil;
 static id<PBExtensionField> UnittestRoot_defaultUint32Extension = nil;
@@ -98,6 +101,8 @@ static id<PBExtensionField> UnittestRoot_packedEnumExtension = nil;
 static id<PBExtensionField> TestNestedExtension_test = nil;
 static id<PBExtensionField> TestRequired_single = nil;
 static id<PBExtensionField> TestRequired_multi = nil;
+static id<PBExtensionField> TestParsingMerge_optionalExt = nil;
+static id<PBExtensionField> TestParsingMerge_repeatedExt = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -321,6 +326,24 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:NO
                                           isPacked:NO
                             isMessageSetWireFormat:NO];
+    UnittestRoot_optionalPublicImportMessageExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:26
+                                      defaultValue:[PublicImportMessage defaultInstance]
+                               messageOrGroupClass:[PublicImportMessage class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_optionalLazyMessageExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:27
+                                      defaultValue:[TestAllTypes_NestedMessage defaultInstance]
+                               messageOrGroupClass:[TestAllTypes_NestedMessage class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
     UnittestRoot_repeatedInt32Extension =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[TestAllExtensions class]
@@ -534,6 +557,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                        fieldNumber:55
                                       defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSString class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_repeatedLazyMessageExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:57
+                                      defaultValue:[[NSArray alloc] init]
+                               messageOrGroupClass:[TestAllTypes_NestedMessage class]
                                         isRepeated:YES
                                           isPacked:NO
                             isMessageSetWireFormat:NO];
@@ -888,6 +920,24 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:YES
                                           isPacked:NO
                             isMessageSetWireFormat:NO];
+    TestParsingMerge_optionalExt =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestParsingMerge class]
+                                       fieldNumber:1000
+                                      defaultValue:[TestAllTypes defaultInstance]
+                               messageOrGroupClass:[TestAllTypes class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    TestParsingMerge_repeatedExt =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestParsingMerge class]
+                                       fieldNumber:1001
+                                      defaultValue:[[NSArray alloc] init]
+                               messageOrGroupClass:[TestAllTypes class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     [UnittestImportRoot registerAllExtensions:registry];
@@ -920,6 +970,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestRoot_optionalImportEnumExtension];
   [registry addExtension:UnittestRoot_optionalStringPieceExtension];
   [registry addExtension:UnittestRoot_optionalCordExtension];
+  [registry addExtension:UnittestRoot_optionalPublicImportMessageExtension];
+  [registry addExtension:UnittestRoot_optionalLazyMessageExtension];
   [registry addExtension:UnittestRoot_repeatedInt32Extension];
   [registry addExtension:UnittestRoot_repeatedInt64Extension];
   [registry addExtension:UnittestRoot_repeatedUint32Extension];
@@ -944,6 +996,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestRoot_repeatedImportEnumExtension];
   [registry addExtension:UnittestRoot_repeatedStringPieceExtension];
   [registry addExtension:UnittestRoot_repeatedCordExtension];
+  [registry addExtension:UnittestRoot_repeatedLazyMessageExtension];
   [registry addExtension:UnittestRoot_defaultInt32Extension];
   [registry addExtension:UnittestRoot_defaultInt64Extension];
   [registry addExtension:UnittestRoot_defaultUint32Extension];
@@ -983,6 +1036,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:TestNestedExtension_test];
   [registry addExtension:TestRequired_single];
   [registry addExtension:TestRequired_multi];
+  [registry addExtension:TestParsingMerge_optionalExt];
+  [registry addExtension:TestParsingMerge_repeatedExt];
 }
 
 + (id<PBExtensionField>)optionalInt32Extension {
@@ -1057,6 +1112,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (id<PBExtensionField>)optionalCordExtension {
   return UnittestRoot_optionalCordExtension;
 }
++ (id<PBExtensionField>)optionalPublicImportMessageExtension {
+  return UnittestRoot_optionalPublicImportMessageExtension;
+}
++ (id<PBExtensionField>)optionalLazyMessageExtension {
+  return UnittestRoot_optionalLazyMessageExtension;
+}
 + (id<PBExtensionField>)repeatedInt32Extension {
   return UnittestRoot_repeatedInt32Extension;
 }
@@ -1128,6 +1189,9 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 + (id<PBExtensionField>)repeatedCordExtension {
   return UnittestRoot_repeatedCordExtension;
+}
++ (id<PBExtensionField>)repeatedLazyMessageExtension {
+  return UnittestRoot_repeatedLazyMessageExtension;
 }
 + (id<PBExtensionField>)defaultInt32Extension {
   return UnittestRoot_defaultInt32Extension;
@@ -1314,6 +1378,8 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @property ImportEnum optionalImportEnum;
 @property (strong) NSString * optionalStringPiece;
 @property (strong) NSString * optionalCord;
+@property (strong) PublicImportMessage* optionalPublicImportMessage;
+@property (strong) TestAllTypes_NestedMessage* optionalLazyMessage;
 @property (strong) PBAppendableArray * repeatedInt32Array;
 @property (strong) PBAppendableArray * repeatedInt64Array;
 @property (strong) PBAppendableArray * repeatedUint32Array;
@@ -1338,6 +1404,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @property (strong) NSMutableArray *repeatedImportEnumArray;
 @property (strong) NSMutableArray * repeatedStringPieceArray;
 @property (strong) NSMutableArray * repeatedCordArray;
+@property (strong) NSMutableArray *repeatedLazyMessageArray;
 @property int32_t defaultInt32;
 @property int64_t defaultInt64;
 @property uint32_t defaultUint32;
@@ -1381,27 +1448,29 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   BOOL _hasDefaultCord:1;
   BOOL _hasOptionalStringPiece:1;
   BOOL _hasOptionalCord:1;
+  BOOL _hasOptionalString:1;
   BOOL _hasDefaultStringPiece:1;
   BOOL _hasDefaultString:1;
-  BOOL _hasOptionalString:1;
   BOOL _hasOptionalGroup:1;
   BOOL _hasOptionalForeignMessage:1;
   BOOL _hasOptionalImportMessage:1;
+  BOOL _hasOptionalPublicImportMessage:1;
+  BOOL _hasOptionalLazyMessage:1;
   BOOL _hasOptionalNestedMessage:1;
-  BOOL _hasDefaultBytes:1;
   BOOL _hasOptionalBytes:1;
-  BOOL _hasOptionalUint32:1;
+  BOOL _hasDefaultBytes:1;
   BOOL _hasDefaultUint32:1;
+  BOOL _hasOptionalUint32:1;
   BOOL _hasOptionalNestedEnum:1;
   BOOL _hasOptionalForeignEnum:1;
   BOOL _hasOptionalImportEnum:1;
   BOOL _hasDefaultImportEnum:1;
   BOOL _hasDefaultForeignEnum:1;
   BOOL _hasDefaultNestedEnum:1;
-  BOOL _hasDefaultSfixed32:1;
   BOOL _hasOptionalSfixed32:1;
-  BOOL _hasDefaultSfixed64:1;
+  BOOL _hasDefaultSfixed32:1;
   BOOL _hasOptionalSfixed64:1;
+  BOOL _hasDefaultSfixed64:1;
   BOOL _hasOptionalSint32:1;
   BOOL _hasDefaultSint32:1;
   BOOL _hasOptionalSint64:1;
@@ -1414,13 +1483,14 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   PBAppendableArray *_repeatedInt32Array;
   PBAppendableArray *_repeatedFixed64Array;
   PBAppendableArray *_repeatedFixed32Array;
-  NSMutableArray *_repeatedCordArray;
-  NSMutableArray *_repeatedStringPieceArray;
   NSMutableArray *_repeatedStringArray;
+  NSMutableArray *_repeatedStringPieceArray;
+  NSMutableArray *_repeatedCordArray;
   NSMutableArray *_RepeatedGroupArray;
+  NSMutableArray *_repeatedLazyMessageArray;
+  NSMutableArray *_repeatedImportMessageArray;
   NSMutableArray *_repeatedForeignMessageArray;
   NSMutableArray *_repeatedNestedMessageArray;
-  NSMutableArray *_repeatedImportMessageArray;
   NSMutableArray *_repeatedBytesArray;
   PBAppendableArray *_repeatedUint32Array;
   NSMutableArray * _repeatedImportEnumArray;
@@ -1461,6 +1531,8 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     _optionalImportEnum = ImportEnumIMPORTFOO;
     _optionalStringPiece = @"";
     _optionalCord = @"";
+    _optionalPublicImportMessage = [PublicImportMessage defaultInstance];
+    _optionalLazyMessage = [TestAllTypes_NestedMessage defaultInstance];
     _defaultInt32 = 41;
     _defaultInt64 = 42L;
     _defaultUint32 = 43;
@@ -1641,6 +1713,20 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (void)setHasOptionalCord:(BOOL)value {
   _hasOptionalCord = !!value;
 }
+- (BOOL)hasOptionalPublicImportMessage {
+  return !!_hasOptionalPublicImportMessage;
+}
+- (void)setHasOptionalPublicImportMessage:(BOOL)value {
+  _hasOptionalPublicImportMessage = !!value;
+}
+
+- (BOOL)hasOptionalLazyMessage {
+  return !!_hasOptionalLazyMessage;
+}
+- (void)setHasOptionalLazyMessage:(BOOL)value {
+  _hasOptionalLazyMessage = !!value;
+}
+
 @dynamic repeatedInt32;
 @dynamic repeatedInt64;
 @dynamic repeatedUint32;
@@ -1665,6 +1751,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @dynamic repeatedImportEnum;
 @dynamic repeatedStringPiece;
 @dynamic repeatedCord;
+@dynamic repeatedLazyMessage;
 - (BOOL)hasDefaultInt32 {
   return !!_hasDefaultInt32;
 }
@@ -1927,6 +2014,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (NSString *)repeatedCordAtIndex:(NSUInteger)index {
   return _repeatedCordArray[index];
 }
+- (NSArray *)repeatedLazyMessage {
+  return _repeatedLazyMessageArray;
+}
+- (TestAllTypes_NestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index {
+  return _repeatedLazyMessageArray[index];
+}
 
 - (BOOL)isInitialized {
   return YES;
@@ -2004,6 +2097,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   if (self.hasOptionalCord) {
     [output writeString:25 value:self.optionalCord];
+  }
+  if (self.hasOptionalPublicImportMessage) {
+    [output writeMessage:26 value:self.optionalPublicImportMessage];
+  }
+  if (self.hasOptionalLazyMessage) {
+    [output writeMessage:27 value:self.optionalLazyMessage];
   }
   const NSUInteger repeatedInt32ArrayCount = self.repeatedInt32Array.count;
   if (repeatedInt32ArrayCount > 0) {
@@ -2122,6 +2221,9 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   for (NSString * value in self.repeatedCordArray) {
     [output writeString:55 value:value];
+  }
+  for (TestAllTypes_NestedMessage *element in self.repeatedLazyMessageArray) {
+    [output writeMessage:57 value:element];
   }
   if (self.hasDefaultInt32) {
     [output writeInt32:61 value:self.defaultInt32];
@@ -2263,6 +2365,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   if (self.hasOptionalCord) {
     size_ += computeStringSize(25, self.optionalCord);
+  }
+  if (self.hasOptionalPublicImportMessage) {
+    size_ += computeMessageSize(26, self.optionalPublicImportMessage);
+  }
+  if (self.hasOptionalLazyMessage) {
+    size_ += computeMessageSize(27, self.optionalLazyMessage);
   }
   {
     int32_t dataSize = 0;
@@ -2430,6 +2538,9 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += dataSize;
     size_ += 2 * count_;
   }
+  for (TestAllTypes_NestedMessage *element in self.repeatedLazyMessageArray) {
+    size_ += computeMessageSize(57, element);
+  }
   if (self.hasDefaultInt32) {
     size_ += computeInt32Size(61, self.defaultInt32);
   }
@@ -2595,6 +2706,18 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (self.hasOptionalCord) {
     [output appendFormat:@"%@%@: %@\n", indent, @"optionalCord", self.optionalCord];
   }
+  if (self.hasOptionalPublicImportMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalPublicImportMessage"];
+    [self.optionalPublicImportMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalLazyMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalLazyMessage"];
+    [self.optionalLazyMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
   listCount = self.repeatedInt32Array.count;
   for(int i=0; i < listCount; i++){
     [output appendFormat:@"%@%@: %@\n", indent, @"repeatedInt32", @([self.repeatedInt32Array int32AtIndex:i])];
@@ -2691,6 +2814,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   for (NSString * element in self.repeatedCordArray) {
     [output appendFormat:@"%@%@: %@\n", indent, @"repeatedCord", element];
+  }
+  for (TestAllTypes_NestedMessage* element in self.repeatedLazyMessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedLazyMessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
   }
   if (self.hasDefaultInt32) {
     [output appendFormat:@"%@%@: %@\n", indent, @"defaultInt32", @(self.defaultInt32)];
@@ -2812,6 +2941,10 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       (!self.hasOptionalStringPiece || [self.optionalStringPiece isEqual:otherMessage.optionalStringPiece]) &&
       self.hasOptionalCord == otherMessage.hasOptionalCord &&
       (!self.hasOptionalCord || [self.optionalCord isEqual:otherMessage.optionalCord]) &&
+      self.hasOptionalPublicImportMessage == otherMessage.hasOptionalPublicImportMessage &&
+      (!self.hasOptionalPublicImportMessage || [self.optionalPublicImportMessage isEqual:otherMessage.optionalPublicImportMessage]) &&
+      self.hasOptionalLazyMessage == otherMessage.hasOptionalLazyMessage &&
+      (!self.hasOptionalLazyMessage || [self.optionalLazyMessage isEqual:otherMessage.optionalLazyMessage]) &&
       ((self.repeatedInt32Array == nil && otherMessage.repeatedInt32Array == nil) || [self.repeatedInt32Array isEqualToArray:otherMessage.repeatedInt32Array]) &&
       ((self.repeatedInt64Array == nil && otherMessage.repeatedInt64Array == nil) || [self.repeatedInt64Array isEqualToArray:otherMessage.repeatedInt64Array]) &&
       ((self.repeatedUint32Array == nil && otherMessage.repeatedUint32Array == nil) || [self.repeatedUint32Array isEqualToArray:otherMessage.repeatedUint32Array]) &&
@@ -2836,6 +2969,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       ((self.repeatedImportEnumArray == nil && otherMessage.repeatedImportEnumArray == nil) || [self.repeatedImportEnumArray isEqualToArray:otherMessage.repeatedImportEnumArray]) &&
       ((self.repeatedStringPieceArray == nil && otherMessage.repeatedStringPieceArray == nil) || [self.repeatedStringPieceArray isEqualToArray:otherMessage.repeatedStringPieceArray]) &&
       ((self.repeatedCordArray == nil && otherMessage.repeatedCordArray == nil) || [self.repeatedCordArray isEqualToArray:otherMessage.repeatedCordArray]) &&
+      ((self.repeatedLazyMessageArray == nil && otherMessage.repeatedLazyMessageArray == nil) || [self.repeatedLazyMessageArray isEqualToArray:otherMessage.repeatedLazyMessageArray]) &&
       self.hasDefaultInt32 == otherMessage.hasDefaultInt32 &&
       (!self.hasDefaultInt32 || self.defaultInt32 == otherMessage.defaultInt32) &&
       self.hasDefaultInt64 == otherMessage.hasDefaultInt64 &&
@@ -2954,6 +3088,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (self.hasOptionalCord) {
     hashCode = hashCode * 31 + [self.optionalCord hash];
   }
+  if (self.hasOptionalPublicImportMessage) {
+    hashCode = hashCode * 31 + [self.optionalPublicImportMessage hash];
+  }
+  if (self.hasOptionalLazyMessage) {
+    hashCode = hashCode * 31 + [self.optionalLazyMessage hash];
+  }
   listCount = self.repeatedInt32Array.count;
   for(int i=0; i < listCount; i++){
     hashCode = hashCode * 31 + [self.repeatedInt32Array int32AtIndex:i];
@@ -3037,6 +3177,9 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     hashCode = hashCode * 31 + [element hash];
   }
   for (NSString * element in self.repeatedCordArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes_NestedMessage* element in self.repeatedLazyMessageArray) {
     hashCode = hashCode * 31 + [element hash];
   }
   if (self.hasDefaultInt32) {
@@ -3220,6 +3363,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (other.hasOptionalCord) {
     [self setOptionalCord:other.optionalCord];
   }
+  if (other.hasOptionalPublicImportMessage) {
+    [self mergeOptionalPublicImportMessage:other.optionalPublicImportMessage];
+  }
+  if (other.hasOptionalLazyMessage) {
+    [self mergeOptionalLazyMessage:other.optionalLazyMessage];
+  }
   if (other.repeatedInt32Array.count > 0) {
     if (_result.repeatedInt32Array == nil) {
       _result.repeatedInt32Array = [other.repeatedInt32Array copy];
@@ -3386,6 +3535,13 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       _result.repeatedCordArray = [[NSMutableArray alloc] initWithArray:other.repeatedCordArray];
     } else {
       [_result.repeatedCordArray addObjectsFromArray:other.repeatedCordArray];
+    }
+  }
+  if (other.repeatedLazyMessageArray.count > 0) {
+    if (_result.repeatedLazyMessageArray == nil) {
+      _result.repeatedLazyMessageArray = [[NSMutableArray alloc] initWithArray:other.repeatedLazyMessageArray];
+    } else {
+      [_result.repeatedLazyMessageArray addObjectsFromArray:other.repeatedLazyMessageArray];
     }
   }
   if (other.hasDefaultInt32) {
@@ -3600,6 +3756,24 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
         [self setOptionalCord:[input readString]];
         break;
       }
+      case 210: {
+        PublicImportMessage_Builder* subBuilder = [PublicImportMessage builder];
+        if (self.hasOptionalPublicImportMessage) {
+          [subBuilder mergeFrom:self.optionalPublicImportMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setOptionalPublicImportMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 218: {
+        TestAllTypes_NestedMessage_Builder* subBuilder = [TestAllTypes_NestedMessage builder];
+        if (self.hasOptionalLazyMessage) {
+          [subBuilder mergeFrom:self.optionalLazyMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setOptionalLazyMessage:[subBuilder buildPartial]];
+        break;
+      }
       case 248: {
         [self addRepeatedInt32:[input readInt32]];
         break;
@@ -3717,6 +3891,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       }
       case 442: {
         [self addRepeatedCord:[input readString]];
+        break;
+      }
+      case 458: {
+        TestAllTypes_NestedMessage_Builder* subBuilder = [TestAllTypes_NestedMessage builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addRepeatedLazyMessage:[subBuilder buildPartial]];
         break;
       }
       case 488: {
@@ -4255,6 +4435,66 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (instancetype)clearOptionalCord {
   _result.hasOptionalCord = NO;
   _result.optionalCord = @"";
+  return self;
+}
+- (BOOL)hasOptionalPublicImportMessage {
+  return _result.hasOptionalPublicImportMessage;
+}
+- (PublicImportMessage*)optionalPublicImportMessage {
+  return _result.optionalPublicImportMessage;
+}
+- (instancetype)setOptionalPublicImportMessage:(PublicImportMessage*)value {
+  _result.hasOptionalPublicImportMessage = YES;
+  _result.optionalPublicImportMessage = value;
+  return self;
+}
+- (instancetype)setOptionalPublicImportMessageBuilder:(PublicImportMessage_Builder*)builderForValue {
+  return [self setOptionalPublicImportMessage:[builderForValue build]];
+}
+- (instancetype)mergeOptionalPublicImportMessage:(PublicImportMessage*)value {
+  if (_result.hasOptionalPublicImportMessage &&
+      _result.optionalPublicImportMessage != [PublicImportMessage defaultInstance]) {
+    _result.optionalPublicImportMessage =
+      [[[PublicImportMessage builderWithPrototype:_result.optionalPublicImportMessage] mergeFrom:value] buildPartial];
+  } else {
+    _result.optionalPublicImportMessage = value;
+  }
+  _result.hasOptionalPublicImportMessage = YES;
+  return self;
+}
+- (instancetype)clearOptionalPublicImportMessage {
+  _result.hasOptionalPublicImportMessage = NO;
+  _result.optionalPublicImportMessage = [PublicImportMessage defaultInstance];
+  return self;
+}
+- (BOOL)hasOptionalLazyMessage {
+  return _result.hasOptionalLazyMessage;
+}
+- (TestAllTypes_NestedMessage*)optionalLazyMessage {
+  return _result.optionalLazyMessage;
+}
+- (instancetype)setOptionalLazyMessage:(TestAllTypes_NestedMessage*)value {
+  _result.hasOptionalLazyMessage = YES;
+  _result.optionalLazyMessage = value;
+  return self;
+}
+- (instancetype)setOptionalLazyMessageBuilder:(TestAllTypes_NestedMessage_Builder*)builderForValue {
+  return [self setOptionalLazyMessage:[builderForValue build]];
+}
+- (instancetype)mergeOptionalLazyMessage:(TestAllTypes_NestedMessage*)value {
+  if (_result.hasOptionalLazyMessage &&
+      _result.optionalLazyMessage != [TestAllTypes_NestedMessage defaultInstance]) {
+    _result.optionalLazyMessage =
+      [[[TestAllTypes_NestedMessage builderWithPrototype:_result.optionalLazyMessage] mergeFrom:value] buildPartial];
+  } else {
+    _result.optionalLazyMessage = value;
+  }
+  _result.hasOptionalLazyMessage = YES;
+  return self;
+}
+- (instancetype)clearOptionalLazyMessage {
+  _result.hasOptionalLazyMessage = NO;
+  _result.optionalLazyMessage = [TestAllTypes_NestedMessage defaultInstance];
   return self;
 }
 - (PBAppendableArray *)repeatedInt32 {
@@ -4811,6 +5051,27 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 }
 - (instancetype)clearRepeatedCord {
   _result.repeatedCordArray = nil;
+  return self;
+}
+- (NSMutableArray *)repeatedLazyMessage {
+  return _result.repeatedLazyMessageArray;
+}
+- (TestAllTypes_NestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index {
+  return [_result repeatedLazyMessageAtIndex:index];
+}
+- (instancetype)addRepeatedLazyMessage:(TestAllTypes_NestedMessage*)value {
+  if (_result.repeatedLazyMessageArray == nil) {
+    _result.repeatedLazyMessageArray = [[NSMutableArray alloc]init];
+  }
+  [_result.repeatedLazyMessageArray addObject:value];
+  return self;
+}
+- (instancetype)setRepeatedLazyMessageArray:(NSArray *)array {
+  _result.repeatedLazyMessageArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearRepeatedLazyMessage {
+  _result.repeatedLazyMessageArray = nil;
   return self;
 }
 - (BOOL)hasDefaultInt32 {
@@ -11480,6 +11741,462 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @end
 
 
+#pragma mark - TestEagerMessage
+
+@interface TestEagerMessage ()
+
+@property (strong) TestAllTypes* subMessage;
+
+@end
+
+@implementation TestEagerMessage {
+  BOOL _hasSubMessage:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _subMessage = [TestAllTypes defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasSubMessage {
+  return !!_hasSubMessage;
+}
+- (void)setHasSubMessage:(BOOL)value {
+  _hasSubMessage = !!value;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasSubMessage) {
+    [output writeMessage:1 value:self.subMessage];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasSubMessage) {
+    size_ += computeMessageSize(1, self.subMessage);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestEagerMessage_Builder*) builder {
+  return [[TestEagerMessage_Builder alloc] init];
+}
++ (TestEagerMessage_Builder*) builderWithPrototype:(TestEagerMessage*)prototype {
+  return [[TestEagerMessage builder] mergeFrom:prototype];
+}
+- (TestEagerMessage_Builder*) builder {
+  return [TestEagerMessage builder];
+}
+- (TestEagerMessage_Builder*) toBuilder {
+  return [TestEagerMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasSubMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"subMessage"];
+    [self.subMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestEagerMessage class]]) {
+    return NO;
+  }
+  TestEagerMessage *otherMessage = other;
+  return
+      self.hasSubMessage == otherMessage.hasSubMessage &&
+      (!self.hasSubMessage || [self.subMessage isEqual:otherMessage.subMessage]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasSubMessage) {
+    hashCode = hashCode * 31 + [self.subMessage hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestEagerMessage_Builder {
+  TestEagerMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestEagerMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestEagerMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestEagerMessage builderWithPrototype:_result];
+}
+
+- (TestEagerMessage*) defaultInstance {
+  return [TestEagerMessage defaultInstance];
+}
+
+- (TestEagerMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestEagerMessage*) buildPartial {
+  TestEagerMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestEagerMessage*)other {
+  if (other == [TestEagerMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasSubMessage) {
+    [self mergeSubMessage:other.subMessage];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasSubMessage) {
+          [subBuilder mergeFrom:self.subMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setSubMessage:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasSubMessage {
+  return _result.hasSubMessage;
+}
+- (TestAllTypes*)subMessage {
+  return _result.subMessage;
+}
+- (instancetype)setSubMessage:(TestAllTypes*)value {
+  _result.hasSubMessage = YES;
+  _result.subMessage = value;
+  return self;
+}
+- (instancetype)setSubMessageBuilder:(TestAllTypes_Builder*)builderForValue {
+  return [self setSubMessage:[builderForValue build]];
+}
+- (instancetype)mergeSubMessage:(TestAllTypes*)value {
+  if (_result.hasSubMessage &&
+      _result.subMessage != [TestAllTypes defaultInstance]) {
+    _result.subMessage =
+      [[[TestAllTypes builderWithPrototype:_result.subMessage] mergeFrom:value] buildPartial];
+  } else {
+    _result.subMessage = value;
+  }
+  _result.hasSubMessage = YES;
+  return self;
+}
+- (instancetype)clearSubMessage {
+  _result.hasSubMessage = NO;
+  _result.subMessage = [TestAllTypes defaultInstance];
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestLazyMessage
+
+@interface TestLazyMessage ()
+
+@property (strong) TestAllTypes* subMessage;
+
+@end
+
+@implementation TestLazyMessage {
+  BOOL _hasSubMessage:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _subMessage = [TestAllTypes defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasSubMessage {
+  return !!_hasSubMessage;
+}
+- (void)setHasSubMessage:(BOOL)value {
+  _hasSubMessage = !!value;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasSubMessage) {
+    [output writeMessage:1 value:self.subMessage];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasSubMessage) {
+    size_ += computeMessageSize(1, self.subMessage);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestLazyMessage_Builder*) builder {
+  return [[TestLazyMessage_Builder alloc] init];
+}
++ (TestLazyMessage_Builder*) builderWithPrototype:(TestLazyMessage*)prototype {
+  return [[TestLazyMessage builder] mergeFrom:prototype];
+}
+- (TestLazyMessage_Builder*) builder {
+  return [TestLazyMessage builder];
+}
+- (TestLazyMessage_Builder*) toBuilder {
+  return [TestLazyMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasSubMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"subMessage"];
+    [self.subMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestLazyMessage class]]) {
+    return NO;
+  }
+  TestLazyMessage *otherMessage = other;
+  return
+      self.hasSubMessage == otherMessage.hasSubMessage &&
+      (!self.hasSubMessage || [self.subMessage isEqual:otherMessage.subMessage]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasSubMessage) {
+    hashCode = hashCode * 31 + [self.subMessage hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestLazyMessage_Builder {
+  TestLazyMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestLazyMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestLazyMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestLazyMessage builderWithPrototype:_result];
+}
+
+- (TestLazyMessage*) defaultInstance {
+  return [TestLazyMessage defaultInstance];
+}
+
+- (TestLazyMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestLazyMessage*) buildPartial {
+  TestLazyMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestLazyMessage*)other {
+  if (other == [TestLazyMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasSubMessage) {
+    [self mergeSubMessage:other.subMessage];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasSubMessage) {
+          [subBuilder mergeFrom:self.subMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setSubMessage:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasSubMessage {
+  return _result.hasSubMessage;
+}
+- (TestAllTypes*)subMessage {
+  return _result.subMessage;
+}
+- (instancetype)setSubMessage:(TestAllTypes*)value {
+  _result.hasSubMessage = YES;
+  _result.subMessage = value;
+  return self;
+}
+- (instancetype)setSubMessageBuilder:(TestAllTypes_Builder*)builderForValue {
+  return [self setSubMessage:[builderForValue build]];
+}
+- (instancetype)mergeSubMessage:(TestAllTypes*)value {
+  if (_result.hasSubMessage &&
+      _result.subMessage != [TestAllTypes defaultInstance]) {
+    _result.subMessage =
+      [[[TestAllTypes builderWithPrototype:_result.subMessage] mergeFrom:value] buildPartial];
+  } else {
+    _result.subMessage = value;
+  }
+  _result.hasSubMessage = YES;
+  return self;
+}
+- (instancetype)clearSubMessage {
+  _result.hasSubMessage = NO;
+  _result.subMessage = [TestAllTypes defaultInstance];
+  return self;
+}
+
+@end
+
+
 #pragma mark - TestNestedMessageHasBits
 
 @interface TestNestedMessageHasBits ()
@@ -13157,6 +13874,8 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @property uint64_t largeUint64;
 @property int32_t smallInt32;
 @property int64_t smallInt64;
+@property int32_t reallySmallInt32;
+@property int64_t reallySmallInt64;
 @property (strong) NSString * utf8String;
 @property Float32 zeroFloat;
 @property Float32 oneFloat;
@@ -13172,6 +13891,10 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @property Float32 negInfFloat;
 @property Float32 nanFloat;
 @property (strong) NSString * cppTrigraph;
+@property (strong) NSString * stringWithZero;
+@property (strong) NSData * bytesWithZero;
+@property (strong) NSString * stringPieceWithZero;
+@property (strong) NSString * cordWithZero;
 
 @end
 
@@ -13190,11 +13913,17 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   BOOL _hasNegInfFloat:1;
   BOOL _hasNanFloat:1;
   BOOL _hasSmallInt64:1;
+  BOOL _hasReallySmallInt64:1;
   BOOL _hasLargeUint64:1;
   BOOL _hasSmallInt32:1;
+  BOOL _hasReallySmallInt32:1;
   BOOL _hasUtf8String:1;
   BOOL _hasCppTrigraph:1;
+  BOOL _hasStringWithZero:1;
+  BOOL _hasStringPieceWithZero:1;
+  BOOL _hasCordWithZero:1;
   BOOL _hasEscapedBytes:1;
+  BOOL _hasBytesWithZero:1;
   BOOL _hasLargeUint32:1;
 }
 
@@ -13208,6 +13937,8 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     _largeUint64 = -1L;
     _smallInt32 = -2147483647;
     _smallInt64 = -9223372036854775807L;
+    _reallySmallInt32 = -2147483648;
+    _reallySmallInt64 = -9223372036854775808L;
     _utf8String = [NSString stringWithUTF8String:"\341\210\264"];
     _zeroFloat = 0;
     _oneFloat = 1;
@@ -13223,6 +13954,10 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     _negInfFloat = -HUGE_VALF;
     _nanFloat = NAN;
     _cppTrigraph = @"\? \? \?\? \?\? \?\?\? \?\?/ \?\?-";
+    _stringWithZero = @"hel\000lo";
+    _bytesWithZero = [NSData dataWithBytes:"wor\000ld" length:6];
+    _stringPieceWithZero = @"ab\000c";
+    _cordWithZero = @"12\0003";
   return self;
 }
 
@@ -13264,6 +13999,18 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 }
 - (void)setHasSmallInt64:(BOOL)value {
   _hasSmallInt64 = !!value;
+}
+- (BOOL)hasReallySmallInt32 {
+  return !!_hasReallySmallInt32;
+}
+- (void)setHasReallySmallInt32:(BOOL)value {
+  _hasReallySmallInt32 = !!value;
+}
+- (BOOL)hasReallySmallInt64 {
+  return !!_hasReallySmallInt64;
+}
+- (void)setHasReallySmallInt64:(BOOL)value {
+  _hasReallySmallInt64 = !!value;
 }
 - (BOOL)hasUtf8String {
   return !!_hasUtf8String;
@@ -13355,6 +14102,30 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (void)setHasCppTrigraph:(BOOL)value {
   _hasCppTrigraph = !!value;
 }
+- (BOOL)hasStringWithZero {
+  return !!_hasStringWithZero;
+}
+- (void)setHasStringWithZero:(BOOL)value {
+  _hasStringWithZero = !!value;
+}
+- (BOOL)hasBytesWithZero {
+  return !!_hasBytesWithZero;
+}
+- (void)setHasBytesWithZero:(BOOL)value {
+  _hasBytesWithZero = !!value;
+}
+- (BOOL)hasStringPieceWithZero {
+  return !!_hasStringPieceWithZero;
+}
+- (void)setHasStringPieceWithZero:(BOOL)value {
+  _hasStringPieceWithZero = !!value;
+}
+- (BOOL)hasCordWithZero {
+  return !!_hasCordWithZero;
+}
+- (void)setHasCordWithZero:(BOOL)value {
+  _hasCordWithZero = !!value;
+}
 
 
 - (BOOL)isInitialized {
@@ -13421,6 +14192,24 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   if (self.hasCppTrigraph) {
     [output writeString:20 value:self.cppTrigraph];
+  }
+  if (self.hasReallySmallInt32) {
+    [output writeInt32:21 value:self.reallySmallInt32];
+  }
+  if (self.hasReallySmallInt64) {
+    [output writeInt64:22 value:self.reallySmallInt64];
+  }
+  if (self.hasStringWithZero) {
+    [output writeString:23 value:self.stringWithZero];
+  }
+  if (self.hasBytesWithZero) {
+    [output writeData:24 value:self.bytesWithZero];
+  }
+  if (self.hasStringPieceWithZero) {
+    [output writeString:25 value:self.stringPieceWithZero];
+  }
+  if (self.hasCordWithZero) {
+    [output writeString:26 value:self.cordWithZero];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -13490,6 +14279,24 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   if (self.hasCppTrigraph) {
     size_ += computeStringSize(20, self.cppTrigraph);
+  }
+  if (self.hasReallySmallInt32) {
+    size_ += computeInt32Size(21, self.reallySmallInt32);
+  }
+  if (self.hasReallySmallInt64) {
+    size_ += computeInt64Size(22, self.reallySmallInt64);
+  }
+  if (self.hasStringWithZero) {
+    size_ += computeStringSize(23, self.stringWithZero);
+  }
+  if (self.hasBytesWithZero) {
+    size_ += computeDataSize(24, self.bytesWithZero);
+  }
+  if (self.hasStringPieceWithZero) {
+    size_ += computeStringSize(25, self.stringPieceWithZero);
+  }
+  if (self.hasCordWithZero) {
+    size_ += computeStringSize(26, self.cordWithZero);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -13572,6 +14379,24 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (self.hasCppTrigraph) {
     [output appendFormat:@"%@%@: %@\n", indent, @"cppTrigraph", self.cppTrigraph];
   }
+  if (self.hasReallySmallInt32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"reallySmallInt32", @(self.reallySmallInt32)];
+  }
+  if (self.hasReallySmallInt64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"reallySmallInt64", @(self.reallySmallInt64)];
+  }
+  if (self.hasStringWithZero) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"stringWithZero", self.stringWithZero];
+  }
+  if (self.hasBytesWithZero) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"bytesWithZero", self.bytesWithZero];
+  }
+  if (self.hasStringPieceWithZero) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"stringPieceWithZero", self.stringPieceWithZero];
+  }
+  if (self.hasCordWithZero) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"cordWithZero", self.cordWithZero];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 
@@ -13624,6 +14449,18 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       (!self.hasNanFloat || self.nanFloat == otherMessage.nanFloat) &&
       self.hasCppTrigraph == otherMessage.hasCppTrigraph &&
       (!self.hasCppTrigraph || [self.cppTrigraph isEqual:otherMessage.cppTrigraph]) &&
+      self.hasReallySmallInt32 == otherMessage.hasReallySmallInt32 &&
+      (!self.hasReallySmallInt32 || self.reallySmallInt32 == otherMessage.reallySmallInt32) &&
+      self.hasReallySmallInt64 == otherMessage.hasReallySmallInt64 &&
+      (!self.hasReallySmallInt64 || self.reallySmallInt64 == otherMessage.reallySmallInt64) &&
+      self.hasStringWithZero == otherMessage.hasStringWithZero &&
+      (!self.hasStringWithZero || [self.stringWithZero isEqual:otherMessage.stringWithZero]) &&
+      self.hasBytesWithZero == otherMessage.hasBytesWithZero &&
+      (!self.hasBytesWithZero || [self.bytesWithZero isEqual:otherMessage.bytesWithZero]) &&
+      self.hasStringPieceWithZero == otherMessage.hasStringPieceWithZero &&
+      (!self.hasStringPieceWithZero || [self.stringPieceWithZero isEqual:otherMessage.stringPieceWithZero]) &&
+      self.hasCordWithZero == otherMessage.hasCordWithZero &&
+      (!self.hasCordWithZero || [self.cordWithZero isEqual:otherMessage.cordWithZero]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
@@ -13690,6 +14527,24 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (self.hasCppTrigraph) {
     hashCode = hashCode * 31 + [self.cppTrigraph hash];
   }
+  if (self.hasReallySmallInt32) {
+    hashCode = hashCode * 31 + [@(self.reallySmallInt32) hash];
+  }
+  if (self.hasReallySmallInt64) {
+    hashCode = hashCode * 31 + [@(self.reallySmallInt64) hash];
+  }
+  if (self.hasStringWithZero) {
+    hashCode = hashCode * 31 + [self.stringWithZero hash];
+  }
+  if (self.hasBytesWithZero) {
+    hashCode = hashCode * 31 + [self.bytesWithZero hash];
+  }
+  if (self.hasStringPieceWithZero) {
+    hashCode = hashCode * 31 + [self.stringPieceWithZero hash];
+  }
+  if (self.hasCordWithZero) {
+    hashCode = hashCode * 31 + [self.cordWithZero hash];
+  }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -13754,6 +14609,12 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (other.hasSmallInt64) {
     [self setSmallInt64:other.smallInt64];
   }
+  if (other.hasReallySmallInt32) {
+    [self setReallySmallInt32:other.reallySmallInt32];
+  }
+  if (other.hasReallySmallInt64) {
+    [self setReallySmallInt64:other.reallySmallInt64];
+  }
   if (other.hasUtf8String) {
     [self setUtf8String:other.utf8String];
   }
@@ -13798,6 +14659,18 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   if (other.hasCppTrigraph) {
     [self setCppTrigraph:other.cppTrigraph];
+  }
+  if (other.hasStringWithZero) {
+    [self setStringWithZero:other.stringWithZero];
+  }
+  if (other.hasBytesWithZero) {
+    [self setBytesWithZero:other.bytesWithZero];
+  }
+  if (other.hasStringPieceWithZero) {
+    [self setStringPieceWithZero:other.stringPieceWithZero];
+  }
+  if (other.hasCordWithZero) {
+    [self setCordWithZero:other.cordWithZero];
   }
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -13900,6 +14773,30 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
         [self setCppTrigraph:[input readString]];
         break;
       }
+      case 168: {
+        [self setReallySmallInt32:[input readInt32]];
+        break;
+      }
+      case 176: {
+        [self setReallySmallInt64:[input readInt64]];
+        break;
+      }
+      case 186: {
+        [self setStringWithZero:[input readString]];
+        break;
+      }
+      case 194: {
+        [self setBytesWithZero:[input readData]];
+        break;
+      }
+      case 202: {
+        [self setStringPieceWithZero:[input readString]];
+        break;
+      }
+      case 210: {
+        [self setCordWithZero:[input readString]];
+        break;
+      }
     }
   }
 }
@@ -13981,6 +14878,38 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (instancetype)clearSmallInt64 {
   _result.hasSmallInt64 = NO;
   _result.smallInt64 = -9223372036854775807L;
+  return self;
+}
+- (BOOL)hasReallySmallInt32 {
+  return _result.hasReallySmallInt32;
+}
+- (int32_t) reallySmallInt32 {
+  return _result.reallySmallInt32;
+}
+- (instancetype)setReallySmallInt32:(int32_t)value {
+  _result.hasReallySmallInt32 = YES;
+  _result.reallySmallInt32 = value;
+  return self;
+}
+- (instancetype)clearReallySmallInt32 {
+  _result.hasReallySmallInt32 = NO;
+  _result.reallySmallInt32 = -2147483648;
+  return self;
+}
+- (BOOL)hasReallySmallInt64 {
+  return _result.hasReallySmallInt64;
+}
+- (int64_t) reallySmallInt64 {
+  return _result.reallySmallInt64;
+}
+- (instancetype)setReallySmallInt64:(int64_t)value {
+  _result.hasReallySmallInt64 = YES;
+  _result.reallySmallInt64 = value;
+  return self;
+}
+- (instancetype)clearReallySmallInt64 {
+  _result.hasReallySmallInt64 = NO;
+  _result.reallySmallInt64 = -9223372036854775808L;
   return self;
 }
 - (BOOL)hasUtf8String {
@@ -14221,6 +15150,70 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (instancetype)clearCppTrigraph {
   _result.hasCppTrigraph = NO;
   _result.cppTrigraph = @"\? \? \?\? \?\? \?\?\? \?\?/ \?\?-";
+  return self;
+}
+- (BOOL)hasStringWithZero {
+  return _result.hasStringWithZero;
+}
+- (NSString *) stringWithZero {
+  return _result.stringWithZero;
+}
+- (instancetype)setStringWithZero:(NSString *)value {
+  _result.hasStringWithZero = YES;
+  _result.stringWithZero = value;
+  return self;
+}
+- (instancetype)clearStringWithZero {
+  _result.hasStringWithZero = NO;
+  _result.stringWithZero = @"hel\000lo";
+  return self;
+}
+- (BOOL)hasBytesWithZero {
+  return _result.hasBytesWithZero;
+}
+- (NSData *) bytesWithZero {
+  return _result.bytesWithZero;
+}
+- (instancetype)setBytesWithZero:(NSData *)value {
+  _result.hasBytesWithZero = YES;
+  _result.bytesWithZero = value;
+  return self;
+}
+- (instancetype)clearBytesWithZero {
+  _result.hasBytesWithZero = NO;
+  _result.bytesWithZero = [NSData dataWithBytes:"wor\000ld" length:6];
+  return self;
+}
+- (BOOL)hasStringPieceWithZero {
+  return _result.hasStringPieceWithZero;
+}
+- (NSString *) stringPieceWithZero {
+  return _result.stringPieceWithZero;
+}
+- (instancetype)setStringPieceWithZero:(NSString *)value {
+  _result.hasStringPieceWithZero = YES;
+  _result.stringPieceWithZero = value;
+  return self;
+}
+- (instancetype)clearStringPieceWithZero {
+  _result.hasStringPieceWithZero = NO;
+  _result.stringPieceWithZero = @"ab\000c";
+  return self;
+}
+- (BOOL)hasCordWithZero {
+  return _result.hasCordWithZero;
+}
+- (NSString *) cordWithZero {
+  return _result.cordWithZero;
+}
+- (instancetype)setCordWithZero:(NSString *)value {
+  _result.hasCordWithZero = YES;
+  _result.cordWithZero = value;
+  return self;
+}
+- (instancetype)clearCordWithZero {
+  _result.hasCordWithZero = NO;
+  _result.cordWithZero = @"12\0003";
   return self;
 }
 
@@ -14642,6 +15635,225 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 @end
 
 
+#pragma mark - MoreString
+
+@interface MoreString ()
+
+@property (strong) NSMutableArray * dataArray;
+
+@end
+
+@implementation MoreString {
+  NSMutableArray *_dataArray;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+@dynamic data;
+
+- (NSArray *)data {
+  return _dataArray;
+}
+- (NSString *)dataAtIndex:(NSUInteger)index {
+  return _dataArray[index];
+}
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  for (NSString * value in self.dataArray) {
+    [output writeString:1 value:value];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  {
+    int32_t dataSize = 0;
+    const NSUInteger count_ = self.dataArray.count;
+    for (NSString * element in self.dataArray) {
+      dataSize += computeStringSizeNoTag(element);
+    }
+    size_ += dataSize;
+    size_ += 1 * count_;
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (MoreString_Builder*) builder {
+  return [[MoreString_Builder alloc] init];
+}
++ (MoreString_Builder*) builderWithPrototype:(MoreString*)prototype {
+  return [[MoreString builder] mergeFrom:prototype];
+}
+- (MoreString_Builder*) builder {
+  return [MoreString builder];
+}
+- (MoreString_Builder*) toBuilder {
+  return [MoreString builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  for (NSString * element in self.dataArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", element];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[MoreString class]]) {
+    return NO;
+  }
+  MoreString *otherMessage = other;
+  return
+      ((self.dataArray == nil && otherMessage.dataArray == nil) || [self.dataArray isEqualToArray:otherMessage.dataArray]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  for (NSString * element in self.dataArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation MoreString_Builder {
+  MoreString* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[MoreString alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[MoreString alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [MoreString builderWithPrototype:_result];
+}
+
+- (MoreString*) defaultInstance {
+  return [MoreString defaultInstance];
+}
+
+- (MoreString*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (MoreString*) buildPartial {
+  MoreString* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(MoreString*)other {
+  if (other == [MoreString defaultInstance]) {
+    return self;
+  }
+  if (other.dataArray.count > 0) {
+    if (_result.dataArray == nil) {
+      _result.dataArray = [[NSMutableArray alloc] initWithArray:other.dataArray];
+    } else {
+      [_result.dataArray addObjectsFromArray:other.dataArray];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self addData:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (NSMutableArray *)data {
+  return _result.dataArray;
+}
+- (NSString *)dataAtIndex:(NSUInteger)index {
+  return [_result dataAtIndex:index];
+}
+- (instancetype)addData:(NSString *)value {
+  if (_result.dataArray == nil) {
+    _result.dataArray = [[NSMutableArray alloc]init];
+  }
+  [_result.dataArray addObject:value];
+  return self;
+}
+- (instancetype)setDataArray:(NSArray *)array {
+  _result.dataArray = [[NSMutableArray alloc] initWithArray:array];
+  return self;
+}
+- (instancetype)clearData {
+  _result.dataArray = nil;
+  return self;
+}
+
+@end
+
+
 #pragma mark - OneBytes
 
 @interface OneBytes ()
@@ -14841,6 +16053,225 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 - (instancetype)clearData {
   _result.hasData = NO;
   _result.data = [NSData data];
+  return self;
+}
+
+@end
+
+
+#pragma mark - MoreBytes
+
+@interface MoreBytes ()
+
+@property (strong) NSMutableArray * dataArray;
+
+@end
+
+@implementation MoreBytes {
+  NSMutableArray *_dataArray;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+@dynamic data;
+
+- (NSArray *)data {
+  return _dataArray;
+}
+- (NSData *)dataAtIndex:(NSUInteger)index {
+  return _dataArray[index];
+}
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  for (NSData * value in self.dataArray) {
+    [output writeData:1 value:value];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  {
+    int32_t dataSize = 0;
+    const NSUInteger count_ = self.dataArray.count;
+    for (NSData * element in self.dataArray) {
+      dataSize += computeDataSizeNoTag(element);
+    }
+    size_ += dataSize;
+    size_ += 1 * count_;
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (MoreBytes_Builder*) builder {
+  return [[MoreBytes_Builder alloc] init];
+}
++ (MoreBytes_Builder*) builderWithPrototype:(MoreBytes*)prototype {
+  return [[MoreBytes builder] mergeFrom:prototype];
+}
+- (MoreBytes_Builder*) builder {
+  return [MoreBytes builder];
+}
+- (MoreBytes_Builder*) toBuilder {
+  return [MoreBytes builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  for (NSData * element in self.dataArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", element];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[MoreBytes class]]) {
+    return NO;
+  }
+  MoreBytes *otherMessage = other;
+  return
+      ((self.dataArray == nil && otherMessage.dataArray == nil) || [self.dataArray isEqualToArray:otherMessage.dataArray]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  for (NSData * element in self.dataArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation MoreBytes_Builder {
+  MoreBytes* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[MoreBytes alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[MoreBytes alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [MoreBytes builderWithPrototype:_result];
+}
+
+- (MoreBytes*) defaultInstance {
+  return [MoreBytes defaultInstance];
+}
+
+- (MoreBytes*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (MoreBytes*) buildPartial {
+  MoreBytes* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(MoreBytes*)other {
+  if (other == [MoreBytes defaultInstance]) {
+    return self;
+  }
+  if (other.dataArray.count > 0) {
+    if (_result.dataArray == nil) {
+      _result.dataArray = [[NSMutableArray alloc] initWithArray:other.dataArray];
+    } else {
+      [_result.dataArray addObjectsFromArray:other.dataArray];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self addData:[input readData]];
+        break;
+      }
+    }
+  }
+}
+- (NSMutableArray *)data {
+  return _result.dataArray;
+}
+- (NSData *)dataAtIndex:(NSUInteger)index {
+  return [_result dataAtIndex:index];
+}
+- (instancetype)addData:(NSData *)value {
+  if (_result.dataArray == nil) {
+    _result.dataArray = [[NSMutableArray alloc]init];
+  }
+  [_result.dataArray addObject:value];
+  return self;
+}
+- (instancetype)setDataArray:(NSArray *)array {
+  _result.dataArray = [[NSMutableArray alloc] initWithArray:array];
+  return self;
+}
+- (instancetype)clearData {
+  _result.dataArray = nil;
   return self;
 }
 
@@ -18850,6 +20281,2204 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @end
 
 
+#pragma mark - TestParsingMerge
+
+@interface TestParsingMerge ()
+
+@property (strong) TestAllTypes* requiredAllTypes;
+@property (strong) TestAllTypes* optionalAllTypes;
+@property (strong) NSMutableArray *repeatedAllTypesArray;
+@property (strong) TestParsingMerge_OptionalGroup* OptionalGroup;
+@property (strong) NSMutableArray *RepeatedGroupArray;
+
+@end
+
+@implementation TestParsingMerge {
+  BOOL _hasOptionalGroup:1;
+  BOOL _hasRequiredAllTypes:1;
+  BOOL _hasOptionalAllTypes:1;
+  NSMutableArray *_RepeatedGroupArray;
+  NSMutableArray *_repeatedAllTypesArray;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _requiredAllTypes = [TestAllTypes defaultInstance];
+    _optionalAllTypes = [TestAllTypes defaultInstance];
+    _OptionalGroup = [TestParsingMerge_OptionalGroup defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasRequiredAllTypes {
+  return !!_hasRequiredAllTypes;
+}
+- (void)setHasRequiredAllTypes:(BOOL)value {
+  _hasRequiredAllTypes = !!value;
+}
+
+- (BOOL)hasOptionalAllTypes {
+  return !!_hasOptionalAllTypes;
+}
+- (void)setHasOptionalAllTypes:(BOOL)value {
+  _hasOptionalAllTypes = !!value;
+}
+
+@dynamic repeatedAllTypes;
+- (BOOL)hasOptionalGroup {
+  return !!_hasOptionalGroup;
+}
+- (void)setHasOptionalGroup:(BOOL)value {
+  _hasOptionalGroup = !!value;
+}
+
+@dynamic RepeatedGroup;
+
++ (id<PBExtensionField>)optionalExt {
+  return TestParsingMerge_optionalExt;
+}
++ (id<PBExtensionField>)repeatedExt {
+  return TestParsingMerge_repeatedExt;
+}
+
+- (NSArray *)repeatedAllTypes {
+  return _repeatedAllTypesArray;
+}
+- (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index {
+  return _repeatedAllTypesArray[index];
+}
+- (NSArray *)RepeatedGroup {
+  return _RepeatedGroupArray;
+}
+- (TestParsingMerge_RepeatedGroup*)RepeatedGroupAtIndex:(NSUInteger)index {
+  return _RepeatedGroupArray[index];
+}
+
+- (BOOL)isInitialized {
+  if (!self.hasRequiredAllTypes) {
+    return NO;
+  }
+  if (!self.extensionsAreInitialized) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasRequiredAllTypes) {
+    [output writeMessage:1 value:self.requiredAllTypes];
+  }
+  if (self.hasOptionalAllTypes) {
+    [output writeMessage:2 value:self.optionalAllTypes];
+  }
+  for (TestAllTypes *element in self.repeatedAllTypesArray) {
+    [output writeMessage:3 value:element];
+  }
+  if (self.hasOptionalGroup) {
+    [output writeGroup:10 value:self.OptionalGroup];
+  }
+  for (TestParsingMerge_RepeatedGroup *element in self.RepeatedGroupArray) {
+    [output writeGroup:20 value:element];
+  }
+  [self writeExtensionsToCodedOutputStream:output
+                                      from:1000
+                                        to:536870912];
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasRequiredAllTypes) {
+    size_ += computeMessageSize(1, self.requiredAllTypes);
+  }
+  if (self.hasOptionalAllTypes) {
+    size_ += computeMessageSize(2, self.optionalAllTypes);
+  }
+  for (TestAllTypes *element in self.repeatedAllTypesArray) {
+    size_ += computeMessageSize(3, element);
+  }
+  if (self.hasOptionalGroup) {
+    size_ += computeGroupSize(10, self.OptionalGroup);
+  }
+  for (TestParsingMerge_RepeatedGroup *element in self.RepeatedGroupArray) {
+    size_ += computeGroupSize(20, element);
+  }
+  size_ += [self extensionsSerializedSize];
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestParsingMerge_Builder*) builder {
+  return [[TestParsingMerge_Builder alloc] init];
+}
++ (TestParsingMerge_Builder*) builderWithPrototype:(TestParsingMerge*)prototype {
+  return [[TestParsingMerge builder] mergeFrom:prototype];
+}
+- (TestParsingMerge_Builder*) builder {
+  return [TestParsingMerge builder];
+}
+- (TestParsingMerge_Builder*) toBuilder {
+  return [TestParsingMerge builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasRequiredAllTypes) {
+    [output appendFormat:@"%@%@ {\n", indent, @"requiredAllTypes"];
+    [self.requiredAllTypes writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalAllTypes) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalAllTypes"];
+    [self.optionalAllTypes writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestAllTypes* element in self.repeatedAllTypesArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedAllTypes"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalGroup) {
+    [output appendFormat:@"%@%@ {\n", indent, @"OptionalGroup"];
+    [self.OptionalGroup writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestParsingMerge_RepeatedGroup* element in self.RepeatedGroupArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"RepeatedGroup"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1000
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestParsingMerge class]]) {
+    return NO;
+  }
+  TestParsingMerge *otherMessage = other;
+  return
+      self.hasRequiredAllTypes == otherMessage.hasRequiredAllTypes &&
+      (!self.hasRequiredAllTypes || [self.requiredAllTypes isEqual:otherMessage.requiredAllTypes]) &&
+      self.hasOptionalAllTypes == otherMessage.hasOptionalAllTypes &&
+      (!self.hasOptionalAllTypes || [self.optionalAllTypes isEqual:otherMessage.optionalAllTypes]) &&
+      ((self.repeatedAllTypesArray == nil && otherMessage.repeatedAllTypesArray == nil) || [self.repeatedAllTypesArray isEqualToArray:otherMessage.repeatedAllTypesArray]) &&
+      self.hasOptionalGroup == otherMessage.hasOptionalGroup &&
+      (!self.hasOptionalGroup || [self.OptionalGroup isEqual:otherMessage.OptionalGroup]) &&
+      ((self.RepeatedGroupArray == nil && otherMessage.RepeatedGroupArray == nil) || [self.RepeatedGroupArray isEqualToArray:otherMessage.RepeatedGroupArray]) &&
+      [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
+
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasRequiredAllTypes) {
+    hashCode = hashCode * 31 + [self.requiredAllTypes hash];
+  }
+  if (self.hasOptionalAllTypes) {
+    hashCode = hashCode * 31 + [self.optionalAllTypes hash];
+  }
+  for (TestAllTypes* element in self.repeatedAllTypesArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  if (self.hasOptionalGroup) {
+    hashCode = hashCode * 31 + [self.OptionalGroup hash];
+  }
+  for (TestParsingMerge_RepeatedGroup* element in self.RepeatedGroupArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestParsingMerge_Builder {
+  TestParsingMerge* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestParsingMerge alloc] init];
+  return self;
+}
+
+- (PBExtendableMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestParsingMerge alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestParsingMerge builderWithPrototype:_result];
+}
+
+- (TestParsingMerge*) defaultInstance {
+  return [TestParsingMerge defaultInstance];
+}
+
+- (TestParsingMerge*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestParsingMerge*) buildPartial {
+  TestParsingMerge* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestParsingMerge*)other {
+  if (other == [TestParsingMerge defaultInstance]) {
+    return self;
+  }
+  if (other.hasRequiredAllTypes) {
+    [self mergeRequiredAllTypes:other.requiredAllTypes];
+  }
+  if (other.hasOptionalAllTypes) {
+    [self mergeOptionalAllTypes:other.optionalAllTypes];
+  }
+  if (other.repeatedAllTypesArray.count > 0) {
+    if (_result.repeatedAllTypesArray == nil) {
+      _result.repeatedAllTypesArray = [[NSMutableArray alloc] initWithArray:other.repeatedAllTypesArray];
+    } else {
+      [_result.repeatedAllTypesArray addObjectsFromArray:other.repeatedAllTypesArray];
+    }
+  }
+  if (other.hasOptionalGroup) {
+    [self mergeOptionalGroup:other.OptionalGroup];
+  }
+  if (other.RepeatedGroupArray.count > 0) {
+    if (_result.RepeatedGroupArray == nil) {
+      _result.RepeatedGroupArray = [[NSMutableArray alloc] initWithArray:other.RepeatedGroupArray];
+    } else {
+      [_result.RepeatedGroupArray addObjectsFromArray:other.RepeatedGroupArray];
+    }
+  }
+  [self mergeExtensionFields:other];
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasRequiredAllTypes) {
+          [subBuilder mergeFrom:self.requiredAllTypes];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setRequiredAllTypes:[subBuilder buildPartial]];
+        break;
+      }
+      case 18: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasOptionalAllTypes) {
+          [subBuilder mergeFrom:self.optionalAllTypes];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setOptionalAllTypes:[subBuilder buildPartial]];
+        break;
+      }
+      case 26: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addRepeatedAllTypes:[subBuilder buildPartial]];
+        break;
+      }
+      case 83: {
+        TestParsingMerge_OptionalGroup_Builder* subBuilder = [TestParsingMerge_OptionalGroup builder];
+        if (self.hasOptionalGroup) {
+          [subBuilder mergeFrom:self.OptionalGroup];
+        }
+        [input readGroup:10 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self setOptionalGroup:[subBuilder buildPartial]];
+        break;
+      }
+      case 163: {
+        TestParsingMerge_RepeatedGroup_Builder* subBuilder = [TestParsingMerge_RepeatedGroup builder];
+        [input readGroup:20 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self addRepeatedGroup:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasRequiredAllTypes {
+  return _result.hasRequiredAllTypes;
+}
+- (TestAllTypes*)requiredAllTypes {
+  return _result.requiredAllTypes;
+}
+- (instancetype)setRequiredAllTypes:(TestAllTypes*)value {
+  _result.hasRequiredAllTypes = YES;
+  _result.requiredAllTypes = value;
+  return self;
+}
+- (instancetype)setRequiredAllTypesBuilder:(TestAllTypes_Builder*)builderForValue {
+  return [self setRequiredAllTypes:[builderForValue build]];
+}
+- (instancetype)mergeRequiredAllTypes:(TestAllTypes*)value {
+  if (_result.hasRequiredAllTypes &&
+      _result.requiredAllTypes != [TestAllTypes defaultInstance]) {
+    _result.requiredAllTypes =
+      [[[TestAllTypes builderWithPrototype:_result.requiredAllTypes] mergeFrom:value] buildPartial];
+  } else {
+    _result.requiredAllTypes = value;
+  }
+  _result.hasRequiredAllTypes = YES;
+  return self;
+}
+- (instancetype)clearRequiredAllTypes {
+  _result.hasRequiredAllTypes = NO;
+  _result.requiredAllTypes = [TestAllTypes defaultInstance];
+  return self;
+}
+- (BOOL)hasOptionalAllTypes {
+  return _result.hasOptionalAllTypes;
+}
+- (TestAllTypes*)optionalAllTypes {
+  return _result.optionalAllTypes;
+}
+- (instancetype)setOptionalAllTypes:(TestAllTypes*)value {
+  _result.hasOptionalAllTypes = YES;
+  _result.optionalAllTypes = value;
+  return self;
+}
+- (instancetype)setOptionalAllTypesBuilder:(TestAllTypes_Builder*)builderForValue {
+  return [self setOptionalAllTypes:[builderForValue build]];
+}
+- (instancetype)mergeOptionalAllTypes:(TestAllTypes*)value {
+  if (_result.hasOptionalAllTypes &&
+      _result.optionalAllTypes != [TestAllTypes defaultInstance]) {
+    _result.optionalAllTypes =
+      [[[TestAllTypes builderWithPrototype:_result.optionalAllTypes] mergeFrom:value] buildPartial];
+  } else {
+    _result.optionalAllTypes = value;
+  }
+  _result.hasOptionalAllTypes = YES;
+  return self;
+}
+- (instancetype)clearOptionalAllTypes {
+  _result.hasOptionalAllTypes = NO;
+  _result.optionalAllTypes = [TestAllTypes defaultInstance];
+  return self;
+}
+- (NSMutableArray *)repeatedAllTypes {
+  return _result.repeatedAllTypesArray;
+}
+- (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index {
+  return [_result repeatedAllTypesAtIndex:index];
+}
+- (instancetype)addRepeatedAllTypes:(TestAllTypes*)value {
+  if (_result.repeatedAllTypesArray == nil) {
+    _result.repeatedAllTypesArray = [[NSMutableArray alloc]init];
+  }
+  [_result.repeatedAllTypesArray addObject:value];
+  return self;
+}
+- (instancetype)setRepeatedAllTypesArray:(NSArray *)array {
+  _result.repeatedAllTypesArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearRepeatedAllTypes {
+  _result.repeatedAllTypesArray = nil;
+  return self;
+}
+- (BOOL)hasOptionalGroup {
+  return _result.hasOptionalGroup;
+}
+- (TestParsingMerge_OptionalGroup*)OptionalGroup {
+  return _result.OptionalGroup;
+}
+- (instancetype)setOptionalGroup:(TestParsingMerge_OptionalGroup*)value {
+  _result.hasOptionalGroup = YES;
+  _result.OptionalGroup = value;
+  return self;
+}
+- (instancetype)setOptionalGroupBuilder:(TestParsingMerge_OptionalGroup_Builder*)builderForValue {
+  return [self setOptionalGroup:[builderForValue build]];
+}
+- (instancetype)mergeOptionalGroup:(TestParsingMerge_OptionalGroup*)value {
+  if (_result.hasOptionalGroup &&
+      _result.OptionalGroup != [TestParsingMerge_OptionalGroup defaultInstance]) {
+    _result.OptionalGroup =
+      [[[TestParsingMerge_OptionalGroup builderWithPrototype:_result.OptionalGroup] mergeFrom:value] buildPartial];
+  } else {
+    _result.OptionalGroup = value;
+  }
+  _result.hasOptionalGroup = YES;
+  return self;
+}
+- (instancetype)clearOptionalGroup {
+  _result.hasOptionalGroup = NO;
+  _result.OptionalGroup = [TestParsingMerge_OptionalGroup defaultInstance];
+  return self;
+}
+- (NSMutableArray *)RepeatedGroup {
+  return _result.RepeatedGroupArray;
+}
+- (TestParsingMerge_RepeatedGroup*)RepeatedGroupAtIndex:(NSUInteger)index {
+  return [_result RepeatedGroupAtIndex:index];
+}
+- (instancetype)addRepeatedGroup:(TestParsingMerge_RepeatedGroup*)value {
+  if (_result.RepeatedGroupArray == nil) {
+    _result.RepeatedGroupArray = [[NSMutableArray alloc]init];
+  }
+  [_result.RepeatedGroupArray addObject:value];
+  return self;
+}
+- (instancetype)setRepeatedGroupArray:(NSArray *)array {
+  _result.RepeatedGroupArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearRepeatedGroup {
+  _result.RepeatedGroupArray = nil;
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedFieldsGenerator
+
+@interface TestParsingMerge_RepeatedFieldsGenerator ()
+
+@property (strong) NSMutableArray *field1Array;
+@property (strong) NSMutableArray *field2Array;
+@property (strong) NSMutableArray *field3Array;
+@property (strong) NSMutableArray *Group1Array;
+@property (strong) NSMutableArray *Group2Array;
+@property (strong) NSMutableArray *ext1Array;
+@property (strong) NSMutableArray *ext2Array;
+
+@end
+
+@implementation TestParsingMerge_RepeatedFieldsGenerator {
+  NSMutableArray *_Group1Array;
+  NSMutableArray *_Group2Array;
+  NSMutableArray *_field1Array;
+  NSMutableArray *_field2Array;
+  NSMutableArray *_field3Array;
+  NSMutableArray *_ext1Array;
+  NSMutableArray *_ext2Array;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+@dynamic field1;
+@dynamic field2;
+@dynamic field3;
+@dynamic Group1;
+@dynamic Group2;
+@dynamic ext1;
+@dynamic ext2;
+
+- (NSArray *)field1 {
+  return _field1Array;
+}
+- (TestAllTypes*)field1AtIndex:(NSUInteger)index {
+  return _field1Array[index];
+}
+- (NSArray *)field2 {
+  return _field2Array;
+}
+- (TestAllTypes*)field2AtIndex:(NSUInteger)index {
+  return _field2Array[index];
+}
+- (NSArray *)field3 {
+  return _field3Array;
+}
+- (TestAllTypes*)field3AtIndex:(NSUInteger)index {
+  return _field3Array[index];
+}
+- (NSArray *)Group1 {
+  return _Group1Array;
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)Group1AtIndex:(NSUInteger)index {
+  return _Group1Array[index];
+}
+- (NSArray *)Group2 {
+  return _Group2Array;
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)Group2AtIndex:(NSUInteger)index {
+  return _Group2Array[index];
+}
+- (NSArray *)ext1 {
+  return _ext1Array;
+}
+- (TestAllTypes*)ext1AtIndex:(NSUInteger)index {
+  return _ext1Array[index];
+}
+- (NSArray *)ext2 {
+  return _ext2Array;
+}
+- (TestAllTypes*)ext2AtIndex:(NSUInteger)index {
+  return _ext2Array[index];
+}
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  for (TestAllTypes *element in self.field1Array) {
+    [output writeMessage:1 value:element];
+  }
+  for (TestAllTypes *element in self.field2Array) {
+    [output writeMessage:2 value:element];
+  }
+  for (TestAllTypes *element in self.field3Array) {
+    [output writeMessage:3 value:element];
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group1 *element in self.Group1Array) {
+    [output writeGroup:10 value:element];
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group2 *element in self.Group2Array) {
+    [output writeGroup:20 value:element];
+  }
+  for (TestAllTypes *element in self.ext1Array) {
+    [output writeMessage:1000 value:element];
+  }
+  for (TestAllTypes *element in self.ext2Array) {
+    [output writeMessage:1001 value:element];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  for (TestAllTypes *element in self.field1Array) {
+    size_ += computeMessageSize(1, element);
+  }
+  for (TestAllTypes *element in self.field2Array) {
+    size_ += computeMessageSize(2, element);
+  }
+  for (TestAllTypes *element in self.field3Array) {
+    size_ += computeMessageSize(3, element);
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group1 *element in self.Group1Array) {
+    size_ += computeGroupSize(10, element);
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group2 *element in self.Group2Array) {
+    size_ += computeGroupSize(20, element);
+  }
+  for (TestAllTypes *element in self.ext1Array) {
+    size_ += computeMessageSize(1000, element);
+  }
+  for (TestAllTypes *element in self.ext2Array) {
+    size_ += computeMessageSize(1001, element);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestParsingMerge_RepeatedFieldsGenerator_Builder*) builder {
+  return [[TestParsingMerge_RepeatedFieldsGenerator_Builder alloc] init];
+}
++ (TestParsingMerge_RepeatedFieldsGenerator_Builder*) builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator*)prototype {
+  return [[TestParsingMerge_RepeatedFieldsGenerator builder] mergeFrom:prototype];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Builder*) builder {
+  return [TestParsingMerge_RepeatedFieldsGenerator builder];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Builder*) toBuilder {
+  return [TestParsingMerge_RepeatedFieldsGenerator builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  for (TestAllTypes* element in self.field1Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"field1"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestAllTypes* element in self.field2Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"field2"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestAllTypes* element in self.field3Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"field3"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group1* element in self.Group1Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"Group1"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group2* element in self.Group2Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"Group2"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestAllTypes* element in self.ext1Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"ext1"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestAllTypes* element in self.ext2Array) {
+    [output appendFormat:@"%@%@ {\n", indent, @"ext2"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestParsingMerge_RepeatedFieldsGenerator class]]) {
+    return NO;
+  }
+  TestParsingMerge_RepeatedFieldsGenerator *otherMessage = other;
+  return
+      ((self.field1Array == nil && otherMessage.field1Array == nil) || [self.field1Array isEqualToArray:otherMessage.field1Array]) &&
+      ((self.field2Array == nil && otherMessage.field2Array == nil) || [self.field2Array isEqualToArray:otherMessage.field2Array]) &&
+      ((self.field3Array == nil && otherMessage.field3Array == nil) || [self.field3Array isEqualToArray:otherMessage.field3Array]) &&
+      ((self.Group1Array == nil && otherMessage.Group1Array == nil) || [self.Group1Array isEqualToArray:otherMessage.Group1Array]) &&
+      ((self.Group2Array == nil && otherMessage.Group2Array == nil) || [self.Group2Array isEqualToArray:otherMessage.Group2Array]) &&
+      ((self.ext1Array == nil && otherMessage.ext1Array == nil) || [self.ext1Array isEqualToArray:otherMessage.ext1Array]) &&
+      ((self.ext2Array == nil && otherMessage.ext2Array == nil) || [self.ext2Array isEqualToArray:otherMessage.ext2Array]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  for (TestAllTypes* element in self.field1Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes* element in self.field2Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes* element in self.field3Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group1* element in self.Group1Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestParsingMerge_RepeatedFieldsGenerator_Group2* element in self.Group2Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes* element in self.ext1Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes* element in self.ext2Array) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestParsingMerge_RepeatedFieldsGenerator_Builder {
+  TestParsingMerge_RepeatedFieldsGenerator* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestParsingMerge_RepeatedFieldsGenerator alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestParsingMerge_RepeatedFieldsGenerator alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestParsingMerge_RepeatedFieldsGenerator builderWithPrototype:_result];
+}
+
+- (TestParsingMerge_RepeatedFieldsGenerator*) defaultInstance {
+  return [TestParsingMerge_RepeatedFieldsGenerator defaultInstance];
+}
+
+- (TestParsingMerge_RepeatedFieldsGenerator*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator*) buildPartial {
+  TestParsingMerge_RepeatedFieldsGenerator* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedFieldsGenerator*)other {
+  if (other == [TestParsingMerge_RepeatedFieldsGenerator defaultInstance]) {
+    return self;
+  }
+  if (other.field1Array.count > 0) {
+    if (_result.field1Array == nil) {
+      _result.field1Array = [[NSMutableArray alloc] initWithArray:other.field1Array];
+    } else {
+      [_result.field1Array addObjectsFromArray:other.field1Array];
+    }
+  }
+  if (other.field2Array.count > 0) {
+    if (_result.field2Array == nil) {
+      _result.field2Array = [[NSMutableArray alloc] initWithArray:other.field2Array];
+    } else {
+      [_result.field2Array addObjectsFromArray:other.field2Array];
+    }
+  }
+  if (other.field3Array.count > 0) {
+    if (_result.field3Array == nil) {
+      _result.field3Array = [[NSMutableArray alloc] initWithArray:other.field3Array];
+    } else {
+      [_result.field3Array addObjectsFromArray:other.field3Array];
+    }
+  }
+  if (other.Group1Array.count > 0) {
+    if (_result.Group1Array == nil) {
+      _result.Group1Array = [[NSMutableArray alloc] initWithArray:other.Group1Array];
+    } else {
+      [_result.Group1Array addObjectsFromArray:other.Group1Array];
+    }
+  }
+  if (other.Group2Array.count > 0) {
+    if (_result.Group2Array == nil) {
+      _result.Group2Array = [[NSMutableArray alloc] initWithArray:other.Group2Array];
+    } else {
+      [_result.Group2Array addObjectsFromArray:other.Group2Array];
+    }
+  }
+  if (other.ext1Array.count > 0) {
+    if (_result.ext1Array == nil) {
+      _result.ext1Array = [[NSMutableArray alloc] initWithArray:other.ext1Array];
+    } else {
+      [_result.ext1Array addObjectsFromArray:other.ext1Array];
+    }
+  }
+  if (other.ext2Array.count > 0) {
+    if (_result.ext2Array == nil) {
+      _result.ext2Array = [[NSMutableArray alloc] initWithArray:other.ext2Array];
+    } else {
+      [_result.ext2Array addObjectsFromArray:other.ext2Array];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addField1:[subBuilder buildPartial]];
+        break;
+      }
+      case 18: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addField2:[subBuilder buildPartial]];
+        break;
+      }
+      case 26: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addField3:[subBuilder buildPartial]];
+        break;
+      }
+      case 83: {
+        TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder* subBuilder = [TestParsingMerge_RepeatedFieldsGenerator_Group1 builder];
+        [input readGroup:10 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self addGroup1:[subBuilder buildPartial]];
+        break;
+      }
+      case 163: {
+        TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder* subBuilder = [TestParsingMerge_RepeatedFieldsGenerator_Group2 builder];
+        [input readGroup:20 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self addGroup2:[subBuilder buildPartial]];
+        break;
+      }
+      case 8002: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addExt1:[subBuilder buildPartial]];
+        break;
+      }
+      case 8010: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addExt2:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (NSMutableArray *)field1 {
+  return _result.field1Array;
+}
+- (TestAllTypes*)field1AtIndex:(NSUInteger)index {
+  return [_result field1AtIndex:index];
+}
+- (instancetype)addField1:(TestAllTypes*)value {
+  if (_result.field1Array == nil) {
+    _result.field1Array = [[NSMutableArray alloc]init];
+  }
+  [_result.field1Array addObject:value];
+  return self;
+}
+- (instancetype)setField1Array:(NSArray *)array {
+  _result.field1Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearField1 {
+  _result.field1Array = nil;
+  return self;
+}
+- (NSMutableArray *)field2 {
+  return _result.field2Array;
+}
+- (TestAllTypes*)field2AtIndex:(NSUInteger)index {
+  return [_result field2AtIndex:index];
+}
+- (instancetype)addField2:(TestAllTypes*)value {
+  if (_result.field2Array == nil) {
+    _result.field2Array = [[NSMutableArray alloc]init];
+  }
+  [_result.field2Array addObject:value];
+  return self;
+}
+- (instancetype)setField2Array:(NSArray *)array {
+  _result.field2Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearField2 {
+  _result.field2Array = nil;
+  return self;
+}
+- (NSMutableArray *)field3 {
+  return _result.field3Array;
+}
+- (TestAllTypes*)field3AtIndex:(NSUInteger)index {
+  return [_result field3AtIndex:index];
+}
+- (instancetype)addField3:(TestAllTypes*)value {
+  if (_result.field3Array == nil) {
+    _result.field3Array = [[NSMutableArray alloc]init];
+  }
+  [_result.field3Array addObject:value];
+  return self;
+}
+- (instancetype)setField3Array:(NSArray *)array {
+  _result.field3Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearField3 {
+  _result.field3Array = nil;
+  return self;
+}
+- (NSMutableArray *)Group1 {
+  return _result.Group1Array;
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)Group1AtIndex:(NSUInteger)index {
+  return [_result Group1AtIndex:index];
+}
+- (instancetype)addGroup1:(TestParsingMerge_RepeatedFieldsGenerator_Group1*)value {
+  if (_result.Group1Array == nil) {
+    _result.Group1Array = [[NSMutableArray alloc]init];
+  }
+  [_result.Group1Array addObject:value];
+  return self;
+}
+- (instancetype)setGroup1Array:(NSArray *)array {
+  _result.Group1Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearGroup1 {
+  _result.Group1Array = nil;
+  return self;
+}
+- (NSMutableArray *)Group2 {
+  return _result.Group2Array;
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)Group2AtIndex:(NSUInteger)index {
+  return [_result Group2AtIndex:index];
+}
+- (instancetype)addGroup2:(TestParsingMerge_RepeatedFieldsGenerator_Group2*)value {
+  if (_result.Group2Array == nil) {
+    _result.Group2Array = [[NSMutableArray alloc]init];
+  }
+  [_result.Group2Array addObject:value];
+  return self;
+}
+- (instancetype)setGroup2Array:(NSArray *)array {
+  _result.Group2Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearGroup2 {
+  _result.Group2Array = nil;
+  return self;
+}
+- (NSMutableArray *)ext1 {
+  return _result.ext1Array;
+}
+- (TestAllTypes*)ext1AtIndex:(NSUInteger)index {
+  return [_result ext1AtIndex:index];
+}
+- (instancetype)addExt1:(TestAllTypes*)value {
+  if (_result.ext1Array == nil) {
+    _result.ext1Array = [[NSMutableArray alloc]init];
+  }
+  [_result.ext1Array addObject:value];
+  return self;
+}
+- (instancetype)setExt1Array:(NSArray *)array {
+  _result.ext1Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearExt1 {
+  _result.ext1Array = nil;
+  return self;
+}
+- (NSMutableArray *)ext2 {
+  return _result.ext2Array;
+}
+- (TestAllTypes*)ext2AtIndex:(NSUInteger)index {
+  return [_result ext2AtIndex:index];
+}
+- (instancetype)addExt2:(TestAllTypes*)value {
+  if (_result.ext2Array == nil) {
+    _result.ext2Array = [[NSMutableArray alloc]init];
+  }
+  [_result.ext2Array addObject:value];
+  return self;
+}
+- (instancetype)setExt2Array:(NSArray *)array {
+  _result.ext2Array = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (instancetype)clearExt2 {
+  _result.ext2Array = nil;
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedFieldsGenerator_Group1
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Group1 ()
+
+@property (strong) TestAllTypes* field1;
+
+@end
+
+@implementation TestParsingMerge_RepeatedFieldsGenerator_Group1 {
+  BOOL _hasField1:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _field1 = [TestAllTypes defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasField1 {
+  return !!_hasField1;
+}
+- (void)setHasField1:(BOOL)value {
+  _hasField1 = !!value;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasField1) {
+    [output writeMessage:11 value:self.field1];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasField1) {
+    size_ += computeMessageSize(11, self.field1);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*) builder {
+  return [[TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder alloc] init];
+}
++ (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*) builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group1*)prototype {
+  return [[TestParsingMerge_RepeatedFieldsGenerator_Group1 builder] mergeFrom:prototype];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*) builder {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group1 builder];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*) toBuilder {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group1 builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasField1) {
+    [output appendFormat:@"%@%@ {\n", indent, @"field1"];
+    [self.field1 writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestParsingMerge_RepeatedFieldsGenerator_Group1 class]]) {
+    return NO;
+  }
+  TestParsingMerge_RepeatedFieldsGenerator_Group1 *otherMessage = other;
+  return
+      self.hasField1 == otherMessage.hasField1 &&
+      (!self.hasField1 || [self.field1 isEqual:otherMessage.field1]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasField1) {
+    hashCode = hashCode * 31 + [self.field1 hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder {
+  TestParsingMerge_RepeatedFieldsGenerator_Group1* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestParsingMerge_RepeatedFieldsGenerator_Group1 alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestParsingMerge_RepeatedFieldsGenerator_Group1 alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group1 builderWithPrototype:_result];
+}
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*) defaultInstance {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group1 defaultInstance];
+}
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*) buildPartial {
+  TestParsingMerge_RepeatedFieldsGenerator_Group1* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedFieldsGenerator_Group1*)other {
+  if (other == [TestParsingMerge_RepeatedFieldsGenerator_Group1 defaultInstance]) {
+    return self;
+  }
+  if (other.hasField1) {
+    [self mergeField1:other.field1];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 90: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasField1) {
+          [subBuilder mergeFrom:self.field1];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setField1:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasField1 {
+  return _result.hasField1;
+}
+- (TestAllTypes*)field1 {
+  return _result.field1;
+}
+- (instancetype)setField1:(TestAllTypes*)value {
+  _result.hasField1 = YES;
+  _result.field1 = value;
+  return self;
+}
+- (instancetype)setField1Builder:(TestAllTypes_Builder*)builderForValue {
+  return [self setField1:[builderForValue build]];
+}
+- (instancetype)mergeField1:(TestAllTypes*)value {
+  if (_result.hasField1 &&
+      _result.field1 != [TestAllTypes defaultInstance]) {
+    _result.field1 =
+      [[[TestAllTypes builderWithPrototype:_result.field1] mergeFrom:value] buildPartial];
+  } else {
+    _result.field1 = value;
+  }
+  _result.hasField1 = YES;
+  return self;
+}
+- (instancetype)clearField1 {
+  _result.hasField1 = NO;
+  _result.field1 = [TestAllTypes defaultInstance];
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedFieldsGenerator_Group2
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Group2 ()
+
+@property (strong) TestAllTypes* field1;
+
+@end
+
+@implementation TestParsingMerge_RepeatedFieldsGenerator_Group2 {
+  BOOL _hasField1:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _field1 = [TestAllTypes defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasField1 {
+  return !!_hasField1;
+}
+- (void)setHasField1:(BOOL)value {
+  _hasField1 = !!value;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasField1) {
+    [output writeMessage:21 value:self.field1];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasField1) {
+    size_ += computeMessageSize(21, self.field1);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*) builder {
+  return [[TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder alloc] init];
+}
++ (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*) builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group2*)prototype {
+  return [[TestParsingMerge_RepeatedFieldsGenerator_Group2 builder] mergeFrom:prototype];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*) builder {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group2 builder];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*) toBuilder {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group2 builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasField1) {
+    [output appendFormat:@"%@%@ {\n", indent, @"field1"];
+    [self.field1 writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestParsingMerge_RepeatedFieldsGenerator_Group2 class]]) {
+    return NO;
+  }
+  TestParsingMerge_RepeatedFieldsGenerator_Group2 *otherMessage = other;
+  return
+      self.hasField1 == otherMessage.hasField1 &&
+      (!self.hasField1 || [self.field1 isEqual:otherMessage.field1]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasField1) {
+    hashCode = hashCode * 31 + [self.field1 hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder {
+  TestParsingMerge_RepeatedFieldsGenerator_Group2* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestParsingMerge_RepeatedFieldsGenerator_Group2 alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestParsingMerge_RepeatedFieldsGenerator_Group2 alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group2 builderWithPrototype:_result];
+}
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*) defaultInstance {
+  return [TestParsingMerge_RepeatedFieldsGenerator_Group2 defaultInstance];
+}
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*) buildPartial {
+  TestParsingMerge_RepeatedFieldsGenerator_Group2* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedFieldsGenerator_Group2*)other {
+  if (other == [TestParsingMerge_RepeatedFieldsGenerator_Group2 defaultInstance]) {
+    return self;
+  }
+  if (other.hasField1) {
+    [self mergeField1:other.field1];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 170: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasField1) {
+          [subBuilder mergeFrom:self.field1];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setField1:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasField1 {
+  return _result.hasField1;
+}
+- (TestAllTypes*)field1 {
+  return _result.field1;
+}
+- (instancetype)setField1:(TestAllTypes*)value {
+  _result.hasField1 = YES;
+  _result.field1 = value;
+  return self;
+}
+- (instancetype)setField1Builder:(TestAllTypes_Builder*)builderForValue {
+  return [self setField1:[builderForValue build]];
+}
+- (instancetype)mergeField1:(TestAllTypes*)value {
+  if (_result.hasField1 &&
+      _result.field1 != [TestAllTypes defaultInstance]) {
+    _result.field1 =
+      [[[TestAllTypes builderWithPrototype:_result.field1] mergeFrom:value] buildPartial];
+  } else {
+    _result.field1 = value;
+  }
+  _result.hasField1 = YES;
+  return self;
+}
+- (instancetype)clearField1 {
+  _result.hasField1 = NO;
+  _result.field1 = [TestAllTypes defaultInstance];
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestParsingMerge_OptionalGroup
+
+@interface TestParsingMerge_OptionalGroup ()
+
+@property (strong) TestAllTypes* optionalGroupAllTypes;
+
+@end
+
+@implementation TestParsingMerge_OptionalGroup {
+  BOOL _hasOptionalGroupAllTypes:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _optionalGroupAllTypes = [TestAllTypes defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasOptionalGroupAllTypes {
+  return !!_hasOptionalGroupAllTypes;
+}
+- (void)setHasOptionalGroupAllTypes:(BOOL)value {
+  _hasOptionalGroupAllTypes = !!value;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasOptionalGroupAllTypes) {
+    [output writeMessage:11 value:self.optionalGroupAllTypes];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasOptionalGroupAllTypes) {
+    size_ += computeMessageSize(11, self.optionalGroupAllTypes);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestParsingMerge_OptionalGroup_Builder*) builder {
+  return [[TestParsingMerge_OptionalGroup_Builder alloc] init];
+}
++ (TestParsingMerge_OptionalGroup_Builder*) builderWithPrototype:(TestParsingMerge_OptionalGroup*)prototype {
+  return [[TestParsingMerge_OptionalGroup builder] mergeFrom:prototype];
+}
+- (TestParsingMerge_OptionalGroup_Builder*) builder {
+  return [TestParsingMerge_OptionalGroup builder];
+}
+- (TestParsingMerge_OptionalGroup_Builder*) toBuilder {
+  return [TestParsingMerge_OptionalGroup builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasOptionalGroupAllTypes) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalGroupAllTypes"];
+    [self.optionalGroupAllTypes writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestParsingMerge_OptionalGroup class]]) {
+    return NO;
+  }
+  TestParsingMerge_OptionalGroup *otherMessage = other;
+  return
+      self.hasOptionalGroupAllTypes == otherMessage.hasOptionalGroupAllTypes &&
+      (!self.hasOptionalGroupAllTypes || [self.optionalGroupAllTypes isEqual:otherMessage.optionalGroupAllTypes]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasOptionalGroupAllTypes) {
+    hashCode = hashCode * 31 + [self.optionalGroupAllTypes hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestParsingMerge_OptionalGroup_Builder {
+  TestParsingMerge_OptionalGroup* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestParsingMerge_OptionalGroup alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestParsingMerge_OptionalGroup alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestParsingMerge_OptionalGroup builderWithPrototype:_result];
+}
+
+- (TestParsingMerge_OptionalGroup*) defaultInstance {
+  return [TestParsingMerge_OptionalGroup defaultInstance];
+}
+
+- (TestParsingMerge_OptionalGroup*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestParsingMerge_OptionalGroup*) buildPartial {
+  TestParsingMerge_OptionalGroup* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestParsingMerge_OptionalGroup*)other {
+  if (other == [TestParsingMerge_OptionalGroup defaultInstance]) {
+    return self;
+  }
+  if (other.hasOptionalGroupAllTypes) {
+    [self mergeOptionalGroupAllTypes:other.optionalGroupAllTypes];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 90: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasOptionalGroupAllTypes) {
+          [subBuilder mergeFrom:self.optionalGroupAllTypes];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setOptionalGroupAllTypes:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasOptionalGroupAllTypes {
+  return _result.hasOptionalGroupAllTypes;
+}
+- (TestAllTypes*)optionalGroupAllTypes {
+  return _result.optionalGroupAllTypes;
+}
+- (instancetype)setOptionalGroupAllTypes:(TestAllTypes*)value {
+  _result.hasOptionalGroupAllTypes = YES;
+  _result.optionalGroupAllTypes = value;
+  return self;
+}
+- (instancetype)setOptionalGroupAllTypesBuilder:(TestAllTypes_Builder*)builderForValue {
+  return [self setOptionalGroupAllTypes:[builderForValue build]];
+}
+- (instancetype)mergeOptionalGroupAllTypes:(TestAllTypes*)value {
+  if (_result.hasOptionalGroupAllTypes &&
+      _result.optionalGroupAllTypes != [TestAllTypes defaultInstance]) {
+    _result.optionalGroupAllTypes =
+      [[[TestAllTypes builderWithPrototype:_result.optionalGroupAllTypes] mergeFrom:value] buildPartial];
+  } else {
+    _result.optionalGroupAllTypes = value;
+  }
+  _result.hasOptionalGroupAllTypes = YES;
+  return self;
+}
+- (instancetype)clearOptionalGroupAllTypes {
+  _result.hasOptionalGroupAllTypes = NO;
+  _result.optionalGroupAllTypes = [TestAllTypes defaultInstance];
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedGroup
+
+@interface TestParsingMerge_RepeatedGroup ()
+
+@property (strong) TestAllTypes* repeatedGroupAllTypes;
+
+@end
+
+@implementation TestParsingMerge_RepeatedGroup {
+  BOOL _hasRepeatedGroupAllTypes:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _repeatedGroupAllTypes = [TestAllTypes defaultInstance];
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasRepeatedGroupAllTypes {
+  return !!_hasRepeatedGroupAllTypes;
+}
+- (void)setHasRepeatedGroupAllTypes:(BOOL)value {
+  _hasRepeatedGroupAllTypes = !!value;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasRepeatedGroupAllTypes) {
+    [output writeMessage:21 value:self.repeatedGroupAllTypes];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasRepeatedGroupAllTypes) {
+    size_ += computeMessageSize(21, self.repeatedGroupAllTypes);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestParsingMerge_RepeatedGroup_Builder*) builder {
+  return [[TestParsingMerge_RepeatedGroup_Builder alloc] init];
+}
++ (TestParsingMerge_RepeatedGroup_Builder*) builderWithPrototype:(TestParsingMerge_RepeatedGroup*)prototype {
+  return [[TestParsingMerge_RepeatedGroup builder] mergeFrom:prototype];
+}
+- (TestParsingMerge_RepeatedGroup_Builder*) builder {
+  return [TestParsingMerge_RepeatedGroup builder];
+}
+- (TestParsingMerge_RepeatedGroup_Builder*) toBuilder {
+  return [TestParsingMerge_RepeatedGroup builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasRepeatedGroupAllTypes) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedGroupAllTypes"];
+    [self.repeatedGroupAllTypes writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestParsingMerge_RepeatedGroup class]]) {
+    return NO;
+  }
+  TestParsingMerge_RepeatedGroup *otherMessage = other;
+  return
+      self.hasRepeatedGroupAllTypes == otherMessage.hasRepeatedGroupAllTypes &&
+      (!self.hasRepeatedGroupAllTypes || [self.repeatedGroupAllTypes isEqual:otherMessage.repeatedGroupAllTypes]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasRepeatedGroupAllTypes) {
+    hashCode = hashCode * 31 + [self.repeatedGroupAllTypes hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestParsingMerge_RepeatedGroup_Builder {
+  TestParsingMerge_RepeatedGroup* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestParsingMerge_RepeatedGroup alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestParsingMerge_RepeatedGroup alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestParsingMerge_RepeatedGroup builderWithPrototype:_result];
+}
+
+- (TestParsingMerge_RepeatedGroup*) defaultInstance {
+  return [TestParsingMerge_RepeatedGroup defaultInstance];
+}
+
+- (TestParsingMerge_RepeatedGroup*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestParsingMerge_RepeatedGroup*) buildPartial {
+  TestParsingMerge_RepeatedGroup* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedGroup*)other {
+  if (other == [TestParsingMerge_RepeatedGroup defaultInstance]) {
+    return self;
+  }
+  if (other.hasRepeatedGroupAllTypes) {
+    [self mergeRepeatedGroupAllTypes:other.repeatedGroupAllTypes];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 170: {
+        TestAllTypes_Builder* subBuilder = [TestAllTypes builder];
+        if (self.hasRepeatedGroupAllTypes) {
+          [subBuilder mergeFrom:self.repeatedGroupAllTypes];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setRepeatedGroupAllTypes:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasRepeatedGroupAllTypes {
+  return _result.hasRepeatedGroupAllTypes;
+}
+- (TestAllTypes*)repeatedGroupAllTypes {
+  return _result.repeatedGroupAllTypes;
+}
+- (instancetype)setRepeatedGroupAllTypes:(TestAllTypes*)value {
+  _result.hasRepeatedGroupAllTypes = YES;
+  _result.repeatedGroupAllTypes = value;
+  return self;
+}
+- (instancetype)setRepeatedGroupAllTypesBuilder:(TestAllTypes_Builder*)builderForValue {
+  return [self setRepeatedGroupAllTypes:[builderForValue build]];
+}
+- (instancetype)mergeRepeatedGroupAllTypes:(TestAllTypes*)value {
+  if (_result.hasRepeatedGroupAllTypes &&
+      _result.repeatedGroupAllTypes != [TestAllTypes defaultInstance]) {
+    _result.repeatedGroupAllTypes =
+      [[[TestAllTypes builderWithPrototype:_result.repeatedGroupAllTypes] mergeFrom:value] buildPartial];
+  } else {
+    _result.repeatedGroupAllTypes = value;
+  }
+  _result.hasRepeatedGroupAllTypes = YES;
+  return self;
+}
+- (instancetype)clearRepeatedGroupAllTypes {
+  _result.hasRepeatedGroupAllTypes = NO;
+  _result.repeatedGroupAllTypes = [TestAllTypes defaultInstance];
+  return self;
+}
+
+@end
+
+
+#pragma mark - TestCommentInjectionMessage
+
+@interface TestCommentInjectionMessage ()
+
+@property (strong) NSString * a;
+
+@end
+
+@implementation TestCommentInjectionMessage {
+  BOOL _hasA:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _a = @"*/ <- Neither should this.";
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasA {
+  return !!_hasA;
+}
+- (void)setHasA:(BOOL)value {
+  _hasA = !!value;
+}
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasA) {
+    [output writeString:1 value:self.a];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasA) {
+    size_ += computeStringSize(1, self.a);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (TestCommentInjectionMessage_Builder*) builder {
+  return [[TestCommentInjectionMessage_Builder alloc] init];
+}
++ (TestCommentInjectionMessage_Builder*) builderWithPrototype:(TestCommentInjectionMessage*)prototype {
+  return [[TestCommentInjectionMessage builder] mergeFrom:prototype];
+}
+- (TestCommentInjectionMessage_Builder*) builder {
+  return [TestCommentInjectionMessage builder];
+}
+- (TestCommentInjectionMessage_Builder*) toBuilder {
+  return [TestCommentInjectionMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", self.a];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestCommentInjectionMessage class]]) {
+    return NO;
+  }
+  TestCommentInjectionMessage *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || [self.a isEqual:otherMessage.a]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [self.a hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation TestCommentInjectionMessage_Builder {
+  TestCommentInjectionMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[TestCommentInjectionMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[TestCommentInjectionMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [TestCommentInjectionMessage builderWithPrototype:_result];
+}
+
+- (TestCommentInjectionMessage*) defaultInstance {
+  return [TestCommentInjectionMessage defaultInstance];
+}
+
+- (TestCommentInjectionMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestCommentInjectionMessage*) buildPartial {
+  TestCommentInjectionMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(TestCommentInjectionMessage*)other {
+  if (other == [TestCommentInjectionMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasA) {
+    [self setA:other.a];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setA:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasA {
+  return _result.hasA;
+}
+- (NSString *) a {
+  return _result.a;
+}
+- (instancetype)setA:(NSString *)value {
+  _result.hasA = YES;
+  _result.a = value;
+  return self;
+}
+- (instancetype)clearA {
+  _result.hasA = NO;
+  _result.a = @"*/ <- Neither should this.";
+  return self;
+}
+
+@end
+
+
 #pragma mark - FooRequest
 
 @interface FooRequest ()
@@ -19138,6 +22767,324 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (instancetype)mergeFrom:(FooResponse*)other {
   if (other == [FooResponse defaultInstance]) {
+    return self;
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+
+@end
+
+
+#pragma mark - FooClientMessage
+
+@interface FooClientMessage ()
+
+
+@end
+
+@implementation FooClientMessage {
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (FooClientMessage_Builder*) builder {
+  return [[FooClientMessage_Builder alloc] init];
+}
++ (FooClientMessage_Builder*) builderWithPrototype:(FooClientMessage*)prototype {
+  return [[FooClientMessage builder] mergeFrom:prototype];
+}
+- (FooClientMessage_Builder*) builder {
+  return [FooClientMessage builder];
+}
+- (FooClientMessage_Builder*) toBuilder {
+  return [FooClientMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[FooClientMessage class]]) {
+    return NO;
+  }
+  FooClientMessage *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation FooClientMessage_Builder {
+  FooClientMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[FooClientMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[FooClientMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [FooClientMessage builderWithPrototype:_result];
+}
+
+- (FooClientMessage*) defaultInstance {
+  return [FooClientMessage defaultInstance];
+}
+
+- (FooClientMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (FooClientMessage*) buildPartial {
+  FooClientMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(FooClientMessage*)other {
+  if (other == [FooClientMessage defaultInstance]) {
+    return self;
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+
+@end
+
+
+#pragma mark - FooServerMessage
+
+@interface FooServerMessage ()
+
+
+@end
+
+@implementation FooServerMessage {
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (FooServerMessage_Builder*) builder {
+  return [[FooServerMessage_Builder alloc] init];
+}
++ (FooServerMessage_Builder*) builderWithPrototype:(FooServerMessage*)prototype {
+  return [[FooServerMessage builder] mergeFrom:prototype];
+}
+- (FooServerMessage_Builder*) builder {
+  return [FooServerMessage builder];
+}
+- (FooServerMessage_Builder*) toBuilder {
+  return [FooServerMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[FooServerMessage class]]) {
+    return NO;
+  }
+  FooServerMessage *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation FooServerMessage_Builder {
+  FooServerMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[FooServerMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[FooServerMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [FooServerMessage builderWithPrototype:_result];
+}
+
+- (FooServerMessage*) defaultInstance {
+  return [FooServerMessage defaultInstance];
+}
+
+- (FooServerMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (FooServerMessage*) buildPartial {
+  FooServerMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(FooServerMessage*)other {
+  if (other == [FooServerMessage defaultInstance]) {
     return self;
   }
   [self mergeUnknownFields:other.unknownFields];

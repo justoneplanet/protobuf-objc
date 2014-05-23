@@ -32,10 +32,14 @@
 @class ComplexOptionType3_Builder;
 @class ComplexOptionType3_ComplexOptionType5;
 @class ComplexOptionType3_ComplexOptionType5_Builder;
+@class CustomOptionFooClientMessage;
+@class CustomOptionFooClientMessage_Builder;
 @class CustomOptionFooRequest;
 @class CustomOptionFooRequest_Builder;
 @class CustomOptionFooResponse;
 @class CustomOptionFooResponse_Builder;
+@class CustomOptionFooServerMessage;
+@class CustomOptionFooServerMessage_Builder;
 @class CustomOptionMaxIntegerValues;
 @class CustomOptionMaxIntegerValues_Builder;
 @class CustomOptionMinIntegerValues;
@@ -46,6 +50,10 @@
 @class DummyMessageContainingEnum_Builder;
 @class DummyMessageInvalidAsOptionType;
 @class DummyMessageInvalidAsOptionType_Builder;
+@class NestedOptionType;
+@class NestedOptionType_Builder;
+@class NestedOptionType_NestedMessage;
+@class NestedOptionType_NestedMessage_Builder;
 @class PBDescriptorProto;
 @class PBDescriptorProto_Builder;
 @class PBDescriptorProto_ExtensionRange;
@@ -107,32 +115,38 @@
   #endif
 #endif
 
-typedef NS_ENUM(int32_t, MethodOpt1) {
+typedef NS_ENUM(NSInteger, MethodOpt1) {
   MethodOpt1METHODOPT1VAL1 = 1,
   MethodOpt1METHODOPT1VAL2 = 2,
 };
 
 BOOL MethodOpt1IsValidValue(MethodOpt1 value);
 
-typedef NS_ENUM(int32_t, AggregateEnum) {
+typedef NS_ENUM(NSInteger, AggregateEnum) {
   AggregateEnumVALUE = 1,
 };
 
 BOOL AggregateEnumIsValidValue(AggregateEnum value);
 
-typedef NS_ENUM(int32_t, TestMessageWithCustomOptions_AnEnum) {
+typedef NS_ENUM(NSInteger, TestMessageWithCustomOptions_AnEnum) {
   TestMessageWithCustomOptions_AnEnumANENUMVAL1 = 1,
   TestMessageWithCustomOptions_AnEnumANENUMVAL2 = 2,
 };
 
 BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOptions_AnEnum value);
 
-typedef NS_ENUM(int32_t, DummyMessageContainingEnum_TestEnumType) {
+typedef NS_ENUM(NSInteger, DummyMessageContainingEnum_TestEnumType) {
   DummyMessageContainingEnum_TestEnumTypeTESTOPTIONENUMTYPE1 = 22,
   DummyMessageContainingEnum_TestEnumTypeTESTOPTIONENUMTYPE2 = -23,
 };
 
 BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingEnum_TestEnumType value);
+
+typedef NS_ENUM(NSInteger, NestedOptionType_NestedEnum) {
+  NestedOptionType_NestedEnumNESTEDENUMVALUE = 1,
+};
+
+BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 
 @interface UnittestCustomOptionsRoot : NSObject {
@@ -266,6 +280,60 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (CustomOptionFooResponse*)buildPartial;
 
 - (instancetype)mergeFrom:(CustomOptionFooResponse*)other;
+
+@end
+
+
+#pragma mark - CustomOptionFooClientMessage
+
+@interface CustomOptionFooClientMessage : PBGeneratedMessage
+
+
+
+
+- (CustomOptionFooClientMessage_Builder*)builder;
++ (CustomOptionFooClientMessage_Builder*)builder;
++ (CustomOptionFooClientMessage_Builder*)builderWithPrototype:(CustomOptionFooClientMessage*) prototype;
+- (CustomOptionFooClientMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface CustomOptionFooClientMessage_Builder : PBGeneratedMessage_Builder
+
+- (CustomOptionFooClientMessage*) defaultInstance;
+
+- (CustomOptionFooClientMessage*)build;
+- (CustomOptionFooClientMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(CustomOptionFooClientMessage*)other;
+
+@end
+
+
+#pragma mark - CustomOptionFooServerMessage
+
+@interface CustomOptionFooServerMessage : PBGeneratedMessage
+
+
+
+
+- (CustomOptionFooServerMessage_Builder*)builder;
++ (CustomOptionFooServerMessage_Builder*)builder;
++ (CustomOptionFooServerMessage_Builder*)builderWithPrototype:(CustomOptionFooServerMessage*) prototype;
+- (CustomOptionFooServerMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface CustomOptionFooServerMessage_Builder : PBGeneratedMessage_Builder
+
+- (CustomOptionFooServerMessage*) defaultInstance;
+
+- (CustomOptionFooServerMessage*)build;
+- (CustomOptionFooServerMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(CustomOptionFooServerMessage*)other;
 
 @end
 
@@ -896,6 +964,69 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (int32_t)fieldname;
 - (instancetype)setFieldname:(int32_t) value;
 - (instancetype)clearFieldname;
+
+@end
+
+
+#pragma mark - NestedOptionType
+
+@interface NestedOptionType : PBGeneratedMessage
+
+
+
+
++ (id<PBExtensionField>)nestedExtension;
+
+- (NestedOptionType_Builder*)builder;
++ (NestedOptionType_Builder*)builder;
++ (NestedOptionType_Builder*)builderWithPrototype:(NestedOptionType*) prototype;
+- (NestedOptionType_Builder*)toBuilder;
+
+@end
+
+
+@interface NestedOptionType_Builder : PBGeneratedMessage_Builder
+
+- (NestedOptionType*) defaultInstance;
+
+- (NestedOptionType*)build;
+- (NestedOptionType*)buildPartial;
+
+- (instancetype)mergeFrom:(NestedOptionType*)other;
+
+@end
+
+
+#pragma mark - NestedOptionType_NestedMessage
+
+@interface NestedOptionType_NestedMessage : PBGeneratedMessage
+
+@property (readonly) int32_t nestedField;
+
+- (BOOL)hasNestedField;
+
+
+- (NestedOptionType_NestedMessage_Builder*)builder;
++ (NestedOptionType_NestedMessage_Builder*)builder;
++ (NestedOptionType_NestedMessage_Builder*)builderWithPrototype:(NestedOptionType_NestedMessage*) prototype;
+- (NestedOptionType_NestedMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface NestedOptionType_NestedMessage_Builder : PBGeneratedMessage_Builder
+
+- (NestedOptionType_NestedMessage*) defaultInstance;
+
+- (NestedOptionType_NestedMessage*)build;
+- (NestedOptionType_NestedMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(NestedOptionType_NestedMessage*)other;
+
+- (BOOL)hasNestedField;
+- (int32_t)nestedField;
+- (instancetype)setNestedField:(int32_t) value;
+- (instancetype)clearNestedField;
 
 @end
 

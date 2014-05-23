@@ -64,7 +64,7 @@
   #endif
 #endif
 
-typedef NS_ENUM(int32_t, PBFieldDescriptorProto_Type) {
+typedef NS_ENUM(NSInteger, PBFieldDescriptorProto_Type) {
   PBFieldDescriptorProto_TypeTYPEDOUBLE = 1,
   PBFieldDescriptorProto_TypeTYPEFLOAT = 2,
   PBFieldDescriptorProto_TypeTYPEINT64 = 3,
@@ -87,7 +87,7 @@ typedef NS_ENUM(int32_t, PBFieldDescriptorProto_Type) {
 
 BOOL PBFieldDescriptorProto_TypeIsValidValue(PBFieldDescriptorProto_Type value);
 
-typedef NS_ENUM(int32_t, PBFieldDescriptorProto_Label) {
+typedef NS_ENUM(NSInteger, PBFieldDescriptorProto_Label) {
   PBFieldDescriptorProto_LabelLABELOPTIONAL = 1,
   PBFieldDescriptorProto_LabelLABELREQUIRED = 2,
   PBFieldDescriptorProto_LabelLABELREPEATED = 3,
@@ -95,7 +95,7 @@ typedef NS_ENUM(int32_t, PBFieldDescriptorProto_Label) {
 
 BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value);
 
-typedef NS_ENUM(int32_t, PBFileOptions_OptimizeMode) {
+typedef NS_ENUM(NSInteger, PBFileOptions_OptimizeMode) {
   PBFileOptions_OptimizeModeSPEED = 1,
   PBFileOptions_OptimizeModeCODESIZE = 2,
   PBFileOptions_OptimizeModeLITERUNTIME = 3,
@@ -103,7 +103,7 @@ typedef NS_ENUM(int32_t, PBFileOptions_OptimizeMode) {
 
 BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value);
 
-typedef NS_ENUM(int32_t, PBFieldOptions_CType) {
+typedef NS_ENUM(NSInteger, PBFieldOptions_CType) {
   PBFieldOptions_CTypeSTRING = 0,
   PBFieldOptions_CTypeCORD = 1,
   PBFieldOptions_CTypeSTRINGPIECE = 2,
@@ -161,6 +161,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 @property (readonly, strong) NSString * name;
 @property (readonly, strong) NSString * package;
 @property (readonly, strong) NSArray * dependency;
+@property (readonly, strong) PBArray * publicDependency;
+@property (readonly, strong) PBArray * weakDependency;
 @property (readonly, strong) NSArray *messageType;
 @property (readonly, strong) NSArray *enumType;
 @property (readonly, strong) NSArray *service;
@@ -174,6 +176,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (BOOL)hasSourceCodeInfo;
 
 - (NSString *)dependencyAtIndex:(NSUInteger)index;
+- (int32_t)publicDependencyAtIndex:(NSUInteger)index;
+- (int32_t)weakDependencyAtIndex:(NSUInteger)index;
 - (PBDescriptorProto*)messageTypeAtIndex:(NSUInteger)index;
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index;
 - (PBServiceDescriptorProto*)serviceAtIndex:(NSUInteger)index;
@@ -211,6 +215,20 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (instancetype)addDependency:(NSString *)value;
 - (instancetype)setDependencyArray:(NSArray *)array;
 - (instancetype)clearDependency;
+
+- (PBAppendableArray *)publicDependency;
+- (int32_t)publicDependencyAtIndex:(NSUInteger)index;
+- (instancetype)addPublicDependency:(int32_t)value;
+- (instancetype)setPublicDependencyArray:(NSArray *)array;
+- (instancetype)setPublicDependencyValues:(const int32_t *)values count:(NSUInteger)count;
+- (instancetype)clearPublicDependency;
+
+- (PBAppendableArray *)weakDependency;
+- (int32_t)weakDependencyAtIndex:(NSUInteger)index;
+- (instancetype)addWeakDependency:(int32_t)value;
+- (instancetype)setWeakDependencyArray:(NSArray *)array;
+- (instancetype)setWeakDependencyValues:(const int32_t *)values count:(NSUInteger)count;
+- (instancetype)clearWeakDependency;
 
 - (NSMutableArray *)messageType;
 - (PBDescriptorProto*)messageTypeAtIndex:(NSUInteger)index;
@@ -680,6 +698,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 @property (readonly) BOOL javaMultipleFiles;
 @property (readonly) BOOL javaGenerateEqualsAndHash;
 @property (readonly) PBFileOptions_OptimizeMode optimizeFor;
+@property (readonly, strong) NSString * goPackage;
 @property (readonly) BOOL ccGenericServices;
 @property (readonly) BOOL javaGenericServices;
 @property (readonly) BOOL pyGenericServices;
@@ -690,6 +709,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (BOOL)hasJavaMultipleFiles;
 - (BOOL)hasJavaGenerateEqualsAndHash;
 - (BOOL)hasOptimizeFor;
+- (BOOL)hasGoPackage;
 - (BOOL)hasCcGenericServices;
 - (BOOL)hasJavaGenericServices;
 - (BOOL)hasPyGenericServices;
@@ -737,6 +757,11 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (PBFileOptions_OptimizeMode)optimizeFor;
 - (instancetype)setOptimizeFor:(PBFileOptions_OptimizeMode)value;
 - (instancetype)clearOptimizeFor;
+
+- (BOOL)hasGoPackage;
+- (NSString *)goPackage;
+- (instancetype)setGoPackage:(NSString *) value;
+- (instancetype)clearGoPackage;
 
 - (BOOL)hasCcGenericServices;
 - (BOOL)ccGenericServices;
@@ -817,14 +842,18 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @property (readonly) PBFieldOptions_CType ctype;
 @property (readonly) BOOL packed;
+@property (readonly) BOOL lazy;
 @property (readonly) BOOL deprecated;
 @property (readonly, strong) NSString * experimentalMapKey;
+@property (readonly) BOOL weak;
 @property (readonly, strong) NSArray *uninterpretedOption;
 
 - (BOOL)hasCtype;
 - (BOOL)hasPacked;
+- (BOOL)hasLazy;
 - (BOOL)hasDeprecated;
 - (BOOL)hasExperimentalMapKey;
+- (BOOL)hasWeak;
 
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
@@ -855,6 +884,11 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (instancetype)setPacked:(BOOL) value;
 - (instancetype)clearPacked;
 
+- (BOOL)hasLazy;
+- (BOOL)lazy;
+- (instancetype)setLazy:(BOOL) value;
+- (instancetype)clearLazy;
+
 - (BOOL)hasDeprecated;
 - (BOOL)deprecated;
 - (instancetype)setDeprecated:(BOOL) value;
@@ -864,6 +898,11 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (NSString *)experimentalMapKey;
 - (instancetype)setExperimentalMapKey:(NSString *) value;
 - (instancetype)clearExperimentalMapKey;
+
+- (BOOL)hasWeak;
+- (BOOL)weak;
+- (instancetype)setWeak:(BOOL) value;
+- (instancetype)clearWeak;
 
 - (NSMutableArray *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
@@ -878,8 +917,10 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBEnumOptions : PBExtendableMessage
 
+@property (readonly) BOOL allowAlias;
 @property (readonly, strong) NSArray *uninterpretedOption;
 
+- (BOOL)hasAllowAlias;
 
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
@@ -899,6 +940,11 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (PBEnumOptions*)buildPartial;
 
 - (instancetype)mergeFrom:(PBEnumOptions*)other;
+
+- (BOOL)hasAllowAlias;
+- (BOOL)allowAlias;
+- (instancetype)setAllowAlias:(BOOL) value;
+- (instancetype)clearAllowAlias;
 
 - (NSMutableArray *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
@@ -1173,7 +1219,11 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @property (readonly, strong) PBArray * path;
 @property (readonly, strong) PBArray * span;
+@property (readonly, strong) NSString * leadingComments;
+@property (readonly, strong) NSString * trailingComments;
 
+- (BOOL)hasLeadingComments;
+- (BOOL)hasTrailingComments;
 
 - (int32_t)pathAtIndex:(NSUInteger)index;
 - (int32_t)spanAtIndex:(NSUInteger)index;
@@ -1208,6 +1258,16 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 - (instancetype)setSpanArray:(NSArray *)array;
 - (instancetype)setSpanValues:(const int32_t *)values count:(NSUInteger)count;
 - (instancetype)clearSpan;
+
+- (BOOL)hasLeadingComments;
+- (NSString *)leadingComments;
+- (instancetype)setLeadingComments:(NSString *) value;
+- (instancetype)clearLeadingComments;
+
+- (BOOL)hasTrailingComments;
+- (NSString *)trailingComments;
+- (instancetype)setTrailingComments:(NSString *) value;
+- (instancetype)clearTrailingComments;
 
 @end
 

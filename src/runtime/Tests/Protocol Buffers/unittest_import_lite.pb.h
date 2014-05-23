@@ -9,10 +9,13 @@
 
 #import <ProtocolBuffers/ProtocolBuffers.h>
 
+#import "unittest_import_public_lite.pb.h"
 // @@protoc_insertion_point(imports)
 
 @class ImportMessageLite;
 @class ImportMessageLite_Builder;
+@class PublicImportMessageLite;
+@class PublicImportMessageLite_Builder;
 
 #ifndef __has_feature
   #define __has_feature(x) 0 // Compatibility with non-clang compilers.
@@ -26,7 +29,7 @@
   #endif
 #endif
 
-typedef NS_ENUM(int32_t, ImportEnumLite) {
+typedef NS_ENUM(NSInteger, ImportEnumLite) {
   ImportEnumLiteIMPORTLITEFOO = 7,
   ImportEnumLiteIMPORTLITEBAR = 8,
   ImportEnumLiteIMPORTLITEBAZ = 9,

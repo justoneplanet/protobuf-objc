@@ -16,20 +16,30 @@
 @class BarRequest_Builder;
 @class BarResponse;
 @class BarResponse_Builder;
+@class FooClientMessage;
+@class FooClientMessage_Builder;
 @class FooRequest;
 @class FooRequest_Builder;
 @class FooResponse;
 @class FooResponse_Builder;
+@class FooServerMessage;
+@class FooServerMessage_Builder;
 @class ForeignMessage;
 @class ForeignMessage_Builder;
 @class ImportMessage;
 @class ImportMessage_Builder;
+@class MoreBytes;
+@class MoreBytes_Builder;
+@class MoreString;
+@class MoreString_Builder;
 @class OneBytes;
 @class OneBytes_Builder;
 @class OneString;
 @class OneString_Builder;
 @class OptionalGroup_extension;
 @class OptionalGroup_extension_Builder;
+@class PublicImportMessage;
+@class PublicImportMessage_Builder;
 @class RepeatedGroup_extension;
 @class RepeatedGroup_extension_Builder;
 @class SparseEnumMessage;
@@ -46,6 +56,8 @@
 @class TestAllTypes_RepeatedGroup_Builder;
 @class TestCamelCaseFieldNames;
 @class TestCamelCaseFieldNames_Builder;
+@class TestCommentInjectionMessage;
+@class TestCommentInjectionMessage_Builder;
 @class TestDeprecatedFields;
 @class TestDeprecatedFields_Builder;
 @class TestDupFieldNumber;
@@ -58,6 +70,8 @@
 @class TestDynamicExtensions_Builder;
 @class TestDynamicExtensions_DynamicMessageType;
 @class TestDynamicExtensions_DynamicMessageType_Builder;
+@class TestEagerMessage;
+@class TestEagerMessage_Builder;
 @class TestEmptyMessage;
 @class TestEmptyMessageWithExtensions;
 @class TestEmptyMessageWithExtensions_Builder;
@@ -68,6 +82,8 @@
 @class TestFieldOrderings_Builder;
 @class TestForeignNested;
 @class TestForeignNested_Builder;
+@class TestLazyMessage;
+@class TestLazyMessage_Builder;
 @class TestMultipleExtensionRanges;
 @class TestMultipleExtensionRanges_Builder;
 @class TestMutualRecursionA;
@@ -84,6 +100,18 @@
 @class TestPackedExtensions_Builder;
 @class TestPackedTypes;
 @class TestPackedTypes_Builder;
+@class TestParsingMerge;
+@class TestParsingMerge_Builder;
+@class TestParsingMerge_OptionalGroup;
+@class TestParsingMerge_OptionalGroup_Builder;
+@class TestParsingMerge_RepeatedFieldsGenerator;
+@class TestParsingMerge_RepeatedFieldsGenerator_Builder;
+@class TestParsingMerge_RepeatedFieldsGenerator_Group1;
+@class TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder;
+@class TestParsingMerge_RepeatedFieldsGenerator_Group2;
+@class TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder;
+@class TestParsingMerge_RepeatedGroup;
+@class TestParsingMerge_RepeatedGroup_Builder;
 @class TestReallyLargeTagNumber;
 @class TestReallyLargeTagNumber_Builder;
 @class TestRecursiveMessage;
@@ -182,6 +210,8 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 + (id<PBExtensionField>)optionalImportEnumExtension;
 + (id<PBExtensionField>)optionalStringPieceExtension;
 + (id<PBExtensionField>)optionalCordExtension;
++ (id<PBExtensionField>)optionalPublicImportMessageExtension;
++ (id<PBExtensionField>)optionalLazyMessageExtension;
 + (id<PBExtensionField>)repeatedInt32Extension;
 + (id<PBExtensionField>)repeatedInt64Extension;
 + (id<PBExtensionField>)repeatedUint32Extension;
@@ -206,6 +236,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 + (id<PBExtensionField>)repeatedImportEnumExtension;
 + (id<PBExtensionField>)repeatedStringPieceExtension;
 + (id<PBExtensionField>)repeatedCordExtension;
++ (id<PBExtensionField>)repeatedLazyMessageExtension;
 + (id<PBExtensionField>)defaultInt32Extension;
 + (id<PBExtensionField>)defaultInt64Extension;
 + (id<PBExtensionField>)defaultUint32Extension;
@@ -273,6 +304,8 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly) ImportEnum optionalImportEnum;
 @property (readonly, strong) NSString * optionalStringPiece;
 @property (readonly, strong) NSString * optionalCord;
+@property (readonly, strong)  PublicImportMessage* optionalPublicImportMessage;
+@property (readonly, strong)  TestAllTypes_NestedMessage* optionalLazyMessage;
 @property (readonly, strong) PBArray * repeatedInt32;
 @property (readonly, strong) PBArray * repeatedInt64;
 @property (readonly, strong) PBArray * repeatedUint32;
@@ -297,6 +330,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly, strong) NSArray *repeatedImportEnum;
 @property (readonly, strong) NSArray * repeatedStringPiece;
 @property (readonly, strong) NSArray * repeatedCord;
+@property (readonly, strong) NSArray *repeatedLazyMessage;
 @property (readonly) int32_t defaultInt32;
 @property (readonly) int64_t defaultInt64;
 @property (readonly) uint32_t defaultUint32;
@@ -342,6 +376,8 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (BOOL)hasOptionalImportEnum;
 - (BOOL)hasOptionalStringPiece;
 - (BOOL)hasOptionalCord;
+- (BOOL)hasOptionalPublicImportMessage;
+- (BOOL)hasOptionalLazyMessage;
 - (BOOL)hasDefaultInt32;
 - (BOOL)hasDefaultInt64;
 - (BOOL)hasDefaultUint32;
@@ -387,6 +423,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (ImportEnum)repeatedImportEnumAtIndex:(NSUInteger)index;
 - (NSString *)repeatedStringPieceAtIndex:(NSUInteger)index;
 - (NSString *)repeatedCordAtIndex:(NSUInteger)index;
+- (TestAllTypes_NestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
 
 - (TestAllTypes_Builder*)builder;
 + (TestAllTypes_Builder*)builder;
@@ -532,6 +569,20 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (NSString *)optionalCord;
 - (instancetype)setOptionalCord:(NSString *) value;
 - (instancetype)clearOptionalCord;
+
+- (BOOL)hasOptionalPublicImportMessage;
+- (PublicImportMessage*)optionalPublicImportMessage;
+- (instancetype)setOptionalPublicImportMessage:(PublicImportMessage*)value;
+- (instancetype)setOptionalPublicImportMessageBuilder:(PublicImportMessage_Builder*)builderForValue;
+- (instancetype)mergeOptionalPublicImportMessage:(PublicImportMessage*)value;
+- (instancetype)clearOptionalPublicImportMessage;
+
+- (BOOL)hasOptionalLazyMessage;
+- (TestAllTypes_NestedMessage*)optionalLazyMessage;
+- (instancetype)setOptionalLazyMessage:(TestAllTypes_NestedMessage*)value;
+- (instancetype)setOptionalLazyMessageBuilder:(TestAllTypes_NestedMessage_Builder*)builderForValue;
+- (instancetype)mergeOptionalLazyMessage:(TestAllTypes_NestedMessage*)value;
+- (instancetype)clearOptionalLazyMessage;
 
 - (PBAppendableArray *)repeatedInt32;
 - (int32_t)repeatedInt32AtIndex:(NSUInteger)index;
@@ -689,6 +740,12 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (instancetype)addRepeatedCord:(NSString *)value;
 - (instancetype)setRepeatedCordArray:(NSArray *)array;
 - (instancetype)clearRepeatedCord;
+
+- (NSMutableArray *)repeatedLazyMessage;
+- (TestAllTypes_NestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
+- (instancetype)addRepeatedLazyMessage:(TestAllTypes_NestedMessage*)value;
+- (instancetype)setRepeatedLazyMessageArray:(NSArray *)array;
+- (instancetype)clearRepeatedLazyMessage;
 
 - (BOOL)hasDefaultInt32;
 - (int32_t)defaultInt32;
@@ -1799,6 +1856,78 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @end
 
 
+#pragma mark - TestEagerMessage
+
+@interface TestEagerMessage : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypes* subMessage;
+
+- (BOOL)hasSubMessage;
+
+
+- (TestEagerMessage_Builder*)builder;
++ (TestEagerMessage_Builder*)builder;
++ (TestEagerMessage_Builder*)builderWithPrototype:(TestEagerMessage*) prototype;
+- (TestEagerMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface TestEagerMessage_Builder : PBGeneratedMessage_Builder
+
+- (TestEagerMessage*) defaultInstance;
+
+- (TestEagerMessage*)build;
+- (TestEagerMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(TestEagerMessage*)other;
+
+- (BOOL)hasSubMessage;
+- (TestAllTypes*)subMessage;
+- (instancetype)setSubMessage:(TestAllTypes*)value;
+- (instancetype)setSubMessageBuilder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeSubMessage:(TestAllTypes*)value;
+- (instancetype)clearSubMessage;
+
+@end
+
+
+#pragma mark - TestLazyMessage
+
+@interface TestLazyMessage : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypes* subMessage;
+
+- (BOOL)hasSubMessage;
+
+
+- (TestLazyMessage_Builder*)builder;
++ (TestLazyMessage_Builder*)builder;
++ (TestLazyMessage_Builder*)builderWithPrototype:(TestLazyMessage*) prototype;
+- (TestLazyMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface TestLazyMessage_Builder : PBGeneratedMessage_Builder
+
+- (TestLazyMessage*) defaultInstance;
+
+- (TestLazyMessage*)build;
+- (TestLazyMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(TestLazyMessage*)other;
+
+- (BOOL)hasSubMessage;
+- (TestAllTypes*)subMessage;
+- (instancetype)setSubMessage:(TestAllTypes*)value;
+- (instancetype)setSubMessageBuilder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeSubMessage:(TestAllTypes*)value;
+- (instancetype)clearSubMessage;
+
+@end
+
+
 #pragma mark - TestNestedMessageHasBits
 
 @interface TestNestedMessageHasBits : PBGeneratedMessage
@@ -2056,6 +2185,8 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly) uint64_t largeUint64;
 @property (readonly) int32_t smallInt32;
 @property (readonly) int64_t smallInt64;
+@property (readonly) int32_t reallySmallInt32;
+@property (readonly) int64_t reallySmallInt64;
 @property (readonly, strong) NSString * utf8String;
 @property (readonly) Float32 zeroFloat;
 @property (readonly) Float32 oneFloat;
@@ -2071,12 +2202,18 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly) Float32 negInfFloat;
 @property (readonly) Float32 nanFloat;
 @property (readonly, strong) NSString * cppTrigraph;
+@property (readonly, strong) NSString * stringWithZero;
+@property (readonly, strong) NSData * bytesWithZero;
+@property (readonly, strong) NSString * stringPieceWithZero;
+@property (readonly, strong) NSString * cordWithZero;
 
 - (BOOL)hasEscapedBytes;
 - (BOOL)hasLargeUint32;
 - (BOOL)hasLargeUint64;
 - (BOOL)hasSmallInt32;
 - (BOOL)hasSmallInt64;
+- (BOOL)hasReallySmallInt32;
+- (BOOL)hasReallySmallInt64;
 - (BOOL)hasUtf8String;
 - (BOOL)hasZeroFloat;
 - (BOOL)hasOneFloat;
@@ -2092,6 +2229,10 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (BOOL)hasNegInfFloat;
 - (BOOL)hasNanFloat;
 - (BOOL)hasCppTrigraph;
+- (BOOL)hasStringWithZero;
+- (BOOL)hasBytesWithZero;
+- (BOOL)hasStringPieceWithZero;
+- (BOOL)hasCordWithZero;
 
 
 - (TestExtremeDefaultValues_Builder*)builder;
@@ -2135,6 +2276,16 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (int64_t)smallInt64;
 - (instancetype)setSmallInt64:(int64_t) value;
 - (instancetype)clearSmallInt64;
+
+- (BOOL)hasReallySmallInt32;
+- (int32_t)reallySmallInt32;
+- (instancetype)setReallySmallInt32:(int32_t) value;
+- (instancetype)clearReallySmallInt32;
+
+- (BOOL)hasReallySmallInt64;
+- (int64_t)reallySmallInt64;
+- (instancetype)setReallySmallInt64:(int64_t) value;
+- (instancetype)clearReallySmallInt64;
 
 - (BOOL)hasUtf8String;
 - (NSString *)utf8String;
@@ -2211,6 +2362,26 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (instancetype)setCppTrigraph:(NSString *) value;
 - (instancetype)clearCppTrigraph;
 
+- (BOOL)hasStringWithZero;
+- (NSString *)stringWithZero;
+- (instancetype)setStringWithZero:(NSString *) value;
+- (instancetype)clearStringWithZero;
+
+- (BOOL)hasBytesWithZero;
+- (NSData *)bytesWithZero;
+- (instancetype)setBytesWithZero:(NSData *) value;
+- (instancetype)clearBytesWithZero;
+
+- (BOOL)hasStringPieceWithZero;
+- (NSString *)stringPieceWithZero;
+- (instancetype)setStringPieceWithZero:(NSString *) value;
+- (instancetype)clearStringPieceWithZero;
+
+- (BOOL)hasCordWithZero;
+- (NSString *)cordWithZero;
+- (instancetype)setCordWithZero:(NSString *) value;
+- (instancetype)clearCordWithZero;
+
 @end
 
 
@@ -2282,6 +2453,41 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @end
 
 
+#pragma mark - MoreString
+
+@interface MoreString : PBGeneratedMessage
+
+@property (readonly, strong) NSArray * data;
+
+
+- (NSString *)dataAtIndex:(NSUInteger)index;
+
+- (MoreString_Builder*)builder;
++ (MoreString_Builder*)builder;
++ (MoreString_Builder*)builderWithPrototype:(MoreString*) prototype;
+- (MoreString_Builder*)toBuilder;
+
+@end
+
+
+@interface MoreString_Builder : PBGeneratedMessage_Builder
+
+- (MoreString*) defaultInstance;
+
+- (MoreString*)build;
+- (MoreString*)buildPartial;
+
+- (instancetype)mergeFrom:(MoreString*)other;
+
+- (NSArray *)data;
+- (NSString *)dataAtIndex:(NSUInteger)index;
+- (instancetype)addData:(NSString *)value;
+- (instancetype)setDataArray:(NSArray *)array;
+- (instancetype)clearData;
+
+@end
+
+
 #pragma mark - OneBytes
 
 @interface OneBytes : PBGeneratedMessage
@@ -2311,6 +2517,41 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (BOOL)hasData;
 - (NSData *)data;
 - (instancetype)setData:(NSData *) value;
+- (instancetype)clearData;
+
+@end
+
+
+#pragma mark - MoreBytes
+
+@interface MoreBytes : PBGeneratedMessage
+
+@property (readonly, strong) NSArray * data;
+
+
+- (NSData *)dataAtIndex:(NSUInteger)index;
+
+- (MoreBytes_Builder*)builder;
++ (MoreBytes_Builder*)builder;
++ (MoreBytes_Builder*)builderWithPrototype:(MoreBytes*) prototype;
+- (MoreBytes_Builder*)toBuilder;
+
+@end
+
+
+@interface MoreBytes_Builder : PBGeneratedMessage_Builder
+
+- (MoreBytes*) defaultInstance;
+
+- (MoreBytes*)build;
+- (MoreBytes*)buildPartial;
+
+- (instancetype)mergeFrom:(MoreBytes*)other;
+
+- (NSArray *)data;
+- (NSData *)dataAtIndex:(NSUInteger)index;
+- (instancetype)addData:(NSData *)value;
+- (instancetype)setDataArray:(NSArray *)array;
 - (instancetype)clearData;
 
 @end
@@ -2845,6 +3086,340 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @end
 
 
+#pragma mark - TestParsingMerge
+
+@interface TestParsingMerge : PBExtendableMessage
+
+@property (readonly, strong)  TestAllTypes* requiredAllTypes;
+@property (readonly, strong)  TestAllTypes* optionalAllTypes;
+@property (readonly, strong) NSArray *repeatedAllTypes;
+@property (readonly, strong)  TestParsingMerge_OptionalGroup* OptionalGroup;
+@property (readonly, strong) NSArray *RepeatedGroup;
+
+- (BOOL)hasRequiredAllTypes;
+- (BOOL)hasOptionalAllTypes;
+- (BOOL)hasOptionalGroup;
+
+- (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index;
+- (TestParsingMerge_RepeatedGroup*)RepeatedGroupAtIndex:(NSUInteger)index;
+
++ (id<PBExtensionField>)optionalExt;
++ (id<PBExtensionField>)repeatedExt;
+
+- (TestParsingMerge_Builder*)builder;
++ (TestParsingMerge_Builder*)builder;
++ (TestParsingMerge_Builder*)builderWithPrototype:(TestParsingMerge*) prototype;
+- (TestParsingMerge_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMerge_Builder : PBExtendableMessage_Builder
+
+- (TestParsingMerge*) defaultInstance;
+
+- (TestParsingMerge*)build;
+- (TestParsingMerge*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMerge*)other;
+
+- (BOOL)hasRequiredAllTypes;
+- (TestAllTypes*)requiredAllTypes;
+- (instancetype)setRequiredAllTypes:(TestAllTypes*)value;
+- (instancetype)setRequiredAllTypesBuilder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeRequiredAllTypes:(TestAllTypes*)value;
+- (instancetype)clearRequiredAllTypes;
+
+- (BOOL)hasOptionalAllTypes;
+- (TestAllTypes*)optionalAllTypes;
+- (instancetype)setOptionalAllTypes:(TestAllTypes*)value;
+- (instancetype)setOptionalAllTypesBuilder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeOptionalAllTypes:(TestAllTypes*)value;
+- (instancetype)clearOptionalAllTypes;
+
+- (NSMutableArray *)repeatedAllTypes;
+- (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index;
+- (instancetype)addRepeatedAllTypes:(TestAllTypes*)value;
+- (instancetype)setRepeatedAllTypesArray:(NSArray *)array;
+- (instancetype)clearRepeatedAllTypes;
+
+- (BOOL)hasOptionalGroup;
+- (TestParsingMerge_OptionalGroup*)OptionalGroup;
+- (instancetype)setOptionalGroup:(TestParsingMerge_OptionalGroup*)value;
+- (instancetype)setOptionalGroupBuilder:(TestParsingMerge_OptionalGroup_Builder*)builderForValue;
+- (instancetype)mergeOptionalGroup:(TestParsingMerge_OptionalGroup*)value;
+- (instancetype)clearOptionalGroup;
+
+- (NSMutableArray *)RepeatedGroup;
+- (TestParsingMerge_RepeatedGroup*)RepeatedGroupAtIndex:(NSUInteger)index;
+- (instancetype)addRepeatedGroup:(TestParsingMerge_RepeatedGroup*)value;
+- (instancetype)setRepeatedGroupArray:(NSArray *)array;
+- (instancetype)clearRepeatedGroup;
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedFieldsGenerator
+
+@interface TestParsingMerge_RepeatedFieldsGenerator : PBGeneratedMessage
+
+@property (readonly, strong) NSArray *field1;
+@property (readonly, strong) NSArray *field2;
+@property (readonly, strong) NSArray *field3;
+@property (readonly, strong) NSArray *Group1;
+@property (readonly, strong) NSArray *Group2;
+@property (readonly, strong) NSArray *ext1;
+@property (readonly, strong) NSArray *ext2;
+
+
+- (TestAllTypes*)field1AtIndex:(NSUInteger)index;
+- (TestAllTypes*)field2AtIndex:(NSUInteger)index;
+- (TestAllTypes*)field3AtIndex:(NSUInteger)index;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)Group1AtIndex:(NSUInteger)index;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)Group2AtIndex:(NSUInteger)index;
+- (TestAllTypes*)ext1AtIndex:(NSUInteger)index;
+- (TestAllTypes*)ext2AtIndex:(NSUInteger)index;
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builder;
++ (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builder;
++ (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator*) prototype;
+- (TestParsingMerge_RepeatedFieldsGenerator_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMerge_RepeatedFieldsGenerator*) defaultInstance;
+
+- (TestParsingMerge_RepeatedFieldsGenerator*)build;
+- (TestParsingMerge_RepeatedFieldsGenerator*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedFieldsGenerator*)other;
+
+- (NSMutableArray *)field1;
+- (TestAllTypes*)field1AtIndex:(NSUInteger)index;
+- (instancetype)addField1:(TestAllTypes*)value;
+- (instancetype)setField1Array:(NSArray *)array;
+- (instancetype)clearField1;
+
+- (NSMutableArray *)field2;
+- (TestAllTypes*)field2AtIndex:(NSUInteger)index;
+- (instancetype)addField2:(TestAllTypes*)value;
+- (instancetype)setField2Array:(NSArray *)array;
+- (instancetype)clearField2;
+
+- (NSMutableArray *)field3;
+- (TestAllTypes*)field3AtIndex:(NSUInteger)index;
+- (instancetype)addField3:(TestAllTypes*)value;
+- (instancetype)setField3Array:(NSArray *)array;
+- (instancetype)clearField3;
+
+- (NSMutableArray *)Group1;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)Group1AtIndex:(NSUInteger)index;
+- (instancetype)addGroup1:(TestParsingMerge_RepeatedFieldsGenerator_Group1*)value;
+- (instancetype)setGroup1Array:(NSArray *)array;
+- (instancetype)clearGroup1;
+
+- (NSMutableArray *)Group2;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)Group2AtIndex:(NSUInteger)index;
+- (instancetype)addGroup2:(TestParsingMerge_RepeatedFieldsGenerator_Group2*)value;
+- (instancetype)setGroup2Array:(NSArray *)array;
+- (instancetype)clearGroup2;
+
+- (NSMutableArray *)ext1;
+- (TestAllTypes*)ext1AtIndex:(NSUInteger)index;
+- (instancetype)addExt1:(TestAllTypes*)value;
+- (instancetype)setExt1Array:(NSArray *)array;
+- (instancetype)clearExt1;
+
+- (NSMutableArray *)ext2;
+- (TestAllTypes*)ext2AtIndex:(NSUInteger)index;
+- (instancetype)addExt2:(TestAllTypes*)value;
+- (instancetype)setExt2Array:(NSArray *)array;
+- (instancetype)clearExt2;
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedFieldsGenerator_Group1
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Group1 : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypes* field1;
+
+- (BOOL)hasField1;
+
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builder;
++ (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builder;
++ (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group1*) prototype;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*) defaultInstance;
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)build;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedFieldsGenerator_Group1*)other;
+
+- (BOOL)hasField1;
+- (TestAllTypes*)field1;
+- (instancetype)setField1:(TestAllTypes*)value;
+- (instancetype)setField1Builder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeField1:(TestAllTypes*)value;
+- (instancetype)clearField1;
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedFieldsGenerator_Group2
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Group2 : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypes* field1;
+
+- (BOOL)hasField1;
+
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builder;
++ (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builder;
++ (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group2*) prototype;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*) defaultInstance;
+
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)build;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedFieldsGenerator_Group2*)other;
+
+- (BOOL)hasField1;
+- (TestAllTypes*)field1;
+- (instancetype)setField1:(TestAllTypes*)value;
+- (instancetype)setField1Builder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeField1:(TestAllTypes*)value;
+- (instancetype)clearField1;
+
+@end
+
+
+#pragma mark - TestParsingMerge_OptionalGroup
+
+@interface TestParsingMerge_OptionalGroup : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypes* optionalGroupAllTypes;
+
+- (BOOL)hasOptionalGroupAllTypes;
+
+
+- (TestParsingMerge_OptionalGroup_Builder*)builder;
++ (TestParsingMerge_OptionalGroup_Builder*)builder;
++ (TestParsingMerge_OptionalGroup_Builder*)builderWithPrototype:(TestParsingMerge_OptionalGroup*) prototype;
+- (TestParsingMerge_OptionalGroup_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMerge_OptionalGroup_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMerge_OptionalGroup*) defaultInstance;
+
+- (TestParsingMerge_OptionalGroup*)build;
+- (TestParsingMerge_OptionalGroup*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMerge_OptionalGroup*)other;
+
+- (BOOL)hasOptionalGroupAllTypes;
+- (TestAllTypes*)optionalGroupAllTypes;
+- (instancetype)setOptionalGroupAllTypes:(TestAllTypes*)value;
+- (instancetype)setOptionalGroupAllTypesBuilder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeOptionalGroupAllTypes:(TestAllTypes*)value;
+- (instancetype)clearOptionalGroupAllTypes;
+
+@end
+
+
+#pragma mark - TestParsingMerge_RepeatedGroup
+
+@interface TestParsingMerge_RepeatedGroup : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypes* repeatedGroupAllTypes;
+
+- (BOOL)hasRepeatedGroupAllTypes;
+
+
+- (TestParsingMerge_RepeatedGroup_Builder*)builder;
++ (TestParsingMerge_RepeatedGroup_Builder*)builder;
++ (TestParsingMerge_RepeatedGroup_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedGroup*) prototype;
+- (TestParsingMerge_RepeatedGroup_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMerge_RepeatedGroup_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMerge_RepeatedGroup*) defaultInstance;
+
+- (TestParsingMerge_RepeatedGroup*)build;
+- (TestParsingMerge_RepeatedGroup*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMerge_RepeatedGroup*)other;
+
+- (BOOL)hasRepeatedGroupAllTypes;
+- (TestAllTypes*)repeatedGroupAllTypes;
+- (instancetype)setRepeatedGroupAllTypes:(TestAllTypes*)value;
+- (instancetype)setRepeatedGroupAllTypesBuilder:(TestAllTypes_Builder*)builderForValue;
+- (instancetype)mergeRepeatedGroupAllTypes:(TestAllTypes*)value;
+- (instancetype)clearRepeatedGroupAllTypes;
+
+@end
+
+
+#pragma mark - TestCommentInjectionMessage
+
+@interface TestCommentInjectionMessage : PBGeneratedMessage
+
+@property (readonly, strong) NSString * a;
+
+- (BOOL)hasA;
+
+
+- (TestCommentInjectionMessage_Builder*)builder;
++ (TestCommentInjectionMessage_Builder*)builder;
++ (TestCommentInjectionMessage_Builder*)builderWithPrototype:(TestCommentInjectionMessage*) prototype;
+- (TestCommentInjectionMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface TestCommentInjectionMessage_Builder : PBGeneratedMessage_Builder
+
+- (TestCommentInjectionMessage*) defaultInstance;
+
+- (TestCommentInjectionMessage*)build;
+- (TestCommentInjectionMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(TestCommentInjectionMessage*)other;
+
+- (BOOL)hasA;
+- (NSString *)a;
+- (instancetype)setA:(NSString *) value;
+- (instancetype)clearA;
+
+@end
+
+
 #pragma mark - FooRequest
 
 @interface FooRequest : PBGeneratedMessage
@@ -2895,6 +3470,60 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (FooResponse*)buildPartial;
 
 - (instancetype)mergeFrom:(FooResponse*)other;
+
+@end
+
+
+#pragma mark - FooClientMessage
+
+@interface FooClientMessage : PBGeneratedMessage
+
+
+
+
+- (FooClientMessage_Builder*)builder;
++ (FooClientMessage_Builder*)builder;
++ (FooClientMessage_Builder*)builderWithPrototype:(FooClientMessage*) prototype;
+- (FooClientMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface FooClientMessage_Builder : PBGeneratedMessage_Builder
+
+- (FooClientMessage*) defaultInstance;
+
+- (FooClientMessage*)build;
+- (FooClientMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(FooClientMessage*)other;
+
+@end
+
+
+#pragma mark - FooServerMessage
+
+@interface FooServerMessage : PBGeneratedMessage
+
+
+
+
+- (FooServerMessage_Builder*)builder;
++ (FooServerMessage_Builder*)builder;
++ (FooServerMessage_Builder*)builderWithPrototype:(FooServerMessage*) prototype;
+- (FooServerMessage_Builder*)toBuilder;
+
+@end
+
+
+@interface FooServerMessage_Builder : PBGeneratedMessage_Builder
+
+- (FooServerMessage*) defaultInstance;
+
+- (FooServerMessage*)build;
+- (FooServerMessage*)buildPartial;
+
+- (instancetype)mergeFrom:(FooServerMessage*)other;
 
 @end
 

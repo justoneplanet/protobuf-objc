@@ -20,6 +20,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   if (self == [UnittestImportRoot class]) {
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
+    [UnittestImportPublicRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
