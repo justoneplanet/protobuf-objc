@@ -18,6 +18,8 @@
 @class ImportMessageLite_Builder;
 @class OptionalGroup_extension_lite;
 @class OptionalGroup_extension_lite_Builder;
+@class PublicImportMessageLite;
+@class PublicImportMessageLite_Builder;
 @class RepeatedGroup_extension_lite;
 @class RepeatedGroup_extension_lite_Builder;
 @class TestAllExtensionsLite;
@@ -38,6 +40,18 @@
 @class TestPackedExtensionsLite_Builder;
 @class TestPackedTypesLite;
 @class TestPackedTypesLite_Builder;
+@class TestParsingMergeLite;
+@class TestParsingMergeLite_Builder;
+@class TestParsingMergeLite_OptionalGroup;
+@class TestParsingMergeLite_OptionalGroup_Builder;
+@class TestParsingMergeLite_RepeatedFieldsGenerator;
+@class TestParsingMergeLite_RepeatedFieldsGenerator_Builder;
+@class TestParsingMergeLite_RepeatedFieldsGenerator_Group1;
+@class TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder;
+@class TestParsingMergeLite_RepeatedFieldsGenerator_Group2;
+@class TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder;
+@class TestParsingMergeLite_RepeatedGroup;
+@class TestParsingMergeLite_RepeatedGroup_Builder;
 
 #ifndef __has_feature
   #define __has_feature(x) 0 // Compatibility with non-clang compilers.
@@ -96,6 +110,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 + (id<PBExtensionField>)optionalImportEnumExtensionLite;
 + (id<PBExtensionField>)optionalStringPieceExtensionLite;
 + (id<PBExtensionField>)optionalCordExtensionLite;
++ (id<PBExtensionField>)optionalPublicImportMessageExtensionLite;
++ (id<PBExtensionField>)optionalLazyMessageExtensionLite;
 + (id<PBExtensionField>)repeatedInt32ExtensionLite;
 + (id<PBExtensionField>)repeatedInt64ExtensionLite;
 + (id<PBExtensionField>)repeatedUint32ExtensionLite;
@@ -120,6 +136,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 + (id<PBExtensionField>)repeatedImportEnumExtensionLite;
 + (id<PBExtensionField>)repeatedStringPieceExtensionLite;
 + (id<PBExtensionField>)repeatedCordExtensionLite;
++ (id<PBExtensionField>)repeatedLazyMessageExtensionLite;
 + (id<PBExtensionField>)defaultInt32ExtensionLite;
 + (id<PBExtensionField>)defaultInt64ExtensionLite;
 + (id<PBExtensionField>)defaultUint32ExtensionLite;
@@ -185,6 +202,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 @property (readonly) ImportEnumLite optionalImportEnum;
 @property (readonly, strong) NSString * optionalStringPiece;
 @property (readonly, strong) NSString * optionalCord;
+@property (readonly, strong)  PublicImportMessageLite* optionalPublicImportMessage;
+@property (readonly, strong)  TestAllTypesLite_NestedMessage* optionalLazyMessage;
 @property (readonly, strong) PBArray * repeatedInt32;
 @property (readonly, strong) PBArray * repeatedInt64;
 @property (readonly, strong) PBArray * repeatedUint32;
@@ -209,6 +228,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 @property (readonly, strong) NSArray *repeatedImportEnum;
 @property (readonly, strong) NSArray * repeatedStringPiece;
 @property (readonly, strong) NSArray * repeatedCord;
+@property (readonly, strong) NSArray *repeatedLazyMessage;
 @property (readonly) int32_t defaultInt32;
 @property (readonly) int64_t defaultInt64;
 @property (readonly) uint32_t defaultUint32;
@@ -254,6 +274,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (BOOL)hasOptionalImportEnum;
 - (BOOL)hasOptionalStringPiece;
 - (BOOL)hasOptionalCord;
+- (BOOL)hasOptionalPublicImportMessage;
+- (BOOL)hasOptionalLazyMessage;
 - (BOOL)hasDefaultInt32;
 - (BOOL)hasDefaultInt64;
 - (BOOL)hasDefaultUint32;
@@ -299,6 +321,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (ImportEnumLite)repeatedImportEnumAtIndex:(NSUInteger)index;
 - (NSString *)repeatedStringPieceAtIndex:(NSUInteger)index;
 - (NSString *)repeatedCordAtIndex:(NSUInteger)index;
+- (TestAllTypesLite_NestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
 
 - (TestAllTypesLite_Builder*)builder;
 + (TestAllTypesLite_Builder*)builder;
@@ -444,6 +467,20 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (NSString *)optionalCord;
 - (instancetype)setOptionalCord:(NSString *) value;
 - (instancetype)clearOptionalCord;
+
+- (BOOL)hasOptionalPublicImportMessage;
+- (PublicImportMessageLite*)optionalPublicImportMessage;
+- (instancetype)setOptionalPublicImportMessage:(PublicImportMessageLite*)value;
+- (instancetype)setOptionalPublicImportMessageBuilder:(PublicImportMessageLite_Builder*)builderForValue;
+- (instancetype)mergeOptionalPublicImportMessage:(PublicImportMessageLite*)value;
+- (instancetype)clearOptionalPublicImportMessage;
+
+- (BOOL)hasOptionalLazyMessage;
+- (TestAllTypesLite_NestedMessage*)optionalLazyMessage;
+- (instancetype)setOptionalLazyMessage:(TestAllTypesLite_NestedMessage*)value;
+- (instancetype)setOptionalLazyMessageBuilder:(TestAllTypesLite_NestedMessage_Builder*)builderForValue;
+- (instancetype)mergeOptionalLazyMessage:(TestAllTypesLite_NestedMessage*)value;
+- (instancetype)clearOptionalLazyMessage;
 
 - (PBAppendableArray *)repeatedInt32;
 - (int32_t)repeatedInt32AtIndex:(NSUInteger)index;
@@ -601,6 +638,12 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (instancetype)addRepeatedCord:(NSString *)value;
 - (instancetype)setRepeatedCordArray:(NSArray *)array;
 - (instancetype)clearRepeatedCord;
+
+- (NSMutableArray *)repeatedLazyMessage;
+- (TestAllTypesLite_NestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
+- (instancetype)addRepeatedLazyMessage:(TestAllTypesLite_NestedMessage*)value;
+- (instancetype)setRepeatedLazyMessageArray:(NSArray *)array;
+- (instancetype)clearRepeatedLazyMessage;
 
 - (BOOL)hasDefaultInt32;
 - (int32_t)defaultInt32;
@@ -1174,6 +1217,306 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 - (int32_t)deprecatedField;
 - (instancetype)setDeprecatedField:(int32_t) value;
 - (instancetype)clearDeprecatedField;
+
+@end
+
+
+#pragma mark - TestParsingMergeLite
+
+@interface TestParsingMergeLite : PBExtendableMessage
+
+@property (readonly, strong)  TestAllTypesLite* requiredAllTypes;
+@property (readonly, strong)  TestAllTypesLite* optionalAllTypes;
+@property (readonly, strong) NSArray *repeatedAllTypes;
+@property (readonly, strong)  TestParsingMergeLite_OptionalGroup* OptionalGroup;
+@property (readonly, strong) NSArray *RepeatedGroup;
+
+- (BOOL)hasRequiredAllTypes;
+- (BOOL)hasOptionalAllTypes;
+- (BOOL)hasOptionalGroup;
+
+- (TestAllTypesLite*)repeatedAllTypesAtIndex:(NSUInteger)index;
+- (TestParsingMergeLite_RepeatedGroup*)RepeatedGroupAtIndex:(NSUInteger)index;
+
++ (id<PBExtensionField>)optionalExt;
++ (id<PBExtensionField>)repeatedExt;
+
+- (TestParsingMergeLite_Builder*)builder;
++ (TestParsingMergeLite_Builder*)builder;
++ (TestParsingMergeLite_Builder*)builderWithPrototype:(TestParsingMergeLite*) prototype;
+- (TestParsingMergeLite_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMergeLite_Builder : PBExtendableMessage_Builder
+
+- (TestParsingMergeLite*) defaultInstance;
+
+- (TestParsingMergeLite*)build;
+- (TestParsingMergeLite*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMergeLite*)other;
+
+- (BOOL)hasRequiredAllTypes;
+- (TestAllTypesLite*)requiredAllTypes;
+- (instancetype)setRequiredAllTypes:(TestAllTypesLite*)value;
+- (instancetype)setRequiredAllTypesBuilder:(TestAllTypesLite_Builder*)builderForValue;
+- (instancetype)mergeRequiredAllTypes:(TestAllTypesLite*)value;
+- (instancetype)clearRequiredAllTypes;
+
+- (BOOL)hasOptionalAllTypes;
+- (TestAllTypesLite*)optionalAllTypes;
+- (instancetype)setOptionalAllTypes:(TestAllTypesLite*)value;
+- (instancetype)setOptionalAllTypesBuilder:(TestAllTypesLite_Builder*)builderForValue;
+- (instancetype)mergeOptionalAllTypes:(TestAllTypesLite*)value;
+- (instancetype)clearOptionalAllTypes;
+
+- (NSMutableArray *)repeatedAllTypes;
+- (TestAllTypesLite*)repeatedAllTypesAtIndex:(NSUInteger)index;
+- (instancetype)addRepeatedAllTypes:(TestAllTypesLite*)value;
+- (instancetype)setRepeatedAllTypesArray:(NSArray *)array;
+- (instancetype)clearRepeatedAllTypes;
+
+- (BOOL)hasOptionalGroup;
+- (TestParsingMergeLite_OptionalGroup*)OptionalGroup;
+- (instancetype)setOptionalGroup:(TestParsingMergeLite_OptionalGroup*)value;
+- (instancetype)setOptionalGroupBuilder:(TestParsingMergeLite_OptionalGroup_Builder*)builderForValue;
+- (instancetype)mergeOptionalGroup:(TestParsingMergeLite_OptionalGroup*)value;
+- (instancetype)clearOptionalGroup;
+
+- (NSMutableArray *)RepeatedGroup;
+- (TestParsingMergeLite_RepeatedGroup*)RepeatedGroupAtIndex:(NSUInteger)index;
+- (instancetype)addRepeatedGroup:(TestParsingMergeLite_RepeatedGroup*)value;
+- (instancetype)setRepeatedGroupArray:(NSArray *)array;
+- (instancetype)clearRepeatedGroup;
+
+@end
+
+
+#pragma mark - TestParsingMergeLite_RepeatedFieldsGenerator
+
+@interface TestParsingMergeLite_RepeatedFieldsGenerator : PBGeneratedMessage
+
+@property (readonly, strong) NSArray *field1;
+@property (readonly, strong) NSArray *field2;
+@property (readonly, strong) NSArray *field3;
+@property (readonly, strong) NSArray *Group1;
+@property (readonly, strong) NSArray *Group2;
+@property (readonly, strong) NSArray *ext1;
+@property (readonly, strong) NSArray *ext2;
+
+
+- (TestAllTypesLite*)field1AtIndex:(NSUInteger)index;
+- (TestAllTypesLite*)field2AtIndex:(NSUInteger)index;
+- (TestAllTypesLite*)field3AtIndex:(NSUInteger)index;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)Group1AtIndex:(NSUInteger)index;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)Group2AtIndex:(NSUInteger)index;
+- (TestAllTypesLite*)ext1AtIndex:(NSUInteger)index;
+- (TestAllTypesLite*)ext2AtIndex:(NSUInteger)index;
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builder;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builder;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator*) prototype;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMergeLite_RepeatedFieldsGenerator_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator*) defaultInstance;
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator*)build;
+- (TestParsingMergeLite_RepeatedFieldsGenerator*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMergeLite_RepeatedFieldsGenerator*)other;
+
+- (NSMutableArray *)field1;
+- (TestAllTypesLite*)field1AtIndex:(NSUInteger)index;
+- (instancetype)addField1:(TestAllTypesLite*)value;
+- (instancetype)setField1Array:(NSArray *)array;
+- (instancetype)clearField1;
+
+- (NSMutableArray *)field2;
+- (TestAllTypesLite*)field2AtIndex:(NSUInteger)index;
+- (instancetype)addField2:(TestAllTypesLite*)value;
+- (instancetype)setField2Array:(NSArray *)array;
+- (instancetype)clearField2;
+
+- (NSMutableArray *)field3;
+- (TestAllTypesLite*)field3AtIndex:(NSUInteger)index;
+- (instancetype)addField3:(TestAllTypesLite*)value;
+- (instancetype)setField3Array:(NSArray *)array;
+- (instancetype)clearField3;
+
+- (NSMutableArray *)Group1;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)Group1AtIndex:(NSUInteger)index;
+- (instancetype)addGroup1:(TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)value;
+- (instancetype)setGroup1Array:(NSArray *)array;
+- (instancetype)clearGroup1;
+
+- (NSMutableArray *)Group2;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)Group2AtIndex:(NSUInteger)index;
+- (instancetype)addGroup2:(TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)value;
+- (instancetype)setGroup2Array:(NSArray *)array;
+- (instancetype)clearGroup2;
+
+- (NSMutableArray *)ext1;
+- (TestAllTypesLite*)ext1AtIndex:(NSUInteger)index;
+- (instancetype)addExt1:(TestAllTypesLite*)value;
+- (instancetype)setExt1Array:(NSArray *)array;
+- (instancetype)clearExt1;
+
+- (NSMutableArray *)ext2;
+- (TestAllTypesLite*)ext2AtIndex:(NSUInteger)index;
+- (instancetype)addExt2:(TestAllTypesLite*)value;
+- (instancetype)setExt2Array:(NSArray *)array;
+- (instancetype)clearExt2;
+
+@end
+
+
+#pragma mark - TestParsingMergeLite_RepeatedFieldsGenerator_Group1
+
+@interface TestParsingMergeLite_RepeatedFieldsGenerator_Group1 : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypesLite* field1;
+
+- (BOOL)hasField1;
+
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builder;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builder;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator_Group1*) prototype;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*) defaultInstance;
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)build;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)other;
+
+- (BOOL)hasField1;
+- (TestAllTypesLite*)field1;
+- (instancetype)setField1:(TestAllTypesLite*)value;
+- (instancetype)setField1Builder:(TestAllTypesLite_Builder*)builderForValue;
+- (instancetype)mergeField1:(TestAllTypesLite*)value;
+- (instancetype)clearField1;
+
+@end
+
+
+#pragma mark - TestParsingMergeLite_RepeatedFieldsGenerator_Group2
+
+@interface TestParsingMergeLite_RepeatedFieldsGenerator_Group2 : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypesLite* field1;
+
+- (BOOL)hasField1;
+
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builder;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builder;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator_Group2*) prototype;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*) defaultInstance;
+
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)build;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)other;
+
+- (BOOL)hasField1;
+- (TestAllTypesLite*)field1;
+- (instancetype)setField1:(TestAllTypesLite*)value;
+- (instancetype)setField1Builder:(TestAllTypesLite_Builder*)builderForValue;
+- (instancetype)mergeField1:(TestAllTypesLite*)value;
+- (instancetype)clearField1;
+
+@end
+
+
+#pragma mark - TestParsingMergeLite_OptionalGroup
+
+@interface TestParsingMergeLite_OptionalGroup : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypesLite* optionalGroupAllTypes;
+
+- (BOOL)hasOptionalGroupAllTypes;
+
+
+- (TestParsingMergeLite_OptionalGroup_Builder*)builder;
++ (TestParsingMergeLite_OptionalGroup_Builder*)builder;
++ (TestParsingMergeLite_OptionalGroup_Builder*)builderWithPrototype:(TestParsingMergeLite_OptionalGroup*) prototype;
+- (TestParsingMergeLite_OptionalGroup_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMergeLite_OptionalGroup_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMergeLite_OptionalGroup*) defaultInstance;
+
+- (TestParsingMergeLite_OptionalGroup*)build;
+- (TestParsingMergeLite_OptionalGroup*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMergeLite_OptionalGroup*)other;
+
+- (BOOL)hasOptionalGroupAllTypes;
+- (TestAllTypesLite*)optionalGroupAllTypes;
+- (instancetype)setOptionalGroupAllTypes:(TestAllTypesLite*)value;
+- (instancetype)setOptionalGroupAllTypesBuilder:(TestAllTypesLite_Builder*)builderForValue;
+- (instancetype)mergeOptionalGroupAllTypes:(TestAllTypesLite*)value;
+- (instancetype)clearOptionalGroupAllTypes;
+
+@end
+
+
+#pragma mark - TestParsingMergeLite_RepeatedGroup
+
+@interface TestParsingMergeLite_RepeatedGroup : PBGeneratedMessage
+
+@property (readonly, strong)  TestAllTypesLite* repeatedGroupAllTypes;
+
+- (BOOL)hasRepeatedGroupAllTypes;
+
+
+- (TestParsingMergeLite_RepeatedGroup_Builder*)builder;
++ (TestParsingMergeLite_RepeatedGroup_Builder*)builder;
++ (TestParsingMergeLite_RepeatedGroup_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedGroup*) prototype;
+- (TestParsingMergeLite_RepeatedGroup_Builder*)toBuilder;
+
+@end
+
+
+@interface TestParsingMergeLite_RepeatedGroup_Builder : PBGeneratedMessage_Builder
+
+- (TestParsingMergeLite_RepeatedGroup*) defaultInstance;
+
+- (TestParsingMergeLite_RepeatedGroup*)build;
+- (TestParsingMergeLite_RepeatedGroup*)buildPartial;
+
+- (instancetype)mergeFrom:(TestParsingMergeLite_RepeatedGroup*)other;
+
+- (BOOL)hasRepeatedGroupAllTypes;
+- (TestAllTypesLite*)repeatedGroupAllTypes;
+- (instancetype)setRepeatedGroupAllTypes:(TestAllTypesLite*)value;
+- (instancetype)setRepeatedGroupAllTypesBuilder:(TestAllTypesLite_Builder*)builderForValue;
+- (instancetype)mergeRepeatedGroupAllTypes:(TestAllTypesLite*)value;
+- (instancetype)clearRepeatedGroupAllTypes;
 
 @end
 

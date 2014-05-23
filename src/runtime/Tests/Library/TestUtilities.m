@@ -639,6 +639,9 @@
     [message setOptionalStringPiece:@"124"];
     [message setOptionalCord:@"125"];
     
+    [message setOptionalPublicImportMessage:[[[PublicImportMessage builder] setE:126] build]];
+    [message setOptionalLazyMessage:[[[TestAllTypes_NestedMessage builder] setBb:127] build]];
+    
     // -----------------------------------------------------------------
     
     [message addRepeatedInt32   :201];
@@ -669,6 +672,9 @@
     [message addRepeatedStringPiece:@"224"];
     [message addRepeatedCord:@"225"];
     
+    [message addRepeatedLazyMessage:[[[TestAllTypes_NestedMessage builder] setBb:227] build]];
+    
+    
     // Add a second one of each field.
     [message addRepeatedInt32   :301];
     [message addRepeatedInt64   :302];
@@ -697,6 +703,8 @@
     
     [message addRepeatedStringPiece:@"324"];
     [message addRepeatedCord:@"325"];
+    
+    [message addRepeatedLazyMessage:[[[TestAllTypes_NestedMessage builder] setBb:327] build]];
     
     // -----------------------------------------------------------------
     
@@ -764,6 +772,11 @@
     [message setExtension:[UnittestRoot optionalStringPieceExtension]  value:@"124"];
     [message setExtension:[UnittestRoot optionalCordExtension] value:@"125"];
     
+    [message setExtension:[UnittestRoot optionalPublicImportMessageExtension]
+                    value:[[[PublicImportMessage builder] setE:126] build]];
+    [message setExtension:[UnittestRoot optionalLazyMessageExtension]
+                    value:[[[TestAllTypes_NestedMessage builder] setBb:127] build]];
+    
     // -----------------------------------------------------------------
     
     [message addExtension:[UnittestRoot repeatedInt32Extension]    value:@201];
@@ -801,6 +814,9 @@
     [message addExtension:[UnittestRoot repeatedStringPieceExtension] value:@"224"];
     [message addExtension:[UnittestRoot repeatedCordExtension] value:@"225"];
     
+    [message addExtension:[UnittestRoot repeatedLazyMessageExtension]
+                    value:[[[TestAllTypes_NestedMessage builder] setBb:227] build]];
+    
     // Add a second one of each field.
     [message addExtension:[UnittestRoot repeatedInt32Extension] value:@301];
     [message addExtension:[UnittestRoot repeatedInt64Extension] value:@302];
@@ -836,6 +852,9 @@
     
     [message addExtension:[UnittestRoot repeatedStringPieceExtension] value:@"324"];
     [message addExtension:[UnittestRoot repeatedCordExtension] value:@"325"];
+    
+    [message addExtension:[UnittestRoot repeatedLazyMessageExtension]
+                    value:[[[TestAllTypes_NestedMessage builder] setBb:327] build]];
     
     // -----------------------------------------------------------------
     

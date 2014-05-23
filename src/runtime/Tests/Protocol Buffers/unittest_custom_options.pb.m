@@ -54,6 +54,7 @@ static id<PBExtensionField> UnittestCustomOptionsRoot_methodopt = nil;
 static id<PBExtensionField> ComplexOptionType2_ComplexOptionType4_complexOpt4 = nil;
 static id<PBExtensionField> AggregateMessageSetElement_messageSetExtension = nil;
 static id<PBExtensionField> Aggregate_nested = nil;
+static id<PBExtensionField> NestedOptionType_nestedExtension = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -448,6 +449,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:NO
                                           isPacked:NO
                             isMessageSetWireFormat:NO];
+    NestedOptionType_nestedExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
+                                     extendedClass:[PBFileOptions class]
+                                       fieldNumber:7912573
+                                      defaultValue:@(0)
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     [PBDescriptorRoot registerAllExtensions:registry];
@@ -499,6 +509,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:ComplexOptionType2_ComplexOptionType4_complexOpt4];
   [registry addExtension:AggregateMessageSetElement_messageSetExtension];
   [registry addExtension:Aggregate_nested];
+  [registry addExtension:NestedOptionType_nestedExtension];
 }
 
 + (id<PBExtensionField>)fileOpt1 {
@@ -1145,6 +1156,324 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
 
 - (instancetype)mergeFrom:(CustomOptionFooResponse*)other {
   if (other == [CustomOptionFooResponse defaultInstance]) {
+    return self;
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+
+@end
+
+
+#pragma mark - CustomOptionFooClientMessage
+
+@interface CustomOptionFooClientMessage ()
+
+
+@end
+
+@implementation CustomOptionFooClientMessage {
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (CustomOptionFooClientMessage_Builder*) builder {
+  return [[CustomOptionFooClientMessage_Builder alloc] init];
+}
++ (CustomOptionFooClientMessage_Builder*) builderWithPrototype:(CustomOptionFooClientMessage*)prototype {
+  return [[CustomOptionFooClientMessage builder] mergeFrom:prototype];
+}
+- (CustomOptionFooClientMessage_Builder*) builder {
+  return [CustomOptionFooClientMessage builder];
+}
+- (CustomOptionFooClientMessage_Builder*) toBuilder {
+  return [CustomOptionFooClientMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionFooClientMessage class]]) {
+    return NO;
+  }
+  CustomOptionFooClientMessage *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation CustomOptionFooClientMessage_Builder {
+  CustomOptionFooClientMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[CustomOptionFooClientMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[CustomOptionFooClientMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [CustomOptionFooClientMessage builderWithPrototype:_result];
+}
+
+- (CustomOptionFooClientMessage*) defaultInstance {
+  return [CustomOptionFooClientMessage defaultInstance];
+}
+
+- (CustomOptionFooClientMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (CustomOptionFooClientMessage*) buildPartial {
+  CustomOptionFooClientMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(CustomOptionFooClientMessage*)other {
+  if (other == [CustomOptionFooClientMessage defaultInstance]) {
+    return self;
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+
+@end
+
+
+#pragma mark - CustomOptionFooServerMessage
+
+@interface CustomOptionFooServerMessage ()
+
+
+@end
+
+@implementation CustomOptionFooServerMessage {
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (CustomOptionFooServerMessage_Builder*) builder {
+  return [[CustomOptionFooServerMessage_Builder alloc] init];
+}
++ (CustomOptionFooServerMessage_Builder*) builderWithPrototype:(CustomOptionFooServerMessage*)prototype {
+  return [[CustomOptionFooServerMessage builder] mergeFrom:prototype];
+}
+- (CustomOptionFooServerMessage_Builder*) builder {
+  return [CustomOptionFooServerMessage builder];
+}
+- (CustomOptionFooServerMessage_Builder*) toBuilder {
+  return [CustomOptionFooServerMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionFooServerMessage class]]) {
+    return NO;
+  }
+  CustomOptionFooServerMessage *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation CustomOptionFooServerMessage_Builder {
+  CustomOptionFooServerMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[CustomOptionFooServerMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[CustomOptionFooServerMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [CustomOptionFooServerMessage builderWithPrototype:_result];
+}
+
+- (CustomOptionFooServerMessage*) defaultInstance {
+  return [CustomOptionFooServerMessage defaultInstance];
+}
+
+- (CustomOptionFooServerMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (CustomOptionFooServerMessage*) buildPartial {
+  CustomOptionFooServerMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(CustomOptionFooServerMessage*)other {
+  if (other == [CustomOptionFooServerMessage defaultInstance]) {
     return self;
   }
   [self mergeUnknownFields:other.unknownFields];
@@ -5084,6 +5413,383 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (instancetype)clearFieldname {
   _result.hasFieldname = NO;
   _result.fieldname = 0;
+  return self;
+}
+
+@end
+
+
+#pragma mark - NestedOptionType
+
+BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) {
+  switch (value) {
+    case NestedOptionType_NestedEnumNESTEDENUMVALUE:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+@interface NestedOptionType ()
+
+
+@end
+
+@implementation NestedOptionType {
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+
++ (id<PBExtensionField>)nestedExtension {
+  return NestedOptionType_nestedExtension;
+}
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (NestedOptionType_Builder*) builder {
+  return [[NestedOptionType_Builder alloc] init];
+}
++ (NestedOptionType_Builder*) builderWithPrototype:(NestedOptionType*)prototype {
+  return [[NestedOptionType builder] mergeFrom:prototype];
+}
+- (NestedOptionType_Builder*) builder {
+  return [NestedOptionType builder];
+}
+- (NestedOptionType_Builder*) toBuilder {
+  return [NestedOptionType builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[NestedOptionType class]]) {
+    return NO;
+  }
+  NestedOptionType *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation NestedOptionType_Builder {
+  NestedOptionType* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[NestedOptionType alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[NestedOptionType alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [NestedOptionType builderWithPrototype:_result];
+}
+
+- (NestedOptionType*) defaultInstance {
+  return [NestedOptionType defaultInstance];
+}
+
+- (NestedOptionType*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (NestedOptionType*) buildPartial {
+  NestedOptionType* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(NestedOptionType*)other {
+  if (other == [NestedOptionType defaultInstance]) {
+    return self;
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+
+@end
+
+
+#pragma mark - NestedOptionType_NestedMessage
+
+@interface NestedOptionType_NestedMessage ()
+
+@property int32_t nestedField;
+
+@end
+
+@implementation NestedOptionType_NestedMessage {
+  BOOL _hasNestedField:1;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+    _nestedField = 0;
+  return self;
+}
+
++ (instancetype)defaultInstance {
+  static id _sharedObject = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedObject = [[self alloc] init];
+  });
+  return _sharedObject;
+}
+
+- (BOOL)hasNestedField {
+  return !!_hasNestedField;
+}
+- (void)setHasNestedField:(BOOL)value {
+  _hasNestedField = !!value;
+}
+
+
+- (BOOL)isInitialized {
+  return YES;
+}
+
+- (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasNestedField) {
+    [output writeInt32:1 value:self.nestedField];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasNestedField) {
+    size_ += computeInt32Size(1, self.nestedField);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
+
+
++ (NestedOptionType_NestedMessage_Builder*) builder {
+  return [[NestedOptionType_NestedMessage_Builder alloc] init];
+}
++ (NestedOptionType_NestedMessage_Builder*) builderWithPrototype:(NestedOptionType_NestedMessage*)prototype {
+  return [[NestedOptionType_NestedMessage builder] mergeFrom:prototype];
+}
+- (NestedOptionType_NestedMessage_Builder*) builder {
+  return [NestedOptionType_NestedMessage builder];
+}
+- (NestedOptionType_NestedMessage_Builder*) toBuilder {
+  return [NestedOptionType_NestedMessage builderWithPrototype:self];
+}
+
+- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
+  NSUInteger listCount; listCount = 0;
+  if (self.hasNestedField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"nestedField", @(self.nestedField)];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[NestedOptionType_NestedMessage class]]) {
+    return NO;
+  }
+  NestedOptionType_NestedMessage *otherMessage = other;
+  return
+      self.hasNestedField == otherMessage.hasNestedField &&
+      (!self.hasNestedField || self.nestedField == otherMessage.nestedField) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+
+- (NSUInteger)hash {
+  NSUInteger hashCode; hashCode = 7;
+  NSUInteger listCount; listCount = 0;
+  if (self.hasNestedField) {
+    hashCode = hashCode * 31 + [@(self.nestedField) hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+
+@end
+
+
+@implementation NestedOptionType_NestedMessage_Builder {
+  NestedOptionType_NestedMessage* _result;
+}
+
+- (instancetype)init {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  _result = [[NestedOptionType_NestedMessage alloc] init];
+  return self;
+}
+
+- (PBGeneratedMessage*)internalGetResult {
+  return _result;
+}
+- (instancetype)clear {
+  _result = [[NestedOptionType_NestedMessage alloc] init];
+  return self;
+}
+- (instancetype)clone {
+  return [NestedOptionType_NestedMessage builderWithPrototype:_result];
+}
+
+- (NestedOptionType_NestedMessage*) defaultInstance {
+  return [NestedOptionType_NestedMessage defaultInstance];
+}
+
+- (NestedOptionType_NestedMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (NestedOptionType_NestedMessage*) buildPartial {
+  NestedOptionType_NestedMessage* partial = _result;
+  _result = nil;
+  return partial;
+}
+
+- (instancetype)mergeFrom:(NestedOptionType_NestedMessage*)other {
+  if (other == [NestedOptionType_NestedMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasNestedField) {
+    [self setNestedField:other.nestedField];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setNestedField:[input readInt32]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL)hasNestedField {
+  return _result.hasNestedField;
+}
+- (int32_t) nestedField {
+  return _result.nestedField;
+}
+- (instancetype)setNestedField:(int32_t)value {
+  _result.hasNestedField = YES;
+  _result.nestedField = value;
+  return self;
+}
+- (instancetype)clearNestedField {
+  _result.hasNestedField = NO;
+  _result.nestedField = 0;
   return self;
 }
 

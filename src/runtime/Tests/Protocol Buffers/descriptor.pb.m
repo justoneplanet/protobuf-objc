@@ -261,6 +261,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @property (strong) NSString * name;
 @property (strong) NSString * package;
 @property (strong) NSMutableArray * dependencyArray;
+@property (strong) PBAppendableArray * publicDependencyArray;
+@property (strong) PBAppendableArray * weakDependencyArray;
 @property (strong) NSMutableArray *messageTypeArray;
 @property (strong) NSMutableArray *enumTypeArray;
 @property (strong) NSMutableArray *serviceArray;
@@ -275,6 +277,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   BOOL _hasPackage:1;
   BOOL _hasOptions:1;
   BOOL _hasSourceCodeInfo:1;
+  PBAppendableArray *_publicDependencyArray;
+  PBAppendableArray *_weakDependencyArray;
   NSMutableArray *_dependencyArray;
   NSMutableArray *_messageTypeArray;
   NSMutableArray *_enumTypeArray;
@@ -316,6 +320,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   _hasPackage = !!value;
 }
 @dynamic dependency;
+@dynamic publicDependency;
+@dynamic weakDependency;
 @dynamic messageType;
 @dynamic enumType;
 @dynamic service;
@@ -340,6 +346,18 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 - (NSString *)dependencyAtIndex:(NSUInteger)index {
   return _dependencyArray[index];
+}
+- (PBArray *)publicDependency {
+  return _publicDependencyArray;
+}
+- (int32_t)publicDependencyAtIndex:(NSUInteger)index {
+  return [_publicDependencyArray int32AtIndex:index];
+}
+- (PBArray *)weakDependency {
+  return _weakDependencyArray;
+}
+- (int32_t)weakDependencyAtIndex:(NSUInteger)index {
+  return [_weakDependencyArray int32AtIndex:index];
 }
 - (NSArray *)messageType {
   return _messageTypeArray;
@@ -423,6 +441,20 @@ static PBExtensionRegistry* extensionRegistry = nil;
   if (self.hasSourceCodeInfo) {
     [output writeMessage:9 value:self.sourceCodeInfo];
   }
+  const NSUInteger publicDependencyArrayCount = self.publicDependencyArray.count;
+  if (publicDependencyArrayCount > 0) {
+    const int32_t *values = (const int32_t *)self.publicDependencyArray.data;
+    for (NSUInteger i = 0; i < publicDependencyArrayCount; ++i) {
+      [output writeInt32:10 value:values[i]];
+    }
+  }
+  const NSUInteger weakDependencyArrayCount = self.weakDependencyArray.count;
+  if (weakDependencyArrayCount > 0) {
+    const int32_t *values = (const int32_t *)self.weakDependencyArray.data;
+    for (NSUInteger i = 0; i < weakDependencyArrayCount; ++i) {
+      [output writeInt32:11 value:values[i]];
+    }
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
@@ -464,6 +496,26 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   if (self.hasSourceCodeInfo) {
     size_ += computeMessageSize(9, self.sourceCodeInfo);
+  }
+  {
+    int32_t dataSize = 0;
+    const NSUInteger count_ = self.publicDependencyArray.count;
+    const int32_t *values = (const int32_t *)self.publicDependencyArray.data;
+    for (NSUInteger i = 0; i < count_; ++i) {
+      dataSize += computeInt32SizeNoTag(values[i]);
+    }
+    size_ += dataSize;
+    size_ += 1 * count_;
+  }
+  {
+    int32_t dataSize = 0;
+    const NSUInteger count_ = self.weakDependencyArray.count;
+    const int32_t *values = (const int32_t *)self.weakDependencyArray.data;
+    for (NSUInteger i = 0; i < count_; ++i) {
+      dataSize += computeInt32SizeNoTag(values[i]);
+    }
+    size_ += dataSize;
+    size_ += 1 * count_;
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -531,6 +583,14 @@ static PBExtensionRegistry* extensionRegistry = nil;
                          withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }
+  listCount = self.publicDependencyArray.count;
+  for(int i=0; i < listCount; i++){
+    [output appendFormat:@"%@%@: %@\n", indent, @"publicDependency", @([self.publicDependencyArray int32AtIndex:i])];
+  }
+  listCount = self.weakDependencyArray.count;
+  for(int i=0; i < listCount; i++){
+    [output appendFormat:@"%@%@: %@\n", indent, @"weakDependency", @([self.weakDependencyArray int32AtIndex:i])];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 
@@ -556,6 +616,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
       self.hasSourceCodeInfo == otherMessage.hasSourceCodeInfo &&
       (!self.hasSourceCodeInfo || [self.sourceCodeInfo isEqual:otherMessage.sourceCodeInfo]) &&
+      ((self.publicDependencyArray == nil && otherMessage.publicDependencyArray == nil) || [self.publicDependencyArray isEqualToArray:otherMessage.publicDependencyArray]) &&
+      ((self.weakDependencyArray == nil && otherMessage.weakDependencyArray == nil) || [self.weakDependencyArray isEqualToArray:otherMessage.weakDependencyArray]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
@@ -588,6 +650,14 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   if (self.hasSourceCodeInfo) {
     hashCode = hashCode * 31 + [self.sourceCodeInfo hash];
+  }
+  listCount = self.publicDependencyArray.count;
+  for(int i=0; i < listCount; i++){
+    hashCode = hashCode * 31 + [self.publicDependencyArray int32AtIndex:i];
+  }
+  listCount = self.weakDependencyArray.count;
+  for(int i=0; i < listCount; i++){
+    hashCode = hashCode * 31 + [self.weakDependencyArray int32AtIndex:i];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -649,6 +719,20 @@ static PBExtensionRegistry* extensionRegistry = nil;
       _result.dependencyArray = [[NSMutableArray alloc] initWithArray:other.dependencyArray];
     } else {
       [_result.dependencyArray addObjectsFromArray:other.dependencyArray];
+    }
+  }
+  if (other.publicDependencyArray.count > 0) {
+    if (_result.publicDependencyArray == nil) {
+      _result.publicDependencyArray = [other.publicDependencyArray copy];
+    } else {
+      [_result.publicDependencyArray appendArray:other.publicDependencyArray];
+    }
+  }
+  if (other.weakDependencyArray.count > 0) {
+    if (_result.weakDependencyArray == nil) {
+      _result.weakDependencyArray = [other.weakDependencyArray copy];
+    } else {
+      [_result.weakDependencyArray appendArray:other.weakDependencyArray];
     }
   }
   if (other.messageTypeArray.count > 0) {
@@ -760,6 +844,14 @@ static PBExtensionRegistry* extensionRegistry = nil;
         [self setSourceCodeInfo:[subBuilder buildPartial]];
         break;
       }
+      case 80: {
+        [self addPublicDependency:[input readInt32]];
+        break;
+      }
+      case 88: {
+        [self addWeakDependency:[input readInt32]];
+        break;
+      }
     }
   }
 }
@@ -814,6 +906,56 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 - (instancetype)clearDependency {
   _result.dependencyArray = nil;
+  return self;
+}
+- (PBAppendableArray *)publicDependency {
+  return _result.publicDependencyArray;
+}
+- (int32_t)publicDependencyAtIndex:(NSUInteger)index {
+  return [_result publicDependencyAtIndex:index];
+}
+- (instancetype)addPublicDependency:(int32_t)value {
+  if (_result.publicDependencyArray == nil) {
+    _result.publicDependencyArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+  }
+  [_result.publicDependencyArray addInt32:value];
+  return self;
+}
+- (instancetype)setPublicDependencyArray:(NSArray *)array {
+  _result.publicDependencyArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (instancetype)setPublicDependencyValues:(const int32_t *)values count:(NSUInteger)count {
+  _result.publicDependencyArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (instancetype)clearPublicDependency {
+  _result.publicDependencyArray = nil;
+  return self;
+}
+- (PBAppendableArray *)weakDependency {
+  return _result.weakDependencyArray;
+}
+- (int32_t)weakDependencyAtIndex:(NSUInteger)index {
+  return [_result weakDependencyAtIndex:index];
+}
+- (instancetype)addWeakDependency:(int32_t)value {
+  if (_result.weakDependencyArray == nil) {
+    _result.weakDependencyArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+  }
+  [_result.weakDependencyArray addInt32:value];
+  return self;
+}
+- (instancetype)setWeakDependencyArray:(NSArray *)array {
+  _result.weakDependencyArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (instancetype)setWeakDependencyValues:(const int32_t *)values count:(NSUInteger)count {
+  _result.weakDependencyArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (instancetype)clearWeakDependency {
+  _result.weakDependencyArray = nil;
   return self;
 }
 - (NSMutableArray *)messageType {
@@ -3813,6 +3955,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
 @property BOOL javaMultipleFiles;
 @property BOOL javaGenerateEqualsAndHash;
 @property PBFileOptions_OptimizeMode optimizeFor;
+@property (strong) NSString * goPackage;
 @property BOOL ccGenericServices;
 @property BOOL javaGenericServices;
 @property BOOL pyGenericServices;
@@ -3828,6 +3971,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   BOOL _hasPyGenericServices:1;
   BOOL _hasJavaPackage:1;
   BOOL _hasJavaOuterClassname:1;
+  BOOL _hasGoPackage:1;
   BOOL _hasOptimizeFor:1;
   NSMutableArray *_uninterpretedOptionArray;
 }
@@ -3842,6 +3986,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
     _javaMultipleFiles = NO;
     _javaGenerateEqualsAndHash = NO;
     _optimizeFor = PBFileOptions_OptimizeModeSPEED;
+    _goPackage = @"";
     _ccGenericServices = NO;
     _javaGenericServices = NO;
     _pyGenericServices = NO;
@@ -3886,6 +4031,12 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
 }
 - (void)setHasOptimizeFor:(BOOL)value {
   _hasOptimizeFor = !!value;
+}
+- (BOOL)hasGoPackage {
+  return !!_hasGoPackage;
+}
+- (void)setHasGoPackage:(BOOL)value {
+  _hasGoPackage = !!value;
 }
 - (BOOL)hasCcGenericServices {
   return !!_hasCcGenericServices;
@@ -3939,6 +4090,9 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   if (self.hasJavaMultipleFiles) {
     [output writeBool:10 value:self.javaMultipleFiles];
   }
+  if (self.hasGoPackage) {
+    [output writeString:11 value:self.goPackage];
+  }
   if (self.hasCcGenericServices) {
     [output writeBool:16 value:self.ccGenericServices];
   }
@@ -3977,6 +4131,9 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   }
   if (self.hasJavaMultipleFiles) {
     size_ += computeBoolSize(10, self.javaMultipleFiles);
+  }
+  if (self.hasGoPackage) {
+    size_ += computeStringSize(11, self.goPackage);
   }
   if (self.hasCcGenericServices) {
     size_ += computeBoolSize(16, self.ccGenericServices);
@@ -4027,6 +4184,9 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   if (self.hasJavaMultipleFiles) {
     [output appendFormat:@"%@%@: %@\n", indent, @"javaMultipleFiles", @(self.javaMultipleFiles)];
   }
+  if (self.hasGoPackage) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"goPackage", self.goPackage];
+  }
   if (self.hasCcGenericServices) {
     [output appendFormat:@"%@%@: %@\n", indent, @"ccGenericServices", @(self.ccGenericServices)];
   }
@@ -4069,6 +4229,8 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
       (!self.hasOptimizeFor || self.optimizeFor == otherMessage.optimizeFor) &&
       self.hasJavaMultipleFiles == otherMessage.hasJavaMultipleFiles &&
       (!self.hasJavaMultipleFiles || self.javaMultipleFiles == otherMessage.javaMultipleFiles) &&
+      self.hasGoPackage == otherMessage.hasGoPackage &&
+      (!self.hasGoPackage || [self.goPackage isEqual:otherMessage.goPackage]) &&
       self.hasCcGenericServices == otherMessage.hasCcGenericServices &&
       (!self.hasCcGenericServices || self.ccGenericServices == otherMessage.ccGenericServices) &&
       self.hasJavaGenericServices == otherMessage.hasJavaGenericServices &&
@@ -4097,6 +4259,9 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   }
   if (self.hasJavaMultipleFiles) {
     hashCode = hashCode * 31 + [@(self.javaMultipleFiles) hash];
+  }
+  if (self.hasGoPackage) {
+    hashCode = hashCode * 31 + [self.goPackage hash];
   }
   if (self.hasCcGenericServices) {
     hashCode = hashCode * 31 + [@(self.ccGenericServices) hash];
@@ -4178,6 +4343,9 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   if (other.hasOptimizeFor) {
     [self setOptimizeFor:other.optimizeFor];
   }
+  if (other.hasGoPackage) {
+    [self setGoPackage:other.goPackage];
+  }
   if (other.hasCcGenericServices) {
     [self setCcGenericServices:other.ccGenericServices];
   }
@@ -4235,6 +4403,10 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
       }
       case 80: {
         [self setJavaMultipleFiles:[input readBool]];
+        break;
+      }
+      case 90: {
+        [self setGoPackage:[input readString]];
         break;
       }
       case 128: {
@@ -4340,6 +4512,22 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
 - (PBFileOptions_Builder*)clearOptimizeFor {
   _result.hasOptimizeFor = NO;
   _result.optimizeFor = PBFileOptions_OptimizeModeSPEED;
+  return self;
+}
+- (BOOL)hasGoPackage {
+  return _result.hasGoPackage;
+}
+- (NSString *) goPackage {
+  return _result.goPackage;
+}
+- (instancetype)setGoPackage:(NSString *)value {
+  _result.hasGoPackage = YES;
+  _result.goPackage = value;
+  return self;
+}
+- (instancetype)clearGoPackage {
+  _result.hasGoPackage = NO;
+  _result.goPackage = @"";
   return self;
 }
 - (BOOL)hasCcGenericServices {
@@ -4762,15 +4950,19 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 
 @property PBFieldOptions_CType ctype;
 @property BOOL packed;
+@property BOOL lazy;
 @property BOOL deprecated;
 @property (strong) NSString * experimentalMapKey;
+@property BOOL weak;
 @property (strong) NSMutableArray *uninterpretedOptionArray;
 
 @end
 
 @implementation PBFieldOptions {
   BOOL _hasPacked:1;
+  BOOL _hasLazy:1;
   BOOL _hasDeprecated:1;
+  BOOL _hasWeak:1;
   BOOL _hasExperimentalMapKey:1;
   BOOL _hasCtype:1;
   NSMutableArray *_uninterpretedOptionArray;
@@ -4783,8 +4975,10 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
     _ctype = PBFieldOptions_CTypeSTRING;
     _packed = NO;
+    _lazy = NO;
     _deprecated = NO;
     _experimentalMapKey = @"";
+    _weak = NO;
   return self;
 }
 
@@ -4809,6 +5003,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 - (void)setHasPacked:(BOOL)value {
   _hasPacked = !!value;
 }
+- (BOOL)hasLazy {
+  return !!_hasLazy;
+}
+- (void)setHasLazy:(BOOL)value {
+  _hasLazy = !!value;
+}
 - (BOOL)hasDeprecated {
   return !!_hasDeprecated;
 }
@@ -4820,6 +5020,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 }
 - (void)setHasExperimentalMapKey:(BOOL)value {
   _hasExperimentalMapKey = !!value;
+}
+- (BOOL)hasWeak {
+  return !!_hasWeak;
+}
+- (void)setHasWeak:(BOOL)value {
+  _hasWeak = !!value;
 }
 @dynamic uninterpretedOption;
 
@@ -4852,8 +5058,14 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (self.hasDeprecated) {
     [output writeBool:3 value:self.deprecated];
   }
+  if (self.hasLazy) {
+    [output writeBool:5 value:self.lazy];
+  }
   if (self.hasExperimentalMapKey) {
     [output writeString:9 value:self.experimentalMapKey];
+  }
+  if (self.hasWeak) {
+    [output writeBool:10 value:self.weak];
   }
   for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
     [output writeMessage:999 value:element];
@@ -4879,8 +5091,14 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (self.hasDeprecated) {
     size_ += computeBoolSize(3, self.deprecated);
   }
+  if (self.hasLazy) {
+    size_ += computeBoolSize(5, self.lazy);
+  }
   if (self.hasExperimentalMapKey) {
     size_ += computeStringSize(9, self.experimentalMapKey);
+  }
+  if (self.hasWeak) {
+    size_ += computeBoolSize(10, self.weak);
   }
   for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
     size_ += computeMessageSize(999, element);
@@ -4916,8 +5134,14 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (self.hasDeprecated) {
     [output appendFormat:@"%@%@: %@\n", indent, @"deprecated", @(self.deprecated)];
   }
+  if (self.hasLazy) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"lazy", @(self.lazy)];
+  }
   if (self.hasExperimentalMapKey) {
     [output appendFormat:@"%@%@: %@\n", indent, @"experimentalMapKey", self.experimentalMapKey];
+  }
+  if (self.hasWeak) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"weak", @(self.weak)];
   }
   for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
@@ -4947,8 +5171,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       (!self.hasPacked || self.packed == otherMessage.packed) &&
       self.hasDeprecated == otherMessage.hasDeprecated &&
       (!self.hasDeprecated || self.deprecated == otherMessage.deprecated) &&
+      self.hasLazy == otherMessage.hasLazy &&
+      (!self.hasLazy || self.lazy == otherMessage.lazy) &&
       self.hasExperimentalMapKey == otherMessage.hasExperimentalMapKey &&
       (!self.hasExperimentalMapKey || [self.experimentalMapKey isEqual:otherMessage.experimentalMapKey]) &&
+      self.hasWeak == otherMessage.hasWeak &&
+      (!self.hasWeak || self.weak == otherMessage.weak) &&
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
@@ -4967,8 +5195,14 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (self.hasDeprecated) {
     hashCode = hashCode * 31 + [@(self.deprecated) hash];
   }
+  if (self.hasLazy) {
+    hashCode = hashCode * 31 + [@(self.lazy) hash];
+  }
   if (self.hasExperimentalMapKey) {
     hashCode = hashCode * 31 + [self.experimentalMapKey hash];
+  }
+  if (self.hasWeak) {
+    hashCode = hashCode * 31 + [@(self.weak) hash];
   }
   for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
     hashCode = hashCode * 31 + [element hash];
@@ -5029,11 +5263,17 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (other.hasPacked) {
     [self setPacked:other.packed];
   }
+  if (other.hasLazy) {
+    [self setLazy:other.lazy];
+  }
   if (other.hasDeprecated) {
     [self setDeprecated:other.deprecated];
   }
   if (other.hasExperimentalMapKey) {
     [self setExperimentalMapKey:other.experimentalMapKey];
+  }
+  if (other.hasWeak) {
+    [self setWeak:other.weak];
   }
   if (other.uninterpretedOptionArray.count > 0) {
     if (_result.uninterpretedOptionArray == nil) {
@@ -5081,8 +5321,16 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
         [self setDeprecated:[input readBool]];
         break;
       }
+      case 40: {
+        [self setLazy:[input readBool]];
+        break;
+      }
       case 74: {
         [self setExperimentalMapKey:[input readString]];
+        break;
+      }
+      case 80: {
+        [self setWeak:[input readBool]];
         break;
       }
       case 7994: {
@@ -5126,6 +5374,22 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   _result.packed = NO;
   return self;
 }
+- (BOOL)hasLazy {
+  return _result.hasLazy;
+}
+- (BOOL) lazy {
+  return _result.lazy;
+}
+- (instancetype)setLazy:(BOOL)value {
+  _result.hasLazy = YES;
+  _result.lazy = value;
+  return self;
+}
+- (instancetype)clearLazy {
+  _result.hasLazy = NO;
+  _result.lazy = NO;
+  return self;
+}
 - (BOOL)hasDeprecated {
   return _result.hasDeprecated;
 }
@@ -5158,6 +5422,22 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   _result.experimentalMapKey = @"";
   return self;
 }
+- (BOOL)hasWeak {
+  return _result.hasWeak;
+}
+- (BOOL) weak {
+  return _result.weak;
+}
+- (instancetype)setWeak:(BOOL)value {
+  _result.hasWeak = YES;
+  _result.weak = value;
+  return self;
+}
+- (instancetype)clearWeak {
+  _result.hasWeak = NO;
+  _result.weak = NO;
+  return self;
+}
 - (NSMutableArray *)uninterpretedOption {
   return _result.uninterpretedOptionArray;
 }
@@ -5187,11 +5467,13 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 
 @interface PBEnumOptions ()
 
+@property BOOL allowAlias;
 @property (strong) NSMutableArray *uninterpretedOptionArray;
 
 @end
 
 @implementation PBEnumOptions {
+  BOOL _hasAllowAlias:1;
   NSMutableArray *_uninterpretedOptionArray;
 }
 
@@ -5200,6 +5482,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (self == nil) {
     return nil;
   }
+    _allowAlias = YES;
   return self;
 }
 
@@ -5212,6 +5495,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return _sharedObject;
 }
 
+- (BOOL)hasAllowAlias {
+  return !!_hasAllowAlias;
+}
+- (void)setHasAllowAlias:(BOOL)value {
+  _hasAllowAlias = !!value;
+}
 @dynamic uninterpretedOption;
 
 - (NSArray *)uninterpretedOption {
@@ -5234,6 +5523,9 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 }
 
 - (void)writeToCodedOutputStream:(PBCodedOutputStream*)output {
+  if (self.hasAllowAlias) {
+    [output writeBool:2 value:self.allowAlias];
+  }
   for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
     [output writeMessage:999 value:element];
   }
@@ -5249,6 +5541,9 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
 
   size_ = 0;
+  if (self.hasAllowAlias) {
+    size_ += computeBoolSize(2, self.allowAlias);
+  }
   for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
     size_ += computeMessageSize(999, element);
   }
@@ -5274,6 +5569,9 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 
 - (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {
   NSUInteger listCount; listCount = 0;
+  if (self.hasAllowAlias) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"allowAlias", @(self.allowAlias)];
+  }
   for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
@@ -5296,6 +5594,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
   PBEnumOptions *otherMessage = other;
   return
+      self.hasAllowAlias == otherMessage.hasAllowAlias &&
+      (!self.hasAllowAlias || self.allowAlias == otherMessage.allowAlias) &&
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
@@ -5305,6 +5605,9 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 - (NSUInteger)hash {
   NSUInteger hashCode; hashCode = 7;
   NSUInteger listCount; listCount = 0;
+  if (self.hasAllowAlias) {
+    hashCode = hashCode * 31 + [@(self.allowAlias) hash];
+  }
   for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
     hashCode = hashCode * 31 + [element hash];
   }
@@ -5358,6 +5661,9 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (other == [PBEnumOptions defaultInstance]) {
     return self;
   }
+  if (other.hasAllowAlias) {
+    [self setAllowAlias:other.allowAlias];
+  }
   if (other.uninterpretedOptionArray.count > 0) {
     if (_result.uninterpretedOptionArray == nil) {
       _result.uninterpretedOptionArray = [[NSMutableArray alloc] initWithArray:other.uninterpretedOptionArray];
@@ -5387,6 +5693,10 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
         }
         break;
       }
+      case 16: {
+        [self setAllowAlias:[input readBool]];
+        break;
+      }
       case 7994: {
         PBUninterpretedOption_Builder* subBuilder = [PBUninterpretedOption builder];
         [input readMessage:subBuilder extensionRegistry:extensionRegistry];
@@ -5395,6 +5705,22 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       }
     }
   }
+}
+- (BOOL)hasAllowAlias {
+  return _result.hasAllowAlias;
+}
+- (BOOL) allowAlias {
+  return _result.allowAlias;
+}
+- (instancetype)setAllowAlias:(BOOL)value {
+  _result.hasAllowAlias = YES;
+  _result.allowAlias = value;
+  return self;
+}
+- (instancetype)clearAllowAlias {
+  _result.hasAllowAlias = NO;
+  _result.allowAlias = YES;
+  return self;
 }
 - (NSMutableArray *)uninterpretedOption {
   return _result.uninterpretedOptionArray;
@@ -7115,10 +7441,14 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 
 @property (strong) PBAppendableArray * pathArray;
 @property (strong) PBAppendableArray * spanArray;
+@property (strong) NSString * leadingComments;
+@property (strong) NSString * trailingComments;
 
 @end
 
 @implementation PBSourceCodeInfo_Location {
+  BOOL _hasLeadingComments:1;
+  BOOL _hasTrailingComments:1;
   PBAppendableArray *_pathArray;
   int32_t _pathMemoizedSerializedSize;
   PBAppendableArray *_spanArray;
@@ -7130,6 +7460,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (self == nil) {
     return nil;
   }
+    _leadingComments = @"";
+    _trailingComments = @"";
   return self;
 }
 
@@ -7144,6 +7476,18 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 
 @dynamic path;
 @dynamic span;
+- (BOOL)hasLeadingComments {
+  return !!_hasLeadingComments;
+}
+- (void)setHasLeadingComments:(BOOL)value {
+  _hasLeadingComments = !!value;
+}
+- (BOOL)hasTrailingComments {
+  return !!_hasTrailingComments;
+}
+- (void)setHasTrailingComments:(BOOL)value {
+  _hasTrailingComments = !!value;
+}
 
 - (PBArray *)path {
   return _pathArray;
@@ -7180,6 +7524,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
     for (NSUInteger i = 0; i < spanArrayCount; ++i) {
       [output writeInt32NoTag:values[i]];
     }
+  }
+  if (self.hasLeadingComments) {
+    [output writeString:3 value:self.leadingComments];
+  }
+  if (self.hasTrailingComments) {
+    [output writeString:4 value:self.trailingComments];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -7218,6 +7568,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
     }
     _spanMemoizedSerializedSize = dataSize;
   }
+  if (self.hasLeadingComments) {
+    size_ += computeStringSize(3, self.leadingComments);
+  }
+  if (self.hasTrailingComments) {
+    size_ += computeStringSize(4, self.trailingComments);
+  }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -7247,6 +7603,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   for(int i=0; i < listCount; i++){
     [output appendFormat:@"%@%@: %@\n", indent, @"span", @([self.spanArray int32AtIndex:i])];
   }
+  if (self.hasLeadingComments) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"leadingComments", self.leadingComments];
+  }
+  if (self.hasTrailingComments) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"trailingComments", self.trailingComments];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 
@@ -7261,6 +7623,10 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return
       ((self.pathArray == nil && otherMessage.pathArray == nil) || [self.pathArray isEqualToArray:otherMessage.pathArray]) &&
       ((self.spanArray == nil && otherMessage.spanArray == nil) || [self.spanArray isEqualToArray:otherMessage.spanArray]) &&
+      self.hasLeadingComments == otherMessage.hasLeadingComments &&
+      (!self.hasLeadingComments || [self.leadingComments isEqual:otherMessage.leadingComments]) &&
+      self.hasTrailingComments == otherMessage.hasTrailingComments &&
+      (!self.hasTrailingComments || [self.trailingComments isEqual:otherMessage.trailingComments]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
@@ -7274,6 +7640,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   listCount = self.spanArray.count;
   for(int i=0; i < listCount; i++){
     hashCode = hashCode * 31 + [self.spanArray int32AtIndex:i];
+  }
+  if (self.hasLeadingComments) {
+    hashCode = hashCode * 31 + [self.leadingComments hash];
+  }
+  if (self.hasTrailingComments) {
+    hashCode = hashCode * 31 + [self.trailingComments hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -7338,6 +7710,12 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       [_result.spanArray appendArray:other.spanArray];
     }
   }
+  if (other.hasLeadingComments) {
+    [self setLeadingComments:other.leadingComments];
+  }
+  if (other.hasTrailingComments) {
+    [self setTrailingComments:other.trailingComments];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -7381,6 +7759,14 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
           [_result.spanArray addInt32:[input readInt32]];
         }
         [input popLimit:limit];
+        break;
+      }
+      case 26: {
+        [self setLeadingComments:[input readString]];
+        break;
+      }
+      case 34: {
+        [self setTrailingComments:[input readString]];
         break;
       }
     }
@@ -7434,6 +7820,38 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 }
 - (instancetype)clearSpan {
   _result.spanArray = nil;
+  return self;
+}
+- (BOOL)hasLeadingComments {
+  return _result.hasLeadingComments;
+}
+- (NSString *) leadingComments {
+  return _result.leadingComments;
+}
+- (instancetype)setLeadingComments:(NSString *)value {
+  _result.hasLeadingComments = YES;
+  _result.leadingComments = value;
+  return self;
+}
+- (instancetype)clearLeadingComments {
+  _result.hasLeadingComments = NO;
+  _result.leadingComments = @"";
+  return self;
+}
+- (BOOL)hasTrailingComments {
+  return _result.hasTrailingComments;
+}
+- (NSString *) trailingComments {
+  return _result.trailingComments;
+}
+- (instancetype)setTrailingComments:(NSString *)value {
+  _result.hasTrailingComments = YES;
+  _result.trailingComments = value;
+  return self;
+}
+- (instancetype)clearTrailingComments {
+  _result.hasTrailingComments = NO;
+  _result.trailingComments = @"";
   return self;
 }
 
