@@ -40,8 +40,6 @@
 		AA747D9F0F9514B9006C5449 /* ProtocolModels_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolModels_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		C55591B1127A04EF002343CA /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
-		C586262012668B9F00204EE1 /* Bootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C586261F12668B9F00204EE1 /* Bootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C586262212668BB100204EE1 /* ForwardDeclarations.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262112668BB100204EE1 /* ForwardDeclarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262412668BBF00204EE1 /* ProtocolModels.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262312668BBF00204EE1 /* ProtocolModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262E12668BCF00204EE1 /* ConcreteExtensionField.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262512668BCF00204EE1 /* ConcreteExtensionField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262F12668BCF00204EE1 /* ConcreteExtensionField.m in Sources */ = {isa = PBXBuildFile; fileRef = C586262612668BCF00204EE1 /* ConcreteExtensionField.m */; };
@@ -155,8 +153,6 @@
 		4FA65051192F02890001AA10 /* unittest_import_public.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = unittest_import_public.pb.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ProtocolModels_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProtocolModels_Prefix.pch; path = Target/ProtocolModels_Prefix.pch; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C586261F12668B9F00204EE1 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
-		C586262112668BB100204EE1 /* ForwardDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwardDeclarations.h; sourceTree = "<group>"; };
 		C586262312668BBF00204EE1 /* ProtocolModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolModels.h; sourceTree = "<group>"; };
 		C586262512668BCF00204EE1 /* ConcreteExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcreteExtensionField.h; sourceTree = "<group>"; };
 		C586262612668BCF00204EE1 /* ConcreteExtensionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcreteExtensionField.m; sourceTree = "<group>"; };
@@ -266,8 +262,6 @@
 				C5B03EF312516C0B0087887C /* IO */,
 				C5B03F0812516C3C0087887C /* Messages */,
 				C5B03F1512516C7D0087887C /* Utilities */,
-				C586261F12668B9F00204EE1 /* Bootstrap.h */,
-				C586262112668BB100204EE1 /* ForwardDeclarations.h */,
 				C586262312668BBF00204EE1 /* ProtocolModels.h */,
 			);
 			path = Classes;
@@ -457,8 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* ProtocolModels_Prefix.pch in Headers */,
-				C586262012668B9F00204EE1 /* Bootstrap.h in Headers */,
-				C586262212668BB100204EE1 /* ForwardDeclarations.h in Headers */,
 				C586262412668BBF00204EE1 /* ProtocolModels.h in Headers */,
 				C586262E12668BCF00204EE1 /* ConcreteExtensionField.h in Headers */,
 				C586263012668BCF00204EE1 /* ExtendableMessage_Builder.h in Headers */,
