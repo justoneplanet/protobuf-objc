@@ -10,6 +10,7 @@
 #import "GeneratedMessage.h"
 
 #import "UnknownFieldSet.h"
+#import "GeneratedMessage_Builder.h"
 
 
 @interface PBGeneratedMessage ()
