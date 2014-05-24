@@ -1,4 +1,4 @@
-// Protocol Buffers for Objective C
+// Protocol Buffers, Objective C
 //
 // Copyright 2010 Booyah Inc.
 // Copyright 2008 Cyrus Najmabadi
@@ -16,7 +16,7 @@
 // limitations under the License.
 
 #import "TestUtilities.h"
-#import "ProtocolBuffers.h"
+#import "ProtocolModels.h"
 #import "unittest.pb.h"
 
 @implementation TestUtilities

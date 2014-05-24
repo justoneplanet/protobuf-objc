@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <ProtocolBuffers/ProtocolBuffers.h>
+#import <ProtocolModels/ProtocolModels.h>
 
 #import "unittest_optimize_for.pb.h"
 // @@protoc_insertion_point(imports)
