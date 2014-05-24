@@ -2288,7 +2288,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2602,7 +2602,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeStringSize(85, self.defaultCord);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -5447,7 +5447,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5457,7 +5457,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(1, self.bb);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -5652,7 +5652,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5662,7 +5662,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(17, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -5857,7 +5857,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5867,7 +5867,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(47, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6062,7 +6062,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6072,7 +6072,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(1, self.deprecatedInt32);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6267,7 +6267,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6277,7 +6277,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(1, self.c);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6466,7 +6466,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6474,7 +6474,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   size_ = 0;
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6646,7 +6646,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6656,7 +6656,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(17, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6851,7 +6851,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6861,7 +6861,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(47, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -7048,14 +7048,14 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -7619,7 +7619,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7725,7 +7725,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(33, self.c);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -8947,7 +8947,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -8963,7 +8963,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(3, self.dummy);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -9256,7 +9256,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -9266,7 +9266,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeMessageSize(1, self.foreignNested);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -9471,14 +9471,14 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -9636,7 +9636,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -9644,7 +9644,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   size_ = 0;
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -9816,7 +9816,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -9824,7 +9824,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   size_ = 0;
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -10022,7 +10022,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -10035,7 +10035,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(268435455, self.bb);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -10274,7 +10274,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -10287,7 +10287,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(2, self.i);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -10536,7 +10536,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -10546,7 +10546,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeMessageSize(1, self.bb);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -10776,7 +10776,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -10789,7 +10789,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(2, self.optionalInt32);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -11063,7 +11063,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -11079,7 +11079,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeGroupSize(3, self.Bar);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -11380,7 +11380,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -11390,7 +11390,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(1, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -11585,7 +11585,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -11595,7 +11595,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeInt32Size(1, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -11791,7 +11791,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -11801,7 +11801,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeMessageSize(1, self.subMessage);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -12019,7 +12019,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -12029,7 +12029,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeMessageSize(1, self.subMessage);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -12247,7 +12247,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -12257,7 +12257,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeMessageSize(1, self.optionalNestedMessage);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -12490,7 +12490,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -12510,7 +12510,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeMessageSize(2, element);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -12897,7 +12897,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -12965,7 +12965,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += 1 * count_;
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -13625,7 +13625,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -13642,7 +13642,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -14214,7 +14214,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -14299,7 +14299,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeStringSize(26, self.cordWithZero);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -15269,7 +15269,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -15279,7 +15279,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeEnumSize(1, self.sparseEnum);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -15479,7 +15479,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -15489,7 +15489,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeStringSize(1, self.data);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -15684,7 +15684,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -15700,7 +15700,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += 1 * count_;
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -15903,7 +15903,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -15913,7 +15913,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeDataSize(1, self.data);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -16108,7 +16108,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -16124,7 +16124,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += 1 * count_;
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -16301,33 +16301,33 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
 
 @implementation TestPackedTypes {
   PBAppendableArray *_packedBoolArray;
-  int32_t _packedBoolMemoizedSerializedSize;
+  int32_t _packedBoolCachedSerializedSize;
   PBAppendableArray *_packedDoubleArray;
-  int32_t _packedDoubleMemoizedSerializedSize;
+  int32_t _packedDoubleCachedSerializedSize;
   PBAppendableArray *_packedFloatArray;
-  int32_t _packedFloatMemoizedSerializedSize;
+  int32_t _packedFloatCachedSerializedSize;
   PBAppendableArray *_packedInt64Array;
-  int32_t _packedInt64MemoizedSerializedSize;
+  int32_t _packedInt64CachedSerializedSize;
   PBAppendableArray *_packedUint64Array;
-  int32_t _packedUint64MemoizedSerializedSize;
+  int32_t _packedUint64CachedSerializedSize;
   PBAppendableArray *_packedInt32Array;
-  int32_t _packedInt32MemoizedSerializedSize;
+  int32_t _packedInt32CachedSerializedSize;
   PBAppendableArray *_packedFixed64Array;
-  int32_t _packedFixed64MemoizedSerializedSize;
+  int32_t _packedFixed64CachedSerializedSize;
   PBAppendableArray *_packedFixed32Array;
-  int32_t _packedFixed32MemoizedSerializedSize;
+  int32_t _packedFixed32CachedSerializedSize;
   PBAppendableArray *_packedUint32Array;
-  int32_t _packedUint32MemoizedSerializedSize;
+  int32_t _packedUint32CachedSerializedSize;
   NSMutableArray * _packedEnumArray;
-  int32_t _packedEnumMemoizedSerializedSize;
+  int32_t _packedEnumCachedSerializedSize;
   PBAppendableArray *_packedSfixed32Array;
-  int32_t _packedSfixed32MemoizedSerializedSize;
+  int32_t _packedSfixed32CachedSerializedSize;
   PBAppendableArray *_packedSfixed64Array;
-  int32_t _packedSfixed64MemoizedSerializedSize;
+  int32_t _packedSfixed64CachedSerializedSize;
   PBAppendableArray *_packedSint32Array;
-  int32_t _packedSint32MemoizedSerializedSize;
+  int32_t _packedSint32CachedSerializedSize;
   PBAppendableArray *_packedSint64Array;
-  int32_t _packedSint64MemoizedSerializedSize;
+  int32_t _packedSint64CachedSerializedSize;
 }
 
 - (instancetype)init {
@@ -16455,7 +16455,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedInt32ArrayCount > 0) {
     const int32_t *values = (const int32_t *)self.packedInt32Array.data;
     [output writeRawVarint32:722];
-    [output writeRawVarint32:_packedInt32MemoizedSerializedSize];
+    [output writeRawVarint32:_packedInt32CachedSerializedSize];
     for (NSUInteger i = 0; i < packedInt32ArrayCount; ++i) {
       [output writeInt32NoTag:values[i]];
     }
@@ -16464,7 +16464,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedInt64ArrayCount > 0) {
     const int64_t *values = (const int64_t *)self.packedInt64Array.data;
     [output writeRawVarint32:730];
-    [output writeRawVarint32:_packedInt64MemoizedSerializedSize];
+    [output writeRawVarint32:_packedInt64CachedSerializedSize];
     for (NSUInteger i = 0; i < packedInt64ArrayCount; ++i) {
       [output writeInt64NoTag:values[i]];
     }
@@ -16473,7 +16473,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedUint32ArrayCount > 0) {
     const uint32_t *values = (const uint32_t *)self.packedUint32Array.data;
     [output writeRawVarint32:738];
-    [output writeRawVarint32:_packedUint32MemoizedSerializedSize];
+    [output writeRawVarint32:_packedUint32CachedSerializedSize];
     for (NSUInteger i = 0; i < packedUint32ArrayCount; ++i) {
       [output writeUInt32NoTag:values[i]];
     }
@@ -16482,7 +16482,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedUint64ArrayCount > 0) {
     const uint64_t *values = (const uint64_t *)self.packedUint64Array.data;
     [output writeRawVarint32:746];
-    [output writeRawVarint32:_packedUint64MemoizedSerializedSize];
+    [output writeRawVarint32:_packedUint64CachedSerializedSize];
     for (NSUInteger i = 0; i < packedUint64ArrayCount; ++i) {
       [output writeUInt64NoTag:values[i]];
     }
@@ -16491,7 +16491,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedSint32ArrayCount > 0) {
     const int32_t *values = (const int32_t *)self.packedSint32Array.data;
     [output writeRawVarint32:754];
-    [output writeRawVarint32:_packedSint32MemoizedSerializedSize];
+    [output writeRawVarint32:_packedSint32CachedSerializedSize];
     for (NSUInteger i = 0; i < packedSint32ArrayCount; ++i) {
       [output writeSInt32NoTag:values[i]];
     }
@@ -16500,7 +16500,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedSint64ArrayCount > 0) {
     const int64_t *values = (const int64_t *)self.packedSint64Array.data;
     [output writeRawVarint32:762];
-    [output writeRawVarint32:_packedSint64MemoizedSerializedSize];
+    [output writeRawVarint32:_packedSint64CachedSerializedSize];
     for (NSUInteger i = 0; i < packedSint64ArrayCount; ++i) {
       [output writeSInt64NoTag:values[i]];
     }
@@ -16509,7 +16509,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedFixed32ArrayCount > 0) {
     const uint32_t *values = (const uint32_t *)self.packedFixed32Array.data;
     [output writeRawVarint32:770];
-    [output writeRawVarint32:_packedFixed32MemoizedSerializedSize];
+    [output writeRawVarint32:_packedFixed32CachedSerializedSize];
     for (NSUInteger i = 0; i < packedFixed32ArrayCount; ++i) {
       [output writeFixed32NoTag:values[i]];
     }
@@ -16518,7 +16518,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedFixed64ArrayCount > 0) {
     const uint64_t *values = (const uint64_t *)self.packedFixed64Array.data;
     [output writeRawVarint32:778];
-    [output writeRawVarint32:_packedFixed64MemoizedSerializedSize];
+    [output writeRawVarint32:_packedFixed64CachedSerializedSize];
     for (NSUInteger i = 0; i < packedFixed64ArrayCount; ++i) {
       [output writeFixed64NoTag:values[i]];
     }
@@ -16527,7 +16527,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedSfixed32ArrayCount > 0) {
     const int32_t *values = (const int32_t *)self.packedSfixed32Array.data;
     [output writeRawVarint32:786];
-    [output writeRawVarint32:_packedSfixed32MemoizedSerializedSize];
+    [output writeRawVarint32:_packedSfixed32CachedSerializedSize];
     for (NSUInteger i = 0; i < packedSfixed32ArrayCount; ++i) {
       [output writeSFixed32NoTag:values[i]];
     }
@@ -16536,7 +16536,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedSfixed64ArrayCount > 0) {
     const int64_t *values = (const int64_t *)self.packedSfixed64Array.data;
     [output writeRawVarint32:794];
-    [output writeRawVarint32:_packedSfixed64MemoizedSerializedSize];
+    [output writeRawVarint32:_packedSfixed64CachedSerializedSize];
     for (NSUInteger i = 0; i < packedSfixed64ArrayCount; ++i) {
       [output writeSFixed64NoTag:values[i]];
     }
@@ -16545,7 +16545,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedFloatArrayCount > 0) {
     const Float32 *values = (const Float32 *)self.packedFloatArray.data;
     [output writeRawVarint32:802];
-    [output writeRawVarint32:_packedFloatMemoizedSerializedSize];
+    [output writeRawVarint32:_packedFloatCachedSerializedSize];
     for (NSUInteger i = 0; i < packedFloatArrayCount; ++i) {
       [output writeFloatNoTag:values[i]];
     }
@@ -16554,7 +16554,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedDoubleArrayCount > 0) {
     const Float64 *values = (const Float64 *)self.packedDoubleArray.data;
     [output writeRawVarint32:810];
-    [output writeRawVarint32:_packedDoubleMemoizedSerializedSize];
+    [output writeRawVarint32:_packedDoubleCachedSerializedSize];
     for (NSUInteger i = 0; i < packedDoubleArrayCount; ++i) {
       [output writeDoubleNoTag:values[i]];
     }
@@ -16563,21 +16563,21 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   if (packedBoolArrayCount > 0) {
     const BOOL *values = (const BOOL *)self.packedBoolArray.data;
     [output writeRawVarint32:818];
-    [output writeRawVarint32:_packedBoolMemoizedSerializedSize];
+    [output writeRawVarint32:_packedBoolCachedSerializedSize];
     for (NSUInteger i = 0; i < packedBoolArrayCount; ++i) {
       [output writeBoolNoTag:values[i]];
     }
   }
   if (self.packedEnumArray.count > 0) {
     [output writeRawVarint32:826];
-    [output writeRawVarint32:_packedEnumMemoizedSerializedSize];
+    [output writeRawVarint32:_packedEnumCachedSerializedSize];
   }
   for (NSNumber *element in self.packedEnumArray) {  [output writeEnumNoTag:element.intValue];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -16595,7 +16595,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedInt32MemoizedSerializedSize = dataSize;
+    _packedInt32CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16609,7 +16609,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedInt64MemoizedSerializedSize = dataSize;
+    _packedInt64CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16623,7 +16623,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedUint32MemoizedSerializedSize = dataSize;
+    _packedUint32CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16637,7 +16637,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedUint64MemoizedSerializedSize = dataSize;
+    _packedUint64CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16651,7 +16651,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedSint32MemoizedSerializedSize = dataSize;
+    _packedSint32CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16665,7 +16665,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedSint64MemoizedSerializedSize = dataSize;
+    _packedSint64CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16676,7 +16676,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedFixed32MemoizedSerializedSize = dataSize;
+    _packedFixed32CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16687,7 +16687,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedFixed64MemoizedSerializedSize = dataSize;
+    _packedFixed64CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16698,7 +16698,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedSfixed32MemoizedSerializedSize = dataSize;
+    _packedSfixed32CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16709,7 +16709,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedSfixed64MemoizedSerializedSize = dataSize;
+    _packedSfixed64CachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16720,7 +16720,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedFloatMemoizedSerializedSize = dataSize;
+    _packedFloatCachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16731,7 +16731,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedDoubleMemoizedSerializedSize = dataSize;
+    _packedDoubleCachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -16742,19 +16742,19 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedBoolMemoizedSerializedSize = dataSize;
+    _packedBoolCachedSerializedSize = dataSize;
   }
-  _packedEnumMemoizedSerializedSize = size_;
+  _packedEnumCachedSerializedSize = size_;
   for (NSNumber *element in self.packedEnumArray) {
     size_ += computeEnumSizeNoTag(element.intValue);
   }
-  _packedEnumMemoizedSerializedSize = size_ - _packedEnumMemoizedSerializedSize;
+  _packedEnumCachedSerializedSize = size_ - _packedEnumCachedSerializedSize;
   if (self.packedEnumArray.count > 0) {
     size_ += 2;  // tag size
-    size_ += computeRawVarint32Size(_packedEnumMemoizedSerializedSize);
+    size_ += computeRawVarint32Size(_packedEnumCachedSerializedSize);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -17861,7 +17861,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -17980,7 +17980,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
     size_ += computeEnumSize(103, element.intValue);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -18767,7 +18767,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -18775,7 +18775,7 @@ BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
   size_ = 0;
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -18931,7 +18931,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   BOOL _hasDynamicEnumExtension:1;
   NSMutableArray *_repeatedExtensionArray;
   PBAppendableArray *_packedExtensionArray;
-  int32_t _packedExtensionMemoizedSerializedSize;
+  int32_t _packedExtensionCachedSerializedSize;
 }
 
 - (instancetype)init {
@@ -19031,7 +19031,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   if (packedExtensionArrayCount > 0) {
     const int32_t *values = (const int32_t *)self.packedExtensionArray.data;
     [output writeRawVarint32:16050];
-    [output writeRawVarint32:_packedExtensionMemoizedSerializedSize];
+    [output writeRawVarint32:_packedExtensionCachedSerializedSize];
     for (NSUInteger i = 0; i < packedExtensionArrayCount; ++i) {
       [output writeSInt32NoTag:values[i]];
     }
@@ -19039,7 +19039,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -19081,10 +19081,10 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
       size_ += 2;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _packedExtensionMemoizedSerializedSize = dataSize;
+    _packedExtensionCachedSerializedSize = dataSize;
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -19549,7 +19549,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -19559,7 +19559,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeInt32Size(2100, self.dynamicField);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -19838,7 +19838,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -19896,7 +19896,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += 3 * count_;
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -20397,7 +20397,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -20420,7 +20420,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -20911,7 +20911,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -20939,7 +20939,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeMessageSize(1001, element);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -21412,7 +21412,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -21422,7 +21422,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeMessageSize(11, self.field1);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -21640,7 +21640,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -21650,7 +21650,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeMessageSize(21, self.field1);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -21868,7 +21868,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -21878,7 +21878,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeMessageSize(11, self.optionalGroupAllTypes);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -22096,7 +22096,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -22106,7 +22106,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeMessageSize(21, self.repeatedGroupAllTypes);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -22323,7 +22323,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -22333,7 +22333,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
     size_ += computeStringSize(1, self.a);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -22516,14 +22516,14 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -22675,14 +22675,14 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -22834,14 +22834,14 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -22993,14 +22993,14 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -23152,14 +23152,14 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -23311,14 +23311,14 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 

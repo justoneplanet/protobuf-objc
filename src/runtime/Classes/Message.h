@@ -34,7 +34,7 @@
 
 /**
  * Get the number of bytes required to encode this message.  The result
- * is only computed on the first call and memoized after that.
+ * is only computed on the first call and cached after that.
  */
 - (int32_t)serializedSize;
 

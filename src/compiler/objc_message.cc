@@ -589,7 +589,7 @@ namespace objectivec {
     printer->Print(
       "}\n"
       "- (int32_t) serializedSize {\n"
-      "  int32_t size_ = memoizedSerializedSize;\n"
+      "  int32_t size_ = _cachedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"
       "  }\n"
@@ -616,7 +616,7 @@ namespace objectivec {
 
     printer->Outdent();
     printer->Print(
-      "  memoizedSerializedSize = size_;\n"
+      "  _cachedSerializedSize = size_;\n"
       "  return size_;\n"
       "}\n");
   }

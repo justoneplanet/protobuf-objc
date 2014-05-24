@@ -80,7 +80,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -90,7 +90,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeInt32Size(1, self.e);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
