@@ -233,14 +233,14 @@ namespace objectivec {
   void RepeatedEnumFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
     printer->Print(variables_, "NSMutableArray * _$list_name$;\n");
     if (descriptor_->options().packed()) {
-      printer->Print(variables_, "int32_t _$name$MemoizedSerializedSize;\n");
+      printer->Print(variables_, "int32_t _$name$CachedSerializedSize;\n");
     }
   }
   
   void RepeatedEnumFieldGenerator::GenerateFieldSource(io::Printer* printer) const {
     printer->Print(variables_, "NSMutableArray * _$list_name$;\n");
     if (descriptor_->options().packed()) {
-      printer->Print(variables_, "int32_t _$name$MemoizedSerializedSize;\n");
+      printer->Print(variables_, "int32_t _$name$CachedSerializedSize;\n");
     }
   }
 
@@ -375,7 +375,7 @@ namespace objectivec {
       printer->Print(variables_,
         "if (self.$list_name$.count > 0) {\n"
         "  [output writeRawVarint32:$tag$];\n"
-        "  [output writeRawVarint32:_$name$MemoizedSerializedSize];\n"
+        "  [output writeRawVarint32:_$name$CachedSerializedSize];\n"
         "}\n"
         "for (NSNumber *element in self.$list_name$) {"
         "  [output writeEnumNoTag:element.intValue];\n"
@@ -393,16 +393,16 @@ namespace objectivec {
     
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "_$name$MemoizedSerializedSize = size_;\n");
+        "_$name$CachedSerializedSize = size_;\n");
       printer->Print(variables_,
         "for (NSNumber *element in self.$list_name$) {\n"
         "  size_ += computeEnumSizeNoTag(element.intValue);\n"
         "}\n"
-        "_$name$MemoizedSerializedSize = size_ - _$name$MemoizedSerializedSize;\n");
+        "_$name$CachedSerializedSize = size_ - _$name$CachedSerializedSize;\n");
       printer->Print(variables_,
         "if (self.$list_name$.count > 0) {\n"
         "  size_ += $tag_size$;  // tag size\n"
-        "  size_ += computeRawVarint32Size(_$name$MemoizedSerializedSize);\n"
+        "  size_ += computeRawVarint32Size(_$name$CachedSerializedSize);\n"
         "}\n");
       
     } else {

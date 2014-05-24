@@ -96,7 +96,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeAsMessageSetTo:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -104,7 +104,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   size_ = 0;
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSizeAsMessageSet;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -282,7 +282,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -292,7 +292,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeMessageSize(1, self.messageSet);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -513,7 +513,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -523,7 +523,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeInt32Size(15, self.i);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -722,7 +722,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -732,7 +732,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeStringSize(25, self.str);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -932,7 +932,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -942,7 +942,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeGroupSize(1, element);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -1168,7 +1168,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1181,7 +1181,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeDataSize(3, self.message);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 

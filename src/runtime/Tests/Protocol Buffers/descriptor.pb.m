@@ -85,7 +85,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -95,7 +95,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeMessageSize(1, element);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -458,7 +458,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -518,7 +518,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += 1 * count_;
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -1253,7 +1253,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1281,7 +1281,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeMessageSize(7, self.options);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -1761,7 +1761,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1774,7 +1774,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     size_ += computeInt32Size(2, self.end);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -2127,7 +2127,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2158,7 +2158,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
     size_ += computeMessageSize(8, self.options);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -2637,7 +2637,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2653,7 +2653,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
     size_ += computeMessageSize(3, self.options);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -2975,7 +2975,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2991,7 +2991,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
     size_ += computeMessageSize(3, self.options);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -3305,7 +3305,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3321,7 +3321,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
     size_ += computeMessageSize(3, self.options);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -3655,7 +3655,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3674,7 +3674,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
     size_ += computeMessageSize(4, self.options);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -4114,7 +4114,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4152,7 +4152,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -4687,7 +4687,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4704,7 +4704,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -5076,7 +5076,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5105,7 +5105,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -5535,7 +5535,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5549,7 +5549,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -5807,7 +5807,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5818,7 +5818,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6045,7 +6045,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6056,7 +6056,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6283,7 +6283,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6294,7 +6294,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -6587,7 +6587,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6615,7 +6615,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
     size_ += computeStringSize(8, self.aggregateValue);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -7027,7 +7027,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7040,7 +7040,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
     size_ += computeBoolSize(2, self.isExtension);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -7266,7 +7266,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7276,7 +7276,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
     size_ += computeMessageSize(1, element);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 
@@ -7450,9 +7450,9 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   BOOL _hasLeadingComments:1;
   BOOL _hasTrailingComments:1;
   PBAppendableArray *_pathArray;
-  int32_t _pathMemoizedSerializedSize;
+  int32_t _pathCachedSerializedSize;
   PBAppendableArray *_spanArray;
-  int32_t _spanMemoizedSerializedSize;
+  int32_t _spanCachedSerializedSize;
 }
 
 - (instancetype)init {
@@ -7511,7 +7511,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (pathArrayCount > 0) {
     const int32_t *values = (const int32_t *)self.pathArray.data;
     [output writeRawVarint32:10];
-    [output writeRawVarint32:_pathMemoizedSerializedSize];
+    [output writeRawVarint32:_pathCachedSerializedSize];
     for (NSUInteger i = 0; i < pathArrayCount; ++i) {
       [output writeInt32NoTag:values[i]];
     }
@@ -7520,7 +7520,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (spanArrayCount > 0) {
     const int32_t *values = (const int32_t *)self.spanArray.data;
     [output writeRawVarint32:18];
-    [output writeRawVarint32:_spanMemoizedSerializedSize];
+    [output writeRawVarint32:_spanCachedSerializedSize];
     for (NSUInteger i = 0; i < spanArrayCount; ++i) {
       [output writeInt32NoTag:values[i]];
     }
@@ -7534,7 +7534,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7552,7 +7552,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       size_ += 1;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _pathMemoizedSerializedSize = dataSize;
+    _pathCachedSerializedSize = dataSize;
   }
   {
     int32_t dataSize = 0;
@@ -7566,7 +7566,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       size_ += 1;
       size_ += computeInt32SizeNoTag(dataSize);
     }
-    _spanMemoizedSerializedSize = dataSize;
+    _spanCachedSerializedSize = dataSize;
   }
   if (self.hasLeadingComments) {
     size_ += computeStringSize(3, self.leadingComments);
@@ -7575,7 +7575,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
     size_ += computeStringSize(4, self.trailingComments);
   }
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 

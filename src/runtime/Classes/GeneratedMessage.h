@@ -27,7 +27,7 @@
 @interface PBGeneratedMessage : PBAbstractMessage {
 
 @protected
-    int32_t memoizedSerializedSize;
+    int32_t _cachedSerializedSize;
 }
 
 + (instancetype)defaultInstance;

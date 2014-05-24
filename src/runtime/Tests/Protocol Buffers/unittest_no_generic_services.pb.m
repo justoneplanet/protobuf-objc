@@ -108,7 +108,7 @@ BOOL TestEnumIsValidValue(TestEnum value) {
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+  int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -119,7 +119,7 @@ BOOL TestEnumIsValidValue(TestEnum value) {
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
+  _cachedSerializedSize = size_;
   return size_;
 }
 

@@ -26,7 +26,7 @@
     }
     
     _unknownFields = [PBUnknownFieldSet defaultInstance];
-    memoizedSerializedSize = -1;
+    _cachedSerializedSize = -1;
     
     return self;
 }

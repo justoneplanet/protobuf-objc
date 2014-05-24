@@ -454,7 +454,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
           "PBAppendableArray *_$list_name$;\n");
       if (descriptor_->options().packed()) {
         printer->Print(variables_,
-          "int32_t _$name$MemoizedSerializedSize;\n");
+          "int32_t _$name$CachedSerializedSize;\n");
       }
     }
   }
@@ -469,7 +469,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "PBAppendableArray *_$list_name$;\n");
       if (descriptor_->options().packed()) {
         printer->Print(variables_,
-        "int32_t _$name$MemoizedSerializedSize;\n");
+        "int32_t _$name$CachedSerializedSize;\n");
       }
     }
   }
@@ -698,7 +698,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       if (descriptor_->options().packed()) {
         printer->Print(variables_,
                        "[output writeRawVarint32:$tag$];\n"
-                       "[output writeRawVarint32:_$name$MemoizedSerializedSize];\n"
+                       "[output writeRawVarint32:_$name$CachedSerializedSize];\n"
                        "for (NSUInteger i = 0; i < $list_name$Count; ++i) {\n"
                        "  [output write$capitalized_type$NoTag:values[i]];\n"
                        "}\n");
@@ -749,7 +749,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "  size_ += $tag_size$;\n"
         "  size_ += computeInt32SizeNoTag(dataSize);\n"
         "}\n"
-        "_$name$MemoizedSerializedSize = dataSize;\n");
+        "_$name$CachedSerializedSize = dataSize;\n");
     } else {
       printer->Print(variables_,
         "size_ += $tag_size$ * count_;\n");
