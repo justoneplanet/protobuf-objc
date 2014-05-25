@@ -759,7 +759,8 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   return
       self.hasField1 == otherMessage.hasField1 &&
       (!self.hasField1 || [self.field1 isEqual:otherMessage.field1]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -796,7 +797,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   return self;
 }
 - (instancetype)clone {
-  return [TestMessageWithCustomOptions builderWithPrototype:_result];
+  return [[[TestMessageWithCustomOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestMessageWithCustomOptions*) defaultInstance {
@@ -942,7 +943,8 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   }
   CustomOptionFooRequest *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -976,7 +978,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionFooRequest builderWithPrototype:_result];
+  return [[[CustomOptionFooRequest_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionFooRequest*) defaultInstance {
@@ -1099,7 +1101,8 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   }
   CustomOptionFooResponse *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1133,7 +1136,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionFooResponse builderWithPrototype:_result];
+  return [[[CustomOptionFooResponse_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionFooResponse*) defaultInstance {
@@ -1256,7 +1259,8 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   }
   CustomOptionFooClientMessage *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1290,7 +1294,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionFooClientMessage builderWithPrototype:_result];
+  return [[[CustomOptionFooClientMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionFooClientMessage*) defaultInstance {
@@ -1413,7 +1417,8 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   }
   CustomOptionFooServerMessage *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1447,7 +1452,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionFooServerMessage builderWithPrototype:_result];
+  return [[[CustomOptionFooServerMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionFooServerMessage*) defaultInstance {
@@ -1580,7 +1585,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   DummyMessageContainingEnum *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1614,7 +1620,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [DummyMessageContainingEnum builderWithPrototype:_result];
+  return [[[DummyMessageContainingEnum_Builder alloc] init] mergeFrom:_result];
 }
 
 - (DummyMessageContainingEnum*) defaultInstance {
@@ -1737,7 +1743,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   DummyMessageInvalidAsOptionType *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1771,7 +1778,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [DummyMessageInvalidAsOptionType builderWithPrototype:_result];
+  return [[[DummyMessageInvalidAsOptionType_Builder alloc] init] mergeFrom:_result];
 }
 
 - (DummyMessageInvalidAsOptionType*) defaultInstance {
@@ -1894,7 +1901,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   CustomOptionMinIntegerValues *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1928,7 +1936,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionMinIntegerValues builderWithPrototype:_result];
+  return [[[CustomOptionMinIntegerValues_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionMinIntegerValues*) defaultInstance {
@@ -2051,7 +2059,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   CustomOptionMaxIntegerValues *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2085,7 +2094,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionMaxIntegerValues builderWithPrototype:_result];
+  return [[[CustomOptionMaxIntegerValues_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionMaxIntegerValues*) defaultInstance {
@@ -2208,7 +2217,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   CustomOptionOtherValues *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2242,7 +2252,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [CustomOptionOtherValues builderWithPrototype:_result];
+  return [[[CustomOptionOtherValues_Builder alloc] init] mergeFrom:_result];
 }
 
 - (CustomOptionOtherValues*) defaultInstance {
@@ -2365,7 +2375,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   SettingRealsFromPositiveInts *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2399,7 +2410,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [SettingRealsFromPositiveInts builderWithPrototype:_result];
+  return [[[SettingRealsFromPositiveInts_Builder alloc] init] mergeFrom:_result];
 }
 
 - (SettingRealsFromPositiveInts*) defaultInstance {
@@ -2522,7 +2533,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   SettingRealsFromNegativeInts *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2556,7 +2568,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [SettingRealsFromNegativeInts builderWithPrototype:_result];
+  return [[[SettingRealsFromNegativeInts_Builder alloc] init] mergeFrom:_result];
 }
 
 - (SettingRealsFromNegativeInts*) defaultInstance {
@@ -2752,7 +2764,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
       (!self.hasFoo3 || self.foo3 == otherMessage.foo3) &&
       [self isEqualExtensionsInOther:otherMessage from:100 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2796,7 +2809,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [ComplexOptionType1 builderWithPrototype:_result];
+  return [[[ComplexOptionType1_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ComplexOptionType1*) defaultInstance {
@@ -3075,7 +3088,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
       (!self.hasFred || [self.fred isEqual:otherMessage.fred]) &&
       [self isEqualExtensionsInOther:otherMessage from:100 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3119,7 +3133,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [ComplexOptionType2 builderWithPrototype:_result];
+  return [[[ComplexOptionType2_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ComplexOptionType2*) defaultInstance {
@@ -3374,7 +3388,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return
       self.hasWaldo == otherMessage.hasWaldo &&
       (!self.hasWaldo || self.waldo == otherMessage.waldo) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3411,7 +3426,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [ComplexOptionType2_ComplexOptionType4 builderWithPrototype:_result];
+  return [[[ComplexOptionType2_ComplexOptionType4_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ComplexOptionType2_ComplexOptionType4*) defaultInstance {
@@ -3601,7 +3616,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
       (!self.hasQux || self.qux == otherMessage.qux) &&
       self.hasComplexOptionType5 == otherMessage.hasComplexOptionType5 &&
       (!self.hasComplexOptionType5 || [self.ComplexOptionType5 isEqual:otherMessage.ComplexOptionType5]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3641,7 +3657,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [ComplexOptionType3 builderWithPrototype:_result];
+  return [[[ComplexOptionType3_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ComplexOptionType3*) defaultInstance {
@@ -3849,7 +3865,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return
       self.hasPlugh == otherMessage.hasPlugh &&
       (!self.hasPlugh || self.plugh == otherMessage.plugh) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3886,7 +3903,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [ComplexOptionType3_ComplexOptionType5 builderWithPrototype:_result];
+  return [[[ComplexOptionType3_ComplexOptionType5_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ComplexOptionType3_ComplexOptionType5*) defaultInstance {
@@ -4052,7 +4069,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return
       self.hasXyzzy == otherMessage.hasXyzzy &&
       (!self.hasXyzzy || self.xyzzy == otherMessage.xyzzy) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4089,7 +4107,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [ComplexOpt6 builderWithPrototype:_result];
+  return [[[ComplexOpt6_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ComplexOpt6*) defaultInstance {
@@ -4235,7 +4253,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   }
   VariousComplexOptions *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4269,7 +4288,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [VariousComplexOptions builderWithPrototype:_result];
+  return [[[VariousComplexOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (VariousComplexOptions*) defaultInstance {
@@ -4405,7 +4424,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return
       [self isEqualExtensionsInOther:otherMessage from:4 to:2147483647] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4440,7 +4460,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [AggregateMessageSet builderWithPrototype:_result];
+  return [[[AggregateMessageSet_Builder alloc] init] mergeFrom:_result];
 }
 
 - (AggregateMessageSet*) defaultInstance {
@@ -4588,7 +4608,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return
       self.hasS == otherMessage.hasS &&
       (!self.hasS || [self.s isEqual:otherMessage.s]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4625,7 +4646,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [AggregateMessageSetElement builderWithPrototype:_result];
+  return [[[AggregateMessageSetElement_Builder alloc] init] mergeFrom:_result];
 }
 
 - (AggregateMessageSetElement*) defaultInstance {
@@ -4902,7 +4923,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
       (!self.hasFile || [self.file isEqual:otherMessage.file]) &&
       self.hasMset == otherMessage.hasMset &&
       (!self.hasMset || [self.mset isEqual:otherMessage.mset]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4951,7 +4973,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [Aggregate builderWithPrototype:_result];
+  return [[[Aggregate_Builder alloc] init] mergeFrom:_result];
 }
 
 - (Aggregate*) defaultInstance {
@@ -5266,7 +5288,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return
       self.hasFieldname == otherMessage.hasFieldname &&
       (!self.hasFieldname || self.fieldname == otherMessage.fieldname) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5303,7 +5326,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   return self;
 }
 - (instancetype)clone {
-  return [AggregateMessage builderWithPrototype:_result];
+  return [[[AggregateMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (AggregateMessage*) defaultInstance {
@@ -5462,7 +5485,8 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) 
   }
   NestedOptionType *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5496,7 +5520,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [NestedOptionType builderWithPrototype:_result];
+  return [[[NestedOptionType_Builder alloc] init] mergeFrom:_result];
 }
 
 - (NestedOptionType*) defaultInstance {
@@ -5639,7 +5663,8 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) 
   return
       self.hasNestedField == otherMessage.hasNestedField &&
       (!self.hasNestedField || self.nestedField == otherMessage.nestedField) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5676,7 +5701,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [NestedOptionType_NestedMessage builderWithPrototype:_result];
+  return [[[NestedOptionType_NestedMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (NestedOptionType_NestedMessage*) defaultInstance {

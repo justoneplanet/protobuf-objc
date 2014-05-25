@@ -142,7 +142,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       [self isEqualExtensionsInOther:otherMessage from:4 to:2147483647] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -177,7 +178,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestMessageSet builderWithPrototype:_result];
+  return [[[TestMessageSet_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestMessageSet*) defaultInstance {
@@ -330,7 +331,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasMessageSet == otherMessage.hasMessageSet &&
       (!self.hasMessageSet || [self.messageSet isEqual:otherMessage.messageSet]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -367,7 +369,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestMessageSetContainer builderWithPrototype:_result];
+  return [[[TestMessageSetContainer_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestMessageSetContainer*) defaultInstance {
@@ -556,7 +558,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasI == otherMessage.hasI &&
       (!self.hasI || self.i == otherMessage.i) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -593,7 +596,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestMessageSetExtension1 builderWithPrototype:_result];
+  return [[[TestMessageSetExtension1_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestMessageSetExtension1*) defaultInstance {
@@ -763,7 +766,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasStr == otherMessage.hasStr &&
       (!self.hasStr || [self.str isEqual:otherMessage.str]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -800,7 +804,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestMessageSetExtension2 builderWithPrototype:_result];
+  return [[[TestMessageSetExtension2_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestMessageSetExtension2*) defaultInstance {
@@ -973,7 +977,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   RawMessageSet *otherMessage = other;
   return
       ((self.ItemArray == nil && otherMessage.ItemArray == nil) || [self.ItemArray isEqualToArray:otherMessage.ItemArray]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1010,7 +1015,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [RawMessageSet builderWithPrototype:_result];
+  return [[[RawMessageSet_Builder alloc] init] mergeFrom:_result];
 }
 
 - (RawMessageSet*) defaultInstance {
@@ -1213,7 +1218,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       (!self.hasTypeId || self.typeId == otherMessage.typeId) &&
       self.hasMessage == otherMessage.hasMessage &&
       (!self.hasMessage || [self.message isEqual:otherMessage.message]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1253,7 +1259,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [RawMessageSet_Item builderWithPrototype:_result];
+  return [[[RawMessageSet_Item_Builder alloc] init] mergeFrom:_result];
 }
 
 - (RawMessageSet_Item*) defaultInstance {

@@ -132,7 +132,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasMessage == otherMessage.hasMessage &&
       (!self.hasMessage || [self.message isEqual:otherMessage.message]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -169,7 +170,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestLiteImportsNonlite builderWithPrototype:_result];
+  return [[[TestLiteImportsNonlite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestLiteImportsNonlite*) defaultInstance {

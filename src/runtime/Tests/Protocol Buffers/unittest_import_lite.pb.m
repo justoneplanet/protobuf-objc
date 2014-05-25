@@ -138,7 +138,8 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value) {
   return
       self.hasD == otherMessage.hasD &&
       (!self.hasD || self.d == otherMessage.d) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -175,7 +176,7 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value) {
   return self;
 }
 - (instancetype)clone {
-  return [ImportMessageLite builderWithPrototype:_result];
+  return [[[ImportMessageLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ImportMessageLite*) defaultInstance {
