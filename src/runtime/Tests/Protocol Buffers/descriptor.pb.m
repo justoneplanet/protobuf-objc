@@ -202,9 +202,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -772,9 +770,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1481,9 +1477,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1886,9 +1880,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2339,9 +2331,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2785,9 +2775,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3117,9 +3105,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3453,9 +3439,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3811,9 +3795,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4366,9 +4348,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4841,9 +4821,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5286,9 +5264,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5675,9 +5651,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5933,9 +5907,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6171,9 +6143,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6409,9 +6379,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6788,9 +6756,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7152,9 +7118,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7383,9 +7347,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7719,9 +7681,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {

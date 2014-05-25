@@ -823,9 +823,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1002,9 +1000,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1161,9 +1157,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1320,9 +1314,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1479,9 +1471,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1648,9 +1638,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1807,9 +1795,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1966,9 +1952,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2125,9 +2109,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2284,9 +2266,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2443,9 +2423,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2602,9 +2580,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2854,9 +2830,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3179,9 +3153,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3466,9 +3438,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3701,9 +3671,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3945,9 +3913,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4150,9 +4116,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4329,9 +4293,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4503,9 +4465,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4692,9 +4652,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5032,9 +4990,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5374,9 +5330,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5566,9 +5520,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5751,9 +5703,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
