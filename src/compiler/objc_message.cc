@@ -516,7 +516,7 @@ namespace objectivec {
     
     // defaultInstance does not return a "builder" type
     printer->Print(
-      "- ($classname$*) defaultInstance;\n"
+      "- ($classname$*)defaultInstance;\n"
       "\n",
       "classname", ClassName(descriptor_));
 
@@ -877,17 +877,17 @@ namespace objectivec {
       "- (instancetype)clone {\n"
       "  return [[[$classname$_Builder alloc] init] mergeFrom:_result];\n"
       "}\n\n"
-      "- ($classname$*) defaultInstance {\n"
+      "- ($classname$*)defaultInstance {\n"
       "  return [$classname$ defaultInstance];\n"
       "}\n\n",
       "classname", ClassName(descriptor_));
 
     printer->Print(
-      "- ($classname$*) build {\n"
+      "- ($classname$*)build {\n"
       "  [self checkInitialized];\n"
       "  return [self buildPartial];\n"
       "}\n"
-      "- ($classname$*) buildPartial {\n",
+      "- ($classname$*)buildPartial {\n",
       "classname", ClassName(descriptor_));
     
     printer->Indent();
