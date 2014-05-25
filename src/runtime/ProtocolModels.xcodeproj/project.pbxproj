@@ -20,8 +20,6 @@
 		4F4E2E21192D7D680035CA02 /* unittest_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E2E14192D7D680035CA02 /* unittest_optimize_for.pb.m */; };
 		4F4E2E22192D7D680035CA02 /* unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E2E16192D7D680035CA02 /* unittest.pb.m */; };
 		4F4E2E25192D86780035CA02 /* descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E2E24192D86780035CA02 /* descriptor.pb.m */; };
-		4F4E2E26192E823A0035CA02 /* TextFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = C586265312668C3900204EE1 /* TextFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F4E2E27192E823D0035CA02 /* TextFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C586265412668C3900204EE1 /* TextFormat.m */; };
 		4F7F06C2192924B900534BBC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7F06C01929249500534BBC /* XCTest.framework */; };
 		4FA65012192EC3EA0001AA10 /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA64FFB192EC3EA0001AA10 /* ArrayTests.m */; };
 		4FA65013192EC3EA0001AA10 /* CodedInputStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA64FFD192EC3EA0001AA10 /* CodedInputStreamTests.m */; };
@@ -177,8 +175,6 @@
 		C586264C12668C2F00204EE1 /* CodedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodedInputStream.m; sourceTree = "<group>"; };
 		C586264D12668C2F00204EE1 /* CodedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodedOutputStream.h; sourceTree = "<group>"; };
 		C586264E12668C2F00204EE1 /* CodedOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodedOutputStream.m; sourceTree = "<group>"; };
-		C586265312668C3900204EE1 /* TextFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFormat.h; sourceTree = "<group>"; };
-		C586265412668C3900204EE1 /* TextFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFormat.m; sourceTree = "<group>"; };
 		C586265712668C4100204EE1 /* WireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WireFormat.h; sourceTree = "<group>"; };
 		C586265812668C4100204EE1 /* WireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WireFormat.m; sourceTree = "<group>"; };
 		C586265B12668C4D00204EE1 /* AbstractMessage_Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessage_Builder.h; sourceTree = "<group>"; };
@@ -327,8 +323,6 @@
 				C586264C12668C2F00204EE1 /* CodedInputStream.m */,
 				C586264D12668C2F00204EE1 /* CodedOutputStream.h */,
 				C586264E12668C2F00204EE1 /* CodedOutputStream.m */,
-				C586265312668C3900204EE1 /* TextFormat.h */,
-				C586265412668C3900204EE1 /* TextFormat.m */,
 				C586265712668C4100204EE1 /* WireFormat.h */,
 				C586265812668C4100204EE1 /* WireFormat.m */,
 			);
@@ -471,7 +465,6 @@
 				C586266912668C5800204EE1 /* GeneratedMessage.h in Headers */,
 				C586266D12668C5F00204EE1 /* Message_Builder.h in Headers */,
 				C586266E12668C5F00204EE1 /* Message.h in Headers */,
-				4F4E2E26192E823A0035CA02 /* TextFormat.h in Headers */,
 				C586267112668C6C00204EE1 /* RingBuffer.h in Headers */,
 				C586267512668C7400204EE1 /* Utilities.h in Headers */,
 				C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */,
@@ -601,7 +594,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C586262F12668BCF00204EE1 /* ConcreteExtensionField.m in Sources */,
-				4F4E2E27192E823D0035CA02 /* TextFormat.m in Sources */,
 				C586263112668BCF00204EE1 /* ExtendableMessage_Builder.m in Sources */,
 				C586263312668BCF00204EE1 /* ExtendableMessage.m in Sources */,
 				C586263612668BCF00204EE1 /* ExtensionRegistry.m in Sources */,
