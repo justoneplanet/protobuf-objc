@@ -488,7 +488,7 @@ namespace objectivec {
   }
 
   void RepeatedMessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
-    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || "
+    printer->Print(variables_, "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) ||\n"
                                "[self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
 
