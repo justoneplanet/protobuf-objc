@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <ProtocolBuffers/ProtocolBuffers.h>
+#import <ProtocolModels/ProtocolModels.h>
 
 // @@protoc_insertion_point(imports)
 

@@ -70,7 +70,7 @@ namespace objectivec {
     
     // Protocol buffer support library main header
     printer->Print(
-      "#import <ProtocolBuffers/ProtocolBuffers.h>\n"
+      "#import <ProtocolModels/ProtocolModels.h>\n"
       "\n");
 
     // TODO:

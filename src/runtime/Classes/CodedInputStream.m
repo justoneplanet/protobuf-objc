@@ -12,6 +12,8 @@
 #import "Message_Builder.h"
 #import "Utilities.h"
 #import "WireFormat.h"
+#import "UnknownFieldSet.h"
+#import "UnknownFieldSet_Builder.h"
 
 
 #pragma mark - PBCodedInputStream

@@ -68,27 +68,29 @@
 
 @implementation PBExtensionRegistry
 
-static PBExtensionRegistry* emptyRegistry = nil;
-+ (void)initialize {
-    if (self == [PBExtensionRegistry class]) {
-        emptyRegistry = [[PBExtensionRegistry alloc] initWithClassMap:@{}];
-    }
-}
-
 - (instancetype)initWithClassMap:(NSDictionary*)map{
-    if ((self = [super init])) {
-        _classMap = map;
+    self = [super init];
+    if (self == nil) {
+        return nil;
     }
+    
+    _classMap = map;
     
     return self;
 }
 
-- (id)keyForClass:(Class)aClass {
-    return NSStringFromClass(aClass);
++ (instancetype) emptyRegistry {
+    static PBExtensionRegistry* emptyRegistry = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        emptyRegistry = [[PBExtensionRegistry alloc] initWithClassMap:@{}];
+    });
+    
+    return emptyRegistry;
 }
 
-+ (instancetype) emptyRegistry {
-    return emptyRegistry;
+- (NSString *)keyForClass:(Class)aClass {
+    return NSStringFromClass(aClass);
 }
 
 - (id<PBExtensionField>)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber {
