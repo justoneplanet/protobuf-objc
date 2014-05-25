@@ -66,8 +66,6 @@
 		C586265A12668C4100204EE1 /* WireFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C586265812668C4100204EE1 /* WireFormat.m */; };
 		C586265F12668C4D00204EE1 /* AbstractMessage_Builder.h in Headers */ = {isa = PBXBuildFile; fileRef = C586265B12668C4D00204EE1 /* AbstractMessage_Builder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586266012668C4D00204EE1 /* AbstractMessage_Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C586265C12668C4D00204EE1 /* AbstractMessage_Builder.m */; };
-		C586266112668C4D00204EE1 /* AbstractMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C586265D12668C4D00204EE1 /* AbstractMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C586266212668C4D00204EE1 /* AbstractMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C586265E12668C4D00204EE1 /* AbstractMessage.m */; };
 		C586266712668C5800204EE1 /* GeneratedMessage_Builder.h in Headers */ = {isa = PBXBuildFile; fileRef = C586266312668C5800204EE1 /* GeneratedMessage_Builder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586266812668C5800204EE1 /* GeneratedMessage_Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C586266412668C5800204EE1 /* GeneratedMessage_Builder.m */; };
 		C586266912668C5800204EE1 /* GeneratedMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C586266512668C5800204EE1 /* GeneratedMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -179,8 +177,6 @@
 		C586265812668C4100204EE1 /* WireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WireFormat.m; sourceTree = "<group>"; };
 		C586265B12668C4D00204EE1 /* AbstractMessage_Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessage_Builder.h; sourceTree = "<group>"; };
 		C586265C12668C4D00204EE1 /* AbstractMessage_Builder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMessage_Builder.m; sourceTree = "<group>"; };
-		C586265D12668C4D00204EE1 /* AbstractMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessage.h; sourceTree = "<group>"; };
-		C586265E12668C4D00204EE1 /* AbstractMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMessage.m; sourceTree = "<group>"; };
 		C586266312668C5800204EE1 /* GeneratedMessage_Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratedMessage_Builder.h; sourceTree = "<group>"; };
 		C586266412668C5800204EE1 /* GeneratedMessage_Builder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedMessage_Builder.m; sourceTree = "<group>"; };
 		C586266512668C5800204EE1 /* GeneratedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratedMessage.h; sourceTree = "<group>"; };
@@ -333,8 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				C586266C12668C5F00204EE1 /* Message.h */,
-				C586265D12668C4D00204EE1 /* AbstractMessage.h */,
-				C586265E12668C4D00204EE1 /* AbstractMessage.m */,
 				C586266512668C5800204EE1 /* GeneratedMessage.h */,
 				C586266612668C5800204EE1 /* GeneratedMessage.m */,
 				C586266B12668C5F00204EE1 /* Message_Builder.h */,
@@ -460,7 +454,6 @@
 				C586265112668C2F00204EE1 /* CodedOutputStream.h in Headers */,
 				C586265912668C4100204EE1 /* WireFormat.h in Headers */,
 				C586265F12668C4D00204EE1 /* AbstractMessage_Builder.h in Headers */,
-				C586266112668C4D00204EE1 /* AbstractMessage.h in Headers */,
 				C586266712668C5800204EE1 /* GeneratedMessage_Builder.h in Headers */,
 				C586266912668C5800204EE1 /* GeneratedMessage.h in Headers */,
 				C586266D12668C5F00204EE1 /* Message_Builder.h in Headers */,
@@ -606,7 +599,6 @@
 				C586265212668C2F00204EE1 /* CodedOutputStream.m in Sources */,
 				C586265A12668C4100204EE1 /* WireFormat.m in Sources */,
 				C586266012668C4D00204EE1 /* AbstractMessage_Builder.m in Sources */,
-				C586266212668C4D00204EE1 /* AbstractMessage.m in Sources */,
 				C586266812668C5800204EE1 /* GeneratedMessage_Builder.m in Sources */,
 				C586266A12668C5800204EE1 /* GeneratedMessage.m in Sources */,
 				C586267212668C6C00204EE1 /* RingBuffer.m in Sources */,

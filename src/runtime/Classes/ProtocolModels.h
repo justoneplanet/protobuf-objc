@@ -7,7 +7,7 @@
 //  Copyright 2008 Cyrus Najmabadi
 //
 
-#import "AbstractMessage.h"
+
 #import "AbstractMessage_Builder.h"
 #import "CodedInputStream.h"
 #import "CodedOutputStream.h"

@@ -7,7 +7,7 @@
 //  Copyright 2008 Cyrus Najmabadi
 //
 
-#import "AbstractMessage.h"
+#import "Message.h"
 
 
 @class PBExtensionRegistry;
@@ -24,7 +24,7 @@
  * @author Cyrus Najmabadi
  */
 
-@interface PBGeneratedMessage : PBAbstractMessage {
+@interface PBGeneratedMessage : NSObject<PBMessage> {
 
 @protected
     int32_t _cachedSerializedSize;

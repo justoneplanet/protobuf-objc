@@ -12,7 +12,7 @@
 
 #import "ExtensionField.h"
 
-#import "AbstractMessage.h"
+#import "Message.h"
 #import "CodedInputStream.h"
 #import "CodedOutputStream.h"
 #import "ExtendableMessage_Builder.h"
@@ -304,7 +304,7 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
             return;
         case PBExtensionTypeGroup:
         case PBExtensionTypeMessage:
-            [(PBAbstractMessage *)value writeDescriptionTo:output withIndent:indent];
+            [(id<PBMessage>)value writeDescriptionTo:output withIndent:indent];
             return;
     }
     
