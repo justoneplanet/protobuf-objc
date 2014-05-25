@@ -17,6 +17,7 @@
  * Abstract interface implemented by Protocol Message builders.
  */
 @protocol PBMessage_Builder<NSObject>
+
 /** Resets all fields to their default values. */
 - (id<PBMessage_Builder>)clear;
 
@@ -48,6 +49,7 @@
 - (id<PBMessage>)defaultInstance;
 
 - (PBUnknownFieldSet*)unknownFields;
+
 - (id<PBMessage_Builder>)setUnknownFields:(PBUnknownFieldSet*)unknownFields;
 
 /**

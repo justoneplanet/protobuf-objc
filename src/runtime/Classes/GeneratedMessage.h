@@ -24,7 +24,7 @@
  * @author Cyrus Najmabadi
  */
 
-@interface PBGeneratedMessage : NSObject<PBMessage> {
+@interface PBGeneratedMessage : NSObject <PBMessage> {
 
 @protected
     int32_t _cachedSerializedSize;
