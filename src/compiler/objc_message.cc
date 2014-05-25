@@ -516,7 +516,7 @@ namespace objectivec {
     
     // defaultInstance does not return a "builder" type
     printer->Print(
-      "- ($classname$*)defaultInstance;\n"
+      "- ($classname$*)defaultMessageInstance;\n"
       "\n",
       "classname", ClassName(descriptor_));
 
@@ -877,7 +877,7 @@ namespace objectivec {
       "- (instancetype)clone {\n"
       "  return [[[$classname$_Builder alloc] init] mergeFrom:_result];\n"
       "}\n\n"
-      "- ($classname$*)defaultInstance {\n"
+      "- ($classname$*)defaultMessageInstance {\n"
       "  return [$classname$ defaultInstance];\n"
       "}\n\n",
       "classname", ClassName(descriptor_));

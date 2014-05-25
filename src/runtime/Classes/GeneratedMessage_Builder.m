@@ -43,7 +43,7 @@
 
 #pragma mark - Message Creation
 
-- (id<PBMessage>)defaultInstance {
+- (id<PBMessage>)defaultMessageInstance {
     return nil;
 }
 
