@@ -938,9 +938,7 @@ namespace objectivec {
       SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {\n"
-      "  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];\n"
-      "}\n"
+      "\n"
       "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
