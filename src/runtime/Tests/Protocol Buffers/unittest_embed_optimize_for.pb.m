@@ -164,7 +164,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       self.hasOptionalMessage == otherMessage.hasOptionalMessage &&
       (!self.hasOptionalMessage || [self.optionalMessage isEqual:otherMessage.optionalMessage]) &&
       ((self.repeatedMessageArray == nil && otherMessage.repeatedMessageArray == nil) || [self.repeatedMessageArray isEqualToArray:otherMessage.repeatedMessageArray]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -204,7 +205,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestEmbedOptimizedForSize builderWithPrototype:_result];
+  return [[[TestEmbedOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestEmbedOptimizedForSize*) defaultInstance {
@@ -238,9 +239,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {

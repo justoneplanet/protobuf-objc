@@ -134,7 +134,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   PBFileDescriptorSet *otherMessage = other;
   return
       ((self.fileArray == nil && otherMessage.fileArray == nil) || [self.fileArray isEqualToArray:otherMessage.fileArray]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -171,7 +172,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [PBFileDescriptorSet builderWithPrototype:_result];
+  return [[[PBFileDescriptorSet_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBFileDescriptorSet*) defaultInstance {
@@ -202,9 +203,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -618,7 +617,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       (!self.hasSourceCodeInfo || [self.sourceCodeInfo isEqual:otherMessage.sourceCodeInfo]) &&
       ((self.publicDependencyArray == nil && otherMessage.publicDependencyArray == nil) || [self.publicDependencyArray isEqualToArray:otherMessage.publicDependencyArray]) &&
       ((self.weakDependencyArray == nil && otherMessage.weakDependencyArray == nil) || [self.weakDependencyArray isEqualToArray:otherMessage.weakDependencyArray]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -687,7 +687,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [PBFileDescriptorProto builderWithPrototype:_result];
+  return [[[PBFileDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBFileDescriptorProto*) defaultInstance {
@@ -772,9 +772,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1361,7 +1359,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       ((self.extensionArray == nil && otherMessage.extensionArray == nil) || [self.extensionArray isEqualToArray:otherMessage.extensionArray]) &&
       self.hasOptions == otherMessage.hasOptions &&
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1416,7 +1415,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [PBDescriptorProto builderWithPrototype:_result];
+  return [[[PBDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBDescriptorProto*) defaultInstance {
@@ -1481,9 +1480,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -1816,7 +1813,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       (!self.hasStart || self.start == otherMessage.start) &&
       self.hasEnd == otherMessage.hasEnd &&
       (!self.hasEnd || self.end == otherMessage.end) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -1856,7 +1854,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [PBDescriptorProto_ExtensionRange builderWithPrototype:_result];
+  return [[[PBDescriptorProto_ExtensionRange_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBDescriptorProto_ExtensionRange*) defaultInstance {
@@ -1886,9 +1884,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2233,7 +2229,8 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
       (!self.hasDefaultValue || [self.defaultValue isEqual:otherMessage.defaultValue]) &&
       self.hasOptions == otherMessage.hasOptions &&
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2291,7 +2288,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   return self;
 }
 - (instancetype)clone {
-  return [PBFieldDescriptorProto builderWithPrototype:_result];
+  return [[[PBFieldDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBFieldDescriptorProto*) defaultInstance {
@@ -2339,9 +2336,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -2705,7 +2700,8 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
       ((self.valueArray == nil && otherMessage.valueArray == nil) || [self.valueArray isEqualToArray:otherMessage.valueArray]) &&
       self.hasOptions == otherMessage.hasOptions &&
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -2748,7 +2744,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   return self;
 }
 - (instancetype)clone {
-  return [PBEnumDescriptorProto builderWithPrototype:_result];
+  return [[[PBEnumDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBEnumDescriptorProto*) defaultInstance {
@@ -2785,9 +2781,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3041,7 +3035,8 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
       (!self.hasNumber || self.number == otherMessage.number) &&
       self.hasOptions == otherMessage.hasOptions &&
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3084,7 +3079,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   return self;
 }
 - (instancetype)clone {
-  return [PBEnumValueDescriptorProto builderWithPrototype:_result];
+  return [[[PBEnumValueDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBEnumValueDescriptorProto*) defaultInstance {
@@ -3117,9 +3112,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3373,7 +3366,8 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
       ((self.methodArray == nil && otherMessage.methodArray == nil) || [self.methodArray isEqualToArray:otherMessage.methodArray]) &&
       self.hasOptions == otherMessage.hasOptions &&
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3416,7 +3410,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   return self;
 }
 - (instancetype)clone {
-  return [PBServiceDescriptorProto builderWithPrototype:_result];
+  return [[[PBServiceDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBServiceDescriptorProto*) defaultInstance {
@@ -3453,9 +3447,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -3729,7 +3721,8 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
       (!self.hasOutputType || [self.outputType isEqual:otherMessage.outputType]) &&
       self.hasOptions == otherMessage.hasOptions &&
       (!self.hasOptions || [self.options isEqual:otherMessage.options]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3775,7 +3768,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   return self;
 }
 - (instancetype)clone {
-  return [PBMethodDescriptorProto builderWithPrototype:_result];
+  return [[[PBMethodDescriptorProto_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBMethodDescriptorProto*) defaultInstance {
@@ -3811,9 +3804,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4242,7 +4233,8 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4307,7 +4299,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBFileOptions builderWithPrototype:_result];
+  return [[[PBFileOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBFileOptions*) defaultInstance {
@@ -4366,9 +4358,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -4759,7 +4749,8 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -4803,7 +4794,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBMessageOptions builderWithPrototype:_result];
+  return [[[PBMessageOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBMessageOptions*) defaultInstance {
@@ -4841,9 +4832,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5180,7 +5169,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5236,7 +5226,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBFieldOptions builderWithPrototype:_result];
+  return [[[PBFieldOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBFieldOptions*) defaultInstance {
@@ -5286,9 +5276,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5599,7 +5587,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5640,7 +5629,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBEnumOptions builderWithPrototype:_result];
+  return [[[PBEnumOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBEnumOptions*) defaultInstance {
@@ -5675,9 +5664,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5863,7 +5850,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5901,7 +5889,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBEnumValueOptions builderWithPrototype:_result];
+  return [[[PBEnumValueOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBEnumValueOptions*) defaultInstance {
@@ -5933,9 +5921,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6101,7 +6087,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -6139,7 +6126,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBServiceOptions builderWithPrototype:_result];
+  return [[[PBServiceOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBServiceOptions*) defaultInstance {
@@ -6171,9 +6158,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6339,7 +6324,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       ((self.uninterpretedOptionArray == nil && otherMessage.uninterpretedOptionArray == nil) || [self.uninterpretedOptionArray isEqualToArray:otherMessage.uninterpretedOptionArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -6377,7 +6363,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBMethodOptions builderWithPrototype:_result];
+  return [[[PBMethodOptions_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBMethodOptions*) defaultInstance {
@@ -6409,9 +6395,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6684,7 +6668,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       (!self.hasStringValue || [self.stringValue isEqual:otherMessage.stringValue]) &&
       self.hasAggregateValue == otherMessage.hasAggregateValue &&
       (!self.hasAggregateValue || [self.aggregateValue isEqual:otherMessage.aggregateValue]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -6739,7 +6724,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBUninterpretedOption builderWithPrototype:_result];
+  return [[[PBUninterpretedOption_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBUninterpretedOption*) defaultInstance {
@@ -6788,9 +6773,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7082,7 +7065,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       (!self.hasNamePart || [self.namePart isEqual:otherMessage.namePart]) &&
       self.hasIsExtension == otherMessage.hasIsExtension &&
       (!self.hasIsExtension || self.isExtension == otherMessage.isExtension) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -7122,7 +7106,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBUninterpretedOption_NamePart builderWithPrototype:_result];
+  return [[[PBUninterpretedOption_NamePart_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBUninterpretedOption_NamePart*) defaultInstance {
@@ -7152,9 +7136,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7315,7 +7297,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   PBSourceCodeInfo *otherMessage = other;
   return
       ((self.locationArray == nil && otherMessage.locationArray == nil) || [self.locationArray isEqualToArray:otherMessage.locationArray]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -7352,7 +7335,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBSourceCodeInfo builderWithPrototype:_result];
+  return [[[PBSourceCodeInfo_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBSourceCodeInfo*) defaultInstance {
@@ -7383,9 +7366,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7627,7 +7608,8 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
       (!self.hasLeadingComments || [self.leadingComments isEqual:otherMessage.leadingComments]) &&
       self.hasTrailingComments == otherMessage.hasTrailingComments &&
       (!self.hasTrailingComments || [self.trailingComments isEqual:otherMessage.trailingComments]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -7675,7 +7657,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   return self;
 }
 - (instancetype)clone {
-  return [PBSourceCodeInfo_Location builderWithPrototype:_result];
+  return [[[PBSourceCodeInfo_Location_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PBSourceCodeInfo_Location*) defaultInstance {
@@ -7719,9 +7701,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {

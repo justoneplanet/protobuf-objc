@@ -162,7 +162,8 @@ BOOL TestEnumIsValidValue(TestEnum value) {
       (!self.hasA || self.a == otherMessage.a) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -200,7 +201,7 @@ BOOL TestEnumIsValidValue(TestEnum value) {
   return self;
 }
 - (instancetype)clone {
-  return [TestMessage builderWithPrototype:_result];
+  return [[[TestMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestMessage*) defaultInstance {
@@ -228,9 +229,7 @@ BOOL TestEnumIsValidValue(TestEnum value) {
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {

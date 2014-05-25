@@ -2936,7 +2936,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
       (!self.hasDefaultStringPiece || [self.defaultStringPiece isEqual:otherMessage.defaultStringPiece]) &&
       self.hasDefaultCord == otherMessage.hasDefaultCord &&
       (!self.hasDefaultCord || [self.defaultCord isEqual:otherMessage.defaultCord]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -3196,7 +3197,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestAllTypesLite builderWithPrototype:_result];
+  return [[[TestAllTypesLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestAllTypesLite*) defaultInstance {
@@ -3533,9 +3534,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5420,7 +5419,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasBb == otherMessage.hasBb &&
       (!self.hasBb || self.bb == otherMessage.bb) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5457,7 +5457,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestAllTypesLite_NestedMessage builderWithPrototype:_result];
+  return [[[TestAllTypesLite_NestedMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestAllTypesLite_NestedMessage*) defaultInstance {
@@ -5484,9 +5484,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5625,7 +5623,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasA == otherMessage.hasA &&
       (!self.hasA || self.a == otherMessage.a) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5662,7 +5661,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestAllTypesLite_OptionalGroup builderWithPrototype:_result];
+  return [[[TestAllTypesLite_OptionalGroup_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestAllTypesLite_OptionalGroup*) defaultInstance {
@@ -5689,9 +5688,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -5830,7 +5827,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasA == otherMessage.hasA &&
       (!self.hasA || self.a == otherMessage.a) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -5867,7 +5865,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestAllTypesLite_RepeatedGroup builderWithPrototype:_result];
+  return [[[TestAllTypesLite_RepeatedGroup_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestAllTypesLite_RepeatedGroup*) defaultInstance {
@@ -5894,9 +5892,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6035,7 +6031,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasC == otherMessage.hasC &&
       (!self.hasC || self.c == otherMessage.c) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -6072,7 +6069,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [ForeignMessageLite builderWithPrototype:_result];
+  return [[[ForeignMessageLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (ForeignMessageLite*) defaultInstance {
@@ -6099,9 +6096,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -6721,7 +6716,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
       ((self.packedDoubleArray == nil && otherMessage.packedDoubleArray == nil) || [self.packedDoubleArray isEqualToArray:otherMessage.packedDoubleArray]) &&
       ((self.packedBoolArray == nil && otherMessage.packedBoolArray == nil) || [self.packedBoolArray isEqualToArray:otherMessage.packedBoolArray]) &&
       ((self.packedEnumArray == nil && otherMessage.packedEnumArray == nil) || [self.packedEnumArray isEqualToArray:otherMessage.packedEnumArray]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -6810,7 +6806,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestPackedTypesLite builderWithPrototype:_result];
+  return [[[TestPackedTypesLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestPackedTypesLite*) defaultInstance {
@@ -6932,9 +6928,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7562,7 +7556,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -7597,7 +7592,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestAllExtensionsLite builderWithPrototype:_result];
+  return [[[TestAllExtensionsLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestAllExtensionsLite*) defaultInstance {
@@ -7622,9 +7617,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7743,7 +7736,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasA == otherMessage.hasA &&
       (!self.hasA || self.a == otherMessage.a) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -7780,7 +7774,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [OptionalGroup_extension_lite builderWithPrototype:_result];
+  return [[[OptionalGroup_extension_lite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (OptionalGroup_extension_lite*) defaultInstance {
@@ -7807,9 +7801,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -7948,7 +7940,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasA == otherMessage.hasA &&
       (!self.hasA || self.a == otherMessage.a) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -7985,7 +7978,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [RepeatedGroup_extension_lite builderWithPrototype:_result];
+  return [[[RepeatedGroup_extension_lite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (RepeatedGroup_extension_lite*) defaultInstance {
@@ -8012,9 +8005,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -8146,7 +8137,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -8181,7 +8173,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestPackedExtensionsLite builderWithPrototype:_result];
+  return [[[TestPackedExtensionsLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestPackedExtensionsLite*) defaultInstance {
@@ -8206,9 +8198,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -8311,7 +8301,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   }
   TestNestedExtensionLite *otherMessage = other;
   return
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -8345,7 +8336,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestNestedExtensionLite builderWithPrototype:_result];
+  return [[[TestNestedExtensionLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestNestedExtensionLite*) defaultInstance {
@@ -8369,9 +8360,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -8490,7 +8479,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasDeprecatedField == otherMessage.hasDeprecatedField &&
       (!self.hasDeprecatedField || self.deprecatedField == otherMessage.deprecatedField) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -8527,7 +8517,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestDeprecatedLite builderWithPrototype:_result];
+  return [[[TestDeprecatedLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestDeprecatedLite*) defaultInstance {
@@ -8554,9 +8544,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -8814,7 +8802,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
       ((self.RepeatedGroupArray == nil && otherMessage.RepeatedGroupArray == nil) || [self.RepeatedGroupArray isEqualToArray:otherMessage.RepeatedGroupArray]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -8864,7 +8853,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestParsingMergeLite builderWithPrototype:_result];
+  return [[[TestParsingMergeLite_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestParsingMergeLite*) defaultInstance {
@@ -8912,9 +8901,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -9338,7 +9325,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
       ((self.Group2Array == nil && otherMessage.Group2Array == nil) || [self.Group2Array isEqualToArray:otherMessage.Group2Array]) &&
       ((self.ext1Array == nil && otherMessage.ext1Array == nil) || [self.ext1Array isEqualToArray:otherMessage.ext1Array]) &&
       ((self.ext2Array == nil && otherMessage.ext2Array == nil) || [self.ext2Array isEqualToArray:otherMessage.ext2Array]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -9393,7 +9381,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestParsingMergeLite_RepeatedFieldsGenerator builderWithPrototype:_result];
+  return [[[TestParsingMergeLite_RepeatedFieldsGenerator_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator*) defaultInstance {
@@ -9466,9 +9454,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -9780,7 +9766,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasField1 == otherMessage.hasField1 &&
       (!self.hasField1 || [self.field1 isEqual:otherMessage.field1]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -9817,7 +9804,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestParsingMergeLite_RepeatedFieldsGenerator_Group1 builderWithPrototype:_result];
+  return [[[TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*) defaultInstance {
@@ -9844,9 +9831,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -10008,7 +9993,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasField1 == otherMessage.hasField1 &&
       (!self.hasField1 || [self.field1 isEqual:otherMessage.field1]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -10045,7 +10031,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestParsingMergeLite_RepeatedFieldsGenerator_Group2 builderWithPrototype:_result];
+  return [[[TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*) defaultInstance {
@@ -10072,9 +10058,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -10236,7 +10220,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasOptionalGroupAllTypes == otherMessage.hasOptionalGroupAllTypes &&
       (!self.hasOptionalGroupAllTypes || [self.optionalGroupAllTypes isEqual:otherMessage.optionalGroupAllTypes]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -10273,7 +10258,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestParsingMergeLite_OptionalGroup builderWithPrototype:_result];
+  return [[[TestParsingMergeLite_OptionalGroup_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestParsingMergeLite_OptionalGroup*) defaultInstance {
@@ -10300,9 +10285,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -10464,7 +10447,8 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return
       self.hasRepeatedGroupAllTypes == otherMessage.hasRepeatedGroupAllTypes &&
       (!self.hasRepeatedGroupAllTypes || [self.repeatedGroupAllTypes isEqual:otherMessage.repeatedGroupAllTypes]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -10501,7 +10485,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   return self;
 }
 - (instancetype)clone {
-  return [TestParsingMergeLite_RepeatedGroup builderWithPrototype:_result];
+  return [[[TestParsingMergeLite_RepeatedGroup_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestParsingMergeLite_RepeatedGroup*) defaultInstance {
@@ -10528,9 +10512,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {

@@ -299,7 +299,7 @@ namespace objectivec {
       "  return _$list_name$;\n"
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  NSNumber *value = _$list_name$[index];"
+      "  NSNumber *value = _$list_name$[index];\n"
       "  return value.intValue;"
       "}\n");
   }
@@ -377,14 +377,14 @@ namespace objectivec {
         "  [output writeRawVarint32:$tag$];\n"
         "  [output writeRawVarint32:_$name$CachedSerializedSize];\n"
         "}\n"
-        "for (NSNumber *element in self.$list_name$) {"
+        "for (NSNumber *element in self.$list_name$) {\n"
         "  [output writeEnumNoTag:element.intValue];\n"
         "}\n");
       
     } else {
       printer->Print(variables_,
-        "for (NSNumber *element in self.$list_name$) {"
-        "  [output writeEnum:$number$ value:element.intValue];"
+        "for (NSNumber *element in self.$list_name$) {\n"
+        "  [output writeEnum:$number$ value:element.intValue];\n"
         "}\n");
     }
   }
@@ -422,7 +422,7 @@ namespace objectivec {
 
   void RepeatedEnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || "
+      "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) ||\n"
       "[self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
 

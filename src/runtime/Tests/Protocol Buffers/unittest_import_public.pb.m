@@ -127,7 +127,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasE == otherMessage.hasE &&
       (!self.hasE || self.e == otherMessage.e) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -164,7 +165,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [PublicImportMessage builderWithPrototype:_result];
+  return [[[PublicImportMessage_Builder alloc] init] mergeFrom:_result];
 }
 
 - (PublicImportMessage*) defaultInstance {
@@ -191,9 +192,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {

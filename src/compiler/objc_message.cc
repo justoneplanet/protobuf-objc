@@ -516,7 +516,7 @@ namespace objectivec {
     
     // defaultInstance does not return a "builder" type
     printer->Print(
-      "- ($classname$*) defaultInstance;\n"
+      "- ($classname$*)defaultInstance;\n"
       "\n",
       "classname", ClassName(descriptor_));
 
@@ -703,7 +703,7 @@ namespace objectivec {
     }
 
     printer->Print(
-      "(self.unknownFields == otherMessage.unknownFields ||"
+      "(self.unknownFields == otherMessage.unknownFields ||\n"
       " (self.unknownFields != nil &&"
       " [self.unknownFields isEqual:otherMessage.unknownFields]));\n");
 
@@ -875,19 +875,19 @@ namespace objectivec {
       "  return self;\n"
       "}\n"
       "- (instancetype)clone {\n"
-      "  return [$classname$ builderWithPrototype:_result];\n"
+      "  return [[[$classname$_Builder alloc] init] mergeFrom:_result];\n"
       "}\n\n"
-      "- ($classname$*) defaultInstance {\n"
+      "- ($classname$*)defaultInstance {\n"
       "  return [$classname$ defaultInstance];\n"
       "}\n\n",
       "classname", ClassName(descriptor_));
 
     printer->Print(
-      "- ($classname$*) build {\n"
+      "- ($classname$*)build {\n"
       "  [self checkInitialized];\n"
       "  return [self buildPartial];\n"
       "}\n"
-      "- ($classname$*) buildPartial {\n",
+      "- ($classname$*)buildPartial {\n",
       "classname", ClassName(descriptor_));
     
     printer->Indent();
@@ -938,9 +938,7 @@ namespace objectivec {
       SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {\n"
-      "  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];\n"
-      "}\n"
+      "\n"
       "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n",
       "classname", ClassName(descriptor_));
     printer->Indent();

@@ -194,7 +194,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       (!self.hasMsg || [self.msg isEqual:otherMessage.msg]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -235,7 +236,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestOptimizedForSize builderWithPrototype:_result];
+  return [[[TestOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestOptimizedForSize*) defaultInstance {
@@ -266,9 +267,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -449,7 +448,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasX == otherMessage.hasX &&
       (!self.hasX || self.x == otherMessage.x) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -486,7 +486,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestRequiredOptimizedForSize builderWithPrototype:_result];
+  return [[[TestRequiredOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestRequiredOptimizedForSize*) defaultInstance {
@@ -513,9 +513,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
@@ -663,7 +661,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasO == otherMessage.hasO &&
       (!self.hasO || [self.o isEqual:otherMessage.o]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+      (self.unknownFields == otherMessage.unknownFields ||
+       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -700,7 +699,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 - (instancetype)clone {
-  return [TestOptionalOptimizedForSize builderWithPrototype:_result];
+  return [[[TestOptionalOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
 - (TestOptionalOptimizedForSize*) defaultInstance {
@@ -727,9 +726,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
+
 - (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
