@@ -703,7 +703,7 @@ namespace objectivec {
     }
 
     printer->Print(
-      "(self.unknownFields == otherMessage.unknownFields ||"
+      "(self.unknownFields == otherMessage.unknownFields ||\n"
       " (self.unknownFields != nil &&"
       " [self.unknownFields isEqual:otherMessage.unknownFields]));\n");
 
@@ -875,7 +875,7 @@ namespace objectivec {
       "  return self;\n"
       "}\n"
       "- (instancetype)clone {\n"
-      "  return [$classname$ builderWithPrototype:_result];\n"
+      "  return [[[$classname$_Builder alloc] init] mergeFrom:_result];\n"
       "}\n\n"
       "- ($classname$*) defaultInstance {\n"
       "  return [$classname$ defaultInstance];\n"
