@@ -11,94 +11,94 @@
 
 @implementation UnittestLiteRoot
 
-static id<PBExtensionField> UnittestLiteRoot_optionalInt32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalInt64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalUint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalUint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalSint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalSint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalFixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalFixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalSfixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalSfixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalFloatExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalDoubleExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalBoolExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalStringExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalBytesExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_OptionalGroupExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalNestedMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalForeignMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalImportMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalNestedEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalForeignEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalImportEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalStringPieceExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalCordExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalPublicImportMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_optionalLazyMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedInt32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedInt64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedUint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedUint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedSint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedSint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedFixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedFixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedSfixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedSfixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedFloatExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedDoubleExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedBoolExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedStringExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedBytesExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_RepeatedGroupExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedNestedMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedForeignMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedImportMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedNestedEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedForeignEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedImportEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedStringPieceExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedCordExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_repeatedLazyMessageExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultInt32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultInt64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultUint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultUint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultSint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultSint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultFixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultFixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultSfixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultSfixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultFloatExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultDoubleExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultBoolExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultStringExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultBytesExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultNestedEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultForeignEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultImportEnumExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultStringPieceExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_defaultCordExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedInt32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedInt64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedUint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedUint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedSint32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedSint64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedFixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedFixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedSfixed32ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedSfixed64ExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedFloatExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedDoubleExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedBoolExtensionLite = nil;
-static id<PBExtensionField> UnittestLiteRoot_packedEnumExtensionLite = nil;
-static id<PBExtensionField> TestNestedExtensionLite_nestedExtension = nil;
-static id<PBExtensionField> TestParsingMergeLite_optionalExt = nil;
-static id<PBExtensionField> TestParsingMergeLite_repeatedExt = nil;
+static PBExtensionField* UnittestLiteRoot_optionalInt32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalInt64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalUint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalUint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalSint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalSint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalFixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalFixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalSfixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalSfixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalFloatExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalDoubleExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalBoolExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalStringExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalBytesExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_OptionalGroupExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalNestedMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalForeignMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalImportMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalNestedEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalForeignEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalImportEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalStringPieceExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalCordExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalPublicImportMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_optionalLazyMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedInt32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedInt64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedUint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedUint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedSint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedSint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedFixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedFixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedSfixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedSfixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedFloatExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedDoubleExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedBoolExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedStringExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedBytesExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_RepeatedGroupExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedNestedMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedForeignMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedImportMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedNestedEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedForeignEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedImportEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedStringPieceExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedCordExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_repeatedLazyMessageExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultInt32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultInt64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultUint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultUint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultSint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultSint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultFixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultFixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultSfixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultSfixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultFloatExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultDoubleExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultBoolExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultStringExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultBytesExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultNestedEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultForeignEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultImportEnumExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultStringPieceExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_defaultCordExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedInt32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedInt64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedUint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedUint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedSint32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedSint64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedFixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedFixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedSfixed32ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedSfixed64ExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedFloatExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedDoubleExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedBoolExtensionLite = nil;
+static PBExtensionField* UnittestLiteRoot_packedEnumExtensionLite = nil;
+static PBExtensionField* TestNestedExtensionLite_nestedExtension = nil;
+static PBExtensionField* TestParsingMergeLite_optionalExt = nil;
+static PBExtensionField* TestParsingMergeLite_repeatedExt = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -107,797 +107,797 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (void) initialize {
   if (self == [UnittestLiteRoot class]) {
     UnittestLiteRoot_optionalInt32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:1
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:1
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalInt64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:2
-                                      defaultValue:@(0L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:2
+                             defaultValue:@(0L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalUint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:3
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:3
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalUint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:4
-                                      defaultValue:@(0L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:4
+                             defaultValue:@(0L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalSint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:5
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:5
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalSint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:6
-                                      defaultValue:@(0L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:6
+                             defaultValue:@(0L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalFixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:7
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:7
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalFixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:8
-                                      defaultValue:@(0L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:8
+                             defaultValue:@(0L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalSfixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:9
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:9
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalSfixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:10
-                                      defaultValue:@(0L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:10
+                             defaultValue:@(0L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalFloatExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFloat
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:11
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFloat
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:11
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalDoubleExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeDouble
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:12
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeDouble
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:12
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalBoolExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBool
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:13
-                                      defaultValue:@(NO)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBool
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:13
+                             defaultValue:@(NO)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalStringExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:14
-                                      defaultValue:@""
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:14
+                             defaultValue:@""
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalBytesExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:15
-                                      defaultValue:[NSData data]
-                               messageOrGroupClass:[NSData class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBytes
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:15
+                             defaultValue:[NSData data]
+                      messageOrGroupClass:[NSData class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_OptionalGroupExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeGroup
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:16
-                                      defaultValue:[OptionalGroup_extension_lite defaultInstance]
-                               messageOrGroupClass:[OptionalGroup_extension_lite class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeGroup
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:16
+                             defaultValue:[OptionalGroup_extension_lite defaultInstance]
+                      messageOrGroupClass:[OptionalGroup_extension_lite class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalNestedMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:18
-                                      defaultValue:[TestAllTypesLite_NestedMessage defaultInstance]
-                               messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:18
+                             defaultValue:[TestAllTypesLite_NestedMessage defaultInstance]
+                      messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalForeignMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:19
-                                      defaultValue:[ForeignMessageLite defaultInstance]
-                               messageOrGroupClass:[ForeignMessageLite class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:19
+                             defaultValue:[ForeignMessageLite defaultInstance]
+                      messageOrGroupClass:[ForeignMessageLite class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalImportMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:20
-                                      defaultValue:[ImportMessageLite defaultInstance]
-                               messageOrGroupClass:[ImportMessageLite class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:20
+                             defaultValue:[ImportMessageLite defaultInstance]
+                      messageOrGroupClass:[ImportMessageLite class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalNestedEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:21
-                                      defaultValue:@(TestAllTypesLite_NestedEnumFOO)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:21
+                             defaultValue:@(TestAllTypesLite_NestedEnumFOO)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalForeignEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:22
-                                      defaultValue:@(ForeignEnumLiteFOREIGNLITEFOO)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:22
+                             defaultValue:@(ForeignEnumLiteFOREIGNLITEFOO)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalImportEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:23
-                                      defaultValue:@(ImportEnumLiteIMPORTLITEFOO)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:23
+                             defaultValue:@(ImportEnumLiteIMPORTLITEFOO)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalStringPieceExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:24
-                                      defaultValue:@""
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:24
+                             defaultValue:@""
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalCordExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:25
-                                      defaultValue:@""
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:25
+                             defaultValue:@""
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalPublicImportMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:26
-                                      defaultValue:[PublicImportMessageLite defaultInstance]
-                               messageOrGroupClass:[PublicImportMessageLite class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:26
+                             defaultValue:[PublicImportMessageLite defaultInstance]
+                      messageOrGroupClass:[PublicImportMessageLite class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_optionalLazyMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:27
-                                      defaultValue:[TestAllTypesLite_NestedMessage defaultInstance]
-                               messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:27
+                             defaultValue:[TestAllTypesLite_NestedMessage defaultInstance]
+                      messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedInt32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:31
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:31
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedInt64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:32
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:32
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedUint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:33
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:33
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedUint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:34
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:34
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedSint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:35
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:35
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedSint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:36
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:36
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedFixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:37
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:37
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedFixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:38
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:38
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedSfixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:39
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:39
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedSfixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:40
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:40
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedFloatExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFloat
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:41
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeFloat]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFloat
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:41
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeFloat]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedDoubleExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeDouble
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:42
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeDouble]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeDouble
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:42
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeDouble]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedBoolExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBool
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:43
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeBool]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBool
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:43
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeBool]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedStringExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:44
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:44
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedBytesExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:45
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSData class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBytes
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:45
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSData class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_RepeatedGroupExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeGroup
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:46
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[RepeatedGroup_extension_lite class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeGroup
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:46
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[RepeatedGroup_extension_lite class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedNestedMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:48
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:48
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedForeignMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:49
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[ForeignMessageLite class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:49
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[ForeignMessageLite class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedImportMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:50
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[ImportMessageLite class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:50
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[ImportMessageLite class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedNestedEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:51
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:51
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedForeignEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:52
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:52
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedImportEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:53
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:53
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedStringPieceExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:54
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:54
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedCordExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:55
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:55
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_repeatedLazyMessageExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:57
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:57
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[TestAllTypesLite_NestedMessage class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultInt32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:61
-                                      defaultValue:@(41)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:61
+                             defaultValue:@(41)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultInt64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:62
-                                      defaultValue:@(42L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:62
+                             defaultValue:@(42L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultUint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:63
-                                      defaultValue:@(43)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:63
+                             defaultValue:@(43)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultUint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:64
-                                      defaultValue:@(44L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:64
+                             defaultValue:@(44L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultSint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:65
-                                      defaultValue:@(-45)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:65
+                             defaultValue:@(-45)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultSint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:66
-                                      defaultValue:@(46L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:66
+                             defaultValue:@(46L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultFixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:67
-                                      defaultValue:@(47)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:67
+                             defaultValue:@(47)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultFixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:68
-                                      defaultValue:@(48L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:68
+                             defaultValue:@(48L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultSfixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:69
-                                      defaultValue:@(49)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:69
+                             defaultValue:@(49)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultSfixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed64
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:70
-                                      defaultValue:@(-50L)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed64
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:70
+                             defaultValue:@(-50L)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultFloatExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFloat
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:71
-                                      defaultValue:@(51.5)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFloat
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:71
+                             defaultValue:@(51.5)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultDoubleExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeDouble
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:72
-                                      defaultValue:@(52000)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeDouble
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:72
+                             defaultValue:@(52000)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultBoolExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBool
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:73
-                                      defaultValue:@(YES)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBool
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:73
+                             defaultValue:@(YES)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultStringExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:74
-                                      defaultValue:@"hello"
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:74
+                             defaultValue:@"hello"
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultBytesExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:75
-                                      defaultValue:[NSData dataWithBytes:"world" length:5]
-                               messageOrGroupClass:[NSData class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBytes
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:75
+                             defaultValue:[NSData dataWithBytes:"world" length:5]
+                      messageOrGroupClass:[NSData class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultNestedEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:81
-                                      defaultValue:@(TestAllTypesLite_NestedEnumBAR)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:81
+                             defaultValue:@(TestAllTypesLite_NestedEnumBAR)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultForeignEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:82
-                                      defaultValue:@(ForeignEnumLiteFOREIGNLITEBAR)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:82
+                             defaultValue:@(ForeignEnumLiteFOREIGNLITEBAR)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultImportEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:83
-                                      defaultValue:@(ImportEnumLiteIMPORTLITEBAR)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:83
+                             defaultValue:@(ImportEnumLiteIMPORTLITEBAR)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultStringPieceExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:84
-                                      defaultValue:@"abc"
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:84
+                             defaultValue:@"abc"
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_defaultCordExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:85
-                                      defaultValue:@"123"
-                               messageOrGroupClass:[NSString class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeString
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:85
+                             defaultValue:@"123"
+                      messageOrGroupClass:[NSString class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedInt32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:90
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:90
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedInt64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt64
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:91
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt64
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:91
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedUint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:92
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt32
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:92
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedUint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt64
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:93
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeUInt64
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:93
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedSint32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt32
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:94
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt32
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:94
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedSint64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:95
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSInt64
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:95
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedFixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed32
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:96
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed32
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:96
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedFixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:97
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFixed64
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:97
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedSfixed32ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:98
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed32
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:98
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedSfixed64ExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed64
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:99
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeSFixed64
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:99
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedFloatExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFloat
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:100
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeFloat]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeFloat
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:100
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeFloat]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedDoubleExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeDouble
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:101
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeDouble]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeDouble
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:101
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeDouble]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedBoolExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBool
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:102
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeBool]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeBool
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:102
+                             defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeBool]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedEnumExtensionLite =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
-                                     extendedClass:[TestPackedExtensionsLite class]
-                                       fieldNumber:103
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:YES
-                                          isPacked:YES
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeEnum
+                            extendedClass:[TestPackedExtensionsLite class]
+                              fieldNumber:103
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:YES
+                                 isPacked:YES
+                   isMessageSetWireFormat:NO];
     TestNestedExtensionLite_nestedExtension =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestAllExtensionsLite class]
-                                       fieldNumber:12345
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestAllExtensionsLite class]
+                              fieldNumber:12345
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     TestParsingMergeLite_optionalExt =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestParsingMergeLite class]
-                                       fieldNumber:1000
-                                      defaultValue:[TestAllTypesLite defaultInstance]
-                               messageOrGroupClass:[TestAllTypesLite class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestParsingMergeLite class]
+                              fieldNumber:1000
+                             defaultValue:[TestAllTypesLite defaultInstance]
+                      messageOrGroupClass:[TestAllTypesLite class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     TestParsingMergeLite_repeatedExt =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestParsingMergeLite class]
-                                       fieldNumber:1001
-                                      defaultValue:[[NSArray alloc] init]
-                               messageOrGroupClass:[TestAllTypesLite class]
-                                        isRepeated:YES
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestParsingMergeLite class]
+                              fieldNumber:1001
+                             defaultValue:[[NSArray alloc] init]
+                      messageOrGroupClass:[TestAllTypesLite class]
+                               isRepeated:YES
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     [UnittestImportLiteRoot registerAllExtensions:registry];
@@ -996,259 +996,259 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:TestParsingMergeLite_repeatedExt];
 }
 
-+ (id<PBExtensionField>)optionalInt32ExtensionLite {
++ (PBExtensionField *)optionalInt32ExtensionLite {
   return UnittestLiteRoot_optionalInt32ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalInt64ExtensionLite {
++ (PBExtensionField *)optionalInt64ExtensionLite {
   return UnittestLiteRoot_optionalInt64ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalUint32ExtensionLite {
++ (PBExtensionField *)optionalUint32ExtensionLite {
   return UnittestLiteRoot_optionalUint32ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalUint64ExtensionLite {
++ (PBExtensionField *)optionalUint64ExtensionLite {
   return UnittestLiteRoot_optionalUint64ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalSint32ExtensionLite {
++ (PBExtensionField *)optionalSint32ExtensionLite {
   return UnittestLiteRoot_optionalSint32ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalSint64ExtensionLite {
++ (PBExtensionField *)optionalSint64ExtensionLite {
   return UnittestLiteRoot_optionalSint64ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalFixed32ExtensionLite {
++ (PBExtensionField *)optionalFixed32ExtensionLite {
   return UnittestLiteRoot_optionalFixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalFixed64ExtensionLite {
++ (PBExtensionField *)optionalFixed64ExtensionLite {
   return UnittestLiteRoot_optionalFixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalSfixed32ExtensionLite {
++ (PBExtensionField *)optionalSfixed32ExtensionLite {
   return UnittestLiteRoot_optionalSfixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalSfixed64ExtensionLite {
++ (PBExtensionField *)optionalSfixed64ExtensionLite {
   return UnittestLiteRoot_optionalSfixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)optionalFloatExtensionLite {
++ (PBExtensionField *)optionalFloatExtensionLite {
   return UnittestLiteRoot_optionalFloatExtensionLite;
 }
-+ (id<PBExtensionField>)optionalDoubleExtensionLite {
++ (PBExtensionField *)optionalDoubleExtensionLite {
   return UnittestLiteRoot_optionalDoubleExtensionLite;
 }
-+ (id<PBExtensionField>)optionalBoolExtensionLite {
++ (PBExtensionField *)optionalBoolExtensionLite {
   return UnittestLiteRoot_optionalBoolExtensionLite;
 }
-+ (id<PBExtensionField>)optionalStringExtensionLite {
++ (PBExtensionField *)optionalStringExtensionLite {
   return UnittestLiteRoot_optionalStringExtensionLite;
 }
-+ (id<PBExtensionField>)optionalBytesExtensionLite {
++ (PBExtensionField *)optionalBytesExtensionLite {
   return UnittestLiteRoot_optionalBytesExtensionLite;
 }
-+ (id<PBExtensionField>)OptionalGroupExtensionLite {
++ (PBExtensionField *)OptionalGroupExtensionLite {
   return UnittestLiteRoot_OptionalGroupExtensionLite;
 }
-+ (id<PBExtensionField>)optionalNestedMessageExtensionLite {
++ (PBExtensionField *)optionalNestedMessageExtensionLite {
   return UnittestLiteRoot_optionalNestedMessageExtensionLite;
 }
-+ (id<PBExtensionField>)optionalForeignMessageExtensionLite {
++ (PBExtensionField *)optionalForeignMessageExtensionLite {
   return UnittestLiteRoot_optionalForeignMessageExtensionLite;
 }
-+ (id<PBExtensionField>)optionalImportMessageExtensionLite {
++ (PBExtensionField *)optionalImportMessageExtensionLite {
   return UnittestLiteRoot_optionalImportMessageExtensionLite;
 }
-+ (id<PBExtensionField>)optionalNestedEnumExtensionLite {
++ (PBExtensionField *)optionalNestedEnumExtensionLite {
   return UnittestLiteRoot_optionalNestedEnumExtensionLite;
 }
-+ (id<PBExtensionField>)optionalForeignEnumExtensionLite {
++ (PBExtensionField *)optionalForeignEnumExtensionLite {
   return UnittestLiteRoot_optionalForeignEnumExtensionLite;
 }
-+ (id<PBExtensionField>)optionalImportEnumExtensionLite {
++ (PBExtensionField *)optionalImportEnumExtensionLite {
   return UnittestLiteRoot_optionalImportEnumExtensionLite;
 }
-+ (id<PBExtensionField>)optionalStringPieceExtensionLite {
++ (PBExtensionField *)optionalStringPieceExtensionLite {
   return UnittestLiteRoot_optionalStringPieceExtensionLite;
 }
-+ (id<PBExtensionField>)optionalCordExtensionLite {
++ (PBExtensionField *)optionalCordExtensionLite {
   return UnittestLiteRoot_optionalCordExtensionLite;
 }
-+ (id<PBExtensionField>)optionalPublicImportMessageExtensionLite {
++ (PBExtensionField *)optionalPublicImportMessageExtensionLite {
   return UnittestLiteRoot_optionalPublicImportMessageExtensionLite;
 }
-+ (id<PBExtensionField>)optionalLazyMessageExtensionLite {
++ (PBExtensionField *)optionalLazyMessageExtensionLite {
   return UnittestLiteRoot_optionalLazyMessageExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedInt32ExtensionLite {
++ (PBExtensionField *)repeatedInt32ExtensionLite {
   return UnittestLiteRoot_repeatedInt32ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedInt64ExtensionLite {
++ (PBExtensionField *)repeatedInt64ExtensionLite {
   return UnittestLiteRoot_repeatedInt64ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedUint32ExtensionLite {
++ (PBExtensionField *)repeatedUint32ExtensionLite {
   return UnittestLiteRoot_repeatedUint32ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedUint64ExtensionLite {
++ (PBExtensionField *)repeatedUint64ExtensionLite {
   return UnittestLiteRoot_repeatedUint64ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedSint32ExtensionLite {
++ (PBExtensionField *)repeatedSint32ExtensionLite {
   return UnittestLiteRoot_repeatedSint32ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedSint64ExtensionLite {
++ (PBExtensionField *)repeatedSint64ExtensionLite {
   return UnittestLiteRoot_repeatedSint64ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedFixed32ExtensionLite {
++ (PBExtensionField *)repeatedFixed32ExtensionLite {
   return UnittestLiteRoot_repeatedFixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedFixed64ExtensionLite {
++ (PBExtensionField *)repeatedFixed64ExtensionLite {
   return UnittestLiteRoot_repeatedFixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedSfixed32ExtensionLite {
++ (PBExtensionField *)repeatedSfixed32ExtensionLite {
   return UnittestLiteRoot_repeatedSfixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedSfixed64ExtensionLite {
++ (PBExtensionField *)repeatedSfixed64ExtensionLite {
   return UnittestLiteRoot_repeatedSfixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedFloatExtensionLite {
++ (PBExtensionField *)repeatedFloatExtensionLite {
   return UnittestLiteRoot_repeatedFloatExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedDoubleExtensionLite {
++ (PBExtensionField *)repeatedDoubleExtensionLite {
   return UnittestLiteRoot_repeatedDoubleExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedBoolExtensionLite {
++ (PBExtensionField *)repeatedBoolExtensionLite {
   return UnittestLiteRoot_repeatedBoolExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedStringExtensionLite {
++ (PBExtensionField *)repeatedStringExtensionLite {
   return UnittestLiteRoot_repeatedStringExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedBytesExtensionLite {
++ (PBExtensionField *)repeatedBytesExtensionLite {
   return UnittestLiteRoot_repeatedBytesExtensionLite;
 }
-+ (id<PBExtensionField>)RepeatedGroupExtensionLite {
++ (PBExtensionField *)RepeatedGroupExtensionLite {
   return UnittestLiteRoot_RepeatedGroupExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedNestedMessageExtensionLite {
++ (PBExtensionField *)repeatedNestedMessageExtensionLite {
   return UnittestLiteRoot_repeatedNestedMessageExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedForeignMessageExtensionLite {
++ (PBExtensionField *)repeatedForeignMessageExtensionLite {
   return UnittestLiteRoot_repeatedForeignMessageExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedImportMessageExtensionLite {
++ (PBExtensionField *)repeatedImportMessageExtensionLite {
   return UnittestLiteRoot_repeatedImportMessageExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedNestedEnumExtensionLite {
++ (PBExtensionField *)repeatedNestedEnumExtensionLite {
   return UnittestLiteRoot_repeatedNestedEnumExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedForeignEnumExtensionLite {
++ (PBExtensionField *)repeatedForeignEnumExtensionLite {
   return UnittestLiteRoot_repeatedForeignEnumExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedImportEnumExtensionLite {
++ (PBExtensionField *)repeatedImportEnumExtensionLite {
   return UnittestLiteRoot_repeatedImportEnumExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedStringPieceExtensionLite {
++ (PBExtensionField *)repeatedStringPieceExtensionLite {
   return UnittestLiteRoot_repeatedStringPieceExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedCordExtensionLite {
++ (PBExtensionField *)repeatedCordExtensionLite {
   return UnittestLiteRoot_repeatedCordExtensionLite;
 }
-+ (id<PBExtensionField>)repeatedLazyMessageExtensionLite {
++ (PBExtensionField *)repeatedLazyMessageExtensionLite {
   return UnittestLiteRoot_repeatedLazyMessageExtensionLite;
 }
-+ (id<PBExtensionField>)defaultInt32ExtensionLite {
++ (PBExtensionField *)defaultInt32ExtensionLite {
   return UnittestLiteRoot_defaultInt32ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultInt64ExtensionLite {
++ (PBExtensionField *)defaultInt64ExtensionLite {
   return UnittestLiteRoot_defaultInt64ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultUint32ExtensionLite {
++ (PBExtensionField *)defaultUint32ExtensionLite {
   return UnittestLiteRoot_defaultUint32ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultUint64ExtensionLite {
++ (PBExtensionField *)defaultUint64ExtensionLite {
   return UnittestLiteRoot_defaultUint64ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultSint32ExtensionLite {
++ (PBExtensionField *)defaultSint32ExtensionLite {
   return UnittestLiteRoot_defaultSint32ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultSint64ExtensionLite {
++ (PBExtensionField *)defaultSint64ExtensionLite {
   return UnittestLiteRoot_defaultSint64ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultFixed32ExtensionLite {
++ (PBExtensionField *)defaultFixed32ExtensionLite {
   return UnittestLiteRoot_defaultFixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultFixed64ExtensionLite {
++ (PBExtensionField *)defaultFixed64ExtensionLite {
   return UnittestLiteRoot_defaultFixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultSfixed32ExtensionLite {
++ (PBExtensionField *)defaultSfixed32ExtensionLite {
   return UnittestLiteRoot_defaultSfixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultSfixed64ExtensionLite {
++ (PBExtensionField *)defaultSfixed64ExtensionLite {
   return UnittestLiteRoot_defaultSfixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)defaultFloatExtensionLite {
++ (PBExtensionField *)defaultFloatExtensionLite {
   return UnittestLiteRoot_defaultFloatExtensionLite;
 }
-+ (id<PBExtensionField>)defaultDoubleExtensionLite {
++ (PBExtensionField *)defaultDoubleExtensionLite {
   return UnittestLiteRoot_defaultDoubleExtensionLite;
 }
-+ (id<PBExtensionField>)defaultBoolExtensionLite {
++ (PBExtensionField *)defaultBoolExtensionLite {
   return UnittestLiteRoot_defaultBoolExtensionLite;
 }
-+ (id<PBExtensionField>)defaultStringExtensionLite {
++ (PBExtensionField *)defaultStringExtensionLite {
   return UnittestLiteRoot_defaultStringExtensionLite;
 }
-+ (id<PBExtensionField>)defaultBytesExtensionLite {
++ (PBExtensionField *)defaultBytesExtensionLite {
   return UnittestLiteRoot_defaultBytesExtensionLite;
 }
-+ (id<PBExtensionField>)defaultNestedEnumExtensionLite {
++ (PBExtensionField *)defaultNestedEnumExtensionLite {
   return UnittestLiteRoot_defaultNestedEnumExtensionLite;
 }
-+ (id<PBExtensionField>)defaultForeignEnumExtensionLite {
++ (PBExtensionField *)defaultForeignEnumExtensionLite {
   return UnittestLiteRoot_defaultForeignEnumExtensionLite;
 }
-+ (id<PBExtensionField>)defaultImportEnumExtensionLite {
++ (PBExtensionField *)defaultImportEnumExtensionLite {
   return UnittestLiteRoot_defaultImportEnumExtensionLite;
 }
-+ (id<PBExtensionField>)defaultStringPieceExtensionLite {
++ (PBExtensionField *)defaultStringPieceExtensionLite {
   return UnittestLiteRoot_defaultStringPieceExtensionLite;
 }
-+ (id<PBExtensionField>)defaultCordExtensionLite {
++ (PBExtensionField *)defaultCordExtensionLite {
   return UnittestLiteRoot_defaultCordExtensionLite;
 }
-+ (id<PBExtensionField>)packedInt32ExtensionLite {
++ (PBExtensionField *)packedInt32ExtensionLite {
   return UnittestLiteRoot_packedInt32ExtensionLite;
 }
-+ (id<PBExtensionField>)packedInt64ExtensionLite {
++ (PBExtensionField *)packedInt64ExtensionLite {
   return UnittestLiteRoot_packedInt64ExtensionLite;
 }
-+ (id<PBExtensionField>)packedUint32ExtensionLite {
++ (PBExtensionField *)packedUint32ExtensionLite {
   return UnittestLiteRoot_packedUint32ExtensionLite;
 }
-+ (id<PBExtensionField>)packedUint64ExtensionLite {
++ (PBExtensionField *)packedUint64ExtensionLite {
   return UnittestLiteRoot_packedUint64ExtensionLite;
 }
-+ (id<PBExtensionField>)packedSint32ExtensionLite {
++ (PBExtensionField *)packedSint32ExtensionLite {
   return UnittestLiteRoot_packedSint32ExtensionLite;
 }
-+ (id<PBExtensionField>)packedSint64ExtensionLite {
++ (PBExtensionField *)packedSint64ExtensionLite {
   return UnittestLiteRoot_packedSint64ExtensionLite;
 }
-+ (id<PBExtensionField>)packedFixed32ExtensionLite {
++ (PBExtensionField *)packedFixed32ExtensionLite {
   return UnittestLiteRoot_packedFixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)packedFixed64ExtensionLite {
++ (PBExtensionField *)packedFixed64ExtensionLite {
   return UnittestLiteRoot_packedFixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)packedSfixed32ExtensionLite {
++ (PBExtensionField *)packedSfixed32ExtensionLite {
   return UnittestLiteRoot_packedSfixed32ExtensionLite;
 }
-+ (id<PBExtensionField>)packedSfixed64ExtensionLite {
++ (PBExtensionField *)packedSfixed64ExtensionLite {
   return UnittestLiteRoot_packedSfixed64ExtensionLite;
 }
-+ (id<PBExtensionField>)packedFloatExtensionLite {
++ (PBExtensionField *)packedFloatExtensionLite {
   return UnittestLiteRoot_packedFloatExtensionLite;
 }
-+ (id<PBExtensionField>)packedDoubleExtensionLite {
++ (PBExtensionField *)packedDoubleExtensionLite {
   return UnittestLiteRoot_packedDoubleExtensionLite;
 }
-+ (id<PBExtensionField>)packedBoolExtensionLite {
++ (PBExtensionField *)packedBoolExtensionLite {
   return UnittestLiteRoot_packedBoolExtensionLite;
 }
-+ (id<PBExtensionField>)packedEnumExtensionLite {
++ (PBExtensionField *)packedEnumExtensionLite {
   return UnittestLiteRoot_packedEnumExtensionLite;
 }
 
@@ -8379,7 +8379,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 }
 
 
-+ (id<PBExtensionField>)nestedExtension {
++ (PBExtensionField *)nestedExtension {
   return TestNestedExtensionLite_nestedExtension;
 }
 
@@ -8797,10 +8797,10 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
 
 @dynamic RepeatedGroup;
 
-+ (id<PBExtensionField>)optionalExt {
++ (PBExtensionField *)optionalExt {
   return TestParsingMergeLite_optionalExt;
 }
-+ (id<PBExtensionField>)repeatedExt {
++ (PBExtensionField *)repeatedExt {
   return TestParsingMergeLite_repeatedExt;
 }
 

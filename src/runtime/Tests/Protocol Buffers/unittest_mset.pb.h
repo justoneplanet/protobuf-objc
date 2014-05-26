@@ -116,7 +116,7 @@
 - (BOOL)hasI;
 
 
-+ (id<PBExtensionField>)messageSetExtension;
++ (PBExtensionField *)messageSetExtension;
 
 - (TestMessageSetExtension1_Builder*)builder;
 + (TestMessageSetExtension1_Builder*)builder;
@@ -152,7 +152,7 @@
 - (BOOL)hasStr;
 
 
-+ (id<PBExtensionField>)messageSetExtension;
++ (PBExtensionField *)messageSetExtension;
 
 - (TestMessageSetExtension2_Builder*)builder;
 + (TestMessageSetExtension2_Builder*)builder;

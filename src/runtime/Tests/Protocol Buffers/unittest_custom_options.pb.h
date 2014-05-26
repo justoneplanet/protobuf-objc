@@ -153,46 +153,46 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 }
 + (PBExtensionRegistry*) extensionRegistry;
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*)registry;
-+ (id<PBExtensionField>)fileOpt1;
-+ (id<PBExtensionField>)messageOpt1;
-+ (id<PBExtensionField>)fieldOpt1;
-+ (id<PBExtensionField>)fieldOpt2;
-+ (id<PBExtensionField>)enumOpt1;
-+ (id<PBExtensionField>)enumValueOpt1;
-+ (id<PBExtensionField>)serviceOpt1;
-+ (id<PBExtensionField>)methodOpt1;
-+ (id<PBExtensionField>)boolOpt;
-+ (id<PBExtensionField>)int32Opt;
-+ (id<PBExtensionField>)int64Opt;
-+ (id<PBExtensionField>)uint32Opt;
-+ (id<PBExtensionField>)uint64Opt;
-+ (id<PBExtensionField>)sint32Opt;
-+ (id<PBExtensionField>)sint64Opt;
-+ (id<PBExtensionField>)fixed32Opt;
-+ (id<PBExtensionField>)fixed64Opt;
-+ (id<PBExtensionField>)sfixed32Opt;
-+ (id<PBExtensionField>)sfixed64Opt;
-+ (id<PBExtensionField>)floatOpt;
-+ (id<PBExtensionField>)doubleOpt;
-+ (id<PBExtensionField>)stringOpt;
-+ (id<PBExtensionField>)bytesOpt;
-+ (id<PBExtensionField>)enumOpt;
-+ (id<PBExtensionField>)messageTypeOpt;
-+ (id<PBExtensionField>)quux;
-+ (id<PBExtensionField>)corge;
-+ (id<PBExtensionField>)grault;
-+ (id<PBExtensionField>)garply;
-+ (id<PBExtensionField>)complexOpt1;
-+ (id<PBExtensionField>)complexOpt2;
-+ (id<PBExtensionField>)complexOpt3;
-+ (id<PBExtensionField>)ComplexOpt6;
-+ (id<PBExtensionField>)fileopt;
-+ (id<PBExtensionField>)msgopt;
-+ (id<PBExtensionField>)fieldopt;
-+ (id<PBExtensionField>)enumopt;
-+ (id<PBExtensionField>)enumvalopt;
-+ (id<PBExtensionField>)serviceopt;
-+ (id<PBExtensionField>)methodopt;
++ (PBExtensionField *)fileOpt1;
++ (PBExtensionField *)messageOpt1;
++ (PBExtensionField *)fieldOpt1;
++ (PBExtensionField *)fieldOpt2;
++ (PBExtensionField *)enumOpt1;
++ (PBExtensionField *)enumValueOpt1;
++ (PBExtensionField *)serviceOpt1;
++ (PBExtensionField *)methodOpt1;
++ (PBExtensionField *)boolOpt;
++ (PBExtensionField *)int32Opt;
++ (PBExtensionField *)int64Opt;
++ (PBExtensionField *)uint32Opt;
++ (PBExtensionField *)uint64Opt;
++ (PBExtensionField *)sint32Opt;
++ (PBExtensionField *)sint64Opt;
++ (PBExtensionField *)fixed32Opt;
++ (PBExtensionField *)fixed64Opt;
++ (PBExtensionField *)sfixed32Opt;
++ (PBExtensionField *)sfixed64Opt;
++ (PBExtensionField *)floatOpt;
++ (PBExtensionField *)doubleOpt;
++ (PBExtensionField *)stringOpt;
++ (PBExtensionField *)bytesOpt;
++ (PBExtensionField *)enumOpt;
++ (PBExtensionField *)messageTypeOpt;
++ (PBExtensionField *)quux;
++ (PBExtensionField *)corge;
++ (PBExtensionField *)grault;
++ (PBExtensionField *)garply;
++ (PBExtensionField *)complexOpt1;
++ (PBExtensionField *)complexOpt2;
++ (PBExtensionField *)complexOpt3;
++ (PBExtensionField *)ComplexOpt6;
++ (PBExtensionField *)fileopt;
++ (PBExtensionField *)msgopt;
++ (PBExtensionField *)fieldopt;
++ (PBExtensionField *)enumopt;
++ (PBExtensionField *)enumvalopt;
++ (PBExtensionField *)serviceopt;
++ (PBExtensionField *)methodopt;
 @end
 
 
@@ -636,7 +636,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 - (BOOL)hasWaldo;
 
 
-+ (id<PBExtensionField>)complexOpt4;
++ (PBExtensionField *)complexOpt4;
 
 - (ComplexOptionType2_ComplexOptionType4_Builder*)builder;
 + (ComplexOptionType2_ComplexOptionType4_Builder*)builder;
@@ -837,7 +837,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 - (BOOL)hasS;
 
 
-+ (id<PBExtensionField>)messageSetExtension;
++ (PBExtensionField *)messageSetExtension;
 
 - (AggregateMessageSetElement_Builder*)builder;
 + (AggregateMessageSetElement_Builder*)builder;
@@ -881,7 +881,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 - (BOOL)hasMset;
 
 
-+ (id<PBExtensionField>)nested;
++ (PBExtensionField *)nested;
 
 - (Aggregate_Builder*)builder;
 + (Aggregate_Builder*)builder;
@@ -975,7 +975,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 
 
-+ (id<PBExtensionField>)nestedExtension;
++ (PBExtensionField *)nestedExtension;
 
 - (NestedOptionType_Builder*)builder;
 + (NestedOptionType_Builder*)builder;

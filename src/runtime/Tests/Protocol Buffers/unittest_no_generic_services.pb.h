@@ -37,7 +37,7 @@ BOOL TestEnumIsValidValue(TestEnum value);
 }
 + (PBExtensionRegistry*) extensionRegistry;
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*)registry;
-+ (id<PBExtensionField>)testExtension;
++ (PBExtensionField *)testExtension;
 @end
 
 

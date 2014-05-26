@@ -162,8 +162,8 @@
 - (BOOL)hasMsg;
 
 
-+ (id<PBExtensionField>)testExtension;
-+ (id<PBExtensionField>)testExtension2;
++ (PBExtensionField *)testExtension;
++ (PBExtensionField *)testExtension2;
 
 - (TestOptimizedForSize_Builder*)builder;
 + (TestOptimizedForSize_Builder*)builder;

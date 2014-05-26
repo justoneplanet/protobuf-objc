@@ -11,8 +11,8 @@
 
 @implementation UnittestOptimizeForRoot
 
-static id<PBExtensionField> TestOptimizedForSize_testExtension = nil;
-static id<PBExtensionField> TestOptimizedForSize_testExtension2 = nil;
+static PBExtensionField* TestOptimizedForSize_testExtension = nil;
+static PBExtensionField* TestOptimizedForSize_testExtension2 = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -21,23 +21,23 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (void) initialize {
   if (self == [UnittestOptimizeForRoot class]) {
     TestOptimizedForSize_testExtension =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestOptimizedForSize class]
-                                       fieldNumber:1234
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestOptimizedForSize class]
+                              fieldNumber:1234
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     TestOptimizedForSize_testExtension2 =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[TestOptimizedForSize class]
-                                       fieldNumber:1235
-                                      defaultValue:[TestRequiredOptimizedForSize defaultInstance]
-                               messageOrGroupClass:[TestRequiredOptimizedForSize class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeMessage
+                            extendedClass:[TestOptimizedForSize class]
+                              fieldNumber:1235
+                             defaultValue:[TestRequiredOptimizedForSize defaultInstance]
+                      messageOrGroupClass:[TestRequiredOptimizedForSize class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     [UnittestRoot registerAllExtensions:registry];
@@ -101,10 +101,10 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 
 
-+ (id<PBExtensionField>)testExtension {
++ (PBExtensionField *)testExtension {
   return TestOptimizedForSize_testExtension;
 }
-+ (id<PBExtensionField>)testExtension2 {
++ (PBExtensionField *)testExtension2 {
   return TestOptimizedForSize_testExtension2;
 }
 

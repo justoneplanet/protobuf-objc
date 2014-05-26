@@ -11,7 +11,7 @@
 
 @implementation UnittestNoGenericServicesRoot
 
-static id<PBExtensionField> UnittestNoGenericServicesRoot_testExtension = nil;
+static PBExtensionField* UnittestNoGenericServicesRoot_testExtension = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -20,14 +20,14 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (void) initialize {
   if (self == [UnittestNoGenericServicesRoot class]) {
     UnittestNoGenericServicesRoot_testExtension =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
-                                     extendedClass:[TestMessage class]
-                                       fieldNumber:1000
-                                      defaultValue:@(0)
-                               messageOrGroupClass:[NSNumber class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
+      [PBExtensionField extensionWithType:PBExtensionTypeInt32
+                            extendedClass:[TestMessage class]
+                              fieldNumber:1000
+                             defaultValue:@(0)
+                      messageOrGroupClass:[NSNumber class]
+                               isRepeated:NO
+                                 isPacked:NO
+                   isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     extensionRegistry = registry;
@@ -38,7 +38,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestNoGenericServicesRoot_testExtension];
 }
 
-+ (id<PBExtensionField>)testExtension {
++ (PBExtensionField *)testExtension {
   return UnittestNoGenericServicesRoot_testExtension;
 }
 
