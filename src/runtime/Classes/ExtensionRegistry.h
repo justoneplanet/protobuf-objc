@@ -8,7 +8,7 @@
 //
 
 
-@protocol PBExtensionField;
+@class PBExtensionField;
 
 
 @interface PBExtensionRegistry : NSObject {
@@ -17,7 +17,7 @@
 }
 
 + (instancetype)emptyRegistry;
-- (id<PBExtensionField>)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber;
+- (PBExtensionField *)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber;
 
 /* @protected */
 - (instancetype)initWithClassMap:(NSDictionary*)classMap;

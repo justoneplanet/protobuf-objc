@@ -16,7 +16,7 @@
     NSMutableDictionary* _mutableClassMap;
 }
 
-- (instancetype)initWithClassMap:(NSMutableDictionary*)mutableClassMap {
+- (instancetype)initWithClassMap:(NSMutableDictionary *)mutableClassMap {
     
     self = [super initWithClassMap:mutableClassMap];
     if (self == nil) {
@@ -32,7 +32,7 @@
     return [[PBMutableExtensionRegistry alloc] initWithClassMap:[NSMutableDictionary dictionary]] ;
 }
 
-- (void)addExtension:(id<PBExtensionField>)extension {
+- (void)addExtension:(PBExtensionField *)extension {
     if (extension == nil) {
         return;
     }

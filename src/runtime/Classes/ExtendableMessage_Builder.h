@@ -11,26 +11,26 @@
 
 
 @class PBExtendableMessage;
-@protocol PBExtensionField;
+@class PBExtensionField;
 
 
 @interface PBExtendableMessage_Builder : PBGeneratedMessage_Builder
 
-- (id)getExtension:(id<PBExtensionField>) extension;
+- (id)getExtension:(PBExtensionField *) extension;
 
-- (BOOL)hasExtension:(id<PBExtensionField>) extension;
+- (BOOL)hasExtension:(PBExtensionField *) extension;
 
-- (instancetype)setExtension:(id<PBExtensionField>)extension
+- (instancetype)setExtension:(PBExtensionField *)extension
                                         value:(id)value;
 
-- (instancetype)addExtension:(id<PBExtensionField>)extension
+- (instancetype)addExtension:(PBExtensionField *)extension
                                         value:(id)value;
 
-- (instancetype)setExtension:(id<PBExtensionField>)extension
+- (instancetype)setExtension:(PBExtensionField *)extension
                                         index:(int32_t)index
                                         value:(id)value;
 
-- (instancetype)clearExtension:(id<PBExtensionField>)extension;
+- (instancetype)clearExtension:(PBExtensionField *)extension;
 
 /* @protected */
 - (void)mergeExtensionFields:(PBExtendableMessage*) other;

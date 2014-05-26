@@ -93,7 +93,7 @@
     return NSStringFromClass(aClass);
 }
 
-- (id<PBExtensionField>)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber {
+- (PBExtensionField *)getExtension:(Class)aClass fieldNumber:(NSInteger)fieldNumber {
     NSDictionary* extensionMap = _classMap[[self keyForClass:aClass]];
     return extensionMap[@(fieldNumber)];
 }

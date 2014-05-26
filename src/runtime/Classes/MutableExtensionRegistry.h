@@ -10,13 +10,13 @@
 #import "ExtensionRegistry.h"
 
 
-@protocol PBExtensionField;
+@class PBExtensionField;
 
 
 @interface PBMutableExtensionRegistry : PBExtensionRegistry
 
 + (instancetype)registry;
 
-- (void)addExtension:(id<PBExtensionField>)extension;
+- (void)addExtension:(PBExtensionField *)extension;
 
 @end

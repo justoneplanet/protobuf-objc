@@ -7,10 +7,8 @@
 //  Copyright 2008 Cyrus Najmabadi
 //
 
-
-#import "ConcreteExtensionField.h"
-
 #import "ExtensionField.h"
+
 
 #import "Message.h"
 #import "CodedInputStream.h"
@@ -60,9 +58,9 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
 }
 
 
-#pragma mark - PBConcreteExtensionField
+#pragma mark - PBExtensionField
 
-@implementation PBConcreteExtensionField {
+@implementation PBExtensionField {
     PBExtensionType _type;
 
     Class _extendedClass;
@@ -111,18 +109,18 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
                          isPacked:(BOOL)isPacked
            isMessageSetWireFormat:(BOOL)isMessageSetWireFormat
 {
-    return [[PBConcreteExtensionField alloc]initWithType:type
-                                           extendedClass:extendedClass
-                                             fieldNumber:fieldNumber
-                                            defaultValue:defaultValue
-                                     messageOrGroupClass:messageOrGroupClass
-                                                repeated:isRepeated
-                                                  packed:isPacked
-                                    messageSetWireFormat:isMessageSetWireFormat] ;
+    return [[PBExtensionField alloc]initWithType:type
+                                   extendedClass:extendedClass
+                                     fieldNumber:fieldNumber
+                                    defaultValue:defaultValue
+                             messageOrGroupClass:messageOrGroupClass
+                                        repeated:isRepeated
+                                          packed:isPacked
+                            messageSetWireFormat:isMessageSetWireFormat] ;
 }
 
 
-#pragma mark - PBExtensionField Protocol
+#pragma mark - Common Interface
 
 -(int32_t)fieldNumber {
     return _fieldNumber;
@@ -169,10 +167,10 @@ int32_t extentionTypeSize(PBExtensionType extentionType) {
     return _defaultValue;
 }
 
-- (void)mergeFromCodedInputStream:(PBCodedInputStream*)input
-                    unknownFields:(PBUnknownFieldSet_Builder*)unknownFields
-                extensionRegistry:(PBExtensionRegistry*)extensionRegistry
-                          builder:(PBExtendableMessage_Builder*)builder
+- (void)mergeFromCodedInputStream:(PBCodedInputStream *)input
+                    unknownFields:(PBUnknownFieldSet_Builder *)unknownFields
+                extensionRegistry:(PBExtensionRegistry *)extensionRegistry
+                          builder:(PBExtendableMessage_Builder *)builder
                               tag:(int32_t)tag {
     
     NSParameterAssert(input);

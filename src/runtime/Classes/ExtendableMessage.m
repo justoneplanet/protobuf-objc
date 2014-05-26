@@ -69,7 +69,7 @@
     return [self isInitialized:_extensionMap.allValues];
 }
 
-- (id)getExtension:(id<PBExtensionField>)extension {
+- (id)getExtension:(PBExtensionField *)extension {
     NSParameterAssert(extension);
     
     [self ensureExtensionIsRegistered:extension];
@@ -81,7 +81,7 @@
     return [extension defaultValue];
 }
 
-- (void)ensureExtensionIsRegistered:(id<PBExtensionField>)extension {
+- (void)ensureExtensionIsRegistered:(PBExtensionField *)extension {
     NSParameterAssert(extension);
     
     if ([extension extendedClass] != [self class]) {
@@ -95,7 +95,7 @@
     _extensionRegistry[@([extension fieldNumber])] = extension;
 }
 
-- (BOOL)hasExtension:(id<PBExtensionField>)extension {
+- (BOOL)hasExtension:(PBExtensionField *)extension {
     NSParameterAssert(extension);
     
     BOOL exists = NO;
@@ -117,7 +117,7 @@
     for (NSNumber* number in sortedKeys) {
         int32_t fieldNumber = [number intValue];
         if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
-            id<PBExtensionField> extension = _extensionRegistry[number];
+            PBExtensionField * extension = _extensionRegistry[number];
             id value = _extensionMap[number];
             [extension writeValue:value includingTagToCodedOutputStream:output];
         }
@@ -135,7 +135,7 @@
     for (NSNumber* number in sortedKeys) {
         int32_t fieldNumber = [number intValue];
         if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
-            id<PBExtensionField> extension = _extensionRegistry[number];
+            PBExtensionField * extension = _extensionRegistry[number];
             id value = _extensionMap[number];
             [extension writeDescriptionOf:value to:output withIndent:indent];
         }
@@ -180,7 +180,7 @@
 - (int32_t)extensionsSerializedSize {
     int32_t size = 0;
     for (NSNumber* number in _extensionMap) {
-        id<PBExtensionField> extension = _extensionRegistry[number];
+        PBExtensionField * extension = _extensionRegistry[number];
         id value = _extensionMap[number];
         size += [extension computeSerializedSizeIncludingTag:value];
     }

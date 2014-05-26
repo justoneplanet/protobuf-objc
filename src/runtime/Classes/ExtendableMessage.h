@@ -10,7 +10,7 @@
 #import "GeneratedMessage.h"
 
 
-@protocol PBExtensionField;
+@class PBExtensionField;
 @class PBCodedOutputStream;
 
 
@@ -19,31 +19,31 @@
 @property (strong) NSMutableDictionary* extensionMap;
 @property (strong) NSMutableDictionary* extensionRegistry;
 
-- (BOOL)hasExtension:(id<PBExtensionField>) extension;
-- (id)getExtension:(id<PBExtensionField>) extension;
+- (BOOL)hasExtension:(PBExtensionField *)extension;
+- (id)getExtension:(PBExtensionField *)extension;
 
 //@protected
 - (BOOL) extensionsAreInitialized;
 
 - (int32_t) extensionsSerializedSize;
 
-- (void) writeExtensionsToCodedOutputStream:(PBCodedOutputStream*) output
+- (void) writeExtensionsToCodedOutputStream:(PBCodedOutputStream *)output
                                        from:(int32_t) startInclusive
                                          to:(int32_t) endExclusive;
 
-- (void) writeExtensionDescriptionToMutableString:(NSMutableString*) output
-                                             from:(int32_t) startInclusive
-                                               to:(int32_t) endExclusive
-                                       withIndent:(NSString*) indent;
+- (void) writeExtensionDescriptionToMutableString:(NSMutableString *)output
+                                             from:(int32_t)startInclusive
+                                               to:(int32_t)endExclusive
+                                       withIndent:(NSString *)indent;
 
 - (BOOL) isEqualExtensionsInOther:(PBExtendableMessage*)otherMessage
-                             from:(int32_t) startInclusive
-                               to:(int32_t) endExclusive;
+                             from:(int32_t)startInclusive
+                               to:(int32_t)endExclusive;
 
-- (NSUInteger) hashExtensionsFrom:(int32_t) startInclusive
-                               to:(int32_t) endExclusive;
+- (NSUInteger) hashExtensionsFrom:(int32_t)startInclusive
+                               to:(int32_t)endExclusive;
 
 /* @internal */
-- (void) ensureExtensionIsRegistered:(id<PBExtensionField>) extension;
+- (void) ensureExtensionIsRegistered:(PBExtensionField *) extension;
 
 @end

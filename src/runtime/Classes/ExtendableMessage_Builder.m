@@ -56,7 +56,7 @@
 
 @implementation PBExtendableMessage_Builder
 
-- (PBExtendableMessage*)internalGetResult {
+- (PBExtendableMessage *)internalGetResult {
     return nil;
 }
 
@@ -64,9 +64,9 @@
  * Called by subclasses to parse an unknown field or an extension.
  * @return {@code YES} unless the tag is an end-group tag.
  */
-- (BOOL)parseUnknownField:(PBCodedInputStream*)input
-            unknownFields:(PBUnknownFieldSet_Builder*)unknownFields
-        extensionRegistry:(PBExtensionRegistry*) extensionRegistry
+- (BOOL)parseUnknownField:(PBCodedInputStream *)input
+            unknownFields:(PBUnknownFieldSet_Builder *)unknownFields
+        extensionRegistry:(PBExtensionRegistry *) extensionRegistry
                       tag:(int32_t)tag
 {
     NSParameterAssert(input);
@@ -76,7 +76,7 @@
     int32_t wireType = PBWireFormatGetTagWireType(tag);
     int32_t fieldNumber = PBWireFormatGetTagFieldNumber(tag);
     
-    id<PBExtensionField> extension = [extensionRegistry getExtension:[message class]
+    PBExtensionField * extension = [extensionRegistry getExtension:[message class]
                                                          fieldNumber:fieldNumber];
     
     if (extension != nil) {
@@ -94,19 +94,19 @@
 }
 
 
-- (id)getExtension:(id<PBExtensionField>)extension {
+- (id)getExtension:(PBExtensionField *)extension {
     NSParameterAssert(extension);
     return [[self internalGetResult] getExtension:extension];
 }
 
 
-- (BOOL)hasExtension:(id<PBExtensionField>)extension {
+- (BOOL)hasExtension:(PBExtensionField *)extension {
     NSParameterAssert(extension);
     return [[self internalGetResult] hasExtension:extension];
 }
 
 
-- (instancetype)setExtension:(id<PBExtensionField>)extension
+- (instancetype)setExtension:(PBExtensionField *)extension
                        value:(id) value
 {
     NSParameterAssert(extension);
@@ -127,7 +127,7 @@
 }
 
 
-- (instancetype)addExtension:(id<PBExtensionField>)extension
+- (instancetype)addExtension:(PBExtensionField *)extension
                        value:(id) value
 {
     NSParameterAssert(extension);
@@ -155,7 +155,7 @@
 }
 
 
-- (instancetype)setExtension:(id<PBExtensionField>)extension
+- (instancetype)setExtension:(PBExtensionField *)extension
                        index:(int32_t) index
                        value:(id) value
 {
@@ -182,7 +182,7 @@
 }
 
 
-- (instancetype)clearExtension:(id<PBExtensionField>)extension {
+- (instancetype)clearExtension:(PBExtensionField *)extension {
     NSParameterAssert(extension);
     
     PBExtendableMessage* message = [self internalGetResult];
@@ -207,7 +207,7 @@
         
         NSDictionary* registry = other.extensionRegistry;
         for (NSNumber* fieldNumber in other.extensionMap) {
-            id<PBExtensionField> thisField = registry[fieldNumber];
+            PBExtensionField * thisField = registry[fieldNumber];
             id value = (other.extensionMap)[fieldNumber];
             
             if ([thisField isRepeated]) {

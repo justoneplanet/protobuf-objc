@@ -38,7 +38,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     vars["name"] = UnderscoresToCamelCase(descriptor_, false);
 
     printer->Print(vars,
-      "+ (id<PBExtensionField>)$name$;\n");
+      "+ (PBExtensionField *)$name$;\n");
   }
 
   void ExtensionGenerator::GenerateFieldsSource(io::Printer* printer) {
@@ -47,7 +47,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     vars["containing_type"] = classname_;
 
     printer->Print(vars,
-      "static id<PBExtensionField> $containing_type$_$name$ = nil;\n");
+      "static PBExtensionField* $containing_type$_$name$ = nil;\n");
   }
 
   void ExtensionGenerator::GenerateMembersSource(io::Printer* printer) {
@@ -56,7 +56,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     vars["containing_type"] = classname_;
 
     printer->Print(vars,
-      "+ (id<PBExtensionField>)$name$ {\n"
+      "+ (PBExtensionField *)$name$ {\n"
       "  return $containing_type$_$name$;\n"
       "}\n");
   }
@@ -162,14 +162,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       vars,
-      "  [PBConcreteExtensionField extensionWithType:$extension_type$\n"
-      "                                 extendedClass:[$extended_type$ class]\n"
-      "                                   fieldNumber:$number$\n"
-      "                                  defaultValue:$default$\n"
-      "                           messageOrGroupClass:[$type$ class]\n"
-      "                                    isRepeated:$is_repeated$\n"
-      "                                      isPacked:$is_packed$\n"
-      "                        isMessageSetWireFormat:$is_wire_format$];\n");
+      "  [PBExtensionField extensionWithType:$extension_type$\n"
+      "                        extendedClass:[$extended_type$ class]\n"
+      "                          fieldNumber:$number$\n"
+      "                         defaultValue:$default$\n"
+      "                  messageOrGroupClass:[$type$ class]\n"
+      "                           isRepeated:$is_repeated$\n"
+      "                             isPacked:$is_packed$\n"
+      "               isMessageSetWireFormat:$is_wire_format$];\n");
   }
 
   void ExtensionGenerator::GenerateRegistrationSource(io::Printer* printer) {

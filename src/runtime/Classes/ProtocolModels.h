@@ -28,10 +28,9 @@
 #import "UnknownFieldSet_Builder.h"
 
 // extentions
-#import "ConcreteExtensionField.h"
+#import "ExtensionField.h"
 #import "ExtendableMessage.h"
 #import "ExtendableMessage_Builder.h"
-#import "ExtensionField.h"
 #import "ExtensionRegistry.h"
 #import "MutableExtensionRegistry.h"
 
