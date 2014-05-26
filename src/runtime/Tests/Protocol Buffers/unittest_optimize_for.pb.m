@@ -128,7 +128,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
+
+- (int32_t)serializedSize {
   int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
@@ -148,16 +149,16 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 
 
-+ (TestOptimizedForSize_Builder*) builder {
++ (TestOptimizedForSize_Builder*)builder {
   return [[TestOptimizedForSize_Builder alloc] init];
 }
-+ (TestOptimizedForSize_Builder*) builderWithPrototype:(TestOptimizedForSize*)prototype {
++ (TestOptimizedForSize_Builder*)builderWithPrototype:(TestOptimizedForSize*)prototype {
   return [[TestOptimizedForSize builder] mergeFrom:prototype];
 }
-- (TestOptimizedForSize_Builder*) builder {
+- (TestOptimizedForSize_Builder*)builder {
   return [TestOptimizedForSize builder];
 }
-- (TestOptimizedForSize_Builder*) toBuilder {
+- (TestOptimizedForSize_Builder*)toBuilder {
   return [TestOptimizedForSize builderWithPrototype:self];
 }
 
@@ -195,7 +196,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
 
       (self.unknownFields == otherMessage.unknownFields ||
-       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+       (self.unknownFields != nil &&
+       [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -239,15 +241,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return [[[TestOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
-- (TestOptimizedForSize*) defaultInstance {
+- (TestOptimizedForSize*)defaultMessageInstance {
   return [TestOptimizedForSize defaultInstance];
 }
 
-- (TestOptimizedForSize*) build {
+- (TestOptimizedForSize*)build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (TestOptimizedForSize*) buildPartial {
+- (TestOptimizedForSize*)buildPartial {
   TestOptimizedForSize* partial = _result;
   _result = nil;
   return partial;
@@ -268,7 +270,9 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     int32_t tag = [input readTag];
@@ -277,7 +281,11 @@ static PBExtensionRegistry* extensionRegistry = nil;
         [self setUnknownFields:[unknownFields build]];
         return self;
       default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+        if (![self parseUnknownField:input
+                       unknownFields:unknownFields
+                   extensionRegistry:extensionRegistry
+                                 tag:tag])
+        {
           [self setUnknownFields:[unknownFields build]];
           return self;
         }
@@ -400,7 +408,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
+
+- (int32_t)serializedSize {
   int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
@@ -416,16 +425,16 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 
 
-+ (TestRequiredOptimizedForSize_Builder*) builder {
++ (TestRequiredOptimizedForSize_Builder*)builder {
   return [[TestRequiredOptimizedForSize_Builder alloc] init];
 }
-+ (TestRequiredOptimizedForSize_Builder*) builderWithPrototype:(TestRequiredOptimizedForSize*)prototype {
++ (TestRequiredOptimizedForSize_Builder*)builderWithPrototype:(TestRequiredOptimizedForSize*)prototype {
   return [[TestRequiredOptimizedForSize builder] mergeFrom:prototype];
 }
-- (TestRequiredOptimizedForSize_Builder*) builder {
+- (TestRequiredOptimizedForSize_Builder*)builder {
   return [TestRequiredOptimizedForSize builder];
 }
-- (TestRequiredOptimizedForSize_Builder*) toBuilder {
+- (TestRequiredOptimizedForSize_Builder*)toBuilder {
   return [TestRequiredOptimizedForSize builderWithPrototype:self];
 }
 
@@ -449,7 +458,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       self.hasX == otherMessage.hasX &&
       (!self.hasX || self.x == otherMessage.x) &&
       (self.unknownFields == otherMessage.unknownFields ||
-       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+       (self.unknownFields != nil &&
+       [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -489,15 +499,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return [[[TestRequiredOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
-- (TestRequiredOptimizedForSize*) defaultInstance {
+- (TestRequiredOptimizedForSize*)defaultMessageInstance {
   return [TestRequiredOptimizedForSize defaultInstance];
 }
 
-- (TestRequiredOptimizedForSize*) build {
+- (TestRequiredOptimizedForSize*)build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (TestRequiredOptimizedForSize*) buildPartial {
+- (TestRequiredOptimizedForSize*)buildPartial {
   TestRequiredOptimizedForSize* partial = _result;
   _result = nil;
   return partial;
@@ -514,7 +524,9 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     int32_t tag = [input readTag];
@@ -523,7 +535,11 @@ static PBExtensionRegistry* extensionRegistry = nil;
         [self setUnknownFields:[unknownFields build]];
         return self;
       default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+        if (![self parseUnknownField:input
+                       unknownFields:unknownFields
+                   extensionRegistry:extensionRegistry
+                                 tag:tag])
+        {
           [self setUnknownFields:[unknownFields build]];
           return self;
         }
@@ -610,7 +626,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
+
+- (int32_t)serializedSize {
   int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
@@ -626,16 +643,16 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 
 
-+ (TestOptionalOptimizedForSize_Builder*) builder {
++ (TestOptionalOptimizedForSize_Builder*)builder {
   return [[TestOptionalOptimizedForSize_Builder alloc] init];
 }
-+ (TestOptionalOptimizedForSize_Builder*) builderWithPrototype:(TestOptionalOptimizedForSize*)prototype {
++ (TestOptionalOptimizedForSize_Builder*)builderWithPrototype:(TestOptionalOptimizedForSize*)prototype {
   return [[TestOptionalOptimizedForSize builder] mergeFrom:prototype];
 }
-- (TestOptionalOptimizedForSize_Builder*) builder {
+- (TestOptionalOptimizedForSize_Builder*)builder {
   return [TestOptionalOptimizedForSize builder];
 }
-- (TestOptionalOptimizedForSize_Builder*) toBuilder {
+- (TestOptionalOptimizedForSize_Builder*)toBuilder {
   return [TestOptionalOptimizedForSize builderWithPrototype:self];
 }
 
@@ -662,7 +679,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       self.hasO == otherMessage.hasO &&
       (!self.hasO || [self.o isEqual:otherMessage.o]) &&
       (self.unknownFields == otherMessage.unknownFields ||
-       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+       (self.unknownFields != nil &&
+       [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -702,15 +720,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return [[[TestOptionalOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
-- (TestOptionalOptimizedForSize*) defaultInstance {
+- (TestOptionalOptimizedForSize*)defaultMessageInstance {
   return [TestOptionalOptimizedForSize defaultInstance];
 }
 
-- (TestOptionalOptimizedForSize*) build {
+- (TestOptionalOptimizedForSize*)build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (TestOptionalOptimizedForSize*) buildPartial {
+- (TestOptionalOptimizedForSize*)buildPartial {
   TestOptionalOptimizedForSize* partial = _result;
   _result = nil;
   return partial;
@@ -727,7 +745,9 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     int32_t tag = [input readTag];
@@ -736,7 +756,11 @@ static PBExtensionRegistry* extensionRegistry = nil;
         [self setUnknownFields:[unknownFields build]];
         return self;
       default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+        if (![self parseUnknownField:input
+                       unknownFields:unknownFields
+                   extensionRegistry:extensionRegistry
+                                 tag:tag])
+        {
           [self setUnknownFields:[unknownFields build]];
           return self;
         }

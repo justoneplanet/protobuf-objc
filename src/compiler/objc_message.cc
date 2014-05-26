@@ -588,7 +588,8 @@ namespace objectivec {
     printer->Outdent();
     printer->Print(
       "}\n"
-      "- (int32_t) serializedSize {\n"
+      "\n"
+      "- (int32_t)serializedSize {\n"
       "  int32_t size_ = _cachedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"

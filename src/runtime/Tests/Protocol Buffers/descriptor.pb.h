@@ -130,7 +130,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBFileDescriptorSet_Builder*)builder;
 + (PBFileDescriptorSet_Builder*)builder;
-+ (PBFileDescriptorSet_Builder*)builderWithPrototype:(PBFileDescriptorSet*) prototype;
++ (PBFileDescriptorSet_Builder*)builderWithPrototype:(PBFileDescriptorSet*)prototype;
 - (PBFileDescriptorSet_Builder*)toBuilder;
 
 @end
@@ -138,7 +138,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBFileDescriptorSet_Builder : PBGeneratedMessage_Builder
 
-- (PBFileDescriptorSet*) defaultInstance;
+- (PBFileDescriptorSet*)defaultMessageInstance;
 
 - (PBFileDescriptorSet*)build;
 - (PBFileDescriptorSet*)buildPartial;
@@ -185,7 +185,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBFileDescriptorProto_Builder*)builder;
 + (PBFileDescriptorProto_Builder*)builder;
-+ (PBFileDescriptorProto_Builder*)builderWithPrototype:(PBFileDescriptorProto*) prototype;
++ (PBFileDescriptorProto_Builder*)builderWithPrototype:(PBFileDescriptorProto*)prototype;
 - (PBFileDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -193,7 +193,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBFileDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBFileDescriptorProto*) defaultInstance;
+- (PBFileDescriptorProto*)defaultMessageInstance;
 
 - (PBFileDescriptorProto*)build;
 - (PBFileDescriptorProto*)buildPartial;
@@ -294,7 +294,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBDescriptorProto_Builder*)builder;
 + (PBDescriptorProto_Builder*)builder;
-+ (PBDescriptorProto_Builder*)builderWithPrototype:(PBDescriptorProto*) prototype;
++ (PBDescriptorProto_Builder*)builderWithPrototype:(PBDescriptorProto*)prototype;
 - (PBDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -302,7 +302,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBDescriptorProto*) defaultInstance;
+- (PBDescriptorProto*)defaultMessageInstance;
 
 - (PBDescriptorProto*)build;
 - (PBDescriptorProto*)buildPartial;
@@ -367,7 +367,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBDescriptorProto_ExtensionRange_Builder*)builder;
 + (PBDescriptorProto_ExtensionRange_Builder*)builder;
-+ (PBDescriptorProto_ExtensionRange_Builder*)builderWithPrototype:(PBDescriptorProto_ExtensionRange*) prototype;
++ (PBDescriptorProto_ExtensionRange_Builder*)builderWithPrototype:(PBDescriptorProto_ExtensionRange*)prototype;
 - (PBDescriptorProto_ExtensionRange_Builder*)toBuilder;
 
 @end
@@ -375,7 +375,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBDescriptorProto_ExtensionRange_Builder : PBGeneratedMessage_Builder
 
-- (PBDescriptorProto_ExtensionRange*) defaultInstance;
+- (PBDescriptorProto_ExtensionRange*)defaultMessageInstance;
 
 - (PBDescriptorProto_ExtensionRange*)build;
 - (PBDescriptorProto_ExtensionRange*)buildPartial;
@@ -420,7 +420,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBFieldDescriptorProto_Builder*)builder;
 + (PBFieldDescriptorProto_Builder*)builder;
-+ (PBFieldDescriptorProto_Builder*)builderWithPrototype:(PBFieldDescriptorProto*) prototype;
++ (PBFieldDescriptorProto_Builder*)builderWithPrototype:(PBFieldDescriptorProto*)prototype;
 - (PBFieldDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -428,7 +428,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBFieldDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBFieldDescriptorProto*) defaultInstance;
+- (PBFieldDescriptorProto*)defaultMessageInstance;
 
 - (PBFieldDescriptorProto*)build;
 - (PBFieldDescriptorProto*)buildPartial;
@@ -495,7 +495,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBEnumDescriptorProto_Builder*)builder;
 + (PBEnumDescriptorProto_Builder*)builder;
-+ (PBEnumDescriptorProto_Builder*)builderWithPrototype:(PBEnumDescriptorProto*) prototype;
++ (PBEnumDescriptorProto_Builder*)builderWithPrototype:(PBEnumDescriptorProto*)prototype;
 - (PBEnumDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -503,7 +503,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBEnumDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBEnumDescriptorProto*) defaultInstance;
+- (PBEnumDescriptorProto*)defaultMessageInstance;
 
 - (PBEnumDescriptorProto*)build;
 - (PBEnumDescriptorProto*)buildPartial;
@@ -546,7 +546,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBEnumValueDescriptorProto_Builder*)builder;
 + (PBEnumValueDescriptorProto_Builder*)builder;
-+ (PBEnumValueDescriptorProto_Builder*)builderWithPrototype:(PBEnumValueDescriptorProto*) prototype;
++ (PBEnumValueDescriptorProto_Builder*)builderWithPrototype:(PBEnumValueDescriptorProto*)prototype;
 - (PBEnumValueDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -554,7 +554,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBEnumValueDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBEnumValueDescriptorProto*) defaultInstance;
+- (PBEnumValueDescriptorProto*)defaultMessageInstance;
 
 - (PBEnumValueDescriptorProto*)build;
 - (PBEnumValueDescriptorProto*)buildPartial;
@@ -596,7 +596,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBServiceDescriptorProto_Builder*)builder;
 + (PBServiceDescriptorProto_Builder*)builder;
-+ (PBServiceDescriptorProto_Builder*)builderWithPrototype:(PBServiceDescriptorProto*) prototype;
++ (PBServiceDescriptorProto_Builder*)builderWithPrototype:(PBServiceDescriptorProto*)prototype;
 - (PBServiceDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -604,7 +604,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBServiceDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBServiceDescriptorProto*) defaultInstance;
+- (PBServiceDescriptorProto*)defaultMessageInstance;
 
 - (PBServiceDescriptorProto*)build;
 - (PBServiceDescriptorProto*)buildPartial;
@@ -649,7 +649,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBMethodDescriptorProto_Builder*)builder;
 + (PBMethodDescriptorProto_Builder*)builder;
-+ (PBMethodDescriptorProto_Builder*)builderWithPrototype:(PBMethodDescriptorProto*) prototype;
++ (PBMethodDescriptorProto_Builder*)builderWithPrototype:(PBMethodDescriptorProto*)prototype;
 - (PBMethodDescriptorProto_Builder*)toBuilder;
 
 @end
@@ -657,7 +657,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBMethodDescriptorProto_Builder : PBGeneratedMessage_Builder
 
-- (PBMethodDescriptorProto*) defaultInstance;
+- (PBMethodDescriptorProto*)defaultMessageInstance;
 
 - (PBMethodDescriptorProto*)build;
 - (PBMethodDescriptorProto*)buildPartial;
@@ -718,7 +718,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBFileOptions_Builder*)builder;
 + (PBFileOptions_Builder*)builder;
-+ (PBFileOptions_Builder*)builderWithPrototype:(PBFileOptions*) prototype;
++ (PBFileOptions_Builder*)builderWithPrototype:(PBFileOptions*)prototype;
 - (PBFileOptions_Builder*)toBuilder;
 
 @end
@@ -726,7 +726,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBFileOptions_Builder : PBExtendableMessage_Builder
 
-- (PBFileOptions*) defaultInstance;
+- (PBFileOptions*)defaultMessageInstance;
 
 - (PBFileOptions*)build;
 - (PBFileOptions*)buildPartial;
@@ -802,7 +802,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBMessageOptions_Builder*)builder;
 + (PBMessageOptions_Builder*)builder;
-+ (PBMessageOptions_Builder*)builderWithPrototype:(PBMessageOptions*) prototype;
++ (PBMessageOptions_Builder*)builderWithPrototype:(PBMessageOptions*)prototype;
 - (PBMessageOptions_Builder*)toBuilder;
 
 @end
@@ -810,7 +810,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBMessageOptions_Builder : PBExtendableMessage_Builder
 
-- (PBMessageOptions*) defaultInstance;
+- (PBMessageOptions*)defaultMessageInstance;
 
 - (PBMessageOptions*)build;
 - (PBMessageOptions*)buildPartial;
@@ -859,7 +859,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBFieldOptions_Builder*)builder;
 + (PBFieldOptions_Builder*)builder;
-+ (PBFieldOptions_Builder*)builderWithPrototype:(PBFieldOptions*) prototype;
++ (PBFieldOptions_Builder*)builderWithPrototype:(PBFieldOptions*)prototype;
 - (PBFieldOptions_Builder*)toBuilder;
 
 @end
@@ -867,7 +867,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBFieldOptions_Builder : PBExtendableMessage_Builder
 
-- (PBFieldOptions*) defaultInstance;
+- (PBFieldOptions*)defaultMessageInstance;
 
 - (PBFieldOptions*)build;
 - (PBFieldOptions*)buildPartial;
@@ -926,7 +926,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBEnumOptions_Builder*)builder;
 + (PBEnumOptions_Builder*)builder;
-+ (PBEnumOptions_Builder*)builderWithPrototype:(PBEnumOptions*) prototype;
++ (PBEnumOptions_Builder*)builderWithPrototype:(PBEnumOptions*)prototype;
 - (PBEnumOptions_Builder*)toBuilder;
 
 @end
@@ -934,7 +934,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBEnumOptions_Builder : PBExtendableMessage_Builder
 
-- (PBEnumOptions*) defaultInstance;
+- (PBEnumOptions*)defaultMessageInstance;
 
 - (PBEnumOptions*)build;
 - (PBEnumOptions*)buildPartial;
@@ -966,7 +966,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBEnumValueOptions_Builder*)builder;
 + (PBEnumValueOptions_Builder*)builder;
-+ (PBEnumValueOptions_Builder*)builderWithPrototype:(PBEnumValueOptions*) prototype;
++ (PBEnumValueOptions_Builder*)builderWithPrototype:(PBEnumValueOptions*)prototype;
 - (PBEnumValueOptions_Builder*)toBuilder;
 
 @end
@@ -974,7 +974,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBEnumValueOptions_Builder : PBExtendableMessage_Builder
 
-- (PBEnumValueOptions*) defaultInstance;
+- (PBEnumValueOptions*)defaultMessageInstance;
 
 - (PBEnumValueOptions*)build;
 - (PBEnumValueOptions*)buildPartial;
@@ -1001,7 +1001,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBServiceOptions_Builder*)builder;
 + (PBServiceOptions_Builder*)builder;
-+ (PBServiceOptions_Builder*)builderWithPrototype:(PBServiceOptions*) prototype;
++ (PBServiceOptions_Builder*)builderWithPrototype:(PBServiceOptions*)prototype;
 - (PBServiceOptions_Builder*)toBuilder;
 
 @end
@@ -1009,7 +1009,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBServiceOptions_Builder : PBExtendableMessage_Builder
 
-- (PBServiceOptions*) defaultInstance;
+- (PBServiceOptions*)defaultMessageInstance;
 
 - (PBServiceOptions*)build;
 - (PBServiceOptions*)buildPartial;
@@ -1036,7 +1036,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBMethodOptions_Builder*)builder;
 + (PBMethodOptions_Builder*)builder;
-+ (PBMethodOptions_Builder*)builderWithPrototype:(PBMethodOptions*) prototype;
++ (PBMethodOptions_Builder*)builderWithPrototype:(PBMethodOptions*)prototype;
 - (PBMethodOptions_Builder*)toBuilder;
 
 @end
@@ -1044,7 +1044,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBMethodOptions_Builder : PBExtendableMessage_Builder
 
-- (PBMethodOptions*) defaultInstance;
+- (PBMethodOptions*)defaultMessageInstance;
 
 - (PBMethodOptions*)build;
 - (PBMethodOptions*)buildPartial;
@@ -1083,7 +1083,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBUninterpretedOption_Builder*)builder;
 + (PBUninterpretedOption_Builder*)builder;
-+ (PBUninterpretedOption_Builder*)builderWithPrototype:(PBUninterpretedOption*) prototype;
++ (PBUninterpretedOption_Builder*)builderWithPrototype:(PBUninterpretedOption*)prototype;
 - (PBUninterpretedOption_Builder*)toBuilder;
 
 @end
@@ -1091,7 +1091,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBUninterpretedOption_Builder : PBGeneratedMessage_Builder
 
-- (PBUninterpretedOption*) defaultInstance;
+- (PBUninterpretedOption*)defaultMessageInstance;
 
 - (PBUninterpretedOption*)build;
 - (PBUninterpretedOption*)buildPartial;
@@ -1150,7 +1150,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBUninterpretedOption_NamePart_Builder*)builder;
 + (PBUninterpretedOption_NamePart_Builder*)builder;
-+ (PBUninterpretedOption_NamePart_Builder*)builderWithPrototype:(PBUninterpretedOption_NamePart*) prototype;
++ (PBUninterpretedOption_NamePart_Builder*)builderWithPrototype:(PBUninterpretedOption_NamePart*)prototype;
 - (PBUninterpretedOption_NamePart_Builder*)toBuilder;
 
 @end
@@ -1158,7 +1158,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBUninterpretedOption_NamePart_Builder : PBGeneratedMessage_Builder
 
-- (PBUninterpretedOption_NamePart*) defaultInstance;
+- (PBUninterpretedOption_NamePart*)defaultMessageInstance;
 
 - (PBUninterpretedOption_NamePart*)build;
 - (PBUninterpretedOption_NamePart*)buildPartial;
@@ -1189,7 +1189,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBSourceCodeInfo_Builder*)builder;
 + (PBSourceCodeInfo_Builder*)builder;
-+ (PBSourceCodeInfo_Builder*)builderWithPrototype:(PBSourceCodeInfo*) prototype;
++ (PBSourceCodeInfo_Builder*)builderWithPrototype:(PBSourceCodeInfo*)prototype;
 - (PBSourceCodeInfo_Builder*)toBuilder;
 
 @end
@@ -1197,7 +1197,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBSourceCodeInfo_Builder : PBGeneratedMessage_Builder
 
-- (PBSourceCodeInfo*) defaultInstance;
+- (PBSourceCodeInfo*)defaultMessageInstance;
 
 - (PBSourceCodeInfo*)build;
 - (PBSourceCodeInfo*)buildPartial;
@@ -1230,7 +1230,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 - (PBSourceCodeInfo_Location_Builder*)builder;
 + (PBSourceCodeInfo_Location_Builder*)builder;
-+ (PBSourceCodeInfo_Location_Builder*)builderWithPrototype:(PBSourceCodeInfo_Location*) prototype;
++ (PBSourceCodeInfo_Location_Builder*)builderWithPrototype:(PBSourceCodeInfo_Location*)prototype;
 - (PBSourceCodeInfo_Location_Builder*)toBuilder;
 
 @end
@@ -1238,7 +1238,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value);
 
 @interface PBSourceCodeInfo_Location_Builder : PBGeneratedMessage_Builder
 
-- (PBSourceCodeInfo_Location*) defaultInstance;
+- (PBSourceCodeInfo_Location*)defaultMessageInstance;
 
 - (PBSourceCodeInfo_Location*)build;
 - (PBSourceCodeInfo_Location*)buildPartial;

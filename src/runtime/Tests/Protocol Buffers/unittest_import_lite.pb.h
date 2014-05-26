@@ -56,7 +56,7 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value);
 
 - (ImportMessageLite_Builder*)builder;
 + (ImportMessageLite_Builder*)builder;
-+ (ImportMessageLite_Builder*)builderWithPrototype:(ImportMessageLite*) prototype;
++ (ImportMessageLite_Builder*)builderWithPrototype:(ImportMessageLite*)prototype;
 - (ImportMessageLite_Builder*)toBuilder;
 
 @end
@@ -64,7 +64,7 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value);
 
 @interface ImportMessageLite_Builder : PBGeneratedMessage_Builder
 
-- (ImportMessageLite*) defaultInstance;
+- (ImportMessageLite*)defaultMessageInstance;
 
 - (ImportMessageLite*)build;
 - (ImportMessageLite*)buildPartial;

@@ -103,7 +103,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
+
+- (int32_t)serializedSize {
   int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
@@ -122,16 +123,16 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 
 
-+ (TestEmbedOptimizedForSize_Builder*) builder {
++ (TestEmbedOptimizedForSize_Builder*)builder {
   return [[TestEmbedOptimizedForSize_Builder alloc] init];
 }
-+ (TestEmbedOptimizedForSize_Builder*) builderWithPrototype:(TestEmbedOptimizedForSize*)prototype {
++ (TestEmbedOptimizedForSize_Builder*)builderWithPrototype:(TestEmbedOptimizedForSize*)prototype {
   return [[TestEmbedOptimizedForSize builder] mergeFrom:prototype];
 }
-- (TestEmbedOptimizedForSize_Builder*) builder {
+- (TestEmbedOptimizedForSize_Builder*)builder {
   return [TestEmbedOptimizedForSize builder];
 }
-- (TestEmbedOptimizedForSize_Builder*) toBuilder {
+- (TestEmbedOptimizedForSize_Builder*)toBuilder {
   return [TestEmbedOptimizedForSize builderWithPrototype:self];
 }
 
@@ -163,9 +164,11 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return
       self.hasOptionalMessage == otherMessage.hasOptionalMessage &&
       (!self.hasOptionalMessage || [self.optionalMessage isEqual:otherMessage.optionalMessage]) &&
-      ((self.repeatedMessageArray == nil && otherMessage.repeatedMessageArray == nil) || [self.repeatedMessageArray isEqualToArray:otherMessage.repeatedMessageArray]) &&
+      ((self.repeatedMessageArray == nil && otherMessage.repeatedMessageArray == nil) ||
+      [self.repeatedMessageArray isEqualToArray:otherMessage.repeatedMessageArray]) &&
       (self.unknownFields == otherMessage.unknownFields ||
-       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+       (self.unknownFields != nil &&
+       [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -208,15 +211,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return [[[TestEmbedOptimizedForSize_Builder alloc] init] mergeFrom:_result];
 }
 
-- (TestEmbedOptimizedForSize*) defaultInstance {
+- (TestEmbedOptimizedForSize*)defaultMessageInstance {
   return [TestEmbedOptimizedForSize defaultInstance];
 }
 
-- (TestEmbedOptimizedForSize*) build {
+- (TestEmbedOptimizedForSize*)build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (TestEmbedOptimizedForSize*) buildPartial {
+- (TestEmbedOptimizedForSize*)buildPartial {
   TestEmbedOptimizedForSize* partial = _result;
   _result = nil;
   return partial;
@@ -240,7 +243,9 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     int32_t tag = [input readTag];
@@ -249,7 +254,11 @@ static PBExtensionRegistry* extensionRegistry = nil;
         [self setUnknownFields:[unknownFields build]];
         return self;
       default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+        if (![self parseUnknownField:input
+                       unknownFields:unknownFields
+                   extensionRegistry:extensionRegistry
+                                 tag:tag])
+        {
           [self setUnknownFields:[unknownFields build]];
           return self;
         }

@@ -207,7 +207,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (TestMessageWithCustomOptions_Builder*)builder;
 + (TestMessageWithCustomOptions_Builder*)builder;
-+ (TestMessageWithCustomOptions_Builder*)builderWithPrototype:(TestMessageWithCustomOptions*) prototype;
++ (TestMessageWithCustomOptions_Builder*)builderWithPrototype:(TestMessageWithCustomOptions*)prototype;
 - (TestMessageWithCustomOptions_Builder*)toBuilder;
 
 @end
@@ -215,7 +215,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface TestMessageWithCustomOptions_Builder : PBGeneratedMessage_Builder
 
-- (TestMessageWithCustomOptions*) defaultInstance;
+- (TestMessageWithCustomOptions*)defaultMessageInstance;
 
 - (TestMessageWithCustomOptions*)build;
 - (TestMessageWithCustomOptions*)buildPartial;
@@ -239,7 +239,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionFooRequest_Builder*)builder;
 + (CustomOptionFooRequest_Builder*)builder;
-+ (CustomOptionFooRequest_Builder*)builderWithPrototype:(CustomOptionFooRequest*) prototype;
++ (CustomOptionFooRequest_Builder*)builderWithPrototype:(CustomOptionFooRequest*)prototype;
 - (CustomOptionFooRequest_Builder*)toBuilder;
 
 @end
@@ -247,7 +247,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionFooRequest_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionFooRequest*) defaultInstance;
+- (CustomOptionFooRequest*)defaultMessageInstance;
 
 - (CustomOptionFooRequest*)build;
 - (CustomOptionFooRequest*)buildPartial;
@@ -266,7 +266,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionFooResponse_Builder*)builder;
 + (CustomOptionFooResponse_Builder*)builder;
-+ (CustomOptionFooResponse_Builder*)builderWithPrototype:(CustomOptionFooResponse*) prototype;
++ (CustomOptionFooResponse_Builder*)builderWithPrototype:(CustomOptionFooResponse*)prototype;
 - (CustomOptionFooResponse_Builder*)toBuilder;
 
 @end
@@ -274,7 +274,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionFooResponse_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionFooResponse*) defaultInstance;
+- (CustomOptionFooResponse*)defaultMessageInstance;
 
 - (CustomOptionFooResponse*)build;
 - (CustomOptionFooResponse*)buildPartial;
@@ -293,7 +293,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionFooClientMessage_Builder*)builder;
 + (CustomOptionFooClientMessage_Builder*)builder;
-+ (CustomOptionFooClientMessage_Builder*)builderWithPrototype:(CustomOptionFooClientMessage*) prototype;
++ (CustomOptionFooClientMessage_Builder*)builderWithPrototype:(CustomOptionFooClientMessage*)prototype;
 - (CustomOptionFooClientMessage_Builder*)toBuilder;
 
 @end
@@ -301,7 +301,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionFooClientMessage_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionFooClientMessage*) defaultInstance;
+- (CustomOptionFooClientMessage*)defaultMessageInstance;
 
 - (CustomOptionFooClientMessage*)build;
 - (CustomOptionFooClientMessage*)buildPartial;
@@ -320,7 +320,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionFooServerMessage_Builder*)builder;
 + (CustomOptionFooServerMessage_Builder*)builder;
-+ (CustomOptionFooServerMessage_Builder*)builderWithPrototype:(CustomOptionFooServerMessage*) prototype;
++ (CustomOptionFooServerMessage_Builder*)builderWithPrototype:(CustomOptionFooServerMessage*)prototype;
 - (CustomOptionFooServerMessage_Builder*)toBuilder;
 
 @end
@@ -328,7 +328,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionFooServerMessage_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionFooServerMessage*) defaultInstance;
+- (CustomOptionFooServerMessage*)defaultMessageInstance;
 
 - (CustomOptionFooServerMessage*)build;
 - (CustomOptionFooServerMessage*)buildPartial;
@@ -347,7 +347,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (DummyMessageContainingEnum_Builder*)builder;
 + (DummyMessageContainingEnum_Builder*)builder;
-+ (DummyMessageContainingEnum_Builder*)builderWithPrototype:(DummyMessageContainingEnum*) prototype;
++ (DummyMessageContainingEnum_Builder*)builderWithPrototype:(DummyMessageContainingEnum*)prototype;
 - (DummyMessageContainingEnum_Builder*)toBuilder;
 
 @end
@@ -355,7 +355,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface DummyMessageContainingEnum_Builder : PBGeneratedMessage_Builder
 
-- (DummyMessageContainingEnum*) defaultInstance;
+- (DummyMessageContainingEnum*)defaultMessageInstance;
 
 - (DummyMessageContainingEnum*)build;
 - (DummyMessageContainingEnum*)buildPartial;
@@ -374,7 +374,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (DummyMessageInvalidAsOptionType_Builder*)builder;
 + (DummyMessageInvalidAsOptionType_Builder*)builder;
-+ (DummyMessageInvalidAsOptionType_Builder*)builderWithPrototype:(DummyMessageInvalidAsOptionType*) prototype;
++ (DummyMessageInvalidAsOptionType_Builder*)builderWithPrototype:(DummyMessageInvalidAsOptionType*)prototype;
 - (DummyMessageInvalidAsOptionType_Builder*)toBuilder;
 
 @end
@@ -382,7 +382,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface DummyMessageInvalidAsOptionType_Builder : PBGeneratedMessage_Builder
 
-- (DummyMessageInvalidAsOptionType*) defaultInstance;
+- (DummyMessageInvalidAsOptionType*)defaultMessageInstance;
 
 - (DummyMessageInvalidAsOptionType*)build;
 - (DummyMessageInvalidAsOptionType*)buildPartial;
@@ -401,7 +401,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionMinIntegerValues_Builder*)builder;
 + (CustomOptionMinIntegerValues_Builder*)builder;
-+ (CustomOptionMinIntegerValues_Builder*)builderWithPrototype:(CustomOptionMinIntegerValues*) prototype;
++ (CustomOptionMinIntegerValues_Builder*)builderWithPrototype:(CustomOptionMinIntegerValues*)prototype;
 - (CustomOptionMinIntegerValues_Builder*)toBuilder;
 
 @end
@@ -409,7 +409,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionMinIntegerValues_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionMinIntegerValues*) defaultInstance;
+- (CustomOptionMinIntegerValues*)defaultMessageInstance;
 
 - (CustomOptionMinIntegerValues*)build;
 - (CustomOptionMinIntegerValues*)buildPartial;
@@ -428,7 +428,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionMaxIntegerValues_Builder*)builder;
 + (CustomOptionMaxIntegerValues_Builder*)builder;
-+ (CustomOptionMaxIntegerValues_Builder*)builderWithPrototype:(CustomOptionMaxIntegerValues*) prototype;
++ (CustomOptionMaxIntegerValues_Builder*)builderWithPrototype:(CustomOptionMaxIntegerValues*)prototype;
 - (CustomOptionMaxIntegerValues_Builder*)toBuilder;
 
 @end
@@ -436,7 +436,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionMaxIntegerValues_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionMaxIntegerValues*) defaultInstance;
+- (CustomOptionMaxIntegerValues*)defaultMessageInstance;
 
 - (CustomOptionMaxIntegerValues*)build;
 - (CustomOptionMaxIntegerValues*)buildPartial;
@@ -455,7 +455,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (CustomOptionOtherValues_Builder*)builder;
 + (CustomOptionOtherValues_Builder*)builder;
-+ (CustomOptionOtherValues_Builder*)builderWithPrototype:(CustomOptionOtherValues*) prototype;
++ (CustomOptionOtherValues_Builder*)builderWithPrototype:(CustomOptionOtherValues*)prototype;
 - (CustomOptionOtherValues_Builder*)toBuilder;
 
 @end
@@ -463,7 +463,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface CustomOptionOtherValues_Builder : PBGeneratedMessage_Builder
 
-- (CustomOptionOtherValues*) defaultInstance;
+- (CustomOptionOtherValues*)defaultMessageInstance;
 
 - (CustomOptionOtherValues*)build;
 - (CustomOptionOtherValues*)buildPartial;
@@ -482,7 +482,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (SettingRealsFromPositiveInts_Builder*)builder;
 + (SettingRealsFromPositiveInts_Builder*)builder;
-+ (SettingRealsFromPositiveInts_Builder*)builderWithPrototype:(SettingRealsFromPositiveInts*) prototype;
++ (SettingRealsFromPositiveInts_Builder*)builderWithPrototype:(SettingRealsFromPositiveInts*)prototype;
 - (SettingRealsFromPositiveInts_Builder*)toBuilder;
 
 @end
@@ -490,7 +490,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface SettingRealsFromPositiveInts_Builder : PBGeneratedMessage_Builder
 
-- (SettingRealsFromPositiveInts*) defaultInstance;
+- (SettingRealsFromPositiveInts*)defaultMessageInstance;
 
 - (SettingRealsFromPositiveInts*)build;
 - (SettingRealsFromPositiveInts*)buildPartial;
@@ -509,7 +509,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (SettingRealsFromNegativeInts_Builder*)builder;
 + (SettingRealsFromNegativeInts_Builder*)builder;
-+ (SettingRealsFromNegativeInts_Builder*)builderWithPrototype:(SettingRealsFromNegativeInts*) prototype;
++ (SettingRealsFromNegativeInts_Builder*)builderWithPrototype:(SettingRealsFromNegativeInts*)prototype;
 - (SettingRealsFromNegativeInts_Builder*)toBuilder;
 
 @end
@@ -517,7 +517,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface SettingRealsFromNegativeInts_Builder : PBGeneratedMessage_Builder
 
-- (SettingRealsFromNegativeInts*) defaultInstance;
+- (SettingRealsFromNegativeInts*)defaultMessageInstance;
 
 - (SettingRealsFromNegativeInts*)build;
 - (SettingRealsFromNegativeInts*)buildPartial;
@@ -542,7 +542,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (ComplexOptionType1_Builder*)builder;
 + (ComplexOptionType1_Builder*)builder;
-+ (ComplexOptionType1_Builder*)builderWithPrototype:(ComplexOptionType1*) prototype;
++ (ComplexOptionType1_Builder*)builderWithPrototype:(ComplexOptionType1*)prototype;
 - (ComplexOptionType1_Builder*)toBuilder;
 
 @end
@@ -550,7 +550,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface ComplexOptionType1_Builder : PBExtendableMessage_Builder
 
-- (ComplexOptionType1*) defaultInstance;
+- (ComplexOptionType1*)defaultMessageInstance;
 
 - (ComplexOptionType1*)build;
 - (ComplexOptionType1*)buildPartial;
@@ -590,7 +590,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (ComplexOptionType2_Builder*)builder;
 + (ComplexOptionType2_Builder*)builder;
-+ (ComplexOptionType2_Builder*)builderWithPrototype:(ComplexOptionType2*) prototype;
++ (ComplexOptionType2_Builder*)builderWithPrototype:(ComplexOptionType2*)prototype;
 - (ComplexOptionType2_Builder*)toBuilder;
 
 @end
@@ -598,7 +598,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface ComplexOptionType2_Builder : PBExtendableMessage_Builder
 
-- (ComplexOptionType2*) defaultInstance;
+- (ComplexOptionType2*)defaultMessageInstance;
 
 - (ComplexOptionType2*)build;
 - (ComplexOptionType2*)buildPartial;
@@ -640,7 +640,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (ComplexOptionType2_ComplexOptionType4_Builder*)builder;
 + (ComplexOptionType2_ComplexOptionType4_Builder*)builder;
-+ (ComplexOptionType2_ComplexOptionType4_Builder*)builderWithPrototype:(ComplexOptionType2_ComplexOptionType4*) prototype;
++ (ComplexOptionType2_ComplexOptionType4_Builder*)builderWithPrototype:(ComplexOptionType2_ComplexOptionType4*)prototype;
 - (ComplexOptionType2_ComplexOptionType4_Builder*)toBuilder;
 
 @end
@@ -648,7 +648,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface ComplexOptionType2_ComplexOptionType4_Builder : PBGeneratedMessage_Builder
 
-- (ComplexOptionType2_ComplexOptionType4*) defaultInstance;
+- (ComplexOptionType2_ComplexOptionType4*)defaultMessageInstance;
 
 - (ComplexOptionType2_ComplexOptionType4*)build;
 - (ComplexOptionType2_ComplexOptionType4*)buildPartial;
@@ -676,7 +676,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (ComplexOptionType3_Builder*)builder;
 + (ComplexOptionType3_Builder*)builder;
-+ (ComplexOptionType3_Builder*)builderWithPrototype:(ComplexOptionType3*) prototype;
++ (ComplexOptionType3_Builder*)builderWithPrototype:(ComplexOptionType3*)prototype;
 - (ComplexOptionType3_Builder*)toBuilder;
 
 @end
@@ -684,7 +684,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface ComplexOptionType3_Builder : PBGeneratedMessage_Builder
 
-- (ComplexOptionType3*) defaultInstance;
+- (ComplexOptionType3*)defaultMessageInstance;
 
 - (ComplexOptionType3*)build;
 - (ComplexOptionType3*)buildPartial;
@@ -717,7 +717,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (ComplexOptionType3_ComplexOptionType5_Builder*)builder;
 + (ComplexOptionType3_ComplexOptionType5_Builder*)builder;
-+ (ComplexOptionType3_ComplexOptionType5_Builder*)builderWithPrototype:(ComplexOptionType3_ComplexOptionType5*) prototype;
++ (ComplexOptionType3_ComplexOptionType5_Builder*)builderWithPrototype:(ComplexOptionType3_ComplexOptionType5*)prototype;
 - (ComplexOptionType3_ComplexOptionType5_Builder*)toBuilder;
 
 @end
@@ -725,7 +725,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface ComplexOptionType3_ComplexOptionType5_Builder : PBGeneratedMessage_Builder
 
-- (ComplexOptionType3_ComplexOptionType5*) defaultInstance;
+- (ComplexOptionType3_ComplexOptionType5*)defaultMessageInstance;
 
 - (ComplexOptionType3_ComplexOptionType5*)build;
 - (ComplexOptionType3_ComplexOptionType5*)buildPartial;
@@ -751,7 +751,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (ComplexOpt6_Builder*)builder;
 + (ComplexOpt6_Builder*)builder;
-+ (ComplexOpt6_Builder*)builderWithPrototype:(ComplexOpt6*) prototype;
++ (ComplexOpt6_Builder*)builderWithPrototype:(ComplexOpt6*)prototype;
 - (ComplexOpt6_Builder*)toBuilder;
 
 @end
@@ -759,7 +759,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface ComplexOpt6_Builder : PBGeneratedMessage_Builder
 
-- (ComplexOpt6*) defaultInstance;
+- (ComplexOpt6*)defaultMessageInstance;
 
 - (ComplexOpt6*)build;
 - (ComplexOpt6*)buildPartial;
@@ -783,7 +783,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (VariousComplexOptions_Builder*)builder;
 + (VariousComplexOptions_Builder*)builder;
-+ (VariousComplexOptions_Builder*)builderWithPrototype:(VariousComplexOptions*) prototype;
++ (VariousComplexOptions_Builder*)builderWithPrototype:(VariousComplexOptions*)prototype;
 - (VariousComplexOptions_Builder*)toBuilder;
 
 @end
@@ -791,7 +791,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface VariousComplexOptions_Builder : PBGeneratedMessage_Builder
 
-- (VariousComplexOptions*) defaultInstance;
+- (VariousComplexOptions*)defaultMessageInstance;
 
 - (VariousComplexOptions*)build;
 - (VariousComplexOptions*)buildPartial;
@@ -810,7 +810,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (AggregateMessageSet_Builder*)builder;
 + (AggregateMessageSet_Builder*)builder;
-+ (AggregateMessageSet_Builder*)builderWithPrototype:(AggregateMessageSet*) prototype;
++ (AggregateMessageSet_Builder*)builderWithPrototype:(AggregateMessageSet*)prototype;
 - (AggregateMessageSet_Builder*)toBuilder;
 
 @end
@@ -818,7 +818,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface AggregateMessageSet_Builder : PBExtendableMessage_Builder
 
-- (AggregateMessageSet*) defaultInstance;
+- (AggregateMessageSet*)defaultMessageInstance;
 
 - (AggregateMessageSet*)build;
 - (AggregateMessageSet*)buildPartial;
@@ -841,7 +841,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (AggregateMessageSetElement_Builder*)builder;
 + (AggregateMessageSetElement_Builder*)builder;
-+ (AggregateMessageSetElement_Builder*)builderWithPrototype:(AggregateMessageSetElement*) prototype;
++ (AggregateMessageSetElement_Builder*)builderWithPrototype:(AggregateMessageSetElement*)prototype;
 - (AggregateMessageSetElement_Builder*)toBuilder;
 
 @end
@@ -849,7 +849,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface AggregateMessageSetElement_Builder : PBGeneratedMessage_Builder
 
-- (AggregateMessageSetElement*) defaultInstance;
+- (AggregateMessageSetElement*)defaultMessageInstance;
 
 - (AggregateMessageSetElement*)build;
 - (AggregateMessageSetElement*)buildPartial;
@@ -885,7 +885,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (Aggregate_Builder*)builder;
 + (Aggregate_Builder*)builder;
-+ (Aggregate_Builder*)builderWithPrototype:(Aggregate*) prototype;
++ (Aggregate_Builder*)builderWithPrototype:(Aggregate*)prototype;
 - (Aggregate_Builder*)toBuilder;
 
 @end
@@ -893,7 +893,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface Aggregate_Builder : PBGeneratedMessage_Builder
 
-- (Aggregate*) defaultInstance;
+- (Aggregate*)defaultMessageInstance;
 
 - (Aggregate*)build;
 - (Aggregate*)buildPartial;
@@ -945,7 +945,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (AggregateMessage_Builder*)builder;
 + (AggregateMessage_Builder*)builder;
-+ (AggregateMessage_Builder*)builderWithPrototype:(AggregateMessage*) prototype;
++ (AggregateMessage_Builder*)builderWithPrototype:(AggregateMessage*)prototype;
 - (AggregateMessage_Builder*)toBuilder;
 
 @end
@@ -953,7 +953,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface AggregateMessage_Builder : PBGeneratedMessage_Builder
 
-- (AggregateMessage*) defaultInstance;
+- (AggregateMessage*)defaultMessageInstance;
 
 - (AggregateMessage*)build;
 - (AggregateMessage*)buildPartial;
@@ -979,7 +979,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (NestedOptionType_Builder*)builder;
 + (NestedOptionType_Builder*)builder;
-+ (NestedOptionType_Builder*)builderWithPrototype:(NestedOptionType*) prototype;
++ (NestedOptionType_Builder*)builderWithPrototype:(NestedOptionType*)prototype;
 - (NestedOptionType_Builder*)toBuilder;
 
 @end
@@ -987,7 +987,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface NestedOptionType_Builder : PBGeneratedMessage_Builder
 
-- (NestedOptionType*) defaultInstance;
+- (NestedOptionType*)defaultMessageInstance;
 
 - (NestedOptionType*)build;
 - (NestedOptionType*)buildPartial;
@@ -1008,7 +1008,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 - (NestedOptionType_NestedMessage_Builder*)builder;
 + (NestedOptionType_NestedMessage_Builder*)builder;
-+ (NestedOptionType_NestedMessage_Builder*)builderWithPrototype:(NestedOptionType_NestedMessage*) prototype;
++ (NestedOptionType_NestedMessage_Builder*)builderWithPrototype:(NestedOptionType_NestedMessage*)prototype;
 - (NestedOptionType_NestedMessage_Builder*)toBuilder;
 
 @end
@@ -1016,7 +1016,7 @@ BOOL NestedOptionType_NestedEnumIsValidValue(NestedOptionType_NestedEnum value);
 
 @interface NestedOptionType_NestedMessage_Builder : PBGeneratedMessage_Builder
 
-- (NestedOptionType_NestedMessage*) defaultInstance;
+- (NestedOptionType_NestedMessage*)defaultMessageInstance;
 
 - (NestedOptionType_NestedMessage*)build;
 - (NestedOptionType_NestedMessage*)buildPartial;

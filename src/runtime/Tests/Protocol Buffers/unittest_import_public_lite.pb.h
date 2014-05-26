@@ -45,7 +45,7 @@
 
 - (PublicImportMessageLite_Builder*)builder;
 + (PublicImportMessageLite_Builder*)builder;
-+ (PublicImportMessageLite_Builder*)builderWithPrototype:(PublicImportMessageLite*) prototype;
++ (PublicImportMessageLite_Builder*)builderWithPrototype:(PublicImportMessageLite*)prototype;
 - (PublicImportMessageLite_Builder*)toBuilder;
 
 @end
@@ -53,7 +53,7 @@
 
 @interface PublicImportMessageLite_Builder : PBGeneratedMessage_Builder
 
-- (PublicImportMessageLite*) defaultInstance;
+- (PublicImportMessageLite*)defaultMessageInstance;
 
 - (PublicImportMessageLite*)build;
 - (PublicImportMessageLite*)buildPartial;

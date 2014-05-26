@@ -52,7 +52,7 @@ BOOL TestEnumIsValidValue(TestEnum value);
 
 - (TestMessage_Builder*)builder;
 + (TestMessage_Builder*)builder;
-+ (TestMessage_Builder*)builderWithPrototype:(TestMessage*) prototype;
++ (TestMessage_Builder*)builderWithPrototype:(TestMessage*)prototype;
 - (TestMessage_Builder*)toBuilder;
 
 @end
@@ -60,7 +60,7 @@ BOOL TestEnumIsValidValue(TestEnum value);
 
 @interface TestMessage_Builder : PBExtendableMessage_Builder
 
-- (TestMessage*) defaultInstance;
+- (TestMessage*)defaultMessageInstance;
 
 - (TestMessage*)build;
 - (TestMessage*)buildPartial;
