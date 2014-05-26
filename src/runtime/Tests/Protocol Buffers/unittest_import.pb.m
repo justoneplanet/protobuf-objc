@@ -90,7 +90,8 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
+
+- (int32_t)serializedSize {
   int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
@@ -106,16 +107,16 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
 }
 
 
-+ (ImportMessage_Builder*) builder {
++ (ImportMessage_Builder*)builder {
   return [[ImportMessage_Builder alloc] init];
 }
-+ (ImportMessage_Builder*) builderWithPrototype:(ImportMessage*)prototype {
++ (ImportMessage_Builder*)builderWithPrototype:(ImportMessage*)prototype {
   return [[ImportMessage builder] mergeFrom:prototype];
 }
-- (ImportMessage_Builder*) builder {
+- (ImportMessage_Builder*)builder {
   return [ImportMessage builder];
 }
-- (ImportMessage_Builder*) toBuilder {
+- (ImportMessage_Builder*)toBuilder {
   return [ImportMessage builderWithPrototype:self];
 }
 
@@ -139,7 +140,8 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
       self.hasD == otherMessage.hasD &&
       (!self.hasD || self.d == otherMessage.d) &&
       (self.unknownFields == otherMessage.unknownFields ||
-       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+       (self.unknownFields != nil &&
+       [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -179,15 +181,15 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
   return [[[ImportMessage_Builder alloc] init] mergeFrom:_result];
 }
 
-- (ImportMessage*) defaultInstance {
+- (ImportMessage*)defaultMessageInstance {
   return [ImportMessage defaultInstance];
 }
 
-- (ImportMessage*) build {
+- (ImportMessage*)build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (ImportMessage*) buildPartial {
+- (ImportMessage*)buildPartial {
   ImportMessage* partial = _result;
   _result = nil;
   return partial;
@@ -204,7 +206,9 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
   return self;
 }
 
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     int32_t tag = [input readTag];
@@ -213,7 +217,11 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
         [self setUnknownFields:[unknownFields build]];
         return self;
       default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+        if (![self parseUnknownField:input
+                       unknownFields:unknownFields
+                   extensionRegistry:extensionRegistry
+                                 tag:tag])
+        {
           [self setUnknownFields:[unknownFields build]];
           return self;
         }

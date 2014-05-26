@@ -53,7 +53,7 @@
 
 - (TestMessageSet_Builder*)builder;
 + (TestMessageSet_Builder*)builder;
-+ (TestMessageSet_Builder*)builderWithPrototype:(TestMessageSet*) prototype;
++ (TestMessageSet_Builder*)builderWithPrototype:(TestMessageSet*)prototype;
 - (TestMessageSet_Builder*)toBuilder;
 
 @end
@@ -61,7 +61,7 @@
 
 @interface TestMessageSet_Builder : PBExtendableMessage_Builder
 
-- (TestMessageSet*) defaultInstance;
+- (TestMessageSet*)defaultMessageInstance;
 
 - (TestMessageSet*)build;
 - (TestMessageSet*)buildPartial;
@@ -82,7 +82,7 @@
 
 - (TestMessageSetContainer_Builder*)builder;
 + (TestMessageSetContainer_Builder*)builder;
-+ (TestMessageSetContainer_Builder*)builderWithPrototype:(TestMessageSetContainer*) prototype;
++ (TestMessageSetContainer_Builder*)builderWithPrototype:(TestMessageSetContainer*)prototype;
 - (TestMessageSetContainer_Builder*)toBuilder;
 
 @end
@@ -90,7 +90,7 @@
 
 @interface TestMessageSetContainer_Builder : PBGeneratedMessage_Builder
 
-- (TestMessageSetContainer*) defaultInstance;
+- (TestMessageSetContainer*)defaultMessageInstance;
 
 - (TestMessageSetContainer*)build;
 - (TestMessageSetContainer*)buildPartial;
@@ -120,7 +120,7 @@
 
 - (TestMessageSetExtension1_Builder*)builder;
 + (TestMessageSetExtension1_Builder*)builder;
-+ (TestMessageSetExtension1_Builder*)builderWithPrototype:(TestMessageSetExtension1*) prototype;
++ (TestMessageSetExtension1_Builder*)builderWithPrototype:(TestMessageSetExtension1*)prototype;
 - (TestMessageSetExtension1_Builder*)toBuilder;
 
 @end
@@ -128,7 +128,7 @@
 
 @interface TestMessageSetExtension1_Builder : PBGeneratedMessage_Builder
 
-- (TestMessageSetExtension1*) defaultInstance;
+- (TestMessageSetExtension1*)defaultMessageInstance;
 
 - (TestMessageSetExtension1*)build;
 - (TestMessageSetExtension1*)buildPartial;
@@ -156,7 +156,7 @@
 
 - (TestMessageSetExtension2_Builder*)builder;
 + (TestMessageSetExtension2_Builder*)builder;
-+ (TestMessageSetExtension2_Builder*)builderWithPrototype:(TestMessageSetExtension2*) prototype;
++ (TestMessageSetExtension2_Builder*)builderWithPrototype:(TestMessageSetExtension2*)prototype;
 - (TestMessageSetExtension2_Builder*)toBuilder;
 
 @end
@@ -164,7 +164,7 @@
 
 @interface TestMessageSetExtension2_Builder : PBGeneratedMessage_Builder
 
-- (TestMessageSetExtension2*) defaultInstance;
+- (TestMessageSetExtension2*)defaultMessageInstance;
 
 - (TestMessageSetExtension2*)build;
 - (TestMessageSetExtension2*)buildPartial;
@@ -190,7 +190,7 @@
 
 - (RawMessageSet_Builder*)builder;
 + (RawMessageSet_Builder*)builder;
-+ (RawMessageSet_Builder*)builderWithPrototype:(RawMessageSet*) prototype;
++ (RawMessageSet_Builder*)builderWithPrototype:(RawMessageSet*)prototype;
 - (RawMessageSet_Builder*)toBuilder;
 
 @end
@@ -198,7 +198,7 @@
 
 @interface RawMessageSet_Builder : PBGeneratedMessage_Builder
 
-- (RawMessageSet*) defaultInstance;
+- (RawMessageSet*)defaultMessageInstance;
 
 - (RawMessageSet*)build;
 - (RawMessageSet*)buildPartial;
@@ -227,7 +227,7 @@
 
 - (RawMessageSet_Item_Builder*)builder;
 + (RawMessageSet_Item_Builder*)builder;
-+ (RawMessageSet_Item_Builder*)builderWithPrototype:(RawMessageSet_Item*) prototype;
++ (RawMessageSet_Item_Builder*)builderWithPrototype:(RawMessageSet_Item*)prototype;
 - (RawMessageSet_Item_Builder*)toBuilder;
 
 @end
@@ -235,7 +235,7 @@
 
 @interface RawMessageSet_Item_Builder : PBGeneratedMessage_Builder
 
-- (RawMessageSet_Item*) defaultInstance;
+- (RawMessageSet_Item*)defaultMessageInstance;
 
 - (RawMessageSet_Item*)build;
 - (RawMessageSet_Item*)buildPartial;

@@ -158,7 +158,7 @@
 
 - (TestLiteImportsNonlite_Builder*)builder;
 + (TestLiteImportsNonlite_Builder*)builder;
-+ (TestLiteImportsNonlite_Builder*)builderWithPrototype:(TestLiteImportsNonlite*) prototype;
++ (TestLiteImportsNonlite_Builder*)builderWithPrototype:(TestLiteImportsNonlite*)prototype;
 - (TestLiteImportsNonlite_Builder*)toBuilder;
 
 @end
@@ -166,7 +166,7 @@
 
 @interface TestLiteImportsNonlite_Builder : PBGeneratedMessage_Builder
 
-- (TestLiteImportsNonlite*) defaultInstance;
+- (TestLiteImportsNonlite*)defaultMessageInstance;
 
 - (TestLiteImportsNonlite*)build;
 - (TestLiteImportsNonlite*)buildPartial;

@@ -298,7 +298,7 @@ namespace objectivec {
     printer->Print(
       "- ($classname$_Builder*)builder;\n"
       "+ ($classname$_Builder*)builder;\n"
-      "+ ($classname$_Builder*)builderWithPrototype:($classname$*) prototype;\n"
+      "+ ($classname$_Builder*)builderWithPrototype:($classname$*)prototype;\n"
       "- ($classname$_Builder*)toBuilder;\n",
       "classname", class_name);
 
@@ -431,16 +431,16 @@ namespace objectivec {
     printer->Print("\n");
 
     printer->Print(
-      "+ ($classname$_Builder*) builder {\n"
+      "+ ($classname$_Builder*)builder {\n"
       "  return [[$classname$_Builder alloc] init];\n"
       "}\n"
-      "+ ($classname$_Builder*) builderWithPrototype:($classname$*)prototype {\n"
+      "+ ($classname$_Builder*)builderWithPrototype:($classname$*)prototype {\n"
       "  return [[$classname$ builder] mergeFrom:prototype];\n"
       "}\n"
-      "- ($classname$_Builder*) builder {\n"
+      "- ($classname$_Builder*)builder {\n"
       "  return [$classname$ builder];\n"
       "}\n"
-      "- ($classname$_Builder*) toBuilder {\n"
+      "- ($classname$_Builder*)toBuilder {\n"
       "  return [$classname$ builderWithPrototype:self];\n"
       "}\n",
       "classname", ClassName(descriptor_));
@@ -516,7 +516,7 @@ namespace objectivec {
     
     // defaultInstance does not return a "builder" type
     printer->Print(
-      "- ($classname$*)defaultInstance;\n"
+      "- ($classname$*)defaultMessageInstance;\n"
       "\n",
       "classname", ClassName(descriptor_));
 
@@ -588,7 +588,8 @@ namespace objectivec {
     printer->Outdent();
     printer->Print(
       "}\n"
-      "- (int32_t) serializedSize {\n"
+      "\n"
+      "- (int32_t)serializedSize {\n"
       "  int32_t size_ = _cachedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"
@@ -704,7 +705,7 @@ namespace objectivec {
 
     printer->Print(
       "(self.unknownFields == otherMessage.unknownFields ||\n"
-      " (self.unknownFields != nil &&"
+      " (self.unknownFields != nil &&\n"
       " [self.unknownFields isEqual:otherMessage.unknownFields]));\n");
 
     printer->Outdent();
@@ -877,7 +878,7 @@ namespace objectivec {
       "- (instancetype)clone {\n"
       "  return [[[$classname$_Builder alloc] init] mergeFrom:_result];\n"
       "}\n\n"
-      "- ($classname$*)defaultInstance {\n"
+      "- ($classname$*)defaultMessageInstance {\n"
       "  return [$classname$ defaultInstance];\n"
       "}\n\n",
       "classname", ClassName(descriptor_));
@@ -939,7 +940,9 @@ namespace objectivec {
 
     printer->Print(
       "\n"
-      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {\n",
+      "- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input\n"
+      "                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry\n"
+      "{\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
@@ -958,7 +961,11 @@ namespace objectivec {
       "  [self setUnknownFields:[unknownFields build]];\n"
       "  return self;\n"
       "default: {\n"
-      "  if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {\n"
+      "  if (![self parseUnknownField:input\n"
+      "                 unknownFields:unknownFields\n"
+      "             extensionRegistry:extensionRegistry\n"
+      "                           tag:tag])\n"
+      "  {\n"
       "    [self setUnknownFields:[unknownFields build]];\n"
       "    return self;\n"   // it's an endgroup tag
       "  }\n"

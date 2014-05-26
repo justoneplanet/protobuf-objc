@@ -46,7 +46,7 @@
  * Get the message's type's default instance.
  * See {@link Message#getDefaultInstanceForType()}.
  */
-- (id<PBMessage>)defaultInstance;
+- (id<PBMessage>)defaultMessageInstance;
 
 - (PBUnknownFieldSet*)unknownFields;
 

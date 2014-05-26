@@ -26,7 +26,7 @@
   XCTAssertTrue([TestAllTypes defaultInstance] ==
                [[TestAllTypes defaultInstance] defaultInstance], @"");
   XCTAssertTrue([TestAllTypes defaultInstance] ==
-               [[TestAllTypes builder] defaultInstance], @"");
+               [[TestAllTypes builder] defaultMessageInstance], @"");
 }
 
 

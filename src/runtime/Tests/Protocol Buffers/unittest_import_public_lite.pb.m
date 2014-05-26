@@ -79,7 +79,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
+
+- (int32_t)serializedSize {
   int32_t size_ = _cachedSerializedSize;
   if (size_ != -1) {
     return size_;
@@ -95,16 +96,16 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 
 
-+ (PublicImportMessageLite_Builder*) builder {
++ (PublicImportMessageLite_Builder*)builder {
   return [[PublicImportMessageLite_Builder alloc] init];
 }
-+ (PublicImportMessageLite_Builder*) builderWithPrototype:(PublicImportMessageLite*)prototype {
++ (PublicImportMessageLite_Builder*)builderWithPrototype:(PublicImportMessageLite*)prototype {
   return [[PublicImportMessageLite builder] mergeFrom:prototype];
 }
-- (PublicImportMessageLite_Builder*) builder {
+- (PublicImportMessageLite_Builder*)builder {
   return [PublicImportMessageLite builder];
 }
-- (PublicImportMessageLite_Builder*) toBuilder {
+- (PublicImportMessageLite_Builder*)toBuilder {
   return [PublicImportMessageLite builderWithPrototype:self];
 }
 
@@ -128,7 +129,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
       self.hasE == otherMessage.hasE &&
       (!self.hasE || self.e == otherMessage.e) &&
       (self.unknownFields == otherMessage.unknownFields ||
-       (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+       (self.unknownFields != nil &&
+       [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 
 - (NSUInteger)hash {
@@ -168,15 +170,15 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return [[[PublicImportMessageLite_Builder alloc] init] mergeFrom:_result];
 }
 
-- (PublicImportMessageLite*) defaultInstance {
+- (PublicImportMessageLite*)defaultMessageInstance {
   return [PublicImportMessageLite defaultInstance];
 }
 
-- (PublicImportMessageLite*) build {
+- (PublicImportMessageLite*)build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (PublicImportMessageLite*) buildPartial {
+- (PublicImportMessageLite*)buildPartial {
   PublicImportMessageLite* partial = _result;
   _result = nil;
   return partial;
@@ -193,7 +195,9 @@ static PBExtensionRegistry* extensionRegistry = nil;
   return self;
 }
 
-- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input extensionRegistry:(PBExtensionRegistry*)extensionRegistry {
+- (instancetype)mergeFromCodedInputStream:(PBCodedInputStream*)input
+                        extensionRegistry:(PBExtensionRegistry*)extensionRegistry
+{
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     int32_t tag = [input readTag];
@@ -202,7 +206,11 @@ static PBExtensionRegistry* extensionRegistry = nil;
         [self setUnknownFields:[unknownFields build]];
         return self;
       default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+        if (![self parseUnknownField:input
+                       unknownFields:unknownFields
+                   extensionRegistry:extensionRegistry
+                                 tag:tag])
+        {
           [self setUnknownFields:[unknownFields build]];
           return self;
         }

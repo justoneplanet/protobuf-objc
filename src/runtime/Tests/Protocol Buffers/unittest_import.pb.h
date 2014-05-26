@@ -56,7 +56,7 @@ BOOL ImportEnumIsValidValue(ImportEnum value);
 
 - (ImportMessage_Builder*)builder;
 + (ImportMessage_Builder*)builder;
-+ (ImportMessage_Builder*)builderWithPrototype:(ImportMessage*) prototype;
++ (ImportMessage_Builder*)builderWithPrototype:(ImportMessage*)prototype;
 - (ImportMessage_Builder*)toBuilder;
 
 @end
@@ -64,7 +64,7 @@ BOOL ImportEnumIsValidValue(ImportEnum value);
 
 @interface ImportMessage_Builder : PBGeneratedMessage_Builder
 
-- (ImportMessage*) defaultInstance;
+- (ImportMessage*)defaultMessageInstance;
 
 - (ImportMessage*)build;
 - (ImportMessage*)buildPartial;

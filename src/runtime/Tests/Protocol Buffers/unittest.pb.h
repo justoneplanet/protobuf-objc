@@ -427,7 +427,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestAllTypes_Builder*)builder;
 + (TestAllTypes_Builder*)builder;
-+ (TestAllTypes_Builder*)builderWithPrototype:(TestAllTypes*) prototype;
++ (TestAllTypes_Builder*)builderWithPrototype:(TestAllTypes*)prototype;
 - (TestAllTypes_Builder*)toBuilder;
 
 @end
@@ -435,7 +435,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestAllTypes_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypes*) defaultInstance;
+- (TestAllTypes*)defaultMessageInstance;
 
 - (TestAllTypes*)build;
 - (TestAllTypes*)buildPartial;
@@ -861,7 +861,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestAllTypes_NestedMessage_Builder*)builder;
 + (TestAllTypes_NestedMessage_Builder*)builder;
-+ (TestAllTypes_NestedMessage_Builder*)builderWithPrototype:(TestAllTypes_NestedMessage*) prototype;
++ (TestAllTypes_NestedMessage_Builder*)builderWithPrototype:(TestAllTypes_NestedMessage*)prototype;
 - (TestAllTypes_NestedMessage_Builder*)toBuilder;
 
 @end
@@ -869,7 +869,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestAllTypes_NestedMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypes_NestedMessage*) defaultInstance;
+- (TestAllTypes_NestedMessage*)defaultMessageInstance;
 
 - (TestAllTypes_NestedMessage*)build;
 - (TestAllTypes_NestedMessage*)buildPartial;
@@ -895,7 +895,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestAllTypes_OptionalGroup_Builder*)builder;
 + (TestAllTypes_OptionalGroup_Builder*)builder;
-+ (TestAllTypes_OptionalGroup_Builder*)builderWithPrototype:(TestAllTypes_OptionalGroup*) prototype;
++ (TestAllTypes_OptionalGroup_Builder*)builderWithPrototype:(TestAllTypes_OptionalGroup*)prototype;
 - (TestAllTypes_OptionalGroup_Builder*)toBuilder;
 
 @end
@@ -903,7 +903,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestAllTypes_OptionalGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypes_OptionalGroup*) defaultInstance;
+- (TestAllTypes_OptionalGroup*)defaultMessageInstance;
 
 - (TestAllTypes_OptionalGroup*)build;
 - (TestAllTypes_OptionalGroup*)buildPartial;
@@ -929,7 +929,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestAllTypes_RepeatedGroup_Builder*)builder;
 + (TestAllTypes_RepeatedGroup_Builder*)builder;
-+ (TestAllTypes_RepeatedGroup_Builder*)builderWithPrototype:(TestAllTypes_RepeatedGroup*) prototype;
++ (TestAllTypes_RepeatedGroup_Builder*)builderWithPrototype:(TestAllTypes_RepeatedGroup*)prototype;
 - (TestAllTypes_RepeatedGroup_Builder*)toBuilder;
 
 @end
@@ -937,7 +937,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestAllTypes_RepeatedGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypes_RepeatedGroup*) defaultInstance;
+- (TestAllTypes_RepeatedGroup*)defaultMessageInstance;
 
 - (TestAllTypes_RepeatedGroup*)build;
 - (TestAllTypes_RepeatedGroup*)buildPartial;
@@ -963,7 +963,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestDeprecatedFields_Builder*)builder;
 + (TestDeprecatedFields_Builder*)builder;
-+ (TestDeprecatedFields_Builder*)builderWithPrototype:(TestDeprecatedFields*) prototype;
++ (TestDeprecatedFields_Builder*)builderWithPrototype:(TestDeprecatedFields*)prototype;
 - (TestDeprecatedFields_Builder*)toBuilder;
 
 @end
@@ -971,7 +971,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestDeprecatedFields_Builder : PBGeneratedMessage_Builder
 
-- (TestDeprecatedFields*) defaultInstance;
+- (TestDeprecatedFields*)defaultMessageInstance;
 
 - (TestDeprecatedFields*)build;
 - (TestDeprecatedFields*)buildPartial;
@@ -997,7 +997,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (ForeignMessage_Builder*)builder;
 + (ForeignMessage_Builder*)builder;
-+ (ForeignMessage_Builder*)builderWithPrototype:(ForeignMessage*) prototype;
++ (ForeignMessage_Builder*)builderWithPrototype:(ForeignMessage*)prototype;
 - (ForeignMessage_Builder*)toBuilder;
 
 @end
@@ -1005,7 +1005,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface ForeignMessage_Builder : PBGeneratedMessage_Builder
 
-- (ForeignMessage*) defaultInstance;
+- (ForeignMessage*)defaultMessageInstance;
 
 - (ForeignMessage*)build;
 - (ForeignMessage*)buildPartial;
@@ -1029,7 +1029,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestAllExtensions_Builder*)builder;
 + (TestAllExtensions_Builder*)builder;
-+ (TestAllExtensions_Builder*)builderWithPrototype:(TestAllExtensions*) prototype;
++ (TestAllExtensions_Builder*)builderWithPrototype:(TestAllExtensions*)prototype;
 - (TestAllExtensions_Builder*)toBuilder;
 
 @end
@@ -1037,7 +1037,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestAllExtensions_Builder : PBExtendableMessage_Builder
 
-- (TestAllExtensions*) defaultInstance;
+- (TestAllExtensions*)defaultMessageInstance;
 
 - (TestAllExtensions*)build;
 - (TestAllExtensions*)buildPartial;
@@ -1058,7 +1058,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (OptionalGroup_extension_Builder*)builder;
 + (OptionalGroup_extension_Builder*)builder;
-+ (OptionalGroup_extension_Builder*)builderWithPrototype:(OptionalGroup_extension*) prototype;
++ (OptionalGroup_extension_Builder*)builderWithPrototype:(OptionalGroup_extension*)prototype;
 - (OptionalGroup_extension_Builder*)toBuilder;
 
 @end
@@ -1066,7 +1066,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface OptionalGroup_extension_Builder : PBGeneratedMessage_Builder
 
-- (OptionalGroup_extension*) defaultInstance;
+- (OptionalGroup_extension*)defaultMessageInstance;
 
 - (OptionalGroup_extension*)build;
 - (OptionalGroup_extension*)buildPartial;
@@ -1092,7 +1092,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (RepeatedGroup_extension_Builder*)builder;
 + (RepeatedGroup_extension_Builder*)builder;
-+ (RepeatedGroup_extension_Builder*)builderWithPrototype:(RepeatedGroup_extension*) prototype;
++ (RepeatedGroup_extension_Builder*)builderWithPrototype:(RepeatedGroup_extension*)prototype;
 - (RepeatedGroup_extension_Builder*)toBuilder;
 
 @end
@@ -1100,7 +1100,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface RepeatedGroup_extension_Builder : PBGeneratedMessage_Builder
 
-- (RepeatedGroup_extension*) defaultInstance;
+- (RepeatedGroup_extension*)defaultMessageInstance;
 
 - (RepeatedGroup_extension*)build;
 - (RepeatedGroup_extension*)buildPartial;
@@ -1126,7 +1126,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestNestedExtension_Builder*)builder;
 + (TestNestedExtension_Builder*)builder;
-+ (TestNestedExtension_Builder*)builderWithPrototype:(TestNestedExtension*) prototype;
++ (TestNestedExtension_Builder*)builderWithPrototype:(TestNestedExtension*)prototype;
 - (TestNestedExtension_Builder*)toBuilder;
 
 @end
@@ -1134,7 +1134,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestNestedExtension_Builder : PBGeneratedMessage_Builder
 
-- (TestNestedExtension*) defaultInstance;
+- (TestNestedExtension*)defaultMessageInstance;
 
 - (TestNestedExtension*)build;
 - (TestNestedExtension*)buildPartial;
@@ -1222,7 +1222,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestRequired_Builder*)builder;
 + (TestRequired_Builder*)builder;
-+ (TestRequired_Builder*)builderWithPrototype:(TestRequired*) prototype;
++ (TestRequired_Builder*)builderWithPrototype:(TestRequired*)prototype;
 - (TestRequired_Builder*)toBuilder;
 
 @end
@@ -1230,7 +1230,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestRequired_Builder : PBGeneratedMessage_Builder
 
-- (TestRequired*) defaultInstance;
+- (TestRequired*)defaultMessageInstance;
 
 - (TestRequired*)build;
 - (TestRequired*)buildPartial;
@@ -1420,7 +1420,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestRequiredForeign_Builder*)builder;
 + (TestRequiredForeign_Builder*)builder;
-+ (TestRequiredForeign_Builder*)builderWithPrototype:(TestRequiredForeign*) prototype;
++ (TestRequiredForeign_Builder*)builderWithPrototype:(TestRequiredForeign*)prototype;
 - (TestRequiredForeign_Builder*)toBuilder;
 
 @end
@@ -1428,7 +1428,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestRequiredForeign_Builder : PBGeneratedMessage_Builder
 
-- (TestRequiredForeign*) defaultInstance;
+- (TestRequiredForeign*)defaultMessageInstance;
 
 - (TestRequiredForeign*)build;
 - (TestRequiredForeign*)buildPartial;
@@ -1467,7 +1467,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestForeignNested_Builder*)builder;
 + (TestForeignNested_Builder*)builder;
-+ (TestForeignNested_Builder*)builderWithPrototype:(TestForeignNested*) prototype;
++ (TestForeignNested_Builder*)builderWithPrototype:(TestForeignNested*)prototype;
 - (TestForeignNested_Builder*)toBuilder;
 
 @end
@@ -1475,7 +1475,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestForeignNested_Builder : PBGeneratedMessage_Builder
 
-- (TestForeignNested*) defaultInstance;
+- (TestForeignNested*)defaultMessageInstance;
 
 - (TestForeignNested*)build;
 - (TestForeignNested*)buildPartial;
@@ -1501,7 +1501,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestEmptyMessage_Builder*)builder;
 + (TestEmptyMessage_Builder*)builder;
-+ (TestEmptyMessage_Builder*)builderWithPrototype:(TestEmptyMessage*) prototype;
++ (TestEmptyMessage_Builder*)builderWithPrototype:(TestEmptyMessage*)prototype;
 - (TestEmptyMessage_Builder*)toBuilder;
 
 @end
@@ -1509,7 +1509,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestEmptyMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestEmptyMessage*) defaultInstance;
+- (TestEmptyMessage*)defaultMessageInstance;
 
 - (TestEmptyMessage*)build;
 - (TestEmptyMessage*)buildPartial;
@@ -1528,7 +1528,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestEmptyMessageWithExtensions_Builder*)builder;
 + (TestEmptyMessageWithExtensions_Builder*)builder;
-+ (TestEmptyMessageWithExtensions_Builder*)builderWithPrototype:(TestEmptyMessageWithExtensions*) prototype;
++ (TestEmptyMessageWithExtensions_Builder*)builderWithPrototype:(TestEmptyMessageWithExtensions*)prototype;
 - (TestEmptyMessageWithExtensions_Builder*)toBuilder;
 
 @end
@@ -1536,7 +1536,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestEmptyMessageWithExtensions_Builder : PBExtendableMessage_Builder
 
-- (TestEmptyMessageWithExtensions*) defaultInstance;
+- (TestEmptyMessageWithExtensions*)defaultMessageInstance;
 
 - (TestEmptyMessageWithExtensions*)build;
 - (TestEmptyMessageWithExtensions*)buildPartial;
@@ -1555,7 +1555,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestMultipleExtensionRanges_Builder*)builder;
 + (TestMultipleExtensionRanges_Builder*)builder;
-+ (TestMultipleExtensionRanges_Builder*)builderWithPrototype:(TestMultipleExtensionRanges*) prototype;
++ (TestMultipleExtensionRanges_Builder*)builderWithPrototype:(TestMultipleExtensionRanges*)prototype;
 - (TestMultipleExtensionRanges_Builder*)toBuilder;
 
 @end
@@ -1563,7 +1563,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestMultipleExtensionRanges_Builder : PBExtendableMessage_Builder
 
-- (TestMultipleExtensionRanges*) defaultInstance;
+- (TestMultipleExtensionRanges*)defaultMessageInstance;
 
 - (TestMultipleExtensionRanges*)build;
 - (TestMultipleExtensionRanges*)buildPartial;
@@ -1586,7 +1586,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestReallyLargeTagNumber_Builder*)builder;
 + (TestReallyLargeTagNumber_Builder*)builder;
-+ (TestReallyLargeTagNumber_Builder*)builderWithPrototype:(TestReallyLargeTagNumber*) prototype;
++ (TestReallyLargeTagNumber_Builder*)builderWithPrototype:(TestReallyLargeTagNumber*)prototype;
 - (TestReallyLargeTagNumber_Builder*)toBuilder;
 
 @end
@@ -1594,7 +1594,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestReallyLargeTagNumber_Builder : PBGeneratedMessage_Builder
 
-- (TestReallyLargeTagNumber*) defaultInstance;
+- (TestReallyLargeTagNumber*)defaultMessageInstance;
 
 - (TestReallyLargeTagNumber*)build;
 - (TestReallyLargeTagNumber*)buildPartial;
@@ -1627,7 +1627,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestRecursiveMessage_Builder*)builder;
 + (TestRecursiveMessage_Builder*)builder;
-+ (TestRecursiveMessage_Builder*)builderWithPrototype:(TestRecursiveMessage*) prototype;
++ (TestRecursiveMessage_Builder*)builderWithPrototype:(TestRecursiveMessage*)prototype;
 - (TestRecursiveMessage_Builder*)toBuilder;
 
 @end
@@ -1635,7 +1635,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestRecursiveMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestRecursiveMessage*) defaultInstance;
+- (TestRecursiveMessage*)defaultMessageInstance;
 
 - (TestRecursiveMessage*)build;
 - (TestRecursiveMessage*)buildPartial;
@@ -1668,7 +1668,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestMutualRecursionA_Builder*)builder;
 + (TestMutualRecursionA_Builder*)builder;
-+ (TestMutualRecursionA_Builder*)builderWithPrototype:(TestMutualRecursionA*) prototype;
++ (TestMutualRecursionA_Builder*)builderWithPrototype:(TestMutualRecursionA*)prototype;
 - (TestMutualRecursionA_Builder*)toBuilder;
 
 @end
@@ -1676,7 +1676,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestMutualRecursionA_Builder : PBGeneratedMessage_Builder
 
-- (TestMutualRecursionA*) defaultInstance;
+- (TestMutualRecursionA*)defaultMessageInstance;
 
 - (TestMutualRecursionA*)build;
 - (TestMutualRecursionA*)buildPartial;
@@ -1706,7 +1706,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestMutualRecursionB_Builder*)builder;
 + (TestMutualRecursionB_Builder*)builder;
-+ (TestMutualRecursionB_Builder*)builderWithPrototype:(TestMutualRecursionB*) prototype;
++ (TestMutualRecursionB_Builder*)builderWithPrototype:(TestMutualRecursionB*)prototype;
 - (TestMutualRecursionB_Builder*)toBuilder;
 
 @end
@@ -1714,7 +1714,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestMutualRecursionB_Builder : PBGeneratedMessage_Builder
 
-- (TestMutualRecursionB*) defaultInstance;
+- (TestMutualRecursionB*)defaultMessageInstance;
 
 - (TestMutualRecursionB*)build;
 - (TestMutualRecursionB*)buildPartial;
@@ -1751,7 +1751,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestDupFieldNumber_Builder*)builder;
 + (TestDupFieldNumber_Builder*)builder;
-+ (TestDupFieldNumber_Builder*)builderWithPrototype:(TestDupFieldNumber*) prototype;
++ (TestDupFieldNumber_Builder*)builderWithPrototype:(TestDupFieldNumber*)prototype;
 - (TestDupFieldNumber_Builder*)toBuilder;
 
 @end
@@ -1759,7 +1759,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestDupFieldNumber_Builder : PBGeneratedMessage_Builder
 
-- (TestDupFieldNumber*) defaultInstance;
+- (TestDupFieldNumber*)defaultMessageInstance;
 
 - (TestDupFieldNumber*)build;
 - (TestDupFieldNumber*)buildPartial;
@@ -1799,7 +1799,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestDupFieldNumber_Foo_Builder*)builder;
 + (TestDupFieldNumber_Foo_Builder*)builder;
-+ (TestDupFieldNumber_Foo_Builder*)builderWithPrototype:(TestDupFieldNumber_Foo*) prototype;
++ (TestDupFieldNumber_Foo_Builder*)builderWithPrototype:(TestDupFieldNumber_Foo*)prototype;
 - (TestDupFieldNumber_Foo_Builder*)toBuilder;
 
 @end
@@ -1807,7 +1807,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestDupFieldNumber_Foo_Builder : PBGeneratedMessage_Builder
 
-- (TestDupFieldNumber_Foo*) defaultInstance;
+- (TestDupFieldNumber_Foo*)defaultMessageInstance;
 
 - (TestDupFieldNumber_Foo*)build;
 - (TestDupFieldNumber_Foo*)buildPartial;
@@ -1833,7 +1833,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestDupFieldNumber_Bar_Builder*)builder;
 + (TestDupFieldNumber_Bar_Builder*)builder;
-+ (TestDupFieldNumber_Bar_Builder*)builderWithPrototype:(TestDupFieldNumber_Bar*) prototype;
++ (TestDupFieldNumber_Bar_Builder*)builderWithPrototype:(TestDupFieldNumber_Bar*)prototype;
 - (TestDupFieldNumber_Bar_Builder*)toBuilder;
 
 @end
@@ -1841,7 +1841,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestDupFieldNumber_Bar_Builder : PBGeneratedMessage_Builder
 
-- (TestDupFieldNumber_Bar*) defaultInstance;
+- (TestDupFieldNumber_Bar*)defaultMessageInstance;
 
 - (TestDupFieldNumber_Bar*)build;
 - (TestDupFieldNumber_Bar*)buildPartial;
@@ -1867,7 +1867,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestEagerMessage_Builder*)builder;
 + (TestEagerMessage_Builder*)builder;
-+ (TestEagerMessage_Builder*)builderWithPrototype:(TestEagerMessage*) prototype;
++ (TestEagerMessage_Builder*)builderWithPrototype:(TestEagerMessage*)prototype;
 - (TestEagerMessage_Builder*)toBuilder;
 
 @end
@@ -1875,7 +1875,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestEagerMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestEagerMessage*) defaultInstance;
+- (TestEagerMessage*)defaultMessageInstance;
 
 - (TestEagerMessage*)build;
 - (TestEagerMessage*)buildPartial;
@@ -1903,7 +1903,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestLazyMessage_Builder*)builder;
 + (TestLazyMessage_Builder*)builder;
-+ (TestLazyMessage_Builder*)builderWithPrototype:(TestLazyMessage*) prototype;
++ (TestLazyMessage_Builder*)builderWithPrototype:(TestLazyMessage*)prototype;
 - (TestLazyMessage_Builder*)toBuilder;
 
 @end
@@ -1911,7 +1911,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestLazyMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestLazyMessage*) defaultInstance;
+- (TestLazyMessage*)defaultMessageInstance;
 
 - (TestLazyMessage*)build;
 - (TestLazyMessage*)buildPartial;
@@ -1939,7 +1939,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestNestedMessageHasBits_Builder*)builder;
 + (TestNestedMessageHasBits_Builder*)builder;
-+ (TestNestedMessageHasBits_Builder*)builderWithPrototype:(TestNestedMessageHasBits*) prototype;
++ (TestNestedMessageHasBits_Builder*)builderWithPrototype:(TestNestedMessageHasBits*)prototype;
 - (TestNestedMessageHasBits_Builder*)toBuilder;
 
 @end
@@ -1947,7 +1947,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestNestedMessageHasBits_Builder : PBGeneratedMessage_Builder
 
-- (TestNestedMessageHasBits*) defaultInstance;
+- (TestNestedMessageHasBits*)defaultMessageInstance;
 
 - (TestNestedMessageHasBits*)build;
 - (TestNestedMessageHasBits*)buildPartial;
@@ -1977,7 +1977,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestNestedMessageHasBits_NestedMessage_Builder*)builder;
 + (TestNestedMessageHasBits_NestedMessage_Builder*)builder;
-+ (TestNestedMessageHasBits_NestedMessage_Builder*)builderWithPrototype:(TestNestedMessageHasBits_NestedMessage*) prototype;
++ (TestNestedMessageHasBits_NestedMessage_Builder*)builderWithPrototype:(TestNestedMessageHasBits_NestedMessage*)prototype;
 - (TestNestedMessageHasBits_NestedMessage_Builder*)toBuilder;
 
 @end
@@ -1985,7 +1985,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestNestedMessageHasBits_NestedMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestNestedMessageHasBits_NestedMessage*) defaultInstance;
+- (TestNestedMessageHasBits_NestedMessage*)defaultMessageInstance;
 
 - (TestNestedMessageHasBits_NestedMessage*)build;
 - (TestNestedMessageHasBits_NestedMessage*)buildPartial;
@@ -2041,7 +2041,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestCamelCaseFieldNames_Builder*)builder;
 + (TestCamelCaseFieldNames_Builder*)builder;
-+ (TestCamelCaseFieldNames_Builder*)builderWithPrototype:(TestCamelCaseFieldNames*) prototype;
++ (TestCamelCaseFieldNames_Builder*)builderWithPrototype:(TestCamelCaseFieldNames*)prototype;
 - (TestCamelCaseFieldNames_Builder*)toBuilder;
 
 @end
@@ -2049,7 +2049,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestCamelCaseFieldNames_Builder : PBGeneratedMessage_Builder
 
-- (TestCamelCaseFieldNames*) defaultInstance;
+- (TestCamelCaseFieldNames*)defaultMessageInstance;
 
 - (TestCamelCaseFieldNames*)build;
 - (TestCamelCaseFieldNames*)buildPartial;
@@ -2143,7 +2143,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestFieldOrderings_Builder*)builder;
 + (TestFieldOrderings_Builder*)builder;
-+ (TestFieldOrderings_Builder*)builderWithPrototype:(TestFieldOrderings*) prototype;
++ (TestFieldOrderings_Builder*)builderWithPrototype:(TestFieldOrderings*)prototype;
 - (TestFieldOrderings_Builder*)toBuilder;
 
 @end
@@ -2151,7 +2151,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestFieldOrderings_Builder : PBExtendableMessage_Builder
 
-- (TestFieldOrderings*) defaultInstance;
+- (TestFieldOrderings*)defaultMessageInstance;
 
 - (TestFieldOrderings*)build;
 - (TestFieldOrderings*)buildPartial;
@@ -2237,7 +2237,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestExtremeDefaultValues_Builder*)builder;
 + (TestExtremeDefaultValues_Builder*)builder;
-+ (TestExtremeDefaultValues_Builder*)builderWithPrototype:(TestExtremeDefaultValues*) prototype;
++ (TestExtremeDefaultValues_Builder*)builderWithPrototype:(TestExtremeDefaultValues*)prototype;
 - (TestExtremeDefaultValues_Builder*)toBuilder;
 
 @end
@@ -2245,7 +2245,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestExtremeDefaultValues_Builder : PBGeneratedMessage_Builder
 
-- (TestExtremeDefaultValues*) defaultInstance;
+- (TestExtremeDefaultValues*)defaultMessageInstance;
 
 - (TestExtremeDefaultValues*)build;
 - (TestExtremeDefaultValues*)buildPartial;
@@ -2396,7 +2396,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (SparseEnumMessage_Builder*)builder;
 + (SparseEnumMessage_Builder*)builder;
-+ (SparseEnumMessage_Builder*)builderWithPrototype:(SparseEnumMessage*) prototype;
++ (SparseEnumMessage_Builder*)builderWithPrototype:(SparseEnumMessage*)prototype;
 - (SparseEnumMessage_Builder*)toBuilder;
 
 @end
@@ -2404,7 +2404,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface SparseEnumMessage_Builder : PBGeneratedMessage_Builder
 
-- (SparseEnumMessage*) defaultInstance;
+- (SparseEnumMessage*)defaultMessageInstance;
 
 - (SparseEnumMessage*)build;
 - (SparseEnumMessage*)buildPartial;
@@ -2430,7 +2430,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (OneString_Builder*)builder;
 + (OneString_Builder*)builder;
-+ (OneString_Builder*)builderWithPrototype:(OneString*) prototype;
++ (OneString_Builder*)builderWithPrototype:(OneString*)prototype;
 - (OneString_Builder*)toBuilder;
 
 @end
@@ -2438,7 +2438,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface OneString_Builder : PBGeneratedMessage_Builder
 
-- (OneString*) defaultInstance;
+- (OneString*)defaultMessageInstance;
 
 - (OneString*)build;
 - (OneString*)buildPartial;
@@ -2464,7 +2464,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (MoreString_Builder*)builder;
 + (MoreString_Builder*)builder;
-+ (MoreString_Builder*)builderWithPrototype:(MoreString*) prototype;
++ (MoreString_Builder*)builderWithPrototype:(MoreString*)prototype;
 - (MoreString_Builder*)toBuilder;
 
 @end
@@ -2472,7 +2472,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface MoreString_Builder : PBGeneratedMessage_Builder
 
-- (MoreString*) defaultInstance;
+- (MoreString*)defaultMessageInstance;
 
 - (MoreString*)build;
 - (MoreString*)buildPartial;
@@ -2499,7 +2499,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (OneBytes_Builder*)builder;
 + (OneBytes_Builder*)builder;
-+ (OneBytes_Builder*)builderWithPrototype:(OneBytes*) prototype;
++ (OneBytes_Builder*)builderWithPrototype:(OneBytes*)prototype;
 - (OneBytes_Builder*)toBuilder;
 
 @end
@@ -2507,7 +2507,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface OneBytes_Builder : PBGeneratedMessage_Builder
 
-- (OneBytes*) defaultInstance;
+- (OneBytes*)defaultMessageInstance;
 
 - (OneBytes*)build;
 - (OneBytes*)buildPartial;
@@ -2533,7 +2533,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (MoreBytes_Builder*)builder;
 + (MoreBytes_Builder*)builder;
-+ (MoreBytes_Builder*)builderWithPrototype:(MoreBytes*) prototype;
++ (MoreBytes_Builder*)builderWithPrototype:(MoreBytes*)prototype;
 - (MoreBytes_Builder*)toBuilder;
 
 @end
@@ -2541,7 +2541,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface MoreBytes_Builder : PBGeneratedMessage_Builder
 
-- (MoreBytes*) defaultInstance;
+- (MoreBytes*)defaultMessageInstance;
 
 - (MoreBytes*)build;
 - (MoreBytes*)buildPartial;
@@ -2594,7 +2594,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestPackedTypes_Builder*)builder;
 + (TestPackedTypes_Builder*)builder;
-+ (TestPackedTypes_Builder*)builderWithPrototype:(TestPackedTypes*) prototype;
++ (TestPackedTypes_Builder*)builderWithPrototype:(TestPackedTypes*)prototype;
 - (TestPackedTypes_Builder*)toBuilder;
 
 @end
@@ -2602,7 +2602,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestPackedTypes_Builder : PBGeneratedMessage_Builder
 
-- (TestPackedTypes*) defaultInstance;
+- (TestPackedTypes*)defaultMessageInstance;
 
 - (TestPackedTypes*)build;
 - (TestPackedTypes*)buildPartial;
@@ -2746,7 +2746,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestUnpackedTypes_Builder*)builder;
 + (TestUnpackedTypes_Builder*)builder;
-+ (TestUnpackedTypes_Builder*)builderWithPrototype:(TestUnpackedTypes*) prototype;
++ (TestUnpackedTypes_Builder*)builderWithPrototype:(TestUnpackedTypes*)prototype;
 - (TestUnpackedTypes_Builder*)toBuilder;
 
 @end
@@ -2754,7 +2754,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestUnpackedTypes_Builder : PBGeneratedMessage_Builder
 
-- (TestUnpackedTypes*) defaultInstance;
+- (TestUnpackedTypes*)defaultMessageInstance;
 
 - (TestUnpackedTypes*)build;
 - (TestUnpackedTypes*)buildPartial;
@@ -2870,7 +2870,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestPackedExtensions_Builder*)builder;
 + (TestPackedExtensions_Builder*)builder;
-+ (TestPackedExtensions_Builder*)builderWithPrototype:(TestPackedExtensions*) prototype;
++ (TestPackedExtensions_Builder*)builderWithPrototype:(TestPackedExtensions*)prototype;
 - (TestPackedExtensions_Builder*)toBuilder;
 
 @end
@@ -2878,7 +2878,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestPackedExtensions_Builder : PBExtendableMessage_Builder
 
-- (TestPackedExtensions*) defaultInstance;
+- (TestPackedExtensions*)defaultMessageInstance;
 
 - (TestPackedExtensions*)build;
 - (TestPackedExtensions*)buildPartial;
@@ -2911,7 +2911,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestDynamicExtensions_Builder*)builder;
 + (TestDynamicExtensions_Builder*)builder;
-+ (TestDynamicExtensions_Builder*)builderWithPrototype:(TestDynamicExtensions*) prototype;
++ (TestDynamicExtensions_Builder*)builderWithPrototype:(TestDynamicExtensions*)prototype;
 - (TestDynamicExtensions_Builder*)toBuilder;
 
 @end
@@ -2919,7 +2919,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestDynamicExtensions_Builder : PBGeneratedMessage_Builder
 
-- (TestDynamicExtensions*) defaultInstance;
+- (TestDynamicExtensions*)defaultMessageInstance;
 
 - (TestDynamicExtensions*)build;
 - (TestDynamicExtensions*)buildPartial;
@@ -2982,7 +2982,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestDynamicExtensions_DynamicMessageType_Builder*)builder;
 + (TestDynamicExtensions_DynamicMessageType_Builder*)builder;
-+ (TestDynamicExtensions_DynamicMessageType_Builder*)builderWithPrototype:(TestDynamicExtensions_DynamicMessageType*) prototype;
++ (TestDynamicExtensions_DynamicMessageType_Builder*)builderWithPrototype:(TestDynamicExtensions_DynamicMessageType*)prototype;
 - (TestDynamicExtensions_DynamicMessageType_Builder*)toBuilder;
 
 @end
@@ -2990,7 +2990,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestDynamicExtensions_DynamicMessageType_Builder : PBGeneratedMessage_Builder
 
-- (TestDynamicExtensions_DynamicMessageType*) defaultInstance;
+- (TestDynamicExtensions_DynamicMessageType*)defaultMessageInstance;
 
 - (TestDynamicExtensions_DynamicMessageType*)build;
 - (TestDynamicExtensions_DynamicMessageType*)buildPartial;
@@ -3026,7 +3026,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestRepeatedScalarDifferentTagSizes_Builder*)builder;
 + (TestRepeatedScalarDifferentTagSizes_Builder*)builder;
-+ (TestRepeatedScalarDifferentTagSizes_Builder*)builderWithPrototype:(TestRepeatedScalarDifferentTagSizes*) prototype;
++ (TestRepeatedScalarDifferentTagSizes_Builder*)builderWithPrototype:(TestRepeatedScalarDifferentTagSizes*)prototype;
 - (TestRepeatedScalarDifferentTagSizes_Builder*)toBuilder;
 
 @end
@@ -3034,7 +3034,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestRepeatedScalarDifferentTagSizes_Builder : PBGeneratedMessage_Builder
 
-- (TestRepeatedScalarDifferentTagSizes*) defaultInstance;
+- (TestRepeatedScalarDifferentTagSizes*)defaultMessageInstance;
 
 - (TestRepeatedScalarDifferentTagSizes*)build;
 - (TestRepeatedScalarDifferentTagSizes*)buildPartial;
@@ -3108,7 +3108,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestParsingMerge_Builder*)builder;
 + (TestParsingMerge_Builder*)builder;
-+ (TestParsingMerge_Builder*)builderWithPrototype:(TestParsingMerge*) prototype;
++ (TestParsingMerge_Builder*)builderWithPrototype:(TestParsingMerge*)prototype;
 - (TestParsingMerge_Builder*)toBuilder;
 
 @end
@@ -3116,7 +3116,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestParsingMerge_Builder : PBExtendableMessage_Builder
 
-- (TestParsingMerge*) defaultInstance;
+- (TestParsingMerge*)defaultMessageInstance;
 
 - (TestParsingMerge*)build;
 - (TestParsingMerge*)buildPartial;
@@ -3182,7 +3182,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builder;
 + (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builder;
-+ (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator*) prototype;
++ (TestParsingMerge_RepeatedFieldsGenerator_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator*)prototype;
 - (TestParsingMerge_RepeatedFieldsGenerator_Builder*)toBuilder;
 
 @end
@@ -3190,7 +3190,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestParsingMerge_RepeatedFieldsGenerator_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMerge_RepeatedFieldsGenerator*) defaultInstance;
+- (TestParsingMerge_RepeatedFieldsGenerator*)defaultMessageInstance;
 
 - (TestParsingMerge_RepeatedFieldsGenerator*)build;
 - (TestParsingMerge_RepeatedFieldsGenerator*)buildPartial;
@@ -3253,7 +3253,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builder;
 + (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builder;
-+ (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group1*) prototype;
++ (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group1*)prototype;
 - (TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder*)toBuilder;
 
 @end
@@ -3261,7 +3261,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestParsingMerge_RepeatedFieldsGenerator_Group1_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMerge_RepeatedFieldsGenerator_Group1*) defaultInstance;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group1*)defaultMessageInstance;
 
 - (TestParsingMerge_RepeatedFieldsGenerator_Group1*)build;
 - (TestParsingMerge_RepeatedFieldsGenerator_Group1*)buildPartial;
@@ -3289,7 +3289,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builder;
 + (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builder;
-+ (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group2*) prototype;
++ (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedFieldsGenerator_Group2*)prototype;
 - (TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder*)toBuilder;
 
 @end
@@ -3297,7 +3297,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestParsingMerge_RepeatedFieldsGenerator_Group2_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMerge_RepeatedFieldsGenerator_Group2*) defaultInstance;
+- (TestParsingMerge_RepeatedFieldsGenerator_Group2*)defaultMessageInstance;
 
 - (TestParsingMerge_RepeatedFieldsGenerator_Group2*)build;
 - (TestParsingMerge_RepeatedFieldsGenerator_Group2*)buildPartial;
@@ -3325,7 +3325,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestParsingMerge_OptionalGroup_Builder*)builder;
 + (TestParsingMerge_OptionalGroup_Builder*)builder;
-+ (TestParsingMerge_OptionalGroup_Builder*)builderWithPrototype:(TestParsingMerge_OptionalGroup*) prototype;
++ (TestParsingMerge_OptionalGroup_Builder*)builderWithPrototype:(TestParsingMerge_OptionalGroup*)prototype;
 - (TestParsingMerge_OptionalGroup_Builder*)toBuilder;
 
 @end
@@ -3333,7 +3333,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestParsingMerge_OptionalGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMerge_OptionalGroup*) defaultInstance;
+- (TestParsingMerge_OptionalGroup*)defaultMessageInstance;
 
 - (TestParsingMerge_OptionalGroup*)build;
 - (TestParsingMerge_OptionalGroup*)buildPartial;
@@ -3361,7 +3361,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestParsingMerge_RepeatedGroup_Builder*)builder;
 + (TestParsingMerge_RepeatedGroup_Builder*)builder;
-+ (TestParsingMerge_RepeatedGroup_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedGroup*) prototype;
++ (TestParsingMerge_RepeatedGroup_Builder*)builderWithPrototype:(TestParsingMerge_RepeatedGroup*)prototype;
 - (TestParsingMerge_RepeatedGroup_Builder*)toBuilder;
 
 @end
@@ -3369,7 +3369,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestParsingMerge_RepeatedGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMerge_RepeatedGroup*) defaultInstance;
+- (TestParsingMerge_RepeatedGroup*)defaultMessageInstance;
 
 - (TestParsingMerge_RepeatedGroup*)build;
 - (TestParsingMerge_RepeatedGroup*)buildPartial;
@@ -3397,7 +3397,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (TestCommentInjectionMessage_Builder*)builder;
 + (TestCommentInjectionMessage_Builder*)builder;
-+ (TestCommentInjectionMessage_Builder*)builderWithPrototype:(TestCommentInjectionMessage*) prototype;
++ (TestCommentInjectionMessage_Builder*)builderWithPrototype:(TestCommentInjectionMessage*)prototype;
 - (TestCommentInjectionMessage_Builder*)toBuilder;
 
 @end
@@ -3405,7 +3405,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface TestCommentInjectionMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestCommentInjectionMessage*) defaultInstance;
+- (TestCommentInjectionMessage*)defaultMessageInstance;
 
 - (TestCommentInjectionMessage*)build;
 - (TestCommentInjectionMessage*)buildPartial;
@@ -3429,7 +3429,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (FooRequest_Builder*)builder;
 + (FooRequest_Builder*)builder;
-+ (FooRequest_Builder*)builderWithPrototype:(FooRequest*) prototype;
++ (FooRequest_Builder*)builderWithPrototype:(FooRequest*)prototype;
 - (FooRequest_Builder*)toBuilder;
 
 @end
@@ -3437,7 +3437,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface FooRequest_Builder : PBGeneratedMessage_Builder
 
-- (FooRequest*) defaultInstance;
+- (FooRequest*)defaultMessageInstance;
 
 - (FooRequest*)build;
 - (FooRequest*)buildPartial;
@@ -3456,7 +3456,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (FooResponse_Builder*)builder;
 + (FooResponse_Builder*)builder;
-+ (FooResponse_Builder*)builderWithPrototype:(FooResponse*) prototype;
++ (FooResponse_Builder*)builderWithPrototype:(FooResponse*)prototype;
 - (FooResponse_Builder*)toBuilder;
 
 @end
@@ -3464,7 +3464,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface FooResponse_Builder : PBGeneratedMessage_Builder
 
-- (FooResponse*) defaultInstance;
+- (FooResponse*)defaultMessageInstance;
 
 - (FooResponse*)build;
 - (FooResponse*)buildPartial;
@@ -3483,7 +3483,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (FooClientMessage_Builder*)builder;
 + (FooClientMessage_Builder*)builder;
-+ (FooClientMessage_Builder*)builderWithPrototype:(FooClientMessage*) prototype;
++ (FooClientMessage_Builder*)builderWithPrototype:(FooClientMessage*)prototype;
 - (FooClientMessage_Builder*)toBuilder;
 
 @end
@@ -3491,7 +3491,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface FooClientMessage_Builder : PBGeneratedMessage_Builder
 
-- (FooClientMessage*) defaultInstance;
+- (FooClientMessage*)defaultMessageInstance;
 
 - (FooClientMessage*)build;
 - (FooClientMessage*)buildPartial;
@@ -3510,7 +3510,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (FooServerMessage_Builder*)builder;
 + (FooServerMessage_Builder*)builder;
-+ (FooServerMessage_Builder*)builderWithPrototype:(FooServerMessage*) prototype;
++ (FooServerMessage_Builder*)builderWithPrototype:(FooServerMessage*)prototype;
 - (FooServerMessage_Builder*)toBuilder;
 
 @end
@@ -3518,7 +3518,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface FooServerMessage_Builder : PBGeneratedMessage_Builder
 
-- (FooServerMessage*) defaultInstance;
+- (FooServerMessage*)defaultMessageInstance;
 
 - (FooServerMessage*)build;
 - (FooServerMessage*)buildPartial;
@@ -3537,7 +3537,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (BarRequest_Builder*)builder;
 + (BarRequest_Builder*)builder;
-+ (BarRequest_Builder*)builderWithPrototype:(BarRequest*) prototype;
++ (BarRequest_Builder*)builderWithPrototype:(BarRequest*)prototype;
 - (BarRequest_Builder*)toBuilder;
 
 @end
@@ -3545,7 +3545,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface BarRequest_Builder : PBGeneratedMessage_Builder
 
-- (BarRequest*) defaultInstance;
+- (BarRequest*)defaultMessageInstance;
 
 - (BarRequest*)build;
 - (BarRequest*)buildPartial;
@@ -3564,7 +3564,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 - (BarResponse_Builder*)builder;
 + (BarResponse_Builder*)builder;
-+ (BarResponse_Builder*)builderWithPrototype:(BarResponse*) prototype;
++ (BarResponse_Builder*)builderWithPrototype:(BarResponse*)prototype;
 - (BarResponse_Builder*)toBuilder;
 
 @end
@@ -3572,7 +3572,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 
 @interface BarResponse_Builder : PBGeneratedMessage_Builder
 
-- (BarResponse*) defaultInstance;
+- (BarResponse*)defaultMessageInstance;
 
 - (BarResponse*)build;
 - (BarResponse*)buildPartial;

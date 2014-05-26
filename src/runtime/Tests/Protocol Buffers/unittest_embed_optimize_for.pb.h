@@ -166,7 +166,7 @@
 
 - (TestEmbedOptimizedForSize_Builder*)builder;
 + (TestEmbedOptimizedForSize_Builder*)builder;
-+ (TestEmbedOptimizedForSize_Builder*)builderWithPrototype:(TestEmbedOptimizedForSize*) prototype;
++ (TestEmbedOptimizedForSize_Builder*)builderWithPrototype:(TestEmbedOptimizedForSize*)prototype;
 - (TestEmbedOptimizedForSize_Builder*)toBuilder;
 
 @end
@@ -174,7 +174,7 @@
 
 @interface TestEmbedOptimizedForSize_Builder : PBGeneratedMessage_Builder
 
-- (TestEmbedOptimizedForSize*) defaultInstance;
+- (TestEmbedOptimizedForSize*)defaultMessageInstance;
 
 - (TestEmbedOptimizedForSize*)build;
 - (TestEmbedOptimizedForSize*)buildPartial;

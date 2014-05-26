@@ -167,7 +167,7 @@
 
 - (TestOptimizedForSize_Builder*)builder;
 + (TestOptimizedForSize_Builder*)builder;
-+ (TestOptimizedForSize_Builder*)builderWithPrototype:(TestOptimizedForSize*) prototype;
++ (TestOptimizedForSize_Builder*)builderWithPrototype:(TestOptimizedForSize*)prototype;
 - (TestOptimizedForSize_Builder*)toBuilder;
 
 @end
@@ -175,7 +175,7 @@
 
 @interface TestOptimizedForSize_Builder : PBExtendableMessage_Builder
 
-- (TestOptimizedForSize*) defaultInstance;
+- (TestOptimizedForSize*)defaultMessageInstance;
 
 - (TestOptimizedForSize*)build;
 - (TestOptimizedForSize*)buildPartial;
@@ -208,7 +208,7 @@
 
 - (TestRequiredOptimizedForSize_Builder*)builder;
 + (TestRequiredOptimizedForSize_Builder*)builder;
-+ (TestRequiredOptimizedForSize_Builder*)builderWithPrototype:(TestRequiredOptimizedForSize*) prototype;
++ (TestRequiredOptimizedForSize_Builder*)builderWithPrototype:(TestRequiredOptimizedForSize*)prototype;
 - (TestRequiredOptimizedForSize_Builder*)toBuilder;
 
 @end
@@ -216,7 +216,7 @@
 
 @interface TestRequiredOptimizedForSize_Builder : PBGeneratedMessage_Builder
 
-- (TestRequiredOptimizedForSize*) defaultInstance;
+- (TestRequiredOptimizedForSize*)defaultMessageInstance;
 
 - (TestRequiredOptimizedForSize*)build;
 - (TestRequiredOptimizedForSize*)buildPartial;
@@ -242,7 +242,7 @@
 
 - (TestOptionalOptimizedForSize_Builder*)builder;
 + (TestOptionalOptimizedForSize_Builder*)builder;
-+ (TestOptionalOptimizedForSize_Builder*)builderWithPrototype:(TestOptionalOptimizedForSize*) prototype;
++ (TestOptionalOptimizedForSize_Builder*)builderWithPrototype:(TestOptionalOptimizedForSize*)prototype;
 - (TestOptionalOptimizedForSize_Builder*)toBuilder;
 
 @end
@@ -250,7 +250,7 @@
 
 @interface TestOptionalOptimizedForSize_Builder : PBGeneratedMessage_Builder
 
-- (TestOptionalOptimizedForSize*) defaultInstance;
+- (TestOptionalOptimizedForSize*)defaultMessageInstance;
 
 - (TestOptionalOptimizedForSize*)build;
 - (TestOptionalOptimizedForSize*)buildPartial;

@@ -45,7 +45,7 @@
 
 - (PublicImportMessage_Builder*)builder;
 + (PublicImportMessage_Builder*)builder;
-+ (PublicImportMessage_Builder*)builderWithPrototype:(PublicImportMessage*) prototype;
++ (PublicImportMessage_Builder*)builderWithPrototype:(PublicImportMessage*)prototype;
 - (PublicImportMessage_Builder*)toBuilder;
 
 @end
@@ -53,7 +53,7 @@
 
 @interface PublicImportMessage_Builder : PBGeneratedMessage_Builder
 
-- (PublicImportMessage*) defaultInstance;
+- (PublicImportMessage*)defaultMessageInstance;
 
 - (PublicImportMessage*)build;
 - (PublicImportMessage*)buildPartial;

@@ -325,7 +325,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestAllTypesLite_Builder*)builder;
 + (TestAllTypesLite_Builder*)builder;
-+ (TestAllTypesLite_Builder*)builderWithPrototype:(TestAllTypesLite*) prototype;
++ (TestAllTypesLite_Builder*)builderWithPrototype:(TestAllTypesLite*)prototype;
 - (TestAllTypesLite_Builder*)toBuilder;
 
 @end
@@ -333,7 +333,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestAllTypesLite_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypesLite*) defaultInstance;
+- (TestAllTypesLite*)defaultMessageInstance;
 
 - (TestAllTypesLite*)build;
 - (TestAllTypesLite*)buildPartial;
@@ -759,7 +759,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestAllTypesLite_NestedMessage_Builder*)builder;
 + (TestAllTypesLite_NestedMessage_Builder*)builder;
-+ (TestAllTypesLite_NestedMessage_Builder*)builderWithPrototype:(TestAllTypesLite_NestedMessage*) prototype;
++ (TestAllTypesLite_NestedMessage_Builder*)builderWithPrototype:(TestAllTypesLite_NestedMessage*)prototype;
 - (TestAllTypesLite_NestedMessage_Builder*)toBuilder;
 
 @end
@@ -767,7 +767,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestAllTypesLite_NestedMessage_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypesLite_NestedMessage*) defaultInstance;
+- (TestAllTypesLite_NestedMessage*)defaultMessageInstance;
 
 - (TestAllTypesLite_NestedMessage*)build;
 - (TestAllTypesLite_NestedMessage*)buildPartial;
@@ -793,7 +793,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestAllTypesLite_OptionalGroup_Builder*)builder;
 + (TestAllTypesLite_OptionalGroup_Builder*)builder;
-+ (TestAllTypesLite_OptionalGroup_Builder*)builderWithPrototype:(TestAllTypesLite_OptionalGroup*) prototype;
++ (TestAllTypesLite_OptionalGroup_Builder*)builderWithPrototype:(TestAllTypesLite_OptionalGroup*)prototype;
 - (TestAllTypesLite_OptionalGroup_Builder*)toBuilder;
 
 @end
@@ -801,7 +801,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestAllTypesLite_OptionalGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypesLite_OptionalGroup*) defaultInstance;
+- (TestAllTypesLite_OptionalGroup*)defaultMessageInstance;
 
 - (TestAllTypesLite_OptionalGroup*)build;
 - (TestAllTypesLite_OptionalGroup*)buildPartial;
@@ -827,7 +827,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestAllTypesLite_RepeatedGroup_Builder*)builder;
 + (TestAllTypesLite_RepeatedGroup_Builder*)builder;
-+ (TestAllTypesLite_RepeatedGroup_Builder*)builderWithPrototype:(TestAllTypesLite_RepeatedGroup*) prototype;
++ (TestAllTypesLite_RepeatedGroup_Builder*)builderWithPrototype:(TestAllTypesLite_RepeatedGroup*)prototype;
 - (TestAllTypesLite_RepeatedGroup_Builder*)toBuilder;
 
 @end
@@ -835,7 +835,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestAllTypesLite_RepeatedGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestAllTypesLite_RepeatedGroup*) defaultInstance;
+- (TestAllTypesLite_RepeatedGroup*)defaultMessageInstance;
 
 - (TestAllTypesLite_RepeatedGroup*)build;
 - (TestAllTypesLite_RepeatedGroup*)buildPartial;
@@ -861,7 +861,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (ForeignMessageLite_Builder*)builder;
 + (ForeignMessageLite_Builder*)builder;
-+ (ForeignMessageLite_Builder*)builderWithPrototype:(ForeignMessageLite*) prototype;
++ (ForeignMessageLite_Builder*)builderWithPrototype:(ForeignMessageLite*)prototype;
 - (ForeignMessageLite_Builder*)toBuilder;
 
 @end
@@ -869,7 +869,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface ForeignMessageLite_Builder : PBGeneratedMessage_Builder
 
-- (ForeignMessageLite*) defaultInstance;
+- (ForeignMessageLite*)defaultMessageInstance;
 
 - (ForeignMessageLite*)build;
 - (ForeignMessageLite*)buildPartial;
@@ -921,7 +921,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestPackedTypesLite_Builder*)builder;
 + (TestPackedTypesLite_Builder*)builder;
-+ (TestPackedTypesLite_Builder*)builderWithPrototype:(TestPackedTypesLite*) prototype;
++ (TestPackedTypesLite_Builder*)builderWithPrototype:(TestPackedTypesLite*)prototype;
 - (TestPackedTypesLite_Builder*)toBuilder;
 
 @end
@@ -929,7 +929,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestPackedTypesLite_Builder : PBGeneratedMessage_Builder
 
-- (TestPackedTypesLite*) defaultInstance;
+- (TestPackedTypesLite*)defaultMessageInstance;
 
 - (TestPackedTypesLite*)build;
 - (TestPackedTypesLite*)buildPartial;
@@ -1045,7 +1045,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestAllExtensionsLite_Builder*)builder;
 + (TestAllExtensionsLite_Builder*)builder;
-+ (TestAllExtensionsLite_Builder*)builderWithPrototype:(TestAllExtensionsLite*) prototype;
++ (TestAllExtensionsLite_Builder*)builderWithPrototype:(TestAllExtensionsLite*)prototype;
 - (TestAllExtensionsLite_Builder*)toBuilder;
 
 @end
@@ -1053,7 +1053,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestAllExtensionsLite_Builder : PBExtendableMessage_Builder
 
-- (TestAllExtensionsLite*) defaultInstance;
+- (TestAllExtensionsLite*)defaultMessageInstance;
 
 - (TestAllExtensionsLite*)build;
 - (TestAllExtensionsLite*)buildPartial;
@@ -1074,7 +1074,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (OptionalGroup_extension_lite_Builder*)builder;
 + (OptionalGroup_extension_lite_Builder*)builder;
-+ (OptionalGroup_extension_lite_Builder*)builderWithPrototype:(OptionalGroup_extension_lite*) prototype;
++ (OptionalGroup_extension_lite_Builder*)builderWithPrototype:(OptionalGroup_extension_lite*)prototype;
 - (OptionalGroup_extension_lite_Builder*)toBuilder;
 
 @end
@@ -1082,7 +1082,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface OptionalGroup_extension_lite_Builder : PBGeneratedMessage_Builder
 
-- (OptionalGroup_extension_lite*) defaultInstance;
+- (OptionalGroup_extension_lite*)defaultMessageInstance;
 
 - (OptionalGroup_extension_lite*)build;
 - (OptionalGroup_extension_lite*)buildPartial;
@@ -1108,7 +1108,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (RepeatedGroup_extension_lite_Builder*)builder;
 + (RepeatedGroup_extension_lite_Builder*)builder;
-+ (RepeatedGroup_extension_lite_Builder*)builderWithPrototype:(RepeatedGroup_extension_lite*) prototype;
++ (RepeatedGroup_extension_lite_Builder*)builderWithPrototype:(RepeatedGroup_extension_lite*)prototype;
 - (RepeatedGroup_extension_lite_Builder*)toBuilder;
 
 @end
@@ -1116,7 +1116,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface RepeatedGroup_extension_lite_Builder : PBGeneratedMessage_Builder
 
-- (RepeatedGroup_extension_lite*) defaultInstance;
+- (RepeatedGroup_extension_lite*)defaultMessageInstance;
 
 - (RepeatedGroup_extension_lite*)build;
 - (RepeatedGroup_extension_lite*)buildPartial;
@@ -1140,7 +1140,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestPackedExtensionsLite_Builder*)builder;
 + (TestPackedExtensionsLite_Builder*)builder;
-+ (TestPackedExtensionsLite_Builder*)builderWithPrototype:(TestPackedExtensionsLite*) prototype;
++ (TestPackedExtensionsLite_Builder*)builderWithPrototype:(TestPackedExtensionsLite*)prototype;
 - (TestPackedExtensionsLite_Builder*)toBuilder;
 
 @end
@@ -1148,7 +1148,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestPackedExtensionsLite_Builder : PBExtendableMessage_Builder
 
-- (TestPackedExtensionsLite*) defaultInstance;
+- (TestPackedExtensionsLite*)defaultMessageInstance;
 
 - (TestPackedExtensionsLite*)build;
 - (TestPackedExtensionsLite*)buildPartial;
@@ -1169,7 +1169,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestNestedExtensionLite_Builder*)builder;
 + (TestNestedExtensionLite_Builder*)builder;
-+ (TestNestedExtensionLite_Builder*)builderWithPrototype:(TestNestedExtensionLite*) prototype;
++ (TestNestedExtensionLite_Builder*)builderWithPrototype:(TestNestedExtensionLite*)prototype;
 - (TestNestedExtensionLite_Builder*)toBuilder;
 
 @end
@@ -1177,7 +1177,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestNestedExtensionLite_Builder : PBGeneratedMessage_Builder
 
-- (TestNestedExtensionLite*) defaultInstance;
+- (TestNestedExtensionLite*)defaultMessageInstance;
 
 - (TestNestedExtensionLite*)build;
 - (TestNestedExtensionLite*)buildPartial;
@@ -1198,7 +1198,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestDeprecatedLite_Builder*)builder;
 + (TestDeprecatedLite_Builder*)builder;
-+ (TestDeprecatedLite_Builder*)builderWithPrototype:(TestDeprecatedLite*) prototype;
++ (TestDeprecatedLite_Builder*)builderWithPrototype:(TestDeprecatedLite*)prototype;
 - (TestDeprecatedLite_Builder*)toBuilder;
 
 @end
@@ -1206,7 +1206,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestDeprecatedLite_Builder : PBGeneratedMessage_Builder
 
-- (TestDeprecatedLite*) defaultInstance;
+- (TestDeprecatedLite*)defaultMessageInstance;
 
 - (TestDeprecatedLite*)build;
 - (TestDeprecatedLite*)buildPartial;
@@ -1243,7 +1243,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestParsingMergeLite_Builder*)builder;
 + (TestParsingMergeLite_Builder*)builder;
-+ (TestParsingMergeLite_Builder*)builderWithPrototype:(TestParsingMergeLite*) prototype;
++ (TestParsingMergeLite_Builder*)builderWithPrototype:(TestParsingMergeLite*)prototype;
 - (TestParsingMergeLite_Builder*)toBuilder;
 
 @end
@@ -1251,7 +1251,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestParsingMergeLite_Builder : PBExtendableMessage_Builder
 
-- (TestParsingMergeLite*) defaultInstance;
+- (TestParsingMergeLite*)defaultMessageInstance;
 
 - (TestParsingMergeLite*)build;
 - (TestParsingMergeLite*)buildPartial;
@@ -1317,7 +1317,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builder;
 + (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builder;
-+ (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator*) prototype;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator*)prototype;
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Builder*)toBuilder;
 
 @end
@@ -1325,7 +1325,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestParsingMergeLite_RepeatedFieldsGenerator_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMergeLite_RepeatedFieldsGenerator*) defaultInstance;
+- (TestParsingMergeLite_RepeatedFieldsGenerator*)defaultMessageInstance;
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator*)build;
 - (TestParsingMergeLite_RepeatedFieldsGenerator*)buildPartial;
@@ -1388,7 +1388,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builder;
 + (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builder;
-+ (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator_Group1*) prototype;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)prototype;
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder*)toBuilder;
 
 @end
@@ -1396,7 +1396,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestParsingMergeLite_RepeatedFieldsGenerator_Group1_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*) defaultInstance;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)defaultMessageInstance;
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)build;
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group1*)buildPartial;
@@ -1424,7 +1424,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builder;
 + (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builder;
-+ (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator_Group2*) prototype;
++ (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)prototype;
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder*)toBuilder;
 
 @end
@@ -1432,7 +1432,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestParsingMergeLite_RepeatedFieldsGenerator_Group2_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*) defaultInstance;
+- (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)defaultMessageInstance;
 
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)build;
 - (TestParsingMergeLite_RepeatedFieldsGenerator_Group2*)buildPartial;
@@ -1460,7 +1460,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestParsingMergeLite_OptionalGroup_Builder*)builder;
 + (TestParsingMergeLite_OptionalGroup_Builder*)builder;
-+ (TestParsingMergeLite_OptionalGroup_Builder*)builderWithPrototype:(TestParsingMergeLite_OptionalGroup*) prototype;
++ (TestParsingMergeLite_OptionalGroup_Builder*)builderWithPrototype:(TestParsingMergeLite_OptionalGroup*)prototype;
 - (TestParsingMergeLite_OptionalGroup_Builder*)toBuilder;
 
 @end
@@ -1468,7 +1468,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestParsingMergeLite_OptionalGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMergeLite_OptionalGroup*) defaultInstance;
+- (TestParsingMergeLite_OptionalGroup*)defaultMessageInstance;
 
 - (TestParsingMergeLite_OptionalGroup*)build;
 - (TestParsingMergeLite_OptionalGroup*)buildPartial;
@@ -1496,7 +1496,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 - (TestParsingMergeLite_RepeatedGroup_Builder*)builder;
 + (TestParsingMergeLite_RepeatedGroup_Builder*)builder;
-+ (TestParsingMergeLite_RepeatedGroup_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedGroup*) prototype;
++ (TestParsingMergeLite_RepeatedGroup_Builder*)builderWithPrototype:(TestParsingMergeLite_RepeatedGroup*)prototype;
 - (TestParsingMergeLite_RepeatedGroup_Builder*)toBuilder;
 
 @end
@@ -1504,7 +1504,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value);
 
 @interface TestParsingMergeLite_RepeatedGroup_Builder : PBGeneratedMessage_Builder
 
-- (TestParsingMergeLite_RepeatedGroup*) defaultInstance;
+- (TestParsingMergeLite_RepeatedGroup*)defaultMessageInstance;
 
 - (TestParsingMergeLite_RepeatedGroup*)build;
 - (TestParsingMergeLite_RepeatedGroup*)buildPartial;

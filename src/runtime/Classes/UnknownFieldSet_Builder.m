@@ -193,7 +193,7 @@
     return YES;
 }
 
-- (PBUnknownFieldSet*)defaultInstance {
+- (PBUnknownFieldSet*)defaultMessageInstance {
     return nil;
 }
 

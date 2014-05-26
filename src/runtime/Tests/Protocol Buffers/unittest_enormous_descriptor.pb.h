@@ -2043,7 +2043,7 @@
 
 - (TestEnormousDescriptor_Builder*)builder;
 + (TestEnormousDescriptor_Builder*)builder;
-+ (TestEnormousDescriptor_Builder*)builderWithPrototype:(TestEnormousDescriptor*) prototype;
++ (TestEnormousDescriptor_Builder*)builderWithPrototype:(TestEnormousDescriptor*)prototype;
 - (TestEnormousDescriptor_Builder*)toBuilder;
 
 @end
@@ -2051,7 +2051,7 @@
 
 @interface TestEnormousDescriptor_Builder : PBGeneratedMessage_Builder
 
-- (TestEnormousDescriptor*) defaultInstance;
+- (TestEnormousDescriptor*)defaultMessageInstance;
 
 - (TestEnormousDescriptor*)build;
 - (TestEnormousDescriptor*)buildPartial;
