@@ -1,6 +1,6 @@
 # Protocol Buffers, Objective C
 
-"Data Model" generator with full support for google protocol buffers in Objective C.
+Java style generator with full support for google protocol buffers in Objective C.
 
 Protocol Buffers are a way of encoding structured data in an efficient yet extensible format.
 This project is based on an implementation of Protocol Buffers from Google.  See the
@@ -67,9 +67,9 @@ The protocol buffer compiler (protoc) produces Objective-C output when invoked w
 
 Once you have generated the .pb.h and .pb.m files from the .proto files, you can then add them to your project. However, in order to build properly there is a one time, per project, configuration process to integrate the runtime source files.
 
-- Open your existing project and a reference to the "ProtocolBuffers" project found in /src/runtime.
-- Add "ProtocolBuffers" as a Direct Dependency of your build target.
-- Often, it is nessisary to manually add the static library the runtime project creates to the list of libraries linked to your project
+- Open your existing project and a reference to the "ProtocolModels" project found in /src/runtime.
+- Add "ProtocolModels" as a direct dependency of your build target.
+- Often, it is necessary to manually add the static library the runtime project creates to the list of libraries linked to your project
 
 Some instructions and screenshots illustrating this process may be found in this project's wiki.
 
