@@ -1,6 +1,6 @@
 AC_PREREQ(2.61)
 
-AC_INIT([protobuf-plugin-objc],[0.1],[jon@booyah.com],[protobuf-plugin-objc])
+AC_INIT([protobuf-plugin-objc],[0.1],[protobuf-plugin-objc])
 
 AC_CONFIG_SRCDIR(src/compiler/main.cc)
 AC_CONFIG_HEADERS([config.h])

@@ -454,7 +454,7 @@ const int32_t BUFFER_SIZE = 4096;
  * @return the old limit.
  */
 - (int32_t)setSizeLimit:(int32_t)limit {
-    NSAssert((limit > 0), @"Size limit cannot be negative.");
+    NSAssert((limit >= 0), @"Size limit cannot be negative.");
 
     int32_t oldLimit = _sizeLimit;
     _sizeLimit = limit;
@@ -475,7 +475,7 @@ const int32_t BUFFER_SIZE = 4096;
  * @return the old limit.
  */
 - (int32_t)pushLimit:(int32_t)byteLimit {
-    NSAssert((byteLimit > 0), @"Byte limit cannot be negative.");
+    NSAssert((byteLimit >= 0), @"Byte limit cannot be negative.");
 
     byteLimit += _totalBytesRetired + _bufferPos;
     int32_t oldLimit = _currentLimit;
@@ -602,9 +602,9 @@ const int32_t BUFFER_SIZE = 4096;
  */
 - (NSData*)readRawData:(int32_t)size {
     
-    NSParameterAssert(size > 0);
+    NSParameterAssert(size >= 0);
     
-    if (size < 0) {
+    if (size <= 0) {
         return nil;
     }
     
@@ -711,9 +711,9 @@ const int32_t BUFFER_SIZE = 4096;
  */
 - (void)skipRawData:(int32_t)size {
     
-    NSParameterAssert(size > 0);
+    NSParameterAssert(size >= 0);
     
-    if (size < 0) {
+    if (size <= 0) {
         return;
     }
     
