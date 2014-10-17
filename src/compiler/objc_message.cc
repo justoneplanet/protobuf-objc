@@ -394,14 +394,16 @@ namespace objectivec {
     
     // Define singleton, object initialized with defaults
     printer->Print(
-      "+ (instancetype)defaultInstance {\n"
-      "  static id _sharedObject = nil;\n"
-      "  static dispatch_once_t onceToken;\n"
-      "  dispatch_once(&onceToken, ^{\n"
-      "    _sharedObject = [[self alloc] init];\n"
-      "  });\n"
-      "  return _sharedObject;\n"
-      "}\n\n");
+      "static $class_name$* default$class_name$Instance = nil;\n"
+	  "+ (void) initialize {\n"
+	  "  if (self == [$class_name$ class]) {\n"
+      "    default$class_name$Instance = [[$class_name$ alloc] init];\n"
+      "  }\n"
+      "}\n"
+	  "+ ($class_name$*) defaultInstance {\n"
+      "  return default$class_name$Instance;\n"
+      "}\n",
+	  "class_name", class_name);
     
     // Define implementation of properties accessor methods
     for (int i = 0; i < descriptor_->field_count(); i++) {
