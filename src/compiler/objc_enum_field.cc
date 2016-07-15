@@ -165,8 +165,8 @@ namespace objectivec {
   void EnumFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "int32_t value = [input readEnum];\n"
-      "if ($type$IsValidValue(value)) {\n"
-      "  [self set$capitalized_name$:value];\n"
+      "if ($type$IsValidValue(($type$) value)) {\n"
+      "  [self set$capitalized_name$:($type$) value];\n"
       "} else {\n"
       "  [unknownFields mergeVarintField:$number$ value:value];\n"
       "}\n");
@@ -300,7 +300,7 @@ namespace objectivec {
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
       "  NSNumber *value = _$list_name$[index];\n"
-      "  return value.intValue;"
+      "  return ($type$) value.intValue;"
       "}\n");
   }
 
@@ -355,8 +355,8 @@ namespace objectivec {
 
     printer->Print(variables_,
       "int32_t value = [input readEnum];\n"
-      "if ($type$IsValidValue(value)) {\n"
-      "  [self add$capitalized_name$:value];\n"
+      "if ($type$IsValidValue(($type$) value)) {\n"
+      "  [self add$capitalized_name$:($type$) value];\n"
       "} else {\n"
       "  [unknownFields mergeVarintField:$number$ value:value];\n"
       "}\n");

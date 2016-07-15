@@ -370,6 +370,7 @@ namespace objectivec {
     
     // Build the default initializer
     printer->Print(
+      "@synthesize description = _description;\n\n"
       "- (instancetype)init {\n"
       "  self = [super init];\n"
       "  if (self == nil) {\n"
@@ -635,7 +636,9 @@ namespace objectivec {
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {\n");
+      "- (void)writeDescriptionTo:(NSMutableString*)output withIndent:(NSString*)indent {\n"
+      "  NSUInteger listCount; listCount = 0;\n"
+    );
     printer->Indent();
 
     // Merge the fields and the extension ranges, both sorted by field number.
@@ -727,10 +730,12 @@ namespace objectivec {
       ExtensionRangeOrdering());
 
     printer->Print(
-      "- (NSUInteger)hash {\n");
+      "- (NSUInteger)hash {\n"
+    );
     printer->Indent();
 
     printer->Print("NSUInteger hashCode; hashCode = 7;\n");
+    printer->Print("NSUInteger listCount; listCount = 0;\n");
 
     // Merge the fields and the extension ranges, both sorted by field number.
     for (int i = 0, j = 0;
